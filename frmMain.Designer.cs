@@ -1,6 +1,6 @@
 ﻿namespace timber_shop_manager
 {
-    partial class Form1
+    partial class frmMain
     {
         /// <summary>
         ///  Required designer variable.
