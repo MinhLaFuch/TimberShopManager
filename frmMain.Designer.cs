@@ -37,6 +37,7 @@
             picAvatar = new PictureBox();
             label1 = new Label();
             label2 = new Label();
+            btnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)picAvatar).BeginInit();
             SuspendLayout();
             // 
@@ -131,11 +132,22 @@
             label2.TabIndex = 10;
             label2.Text = "Authorization";
             // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(574, 12);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(75, 23);
+            btnLogout.TabIndex = 11;
+            btnLogout.Text = "Đăng xuất";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(690, 450);
+            Controls.Add(btnLogout);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(picAvatar);
@@ -165,5 +177,6 @@
         private PictureBox picAvatar;
         private Label label1;
         private Label label2;
+        private Button btnLogout;
     }
 }

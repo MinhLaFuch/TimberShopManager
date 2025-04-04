@@ -16,5 +16,30 @@ namespace timber_shop_manager
         {
             InitializeComponent();
         }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            LoadAvatar("../../../assets/img/placehold-avatar.png");
+        }
+
+        private void LoadAvatar(string imagePath)
+        {
+            if (File.Exists(imagePath))
+            {
+                picAvatar.Image = Image.FromFile(imagePath);
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy ảnh tại đường dẫn đã chỉ định.");
+            }
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmMain frmMain = new frmMain();
+            frmMain.ShowDialog();
+            this.Show();
+        }
     }
 }

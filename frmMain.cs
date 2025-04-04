@@ -28,11 +28,17 @@
         {
             if (File.Exists(imagePath))
             {
-                picAvatar.Image = Image.FromFile(imagePath);            }
+                picAvatar.Image = Image.FromFile(imagePath);
+            }
             else
             {
                 MessageBox.Show("Không tìm thấy ảnh tại đường dẫn đã chỉ định.");
             }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
