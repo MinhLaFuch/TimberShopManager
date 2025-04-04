@@ -31,18 +31,18 @@
             components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
             groupBox1 = new GroupBox();
+            textBox3 = new TextBox();
+            textBox2 = new TextBox();
+            textBox1 = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
             label1 = new Label();
             bindingSource1 = new BindingSource(components);
-            label2 = new Label();
-            label3 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
             groupBox2 = new GroupBox();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
             button4 = new Button();
+            button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
@@ -72,23 +72,26 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin khách hàng";
             // 
-            // label1
+            // textBox3
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(17, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(28, 15);
-            label1.TabIndex = 0;
-            label1.Text = "SĐT";
+            textBox3.Location = new Point(66, 25);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(326, 23);
+            textBox3.TabIndex = 5;
             // 
-            // label2
+            // textBox2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(17, 61);
-            label2.Name = "label2";
-            label2.Size = new Size(26, 15);
-            label2.TabIndex = 1;
-            label2.Text = "Tên";
+            textBox2.Location = new Point(66, 58);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(326, 23);
+            textBox2.TabIndex = 4;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(66, 91);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(326, 23);
+            textBox1.TabIndex = 3;
             // 
             // label3
             // 
@@ -99,26 +102,23 @@
             label3.TabIndex = 2;
             label3.Text = "Địa chỉ";
             // 
-            // textBox1
+            // label2
             // 
-            textBox1.Location = new Point(66, 91);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(326, 23);
-            textBox1.TabIndex = 3;
+            label2.AutoSize = true;
+            label2.Location = new Point(17, 61);
+            label2.Name = "label2";
+            label2.Size = new Size(26, 15);
+            label2.TabIndex = 1;
+            label2.Text = "Tên";
             // 
-            // textBox2
+            // label1
             // 
-            textBox2.Location = new Point(66, 58);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(326, 23);
-            textBox2.TabIndex = 4;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(66, 25);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(326, 23);
-            textBox3.TabIndex = 5;
+            label1.AutoSize = true;
+            label1.Location = new Point(17, 28);
+            label1.Name = "label1";
+            label1.Size = new Size(28, 15);
+            label1.TabIndex = 0;
+            label1.Text = "SĐT";
             // 
             // groupBox2
             // 
@@ -133,41 +133,41 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
             // 
-            // button1
+            // button4
             // 
-            button1.Location = new Point(36, 22);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Thêm";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(130, 22);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 1;
-            button2.Text = "Xóa";
-            button2.UseVisualStyleBackColor = true;
+            button4.Location = new Point(311, 22);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 23);
+            button4.TabIndex = 3;
+            button4.Text = "Làm sạch";
+            button4.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            button3.Location = new Point(223, 22);
+            button3.Location = new Point(220, 22);
             button3.Name = "button3";
             button3.Size = new Size(75, 23);
             button3.TabIndex = 2;
             button3.Text = "Sửa";
             button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // button2
             // 
-            button4.Location = new Point(314, 22);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 3;
-            button4.Text = "Hủy";
-            button4.UseVisualStyleBackColor = true;
+            button2.Location = new Point(127, 22);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 1;
+            button2.Text = "Xóa";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(33, 22);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 0;
+            button1.Text = "Thêm";
+            button1.UseVisualStyleBackColor = true;
             // 
             // frmCustomer
             // 

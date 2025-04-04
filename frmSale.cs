@@ -22,5 +22,11 @@ namespace timber_shop_manager
             frmCustomer frmCustomer = new frmCustomer();
             frmCustomer.ShowDialog();
         }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            frmSearchProduct frmProduct = new frmSearchProduct();
+            frmProduct.ShowDialog();
+        }
     }
 }

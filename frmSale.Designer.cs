@@ -44,9 +44,14 @@
             label5 = new Label();
             grbCost = new GroupBox();
             dataGridView1 = new DataGridView();
+            groupBox1 = new GroupBox();
+            button3 = new Button();
+            button2 = new Button();
+            btnCreate = new Button();
             grbInvoice.SuspendLayout();
             grbCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // grbInvoice
@@ -196,11 +201,52 @@
             dataGridView1.Size = new Size(792, 249);
             dataGridView1.TabIndex = 2;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(button3);
+            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(btnCreate);
+            groupBox1.Location = new Point(4, 118);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(792, 65);
+            groupBox1.TabIndex = 3;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Chức năng";
+            // 
+            // button3
+            // 
+            button3.Location = new Point(266, 22);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 23);
+            button3.TabIndex = 2;
+            button3.Text = "button3";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(170, 22);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 1;
+            button2.Text = "Hủy phiếu";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // btnCreate
+            // 
+            btnCreate.Location = new Point(80, 22);
+            btnCreate.Name = "btnCreate";
+            btnCreate.Size = new Size(75, 23);
+            btnCreate.TabIndex = 0;
+            btnCreate.Text = "Tạo phiếu";
+            btnCreate.UseVisualStyleBackColor = true;
+            btnCreate.Click += btnCreate_Click;
+            // 
             // frmSale
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
             Controls.Add(grbCost);
             Controls.Add(grbCustomer);
@@ -213,6 +259,7 @@
             grbCustomer.ResumeLayout(false);
             grbCustomer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -234,5 +281,9 @@
         private Label label4;
         private Label label6;
         private Label label5;
+        private GroupBox groupBox1;
+        private Button button3;
+        private Button button2;
+        private Button btnCreate;
     }
 }
