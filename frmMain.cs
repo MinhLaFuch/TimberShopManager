@@ -6,5 +6,17 @@ namespace timber_shop_manager
         {
             InitializeComponent();
         }
+
+        private void btnCategory_Click(object sender, EventArgs e)
+        {
+            frmCategory frmCategory = new frmCategory();
+            frmCategory.ShowDialog();
+        }
+
+        private void btnSale_Click(object sender, EventArgs e)
+        {
+            frmSale frmSale = new frmSale();
+            frmSale.ShowDialog();
+        }
     }
 }
