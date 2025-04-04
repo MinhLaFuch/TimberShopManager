@@ -1,4 +1,4 @@
-namespace timber_shop_manager
+﻿namespace timber_shop_manager
 {
     public partial class frmMain : Form
     {
@@ -17,6 +17,22 @@ namespace timber_shop_manager
         {
             frmSale frmSale = new frmSale();
             frmSale.ShowDialog();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            LoadAvatar("../../../assets/img/placehold-avatar.png");
+        }
+
+        private void LoadAvatar(string imagePath)
+        {
+            if (File.Exists(imagePath))
+            {
+                picAvatar.Image = Image.FromFile(imagePath);            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy ảnh tại đường dẫn đã chỉ định.");
+            }
         }
     }
 }

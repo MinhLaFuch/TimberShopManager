@@ -28,17 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             btnSale = new Button();
             btnImport = new Button();
             btnCategory = new Button();
             btnIncome = new Button();
             btnSystem = new Button();
             btnReport = new Button();
-            pictureBox1 = new PictureBox();
+            picAvatar = new PictureBox();
             label1 = new Label();
             label2 = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picAvatar).BeginInit();
             SuspendLayout();
             // 
             // btnSale
@@ -103,16 +102,15 @@
             btnReport.Text = "Báo cáo";
             btnReport.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // picAvatar
             // 
-            pictureBox1.BackgroundImageLayout = ImageLayout.None;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(47, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(48, 48);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 8;
-            pictureBox1.TabStop = false;
+            picAvatar.BackgroundImageLayout = ImageLayout.None;
+            picAvatar.Location = new Point(47, 12);
+            picAvatar.Name = "picAvatar";
+            picAvatar.Size = new Size(48, 48);
+            picAvatar.SizeMode = PictureBoxSizeMode.Zoom;
+            picAvatar.TabIndex = 8;
+            picAvatar.TabStop = false;
             // 
             // label1
             // 
@@ -140,7 +138,7 @@
             ClientSize = new Size(690, 450);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(pictureBox1);
+            Controls.Add(picAvatar);
             Controls.Add(btnReport);
             Controls.Add(btnSystem);
             Controls.Add(btnIncome);
@@ -150,7 +148,8 @@
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Bán hàng";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Load += frmMain_Load;
+            ((System.ComponentModel.ISupportInitialize)picAvatar).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -163,7 +162,7 @@
         private Button btnIncome;
         private Button btnSystem;
         private Button btnReport;
-        private PictureBox pictureBox1;
+        private PictureBox picAvatar;
         private Label label1;
         private Label label2;
     }
