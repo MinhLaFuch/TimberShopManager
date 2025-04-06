@@ -90,6 +90,18 @@ namespace timber_shop_manager
                     }
                 }
             }
+
+            // Xử lý NULL trong DataTable
+            foreach (DataRow row in dt.Rows)
+            {
+                foreach (DataColumn column in dt.Columns)
+                {
+                    if (row[column] == DBNull.Value)
+                    {
+                        row[column] = null;
+                    }
+                }
+            }
             return dt;
         }
 
@@ -110,7 +122,8 @@ namespace timber_shop_manager
                     {
                         cmd.Parameters.AddRange(parameters);
                     }
-                    return cmd.ExecuteScalar();
+                    object result = cmd.ExecuteScalar();
+                    return (result == DBNull.Value) ? null : result;
                 }
             }
         }
