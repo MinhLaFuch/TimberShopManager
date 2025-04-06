@@ -12,10 +12,9 @@ namespace timber_shop_manager
     {
         private string connectionString;
 
-        public DatabaseHelper(string path)
+        public DatabaseHelper()
         {
-            string dbPath = Path.GetFullPath(path);
-            connectionString = $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={dbPath};Integrated Security=True";
+            connectionString = $"Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=TimberShop;Integrated Security=True";
         }
 
         // Kiểm tra kết nối

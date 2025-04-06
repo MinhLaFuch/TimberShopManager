@@ -14,13 +14,32 @@ namespace timber_shop_manager.objects
 {
     internal class Account
     {
-        private string employeeId, username, password;
+        private static DatabaseHelper dbHelper = new DatabaseHelper();
+        private string username, password;
 
-        public Account(string employeeId, string username, string password)
+        public Account(string username, string password)
         {
-            this.employeeId = employeeId;
             this.username = username;
             this.password = password;
+        }
+
+        public bool verifyUsername()
+        {
+            string query = "SELECT 1 FROM Account WHERE Username = @user";
+            
+            return dbHelper.ExecuteScalar(query, new SqlParameter("@user", username)) != null;
+        }
+
+        public bool verifyPassword()
+        {
+            if (verifyUsername())
+            {
+                string query = "SELECT 1 FROM Account WHERE Username = @user AND Password = @pass";
+                return dbHelper.ExecuteScalar(query,
+                    new SqlParameter("@user", username),
+                    new SqlParameter("@pass", password)) != null;
+            }
+            return false;
         }
     }
 }

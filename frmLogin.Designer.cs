@@ -34,6 +34,8 @@
             txtUsername = new TextBox();
             txtPassword = new TextBox();
             btnLogin = new Button();
+            lblUserError = new Label();
+            lblPassError = new Label();
             ((System.ComponentModel.ISupportInitialize)picAvatar).BeginInit();
             SuspendLayout();
             // 
@@ -57,7 +59,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(14, 242);
+            label2.Location = new Point(14, 220);
             label2.Name = "label2";
             label2.Size = new Size(57, 15);
             label2.TabIndex = 2;
@@ -72,7 +74,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(14, 260);
+            txtPassword.Location = new Point(14, 238);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(233, 23);
             txtPassword.TabIndex = 4;
@@ -80,7 +82,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(87, 302);
+            btnLogin.Location = new Point(87, 296);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(86, 30);
             btnLogin.TabIndex = 5;
@@ -88,11 +90,37 @@
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
             // 
+            // lblUserError
+            // 
+            lblUserError.AutoSize = true;
+            lblUserError.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblUserError.ForeColor = Color.Red;
+            lblUserError.Location = new Point(14, 196);
+            lblUserError.Name = "lblUserError";
+            lblUserError.RightToLeft = RightToLeft.No;
+            lblUserError.Size = new Size(57, 13);
+            lblUserError.TabIndex = 6;
+            lblUserError.Text = "user error";
+            // 
+            // lblPassError
+            // 
+            lblPassError.AutoSize = true;
+            lblPassError.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPassError.ForeColor = Color.Red;
+            lblPassError.Location = new Point(14, 264);
+            lblPassError.Name = "lblPassError";
+            lblPassError.RightToLeft = RightToLeft.No;
+            lblPassError.Size = new Size(58, 13);
+            lblPassError.TabIndex = 7;
+            lblPassError.Text = "pass error";
+            // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(260, 377);
+            Controls.Add(lblPassError);
+            Controls.Add(lblUserError);
             Controls.Add(btnLogin);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
@@ -116,5 +144,7 @@
         private TextBox txtUsername;
         private TextBox txtPassword;
         private Button btnLogin;
+        private Label lblUserError;
+        private Label lblPassError;
     }
 }

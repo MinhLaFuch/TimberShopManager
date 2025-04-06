@@ -11,7 +11,7 @@ namespace timber_shop_manager.objects
     {
         protected string id;
         protected Role role;
-        private static DatabaseHelper dbHelper = new DatabaseHelper("../../../database.mdf");
+        private static DatabaseHelper dbHelper = new DatabaseHelper();
 
         internal Employee(string id, string role) 
         { 
