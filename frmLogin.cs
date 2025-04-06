@@ -15,6 +15,11 @@ namespace timber_shop_manager
         public frmLogin()
         {
             InitializeComponent();
+
+            if (Properties.Settings.Default.Username != null)
+            {
+                txtUsername.Text = Properties.Settings.Default.Username;
+            }
         }
 
         private void frmLogin_Load(object sender, EventArgs e)

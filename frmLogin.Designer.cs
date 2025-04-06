@@ -31,8 +31,8 @@
             picAvatar = new PictureBox();
             label1 = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txtUsername = new TextBox();
+            txtPassword = new TextBox();
             btnLogin = new Button();
             ((System.ComponentModel.ISupportInitialize)picAvatar).BeginInit();
             SuspendLayout();
@@ -50,37 +50,37 @@
             label1.AutoSize = true;
             label1.Location = new Point(14, 152);
             label1.Name = "label1";
-            label1.Size = new Size(86, 15);
+            label1.Size = new Size(85, 15);
             label1.TabIndex = 1;
             label1.Text = "Tên đăng nhập";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(14, 208);
+            label2.Location = new Point(14, 242);
             label2.Name = "label2";
             label2.Size = new Size(57, 15);
             label2.TabIndex = 2;
             label2.Text = "Mật khẩu";
             // 
-            // textBox1
+            // txtUsername
             // 
-            textBox1.Location = new Point(14, 170);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(233, 23);
-            textBox1.TabIndex = 3;
+            txtUsername.Location = new Point(14, 170);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(233, 23);
+            txtUsername.TabIndex = 3;
             // 
-            // textBox2
+            // txtPassword
             // 
-            textBox2.Location = new Point(14, 226);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(233, 23);
-            textBox2.TabIndex = 4;
-            textBox2.UseSystemPasswordChar = true;
+            txtPassword.Location = new Point(14, 260);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(233, 23);
+            txtPassword.TabIndex = 4;
+            txtPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(87, 268);
+            btnLogin.Location = new Point(87, 302);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(86, 30);
             btnLogin.TabIndex = 5;
@@ -92,10 +92,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(260, 319);
+            ClientSize = new Size(260, 377);
             Controls.Add(btnLogin);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtPassword);
+            Controls.Add(txtUsername);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(picAvatar);
@@ -113,8 +113,8 @@
         private PictureBox picAvatar;
         private Label label1;
         private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txtUsername;
+        private TextBox txtPassword;
         private Button btnLogin;
     }
 }
