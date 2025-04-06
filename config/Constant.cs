@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace timber_shop_manager
+namespace timber_shop_manager.config
 {
     internal class Constant
     {
