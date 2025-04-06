@@ -17,6 +17,8 @@ namespace timber_shop_manager.objects
         private static DatabaseHelper dbHelper = new DatabaseHelper();
         private string username, password;
 
+        public string Username { get;}
+
         public Account(string username, string password)
         {
             this.username = username;

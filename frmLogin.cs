@@ -63,20 +63,22 @@ namespace timber_shop_manager
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Account account = new Account(txtUsername.Text, txtPassword.Text);
+            Account account = new Account(txtUsername.Text.Trim(), txtPassword.Text.Trim());
 
             if (!account.verifyUsername())
             {
                 lblUserError.Text = "*Tên đăng nhập không đúng!";
                 SaveUsername(txtUsername.Text);
                 ResetForm();
-            } else if (!account.verifyPassword())
+            } 
+            else if (!account.verifyPassword())
             {
                 lblPassError.Text = "*Mật khẩu không đúng";
                 SaveUsername(txtUsername.Text);
                 lblUserError.Text = string.Empty;
                 txtPassword.Text = string.Empty;
-            } else
+            } 
+            else
             {
                 SaveUsername(txtUsername.Text);
 

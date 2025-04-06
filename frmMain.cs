@@ -26,6 +26,9 @@ namespace timber_shop_manager
         private void frmMain_Load(object sender, EventArgs e)
         {
             LoadAvatar("../../../assets/img/placehold-avatar.png");
+
+            lblUsername.Text = account.Username;
+            lblRole.Text = Employee.ConverRole(account.verifyPermission());
         }
 
         private void LoadAvatar(string imagePath)

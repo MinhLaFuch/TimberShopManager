@@ -35,8 +35,8 @@
             btnSystem = new Button();
             btnReport = new Button();
             picAvatar = new PictureBox();
-            label1 = new Label();
-            label2 = new Label();
+            lblUsername = new Label();
+            lblRole = new Label();
             btnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)picAvatar).BeginInit();
             SuspendLayout();
@@ -113,24 +113,24 @@
             picAvatar.TabIndex = 8;
             picAvatar.TabStop = false;
             // 
-            // label1
+            // lblUsername
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(101, 12);
-            label1.Name = "label1";
-            label1.Size = new Size(93, 15);
-            label1.TabIndex = 9;
-            label1.Text = "Hello, username";
+            lblUsername.AutoSize = true;
+            lblUsername.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUsername.Location = new Point(101, 12);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(93, 15);
+            lblUsername.TabIndex = 9;
+            lblUsername.Text = "Hello, username";
             // 
-            // label2
+            // lblRole
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(101, 36);
-            label2.Name = "label2";
-            label2.Size = new Size(79, 15);
-            label2.TabIndex = 10;
-            label2.Text = "Authorization";
+            lblRole.AutoSize = true;
+            lblRole.Location = new Point(101, 36);
+            lblRole.Name = "lblRole";
+            lblRole.Size = new Size(79, 15);
+            lblRole.TabIndex = 10;
+            lblRole.Text = "Authorization";
             // 
             // btnLogout
             // 
@@ -148,8 +148,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(690, 450);
             Controls.Add(btnLogout);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(lblRole);
+            Controls.Add(lblUsername);
             Controls.Add(picAvatar);
             Controls.Add(btnReport);
             Controls.Add(btnSystem);
@@ -175,8 +175,8 @@
         private Button btnSystem;
         private Button btnReport;
         private PictureBox picAvatar;
-        private Label label1;
-        private Label label2;
+        private Label lblUsername;
+        private Label lblRole;
         private Button btnLogout;
     }
 }
