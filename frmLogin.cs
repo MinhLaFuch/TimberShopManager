@@ -13,6 +13,7 @@ namespace timber_shop_manager
 {
     public partial class frmLogin : Form
     {
+
         public frmLogin()
         {
             InitializeComponent();
@@ -21,6 +22,7 @@ namespace timber_shop_manager
             {
                 txtUsername.Text = Properties.Settings.Default.Username;
             }
+
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
@@ -78,7 +80,7 @@ namespace timber_shop_manager
             {
                 SaveUsername(txtUsername.Text);
 
-                frmMain frmMain = new frmMain();
+                frmMain frmMain = new frmMain(account);
                 this.Hide();
                 frmMain.ShowDialog();
             }

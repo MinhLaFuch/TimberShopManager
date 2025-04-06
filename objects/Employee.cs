@@ -7,7 +7,7 @@ using Microsoft.Data.SqlClient;
 
 namespace timber_shop_manager.objects
 {
-    internal class Employee 
+    public class Employee 
     {
         protected string id;
         protected Role role;

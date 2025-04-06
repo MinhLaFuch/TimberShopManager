@@ -1,10 +1,14 @@
-﻿namespace timber_shop_manager
+﻿using timber_shop_manager.objects;
+
+namespace timber_shop_manager
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        private Account account;
+        public frmMain(Account account)
         {
             InitializeComponent();
+            this.account = account;
         }
 
         private void btnCategory_Click(object sender, EventArgs e)

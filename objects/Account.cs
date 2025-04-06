@@ -12,7 +12,7 @@ using Microsoft.Data.SqlClient;
 
 namespace timber_shop_manager.objects
 {
-    internal class Account
+    public class Account
     {
         private static DatabaseHelper dbHelper = new DatabaseHelper();
         private string username, password;
@@ -40,6 +40,11 @@ namespace timber_shop_manager.objects
                     new SqlParameter("@pass", password)) != null;
             }
             return false;
+        }
+
+        public Role verifyPermission()
+        {
+            return Employee.GetPermission(this.username);
         }
     }
 }

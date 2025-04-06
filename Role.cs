@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace timber_shop_manager
 {
-    internal enum Role
+    public enum Role
     {
         MANAGER,
         SALE_AGENT,
