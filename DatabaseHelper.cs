@@ -1,0 +1,166 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
+
+namespace timber_shop_manager
+{
+    internal class DatabaseHelper
+    {
+        private string connectionString;
+
+        public DatabaseHelper(string path)
+        {
+            string dbPath = Path.GetFullPath(path);
+            connectionString = $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={dbPath};Integrated Security=True";
+        }
+
+        // Kiểm tra kết nối
+        public bool TestConnection()
+        {
+            try
+            {
+                using (SqlConnection conn = GetConnection())
+                {
+                    conn.Open();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Connect Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+
+        // Phương thức mở kết nối
+        private SqlConnection GetConnection()
+        {
+            return new SqlConnection(connectionString);
+        }
+
+        // Phương thức thực thi câu lệnh SQL (INSERT, UPDATE, DELETE)
+        /* EXAMPLE:
+         * string insertQuery = "INSERT INTO Users (Username, Password) VALUES (@username, @password)";
+         * dbHelper.ExecuteNonQuery(insertQuery, 
+         *     new SqlParameter("@username", "admin"), 
+         *     new SqlParameter("@password", "123456"));
+         */
+        public int ExecuteNonQuery(string query, params SqlParameter[] parameters)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // Phương thức lấy dữ liệu (SELECT)
+        /* EXAMPLE
+         * string selectQuery = "SELECT * FROM Users";
+         * DataTable dt = dbHelper.ExecuteQuery(selectQuery);
+         * dataGridView.DataSource = dt;
+         */
+        public DataTable ExecuteQuery(string query, params SqlParameter[] parameters)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+            }
+            return dt;
+        }
+
+        // Phương thức lấy giá trị đơn lẻ (ví dụ: COUNT, SUM, MAX, MIN)
+        /* EXAMPLE
+         * string countQuery = "SELECT COUNT(*) FROM Users";
+         * int count = Convert.ToInt32(dbHelper.ExecuteScalar(countQuery));
+         * MessageBox.Show($"Số lượng người dùng: {count}");
+         */
+        public object ExecuteScalar(string query, params SqlParameter[] parameters)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+                    return cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        // Lấy danh sách dữ liệu từ database
+        /* EXAMPLE
+         * string query = "SELECT category_name FROM Categories"; // Lấy dữ liệu từ bảng Categories
+         * List<string> data = dbHelper.GetDataForComboBox(query, "category_name"); // Lưu ý: columnName = "category_name"
+         * comboBox1.DataSource = data;
+         */
+        public List<string> GetDataForComboBox(string query, string columnName, params SqlParameter[] parameters)
+        {
+            List<string> dataList = new List<string>();
+            DataTable dt = ExecuteQuery(query, parameters);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                dataList.Add(row[columnName].ToString()); // Lấy dữ liệu từ cột columnName
+            }
+
+            return dataList;
+        }
+
+        // Phương thức lấy dữ liệu và chuyển thành danh sách đối tượng
+        public List<T> GetDataForList<T>(string query, Func<SqlDataReader, T> map, params SqlParameter[] parameters)
+        {
+            List<T> dataList = new List<T>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            // Chuyển đổi từng dòng dữ liệu thành đối tượng
+                            T item = map(reader);
+                            dataList.Add(item);
+                        }
+                    }
+                }
+            }
+            return dataList;
+        }
+    }
+}
