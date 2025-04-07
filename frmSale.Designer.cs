@@ -37,9 +37,10 @@
             label1 = new Label();
             txtEmployee = new TextBox();
             grbCustomer = new GroupBox();
+            btnClear = new Button();
             btnSearchCustomer = new Button();
             txtPhoneNumber = new TextBox();
-            txtCustomer = new TextBox();
+            txtCustomerName = new TextBox();
             txtAddress = new TextBox();
             label4 = new Label();
             label6 = new Label();
@@ -134,9 +135,10 @@
             // 
             // grbCustomer
             // 
+            grbCustomer.Controls.Add(btnClear);
             grbCustomer.Controls.Add(btnSearchCustomer);
             grbCustomer.Controls.Add(txtPhoneNumber);
-            grbCustomer.Controls.Add(txtCustomer);
+            grbCustomer.Controls.Add(txtCustomerName);
             grbCustomer.Controls.Add(txtAddress);
             grbCustomer.Controls.Add(label4);
             grbCustomer.Controls.Add(label6);
@@ -147,6 +149,16 @@
             grbCustomer.TabIndex = 1;
             grbCustomer.TabStop = false;
             grbCustomer.Text = "Khách hàng";
+            // 
+            // btnClear
+            // 
+            btnClear.Location = new Point(143, 93);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(75, 27);
+            btnClear.TabIndex = 13;
+            btnClear.Text = "Làm sạch";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // btnSearchCustomer
             // 
@@ -165,13 +177,14 @@
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(174, 23);
             txtPhoneNumber.TabIndex = 11;
+            txtPhoneNumber.KeyPress += txtPhoneNumber_KeyPress;
             // 
-            // txtCustomer
+            // txtCustomerName
             // 
-            txtCustomer.Location = new Point(80, 43);
-            txtCustomer.Name = "txtCustomer";
-            txtCustomer.Size = new Size(174, 23);
-            txtCustomer.TabIndex = 10;
+            txtCustomerName.Location = new Point(80, 43);
+            txtCustomerName.Name = "txtCustomerName";
+            txtCustomerName.Size = new Size(174, 23);
+            txtCustomerName.TabIndex = 10;
             // 
             // txtAddress
             // 
@@ -364,7 +377,7 @@
         private TextBox txtEmployee;
         private DateTimePicker dateTimePicker1;
         private TextBox txtPhoneNumber;
-        private TextBox txtCustomer;
+        private TextBox txtCustomerName;
         private TextBox txtAddress;
         private Label label4;
         private Label label6;
@@ -380,5 +393,6 @@
         private NumericUpDown nudQuantity;
         private Label lblUnit;
         private Panel pnlSearch;
+        private Button btnClear;
     }
 }

@@ -22,6 +22,8 @@ namespace timber_shop_manager
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            FormLoad();
+
             grbCustomer.Enabled = true;
             pnlSearch.Enabled = true;
 
@@ -77,12 +79,11 @@ namespace timber_shop_manager
         private void FormLoad()
         {
             LoadComboboxSearch();
+            ClearGroupBoxCustomer();
 
             pnlSearch.Enabled = false;
             grbCustomer.Enabled = false;
-            txtCustomer.Clear();
-            txtPhoneNumber.Clear();
-            txtAddress.Clear();
+            
 
             txtInvoiceId.Clear();
         }
@@ -112,7 +113,25 @@ namespace timber_shop_manager
 
         private void btnSearchCustomer_Click(object sender, EventArgs e)
         {
+            frmCustomer frmCustomer = new frmCustomer(Employee.Role.SALE_AGENT);
+            frmCustomer.ShowDialog();
+        }
 
+        private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            frmCustomer.CheckInputIsDigit(e);
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearGroupBoxCustomer();
+        }
+
+        private void ClearGroupBoxCustomer()
+        {
+            txtPhoneNumber.Clear();
+            txtCustomerName.Clear();
+            txtAddress.Clear();
         }
     }
 }

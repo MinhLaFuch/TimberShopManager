@@ -29,39 +29,40 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            dataGridView1 = new DataGridView();
+            dataGridView = new DataGridView();
             groupBox1 = new GroupBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            txtPhoneNumber = new TextBox();
+            txtName = new TextBox();
+            txtAddress = new TextBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             bindingSource1 = new BindingSource(components);
             groupBox2 = new GroupBox();
-            button4 = new Button();
+            btnClear = new Button();
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(8, 204);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(398, 234);
-            dataGridView1.TabIndex = 0;
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Location = new Point(8, 204);
+            dataGridView.Name = "dataGridView";
+            dataGridView.Size = new Size(398, 234);
+            dataGridView.TabIndex = 0;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox3);
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(txtPhoneNumber);
+            groupBox1.Controls.Add(txtName);
+            groupBox1.Controls.Add(txtAddress);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
@@ -72,26 +73,30 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin khách hàng";
             // 
-            // textBox3
+            // txtPhoneNumber
             // 
-            textBox3.Location = new Point(66, 25);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(326, 23);
-            textBox3.TabIndex = 5;
+            txtPhoneNumber.Location = new Point(66, 25);
+            txtPhoneNumber.Name = "txtPhoneNumber";
+            txtPhoneNumber.Size = new Size(326, 23);
+            txtPhoneNumber.TabIndex = 5;
+            txtPhoneNumber.TextChanged += txtPhoneNumber_TextChanged;
+            txtPhoneNumber.KeyPress += txtPhoneNumber_KeyPress;
             // 
-            // textBox2
+            // txtName
             // 
-            textBox2.Location = new Point(66, 58);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(326, 23);
-            textBox2.TabIndex = 4;
+            txtName.Location = new Point(66, 58);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(326, 23);
+            txtName.TabIndex = 4;
+            txtName.TextChanged += txtName_TextChanged;
             // 
-            // textBox1
+            // txtAddress
             // 
-            textBox1.Location = new Point(66, 91);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(326, 23);
-            textBox1.TabIndex = 3;
+            txtAddress.Location = new Point(66, 91);
+            txtAddress.Name = "txtAddress";
+            txtAddress.Size = new Size(326, 23);
+            txtAddress.TabIndex = 3;
+            txtAddress.TextChanged += txtAddress_TextChanged;
             // 
             // label3
             // 
@@ -107,7 +112,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(17, 61);
             label2.Name = "label2";
-            label2.Size = new Size(26, 15);
+            label2.Size = new Size(25, 15);
             label2.TabIndex = 1;
             label2.Text = "Tên";
             // 
@@ -116,13 +121,13 @@
             label1.AutoSize = true;
             label1.Location = new Point(17, 28);
             label1.Name = "label1";
-            label1.Size = new Size(28, 15);
+            label1.Size = new Size(27, 15);
             label1.TabIndex = 0;
             label1.Text = "SĐT";
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(button4);
+            groupBox2.Controls.Add(btnClear);
             groupBox2.Controls.Add(button3);
             groupBox2.Controls.Add(button2);
             groupBox2.Controls.Add(button1);
@@ -133,14 +138,15 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
             // 
-            // button4
+            // btnClear
             // 
-            button4.Location = new Point(311, 22);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 3;
-            button4.Text = "Làm sạch";
-            button4.UseVisualStyleBackColor = true;
+            btnClear.Location = new Point(311, 22);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(75, 23);
+            btnClear.TabIndex = 3;
+            btnClear.Text = "Làm sạch";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // button3
             // 
@@ -176,11 +182,12 @@
             ClientSize = new Size(415, 450);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridView);
             Name = "frmCustomer";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Khách hàng";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += frmCustomer_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
@@ -190,11 +197,11 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dataGridView;
         private GroupBox groupBox1;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtPhoneNumber;
+        private TextBox txtName;
+        private TextBox txtAddress;
         private Label label3;
         private Label label2;
         private Label label1;
@@ -202,7 +209,7 @@
         private GroupBox groupBox2;
         private Button button2;
         private Button button1;
-        private Button button4;
+        private Button btnClear;
         private Button button3;
     }
 }
