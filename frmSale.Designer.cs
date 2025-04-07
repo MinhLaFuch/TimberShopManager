@@ -37,7 +37,7 @@
             label1 = new Label();
             txtEmployee = new TextBox();
             grbCustomer = new GroupBox();
-            button1 = new Button();
+            btnSearchCustomer = new Button();
             txtPhoneNumber = new TextBox();
             txtCustomer = new TextBox();
             txtAddress = new TextBox();
@@ -51,7 +51,7 @@
             btnCancel = new Button();
             btnCreate = new Button();
             label7 = new Label();
-            btnAdd = new Button();
+            btnAddProduct = new Button();
             cbbSearch = new ComboBox();
             nudQuantity = new NumericUpDown();
             lblUnit = new Label();
@@ -134,7 +134,7 @@
             // 
             // grbCustomer
             // 
-            grbCustomer.Controls.Add(button1);
+            grbCustomer.Controls.Add(btnSearchCustomer);
             grbCustomer.Controls.Add(txtPhoneNumber);
             grbCustomer.Controls.Add(txtCustomer);
             grbCustomer.Controls.Add(txtAddress);
@@ -148,16 +148,16 @@
             grbCustomer.TabStop = false;
             grbCustomer.Text = "Khách hàng";
             // 
-            // button1
+            // btnSearchCustomer
             // 
-            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
-            button1.BackgroundImageLayout = ImageLayout.Zoom;
-            button1.Location = new Point(224, 93);
-            button1.Name = "button1";
-            button1.Size = new Size(27, 27);
-            button1.TabIndex = 12;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnSearchCustomer.BackgroundImage = (Image)resources.GetObject("btnSearchCustomer.BackgroundImage");
+            btnSearchCustomer.BackgroundImageLayout = ImageLayout.Zoom;
+            btnSearchCustomer.Location = new Point(224, 93);
+            btnSearchCustomer.Name = "btnSearchCustomer";
+            btnSearchCustomer.Size = new Size(27, 27);
+            btnSearchCustomer.TabIndex = 12;
+            btnSearchCustomer.UseVisualStyleBackColor = true;
+            btnSearchCustomer.Click += btnSearchCustomer_Click;
             // 
             // txtPhoneNumber
             // 
@@ -274,14 +274,14 @@
             label7.TabIndex = 4;
             label7.Text = "Tìm kiếm";
             // 
-            // btnAdd
+            // btnAddProduct
             // 
-            btnAdd.Location = new Point(707, 6);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(75, 23);
-            btnAdd.TabIndex = 5;
-            btnAdd.Text = "Thêm";
-            btnAdd.UseVisualStyleBackColor = true;
+            btnAddProduct.Location = new Point(707, 6);
+            btnAddProduct.Name = "btnAddProduct";
+            btnAddProduct.Size = new Size(75, 23);
+            btnAddProduct.TabIndex = 5;
+            btnAddProduct.Text = "Thêm";
+            btnAddProduct.UseVisualStyleBackColor = true;
             // 
             // cbbSearch
             // 
@@ -318,7 +318,7 @@
             pnlSearch.Controls.Add(lblUnit);
             pnlSearch.Controls.Add(label7);
             pnlSearch.Controls.Add(nudQuantity);
-            pnlSearch.Controls.Add(btnAdd);
+            pnlSearch.Controls.Add(btnAddProduct);
             pnlSearch.Location = new Point(4, 211);
             pnlSearch.Name = "pnlSearch";
             pnlSearch.Size = new Size(792, 32);
@@ -373,9 +373,9 @@
         private Button btnComfirm;
         private Button btnCancel;
         private Button btnCreate;
-        private Button button1;
+        private Button btnSearchCustomer;
         private Label label7;
-        private Button btnAdd;
+        private Button btnAddProduct;
         private ComboBox cbbSearch;
         private NumericUpDown nudQuantity;
         private Label lblUnit;

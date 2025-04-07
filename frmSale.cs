@@ -32,17 +32,11 @@ namespace timber_shop_manager
             txtInvoiceId.Text = invoiceId;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frmCustomer frmCustomer = new frmCustomer();
-            frmCustomer.ShowDialog();
-        }
-
         private void cbbSearch_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cbbSearch.SelectedIndex != -1)
             {
-                btnAdd.Enabled = true;
+                btnAddProduct.Enabled = true;
                 string id = GetIdFromString(cbbSearch.Text);
 
                 string queryQuantity = "SELECT Quantity FROM Product WHERE ProductId = @id";
@@ -57,7 +51,7 @@ namespace timber_shop_manager
 
                 if (nudQuantity.Maximum == Product.SOLD_OUT)
                 {
-                    btnAdd.Enabled = false;
+                    btnAddProduct.Enabled = false;
 
                     MessageBox.Show("Mặt hàng này đã hết!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -114,6 +108,11 @@ namespace timber_shop_manager
         private void btnCancel_Click(object sender, EventArgs e)
         {
             FormLoad();
+        }
+
+        private void btnSearchCustomer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
