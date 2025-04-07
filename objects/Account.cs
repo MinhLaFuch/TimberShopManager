@@ -44,7 +44,7 @@ namespace timber_shop_manager.objects
             return false;
         }
 
-        public Role verifyPermission()
+        public Employee.Role verifyPermission()
         {
             return Employee.GetPermission(this.username);
         }

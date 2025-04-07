@@ -9,6 +9,15 @@ namespace timber_shop_manager.objects
 {
     public class Employee 
     {
+        public enum Role
+        {
+            MANAGER,
+            SALE_AGENT,
+            ADMINISTRATOR,
+            ACCOUNTANT,
+            UNKNOWN
+        }
+
         private static DatabaseHelper dbHelper = new DatabaseHelper();
         
         protected string id, name, identificationNumber, address;
