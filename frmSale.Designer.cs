@@ -28,43 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSale));
             grbInvoice = new GroupBox();
             dateTimePicker1 = new DateTimePicker();
-            textBox3 = new TextBox();
+            txtInvoiceId = new TextBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            textBox1 = new TextBox();
+            txtEmployee = new TextBox();
             grbCustomer = new GroupBox();
-            textBox5 = new TextBox();
-            textBox4 = new TextBox();
-            textBox2 = new TextBox();
+            button1 = new Button();
+            txtPhoneNumber = new TextBox();
+            txtCustomer = new TextBox();
+            txtAddress = new TextBox();
             label4 = new Label();
             label6 = new Label();
             label5 = new Label();
             grbCost = new GroupBox();
             dataGridView1 = new DataGridView();
             groupBox1 = new GroupBox();
-            button3 = new Button();
-            button2 = new Button();
+            btnComfirm = new Button();
+            btnCancel = new Button();
             btnCreate = new Button();
+            label7 = new Label();
+            btnAdd = new Button();
+            cbbSearch = new ComboBox();
+            nudQuantity = new NumericUpDown();
+            lblUnit = new Label();
+            pnlSearch = new Panel();
             grbInvoice.SuspendLayout();
             grbCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nudQuantity).BeginInit();
+            pnlSearch.SuspendLayout();
             SuspendLayout();
             // 
             // grbInvoice
             // 
             grbInvoice.Controls.Add(dateTimePicker1);
-            grbInvoice.Controls.Add(textBox3);
+            grbInvoice.Controls.Add(txtInvoiceId);
             grbInvoice.Controls.Add(label3);
             grbInvoice.Controls.Add(label2);
             grbInvoice.Controls.Add(label1);
-            grbInvoice.Controls.Add(textBox1);
+            grbInvoice.Controls.Add(txtEmployee);
+            grbInvoice.Enabled = false;
             grbInvoice.Location = new Point(4, 12);
             grbInvoice.Name = "grbInvoice";
-            grbInvoice.Size = new Size(260, 100);
+            grbInvoice.Size = new Size(260, 124);
             grbInvoice.TabIndex = 0;
             grbInvoice.TabStop = false;
             grbInvoice.Text = "Hóa đơn";
@@ -77,13 +88,14 @@
             dateTimePicker1.Size = new Size(174, 23);
             dateTimePicker1.TabIndex = 6;
             // 
-            // textBox3
+            // txtInvoiceId
             // 
-            textBox3.Location = new Point(80, 17);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(174, 23);
-            textBox3.TabIndex = 5;
+            txtInvoiceId.Enabled = false;
+            txtInvoiceId.Location = new Point(80, 17);
+            txtInvoiceId.Name = "txtInvoiceId";
+            txtInvoiceId.ReadOnly = true;
+            txtInvoiceId.Size = new Size(174, 23);
+            txtInvoiceId.TabIndex = 5;
             // 
             // label3
             // 
@@ -112,50 +124,61 @@
             label1.TabIndex = 1;
             label1.Text = "Số";
             // 
-            // textBox1
+            // txtEmployee
             // 
-            textBox1.Location = new Point(80, 69);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(174, 23);
-            textBox1.TabIndex = 0;
+            txtEmployee.Location = new Point(80, 69);
+            txtEmployee.Name = "txtEmployee";
+            txtEmployee.ReadOnly = true;
+            txtEmployee.Size = new Size(174, 23);
+            txtEmployee.TabIndex = 0;
             // 
             // grbCustomer
             // 
-            grbCustomer.Controls.Add(textBox5);
-            grbCustomer.Controls.Add(textBox4);
-            grbCustomer.Controls.Add(textBox2);
+            grbCustomer.Controls.Add(button1);
+            grbCustomer.Controls.Add(txtPhoneNumber);
+            grbCustomer.Controls.Add(txtCustomer);
+            grbCustomer.Controls.Add(txtAddress);
             grbCustomer.Controls.Add(label4);
             grbCustomer.Controls.Add(label6);
             grbCustomer.Controls.Add(label5);
             grbCustomer.Location = new Point(270, 12);
             grbCustomer.Name = "grbCustomer";
-            grbCustomer.Size = new Size(260, 100);
+            grbCustomer.Size = new Size(260, 124);
             grbCustomer.TabIndex = 1;
             grbCustomer.TabStop = false;
             grbCustomer.Text = "Khách hàng";
-            grbCustomer.Enter += grbCustomer_Enter;
             // 
-            // textBox5
+            // button1
             // 
-            textBox5.Location = new Point(80, 17);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(174, 23);
-            textBox5.TabIndex = 11;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.BackgroundImageLayout = ImageLayout.Zoom;
+            button1.Location = new Point(224, 93);
+            button1.Name = "button1";
+            button1.Size = new Size(27, 27);
+            button1.TabIndex = 12;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
-            // textBox4
+            // txtPhoneNumber
             // 
-            textBox4.Location = new Point(80, 43);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(174, 23);
-            textBox4.TabIndex = 10;
+            txtPhoneNumber.Location = new Point(80, 17);
+            txtPhoneNumber.Name = "txtPhoneNumber";
+            txtPhoneNumber.Size = new Size(174, 23);
+            txtPhoneNumber.TabIndex = 11;
             // 
-            // textBox2
+            // txtCustomer
             // 
-            textBox2.Location = new Point(80, 69);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(174, 23);
-            textBox2.TabIndex = 7;
+            txtCustomer.Location = new Point(80, 43);
+            txtCustomer.Name = "txtCustomer";
+            txtCustomer.Size = new Size(174, 23);
+            txtCustomer.TabIndex = 10;
+            // 
+            // txtAddress
+            // 
+            txtAddress.Location = new Point(80, 69);
+            txtAddress.Name = "txtAddress";
+            txtAddress.Size = new Size(174, 23);
+            txtAddress.TabIndex = 7;
             // 
             // label4
             // 
@@ -171,7 +194,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(19, 21);
             label6.Name = "label6";
-            label6.Size = new Size(28, 15);
+            label6.Size = new Size(27, 15);
             label6.TabIndex = 7;
             label6.Text = "SĐT";
             // 
@@ -180,7 +203,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(19, 47);
             label5.Name = "label5";
-            label5.Size = new Size(26, 15);
+            label5.Size = new Size(25, 15);
             label5.TabIndex = 8;
             label5.Text = "Tên";
             // 
@@ -188,7 +211,7 @@
             // 
             grbCost.Location = new Point(536, 12);
             grbCost.Name = "grbCost";
-            grbCost.Size = new Size(260, 100);
+            grbCost.Size = new Size(260, 124);
             grbCost.TabIndex = 1;
             grbCost.TabStop = false;
             grbCost.Text = "Chi phí";
@@ -196,56 +219,117 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(4, 189);
+            dataGridView1.Location = new Point(4, 249);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(792, 249);
+            dataGridView1.Size = new Size(792, 322);
             dataGridView1.TabIndex = 2;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(btnComfirm);
+            groupBox1.Controls.Add(btnCancel);
             groupBox1.Controls.Add(btnCreate);
-            groupBox1.Location = new Point(4, 118);
+            groupBox1.Location = new Point(4, 140);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(792, 65);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Text = "Chức năng";
             // 
-            // button3
+            // btnComfirm
             // 
-            button3.Location = new Point(266, 22);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 2;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
+            btnComfirm.Location = new Point(266, 22);
+            btnComfirm.Name = "btnComfirm";
+            btnComfirm.Size = new Size(84, 23);
+            btnComfirm.TabIndex = 2;
+            btnComfirm.Text = "Lập hoá đơn";
+            btnComfirm.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnCancel
             // 
-            button2.Location = new Point(170, 22);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 1;
-            button2.Text = "Hủy phiếu";
-            button2.UseVisualStyleBackColor = true;
+            btnCancel.Location = new Point(170, 22);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(84, 23);
+            btnCancel.TabIndex = 1;
+            btnCancel.Text = "Hủy phiếu";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnCreate
             // 
             btnCreate.Location = new Point(80, 22);
             btnCreate.Name = "btnCreate";
-            btnCreate.Size = new Size(75, 23);
+            btnCreate.Size = new Size(84, 23);
             btnCreate.TabIndex = 0;
             btnCreate.Text = "Tạo phiếu";
             btnCreate.UseVisualStyleBackColor = true;
             btnCreate.Click += btnCreate_Click;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(7, 10);
+            label7.Name = "label7";
+            label7.Size = new Size(56, 15);
+            label7.TabIndex = 4;
+            label7.Text = "Tìm kiếm";
+            // 
+            // btnAdd
+            // 
+            btnAdd.Location = new Point(707, 6);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(75, 23);
+            btnAdd.TabIndex = 5;
+            btnAdd.Text = "Thêm";
+            btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // cbbSearch
+            // 
+            cbbSearch.AllowDrop = true;
+            cbbSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbbSearch.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbbSearch.FormattingEnabled = true;
+            cbbSearch.Location = new Point(69, 6);
+            cbbSearch.Name = "cbbSearch";
+            cbbSearch.Size = new Size(506, 23);
+            cbbSearch.TabIndex = 6;
+            cbbSearch.SelectedValueChanged += cbbSearch_SelectedValueChanged;
+            // 
+            // nudQuantity
+            // 
+            nudQuantity.Location = new Point(581, 6);
+            nudQuantity.Name = "nudQuantity";
+            nudQuantity.Size = new Size(55, 23);
+            nudQuantity.TabIndex = 7;
+            // 
+            // lblUnit
+            // 
+            lblUnit.BorderStyle = BorderStyle.Fixed3D;
+            lblUnit.Location = new Point(642, 6);
+            lblUnit.Name = "lblUnit";
+            lblUnit.Size = new Size(55, 23);
+            lblUnit.TabIndex = 8;
+            lblUnit.Text = "unit";
+            lblUnit.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pnlSearch
+            // 
+            pnlSearch.Controls.Add(cbbSearch);
+            pnlSearch.Controls.Add(lblUnit);
+            pnlSearch.Controls.Add(label7);
+            pnlSearch.Controls.Add(nudQuantity);
+            pnlSearch.Controls.Add(btnAdd);
+            pnlSearch.Location = new Point(4, 211);
+            pnlSearch.Name = "pnlSearch";
+            pnlSearch.Size = new Size(792, 32);
+            pnlSearch.TabIndex = 9;
+            // 
             // frmSale
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 575);
+            Controls.Add(pnlSearch);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
             Controls.Add(grbCost);
@@ -254,12 +338,16 @@
             Name = "frmSale";
             StartPosition = FormStartPosition.CenterParent;
             Text = "frmSale";
+            Load += frmSale_Load;
             grbInvoice.ResumeLayout(false);
             grbInvoice.PerformLayout();
             grbCustomer.ResumeLayout(false);
             grbCustomer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)nudQuantity).EndInit();
+            pnlSearch.ResumeLayout(false);
+            pnlSearch.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -269,21 +357,28 @@
         private GroupBox grbCustomer;
         private GroupBox grbCost;
         private DataGridView dataGridView1;
-        private TextBox textBox3;
+        private TextBox txtInvoiceId;
         private Label label3;
         private Label label2;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txtEmployee;
         private DateTimePicker dateTimePicker1;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBox2;
+        private TextBox txtPhoneNumber;
+        private TextBox txtCustomer;
+        private TextBox txtAddress;
         private Label label4;
         private Label label6;
         private Label label5;
         private GroupBox groupBox1;
-        private Button button3;
-        private Button button2;
+        private Button btnComfirm;
+        private Button btnCancel;
         private Button btnCreate;
+        private Button button1;
+        private Label label7;
+        private Button btnAdd;
+        private ComboBox cbbSearch;
+        private NumericUpDown nudQuantity;
+        private Label lblUnit;
+        private Panel pnlSearch;
     }
 }
