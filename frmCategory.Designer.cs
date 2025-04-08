@@ -32,53 +32,74 @@
             btnSupplier = new Button();
             btnCustomer = new Button();
             btnAccount = new Button();
+            btnEmployee = new Button();
             SuspendLayout();
             // 
             // btnProduct
             // 
-            btnProduct.Location = new Point(12, 76);
+            btnProduct.Location = new Point(14, 101);
+            btnProduct.Margin = new Padding(3, 4, 3, 4);
             btnProduct.Name = "btnProduct";
-            btnProduct.Size = new Size(236, 58);
+            btnProduct.Size = new Size(270, 77);
             btnProduct.TabIndex = 1;
             btnProduct.Text = "Hàng hóa";
             btnProduct.UseVisualStyleBackColor = true;
+            btnProduct.Click += btnProduct_Click;
             // 
             // btnSupplier
             // 
-            btnSupplier.Location = new Point(12, 12);
+            btnSupplier.Location = new Point(14, 16);
+            btnSupplier.Margin = new Padding(3, 4, 3, 4);
             btnSupplier.Name = "btnSupplier";
-            btnSupplier.Size = new Size(236, 58);
+            btnSupplier.Size = new Size(270, 77);
             btnSupplier.TabIndex = 0;
             btnSupplier.Text = "Nhà cung cấp";
             btnSupplier.UseVisualStyleBackColor = true;
+            btnSupplier.Click += btnSupplier_Click;
             // 
             // btnCustomer
             // 
-            btnCustomer.Location = new Point(12, 140);
+            btnCustomer.Location = new Point(14, 187);
+            btnCustomer.Margin = new Padding(3, 4, 3, 4);
             btnCustomer.Name = "btnCustomer";
-            btnCustomer.Size = new Size(236, 58);
+            btnCustomer.Size = new Size(270, 77);
             btnCustomer.TabIndex = 2;
             btnCustomer.Text = "Khách hàng";
             btnCustomer.UseVisualStyleBackColor = true;
+            btnCustomer.Click += btnCustomer_Click;
             // 
             // btnAccount
             // 
-            btnAccount.Location = new Point(12, 204);
+            btnAccount.Location = new Point(14, 272);
+            btnAccount.Margin = new Padding(3, 4, 3, 4);
             btnAccount.Name = "btnAccount";
-            btnAccount.Size = new Size(236, 58);
+            btnAccount.Size = new Size(270, 77);
             btnAccount.TabIndex = 3;
             btnAccount.Text = "Tài khoản";
             btnAccount.UseVisualStyleBackColor = true;
+            btnAccount.Click += btnAccount_Click;
+            // 
+            // btnEmployee
+            // 
+            btnEmployee.Location = new Point(14, 356);
+            btnEmployee.Name = "btnEmployee";
+            btnEmployee.Size = new Size(270, 73);
+            btnEmployee.TabIndex = 4;
+            btnEmployee.Text = "Nhân viên";
+            btnEmployee.UseVisualStyleBackColor = true;
+            btnEmployee.Click += btnEmployee_Click;
             // 
             // frmCategory
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(261, 278);
+            ClientSize = new Size(298, 453);
+            Controls.Add(btnEmployee);
             Controls.Add(btnAccount);
             Controls.Add(btnCustomer);
             Controls.Add(btnSupplier);
             Controls.Add(btnProduct);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "frmCategory";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Danh mục";
@@ -91,5 +112,6 @@
         private Button btnSupplier;
         private Button btnCustomer;
         private Button btnAccount;
+        private Button btnEmployee;
     }
 }

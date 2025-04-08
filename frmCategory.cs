@@ -16,5 +16,30 @@ namespace timber_shop_manager
         {
             InitializeComponent();
         }
+
+        private void btnEmployee_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAccount_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSupplier_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
