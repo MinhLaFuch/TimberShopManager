@@ -42,10 +42,10 @@
             lbEmployeeDOB = new Label();
             lbEmployeeAddress = new Label();
             lbEmployeeIden = new Label();
-            lbEmployeeName = new Label();
-            lbEmployeeID = new Label();
+            lbSupllierName = new Label();
+            lbSupplierID = new Label();
             gbAccInfo = new GroupBox();
-            txtEmployeeID = new TextBox();
+            txtID = new TextBox();
             lbEmployeeRole = new Label();
             dgvEmployee = new DataGridView();
             gbAccInfo.SuspendLayout();
@@ -169,23 +169,23 @@
             lbEmployeeIden.TabIndex = 4;
             lbEmployeeIden.Text = "Số CCCD";
             // 
-            // lbEmployeeName
+            // lbSupllierName
             // 
-            lbEmployeeName.AutoSize = true;
-            lbEmployeeName.Location = new Point(27, 72);
-            lbEmployeeName.Name = "lbEmployeeName";
-            lbEmployeeName.Size = new Size(121, 20);
-            lbEmployeeName.TabIndex = 2;
-            lbEmployeeName.Text = "Họ tên nhân viên";
+            lbSupllierName.AutoSize = true;
+            lbSupllierName.Location = new Point(27, 72);
+            lbSupllierName.Name = "lbSupllierName";
+            lbSupllierName.Size = new Size(121, 20);
+            lbSupllierName.TabIndex = 2;
+            lbSupllierName.Text = "Họ tên nhân viên";
             // 
-            // lbEmployeeID
+            // lbSupplierID
             // 
-            lbEmployeeID.AutoSize = true;
-            lbEmployeeID.Location = new Point(27, 23);
-            lbEmployeeID.Name = "lbEmployeeID";
-            lbEmployeeID.Size = new Size(97, 20);
-            lbEmployeeID.TabIndex = 0;
-            lbEmployeeID.Text = "Mã nhân viên";
+            lbSupplierID.AutoSize = true;
+            lbSupplierID.Location = new Point(27, 23);
+            lbSupplierID.Name = "lbSupplierID";
+            lbSupplierID.Size = new Size(122, 20);
+            lbSupplierID.TabIndex = 0;
+            lbSupplierID.Text = "Mã nhà cung cấp";
             // 
             // gbAccInfo
             // 
@@ -193,7 +193,7 @@
             gbAccInfo.Controls.Add(btnSave);
             gbAccInfo.Controls.Add(cbRole);
             gbAccInfo.Controls.Add(dtpDOB);
-            gbAccInfo.Controls.Add(txtEmployeeID);
+            gbAccInfo.Controls.Add(txtID);
             gbAccInfo.Controls.Add(txtIden);
             gbAccInfo.Controls.Add(txtAddress);
             gbAccInfo.Controls.Add(txtName);
@@ -201,21 +201,21 @@
             gbAccInfo.Controls.Add(lbEmployeeDOB);
             gbAccInfo.Controls.Add(lbEmployeeAddress);
             gbAccInfo.Controls.Add(lbEmployeeIden);
-            gbAccInfo.Controls.Add(lbEmployeeName);
-            gbAccInfo.Controls.Add(lbEmployeeID);
-            gbAccInfo.Location = new Point(21, 1);
+            gbAccInfo.Controls.Add(lbSupllierName);
+            gbAccInfo.Controls.Add(lbSupplierID);
+            gbAccInfo.Location = new Point(12, 1);
             gbAccInfo.Name = "gbAccInfo";
-            gbAccInfo.Size = new Size(1273, 157);
+            gbAccInfo.Size = new Size(1282, 157);
             gbAccInfo.TabIndex = 11;
             gbAccInfo.TabStop = false;
             gbAccInfo.Text = "Thông tin";
             // 
-            // txtEmployeeID
+            // txtID
             // 
-            txtEmployeeID.Location = new Point(154, 16);
-            txtEmployeeID.Name = "txtEmployeeID";
-            txtEmployeeID.Size = new Size(345, 27);
-            txtEmployeeID.TabIndex = 1;
+            txtID.Location = new Point(154, 16);
+            txtID.Name = "txtID";
+            txtID.Size = new Size(345, 27);
+            txtID.TabIndex = 1;
             // 
             // lbEmployeeRole
             // 
@@ -239,6 +239,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Window;
             ClientSize = new Size(1315, 522);
             Controls.Add(btnViewWorkHour);
             Controls.Add(btnLock);
@@ -248,6 +249,7 @@
             Controls.Add(dgvEmployee);
             Name = "frmSupplier";
             Text = "frmSupplier";
+            Load += frmSupplier_Load;
             gbAccInfo.ResumeLayout(false);
             gbAccInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).EndInit();
@@ -270,10 +272,10 @@
         private Label lbEmployeeDOB;
         private Label lbEmployeeAddress;
         private Label lbEmployeeIden;
-        private Label lbEmployeeName;
-        private Label lbEmployeeID;
+        private Label lbSupllierName;
+        private Label lbSupplierID;
         private GroupBox gbAccInfo;
-        private TextBox txtEmployeeID;
+        private TextBox txtID;
         private Label lbEmployeeRole;
         private DataGridView dgvEmployee;
     }

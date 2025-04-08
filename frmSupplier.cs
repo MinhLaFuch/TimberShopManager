@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace timber_shop_manager
 {
-    public partial class frmSupplier: Form
+    public partial class frmSupplier : Form
     {
         public frmSupplier()
         {
             InitializeComponent();
+        }
+
+        private void frmSupplier_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

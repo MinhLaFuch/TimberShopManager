@@ -67,7 +67,7 @@
             btnAdd.TabIndex = 1;
             btnAdd.Text = "Tạo tài khoản";
             btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += this.btnAdd_Click_1;
+            btnAdd.Click += this.btnAdd_Click;
             // 
             // gbAccInfo
             // 
@@ -93,16 +93,16 @@
             // cbRole
             // 
             cbRole.FormattingEnabled = true;
-            cbRole.Location = new Point(1085, 66);
+            cbRole.Location = new Point(705, 123);
             cbRole.Name = "cbRole";
-            cbRole.Size = new Size(151, 28);
+            cbRole.Size = new Size(327, 28);
             cbRole.TabIndex = 11;
             // 
             // dtpDOB
             // 
             dtpDOB.Location = new Point(705, 67);
             dtpDOB.Name = "dtpDOB";
-            dtpDOB.Size = new Size(250, 27);
+            dtpDOB.Size = new Size(327, 27);
             dtpDOB.TabIndex = 9;
             // 
             // txtEmployeeID
@@ -136,7 +136,7 @@
             // lbEmployeeRole
             // 
             lbEmployeeRole.AutoSize = true;
-            lbEmployeeRole.Location = new Point(989, 67);
+            lbEmployeeRole.Location = new Point(581, 120);
             lbEmployeeRole.Name = "lbEmployeeRole";
             lbEmployeeRole.Size = new Size(61, 20);
             lbEmployeeRole.TabIndex = 10;
@@ -145,7 +145,7 @@
             // lbEmployeeDOB
             // 
             lbEmployeeDOB.AutoSize = true;
-            lbEmployeeDOB.Location = new Point(568, 67);
+            lbEmployeeDOB.Location = new Point(581, 72);
             lbEmployeeDOB.Name = "lbEmployeeDOB";
             lbEmployeeDOB.Size = new Size(74, 20);
             lbEmployeeDOB.TabIndex = 8;
@@ -154,7 +154,7 @@
             // lbEmployeeAddress
             // 
             lbEmployeeAddress.AutoSize = true;
-            lbEmployeeAddress.Location = new Point(581, 16);
+            lbEmployeeAddress.Location = new Point(596, 23);
             lbEmployeeAddress.Name = "lbEmployeeAddress";
             lbEmployeeAddress.Size = new Size(46, 20);
             lbEmployeeAddress.TabIndex = 6;
@@ -195,7 +195,7 @@
             btnSearch.TabIndex = 4;
             btnSearch.Text = "Tìm kiếm";
             btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += this.btnSearch_Click_1;
+            btnSearch.Click += this.btnSearch_Click;
             // 
             // cbSearch
             // 
