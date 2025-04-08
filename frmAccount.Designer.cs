@@ -30,7 +30,6 @@
         {
             dgvAccount = new DataGridView();
             btnAdd = new Button();
-            btnView = new Button();
             gbAccInfo = new GroupBox();
             cbRole = new ComboBox();
             dtpDOB = new DateTimePicker();
@@ -46,6 +45,7 @@
             lbEmployeeID = new Label();
             btnSearch = new Button();
             cbSearch = new ComboBox();
+            btnLock = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvAccount).BeginInit();
             gbAccInfo.SuspendLayout();
             SuspendLayout();
@@ -53,29 +53,21 @@
             // dgvAccount
             // 
             dgvAccount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAccount.Location = new Point(195, 184);
+            dgvAccount.Location = new Point(195, 180);
             dgvAccount.Name = "dgvAccount";
             dgvAccount.RowHeadersWidth = 51;
             dgvAccount.Size = new Size(1073, 344);
-            dgvAccount.TabIndex = 0;
+            dgvAccount.TabIndex = 5;
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(1, 184);
+            btnAdd.Location = new Point(1, 175);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(188, 81);
             btnAdd.TabIndex = 1;
             btnAdd.Text = "Tạo tài khoản";
             btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // btnView
-            // 
-            btnView.Location = new Point(1, 271);
-            btnView.Name = "btnView";
-            btnView.Size = new Size(188, 96);
-            btnView.TabIndex = 4;
-            btnView.Text = "Xem thông tin nhân viên";
-            btnView.UseVisualStyleBackColor = true;
+            btnAdd.Click += this.btnAdd_Click_1;
             // 
             // gbAccInfo
             // 
@@ -94,78 +86,78 @@
             gbAccInfo.Location = new Point(12, 12);
             gbAccInfo.Name = "gbAccInfo";
             gbAccInfo.Size = new Size(1256, 157);
-            gbAccInfo.TabIndex = 5;
+            gbAccInfo.TabIndex = 0;
             gbAccInfo.TabStop = false;
             gbAccInfo.Text = "Thông tin";
             // 
             // cbRole
             // 
             cbRole.FormattingEnabled = true;
-            cbRole.Location = new Point(809, 117);
+            cbRole.Location = new Point(1085, 66);
             cbRole.Name = "cbRole";
             cbRole.Size = new Size(151, 28);
-            cbRole.TabIndex = 13;
+            cbRole.TabIndex = 11;
             // 
             // dtpDOB
             // 
-            dtpDOB.Location = new Point(809, 72);
+            dtpDOB.Location = new Point(705, 67);
             dtpDOB.Name = "dtpDOB";
             dtpDOB.Size = new Size(250, 27);
-            dtpDOB.TabIndex = 12;
+            dtpDOB.TabIndex = 9;
             // 
             // txtEmployeeID
             // 
             txtEmployeeID.Location = new Point(154, 16);
             txtEmployeeID.Name = "txtEmployeeID";
             txtEmployeeID.Size = new Size(345, 27);
-            txtEmployeeID.TabIndex = 11;
+            txtEmployeeID.TabIndex = 1;
             // 
             // txtIden
             // 
             txtIden.Location = new Point(154, 117);
             txtIden.Name = "txtIden";
             txtIden.Size = new Size(345, 27);
-            txtIden.TabIndex = 10;
+            txtIden.TabIndex = 5;
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(809, 23);
+            txtAddress.Location = new Point(705, 13);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(125, 27);
-            txtAddress.TabIndex = 9;
+            txtAddress.Size = new Size(531, 27);
+            txtAddress.TabIndex = 7;
             // 
             // txtName
             // 
             txtName.Location = new Point(154, 69);
             txtName.Name = "txtName";
             txtName.Size = new Size(345, 27);
-            txtName.TabIndex = 6;
+            txtName.TabIndex = 3;
             // 
             // lbEmployeeRole
             // 
             lbEmployeeRole.AutoSize = true;
-            lbEmployeeRole.Location = new Point(729, 120);
+            lbEmployeeRole.Location = new Point(989, 67);
             lbEmployeeRole.Name = "lbEmployeeRole";
             lbEmployeeRole.Size = new Size(61, 20);
-            lbEmployeeRole.TabIndex = 5;
+            lbEmployeeRole.TabIndex = 10;
             lbEmployeeRole.Text = "Chức vụ";
             // 
             // lbEmployeeDOB
             // 
             lbEmployeeDOB.AutoSize = true;
-            lbEmployeeDOB.Location = new Point(729, 72);
+            lbEmployeeDOB.Location = new Point(568, 67);
             lbEmployeeDOB.Name = "lbEmployeeDOB";
             lbEmployeeDOB.Size = new Size(74, 20);
-            lbEmployeeDOB.TabIndex = 4;
+            lbEmployeeDOB.TabIndex = 8;
             lbEmployeeDOB.Text = "Ngày sinh";
             // 
             // lbEmployeeAddress
             // 
             lbEmployeeAddress.AutoSize = true;
-            lbEmployeeAddress.Location = new Point(729, 23);
+            lbEmployeeAddress.Location = new Point(581, 16);
             lbEmployeeAddress.Name = "lbEmployeeAddress";
             lbEmployeeAddress.Size = new Size(46, 20);
-            lbEmployeeAddress.TabIndex = 3;
+            lbEmployeeAddress.TabIndex = 6;
             lbEmployeeAddress.Text = "Nơi ở";
             // 
             // lbEmployeeIden
@@ -174,7 +166,7 @@
             lbEmployeeIden.Location = new Point(27, 117);
             lbEmployeeIden.Name = "lbEmployeeIden";
             lbEmployeeIden.Size = new Size(68, 20);
-            lbEmployeeIden.TabIndex = 2;
+            lbEmployeeIden.TabIndex = 4;
             lbEmployeeIden.Text = "Số CCCD";
             // 
             // lbEmployeeName
@@ -183,7 +175,7 @@
             lbEmployeeName.Location = new Point(27, 72);
             lbEmployeeName.Name = "lbEmployeeName";
             lbEmployeeName.Size = new Size(121, 20);
-            lbEmployeeName.TabIndex = 1;
+            lbEmployeeName.TabIndex = 2;
             lbEmployeeName.Text = "Họ tên nhân viên";
             // 
             // lbEmployeeID
@@ -200,31 +192,44 @@
             btnSearch.Location = new Point(1, 429);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(188, 95);
-            btnSearch.TabIndex = 6;
+            btnSearch.TabIndex = 4;
             btnSearch.Text = "Tìm kiếm";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += this.btnSearch_Click_1;
             // 
             // cbSearch
             // 
             cbSearch.FormattingEnabled = true;
             cbSearch.Location = new Point(1, 395);
             cbSearch.Name = "cbSearch";
-            cbSearch.Size = new Size(151, 28);
-            cbSearch.TabIndex = 7;
+            cbSearch.Size = new Size(188, 28);
+            cbSearch.TabIndex = 3;
+            cbSearch.SelectedIndexChanged += cbSearch_SelectedIndexChanged;
+            // 
+            // btnLock
+            // 
+            btnLock.Location = new Point(1, 262);
+            btnLock.Name = "btnLock";
+            btnLock.Size = new Size(188, 81);
+            btnLock.TabIndex = 2;
+            btnLock.Text = "Khóa tài khoản";
+            btnLock.UseVisualStyleBackColor = true;
+            btnLock.Click += btnLock_Click;
             // 
             // frmAccount
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1280, 536);
+            Controls.Add(btnLock);
             Controls.Add(cbSearch);
             Controls.Add(btnSearch);
             Controls.Add(gbAccInfo);
-            Controls.Add(btnView);
             Controls.Add(btnAdd);
             Controls.Add(dgvAccount);
             Name = "frmAccount";
             Text = "frmAccount";
+            Load += frmAccount_Load;
             ((System.ComponentModel.ISupportInitialize)dgvAccount).EndInit();
             gbAccInfo.ResumeLayout(false);
             gbAccInfo.PerformLayout();
@@ -235,8 +240,6 @@
 
         private DataGridView dgvAccount;
         private Button btnAdd;
-        private Button btnMod;
-        private Button btnView;
         private GroupBox gbAccInfo;
         private Label lbEmployeeRole;
         private Label lbEmployeeDOB;
@@ -252,5 +255,6 @@
         private TextBox txtName;
         private ComboBox cbRole;
         private DateTimePicker dtpDOB;
+        private Button btnLock;
     }
 }
