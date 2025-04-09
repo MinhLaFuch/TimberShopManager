@@ -67,7 +67,7 @@
             btnAdd.TabIndex = 1;
             btnAdd.Text = "Tạo tài khoản";
             btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += this.btnAdd_Click;
+            btnAdd.Click += btnAdd_Click;
             // 
             // gbAccInfo
             // 
@@ -195,7 +195,7 @@
             btnSearch.TabIndex = 4;
             btnSearch.Text = "Tìm kiếm";
             btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += this.btnSearch_Click;
+            btnSearch.Click += btnSearch_Click;
             // 
             // cbSearch
             // 
