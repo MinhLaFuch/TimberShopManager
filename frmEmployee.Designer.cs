@@ -30,9 +30,11 @@
         {
             dgvEmployee = new DataGridView();
             gbAccInfo = new GroupBox();
+            btnCancel = new Button();
+            btnSave = new Button();
             cbRole = new ComboBox();
             dtpDOB = new DateTimePicker();
-            txtEmployeeID = new TextBox();
+            txtID = new TextBox();
             txtIden = new TextBox();
             txtAddress = new TextBox();
             txtName = new TextBox();
@@ -41,13 +43,11 @@
             lbEmployeeAddress = new Label();
             lbEmployeeIden = new Label();
             lbEmployeeName = new Label();
-            lbEmployeeID = new Label();
-            btnLock = new Button();
+            lbID = new Label();
+            btnDel = new Button();
             btnSearch = new Button();
             btnAdd = new Button();
             btnViewWorkHour = new Button();
-            btnSave = new Button();
-            btnCancel = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
             gbAccInfo.SuspendLayout();
             SuspendLayout();
@@ -58,8 +58,9 @@
             dgvEmployee.Location = new Point(210, 174);
             dgvEmployee.Name = "dgvEmployee";
             dgvEmployee.RowHeadersWidth = 51;
-            dgvEmployee.Size = new Size(1075, 358);
+            dgvEmployee.Size = new Size(977, 358);
             dgvEmployee.TabIndex = 0;
+            dgvEmployee.CellContentClick += dgvEmployee_CellContentClick;
             // 
             // gbAccInfo
             // 
@@ -67,7 +68,7 @@
             gbAccInfo.Controls.Add(btnSave);
             gbAccInfo.Controls.Add(cbRole);
             gbAccInfo.Controls.Add(dtpDOB);
-            gbAccInfo.Controls.Add(txtEmployeeID);
+            gbAccInfo.Controls.Add(txtID);
             gbAccInfo.Controls.Add(txtIden);
             gbAccInfo.Controls.Add(txtAddress);
             gbAccInfo.Controls.Add(txtName);
@@ -76,35 +77,55 @@
             gbAccInfo.Controls.Add(lbEmployeeAddress);
             gbAccInfo.Controls.Add(lbEmployeeIden);
             gbAccInfo.Controls.Add(lbEmployeeName);
-            gbAccInfo.Controls.Add(lbEmployeeID);
-            gbAccInfo.Location = new Point(12, 11);
+            gbAccInfo.Controls.Add(lbID);
+            gbAccInfo.Location = new Point(5, 11);
             gbAccInfo.Name = "gbAccInfo";
-            gbAccInfo.Size = new Size(1273, 157);
+            gbAccInfo.Size = new Size(1182, 157);
             gbAccInfo.TabIndex = 3;
             gbAccInfo.TabStop = false;
             gbAccInfo.Text = "Thông tin";
             // 
+            // btnCancel
+            // 
+            btnCancel.Location = new Point(1085, 122);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(94, 29);
+            btnCancel.TabIndex = 13;
+            btnCancel.Text = "Hủy";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(975, 122);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(94, 29);
+            btnSave.TabIndex = 12;
+            btnSave.Text = "Lưu";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
             // cbRole
             // 
             cbRole.FormattingEnabled = true;
-            cbRole.Location = new Point(1085, 66);
+            cbRole.Location = new Point(988, 68);
             cbRole.Name = "cbRole";
             cbRole.Size = new Size(182, 28);
             cbRole.TabIndex = 11;
             // 
             // dtpDOB
             // 
-            dtpDOB.Location = new Point(705, 67);
+            dtpDOB.Location = new Point(608, 69);
             dtpDOB.Name = "dtpDOB";
             dtpDOB.Size = new Size(250, 27);
             dtpDOB.TabIndex = 9;
             // 
-            // txtEmployeeID
+            // txtID
             // 
-            txtEmployeeID.Location = new Point(154, 16);
-            txtEmployeeID.Name = "txtEmployeeID";
-            txtEmployeeID.Size = new Size(345, 27);
-            txtEmployeeID.TabIndex = 1;
+            txtID.Location = new Point(154, 16);
+            txtID.Name = "txtID";
+            txtID.Size = new Size(345, 27);
+            txtID.TabIndex = 1;
             // 
             // txtIden
             // 
@@ -115,7 +136,7 @@
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(705, 13);
+            txtAddress.Location = new Point(608, 19);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(562, 27);
             txtAddress.TabIndex = 7;
@@ -130,7 +151,7 @@
             // lbEmployeeRole
             // 
             lbEmployeeRole.AutoSize = true;
-            lbEmployeeRole.Location = new Point(989, 67);
+            lbEmployeeRole.Location = new Point(901, 74);
             lbEmployeeRole.Name = "lbEmployeeRole";
             lbEmployeeRole.Size = new Size(61, 20);
             lbEmployeeRole.TabIndex = 10;
@@ -139,7 +160,7 @@
             // lbEmployeeDOB
             // 
             lbEmployeeDOB.AutoSize = true;
-            lbEmployeeDOB.Location = new Point(568, 67);
+            lbEmployeeDOB.Location = new Point(523, 72);
             lbEmployeeDOB.Name = "lbEmployeeDOB";
             lbEmployeeDOB.Size = new Size(74, 20);
             lbEmployeeDOB.TabIndex = 8;
@@ -148,7 +169,7 @@
             // lbEmployeeAddress
             // 
             lbEmployeeAddress.AutoSize = true;
-            lbEmployeeAddress.Location = new Point(581, 16);
+            lbEmployeeAddress.Location = new Point(538, 19);
             lbEmployeeAddress.Name = "lbEmployeeAddress";
             lbEmployeeAddress.Size = new Size(46, 20);
             lbEmployeeAddress.TabIndex = 6;
@@ -172,24 +193,24 @@
             lbEmployeeName.TabIndex = 2;
             lbEmployeeName.Text = "Họ tên nhân viên";
             // 
-            // lbEmployeeID
+            // lbID
             // 
-            lbEmployeeID.AutoSize = true;
-            lbEmployeeID.Location = new Point(27, 23);
-            lbEmployeeID.Name = "lbEmployeeID";
-            lbEmployeeID.Size = new Size(97, 20);
-            lbEmployeeID.TabIndex = 0;
-            lbEmployeeID.Text = "Mã nhân viên";
+            lbID.AutoSize = true;
+            lbID.Location = new Point(27, 23);
+            lbID.Name = "lbID";
+            lbID.Size = new Size(97, 20);
+            lbID.TabIndex = 0;
+            lbID.Text = "Mã nhân viên";
             // 
-            // btnLock
+            // btnDel
             // 
-            btnLock.Location = new Point(12, 261);
-            btnLock.Name = "btnLock";
-            btnLock.Size = new Size(188, 81);
-            btnLock.TabIndex = 6;
-            btnLock.Text = "Xóa nhân viên";
-            btnLock.UseVisualStyleBackColor = true;
-            btnLock.Click += btnLock_Click;
+            btnDel.Location = new Point(12, 261);
+            btnDel.Name = "btnDel";
+            btnDel.Size = new Size(188, 81);
+            btnDel.TabIndex = 6;
+            btnDel.Text = "Xóa nhân viên";
+            btnDel.UseVisualStyleBackColor = true;
+            btnDel.Click += btnLock_Click;
             // 
             // btnSearch
             // 
@@ -221,39 +242,20 @@
             btnViewWorkHour.UseVisualStyleBackColor = true;
             btnViewWorkHour.Click += btnViewWorkHour_Click;
             // 
-            // btnSave
-            // 
-            btnSave.Location = new Point(1073, 122);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
-            btnSave.TabIndex = 12;
-            btnSave.Text = "Lưu";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
-            // 
-            // btnCancel
-            // 
-            btnCancel.Location = new Point(1173, 122);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 29);
-            btnCancel.TabIndex = 13;
-            btnCancel.Text = "Hủy";
-            btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
-            // 
             // frmEmployee
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1297, 539);
+            ClientSize = new Size(1194, 539);
             Controls.Add(btnViewWorkHour);
-            Controls.Add(btnLock);
+            Controls.Add(btnDel);
             Controls.Add(btnSearch);
             Controls.Add(btnAdd);
             Controls.Add(gbAccInfo);
             Controls.Add(dgvEmployee);
             Name = "frmEmployee";
             Text = "frmEmployee";
+            Load += frmEmployee_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).EndInit();
             gbAccInfo.ResumeLayout(false);
             gbAccInfo.PerformLayout();
@@ -266,7 +268,7 @@
         private GroupBox gbAccInfo;
         private ComboBox cbRole;
         private DateTimePicker dtpDOB;
-        private TextBox txtEmployeeID;
+        private TextBox txtID;
         private TextBox txtIden;
         private TextBox txtAddress;
         private TextBox txtName;
@@ -275,8 +277,8 @@
         private Label lbEmployeeAddress;
         private Label lbEmployeeIden;
         private Label lbEmployeeName;
-        private Label lbEmployeeID;
-        private Button btnLock;
+        private Label lbID;
+        private Button btnDel;
         private Button btnSearch;
         private Button btnAdd;
         private Button btnViewWorkHour;
