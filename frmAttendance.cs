@@ -49,17 +49,6 @@ namespace timber_shop_manager
         }
         #endregion
         #region Click
-        private void dgvAttendance_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = this.dgvAttendance.Rows[e.RowIndex];
-                txtDate.Text = row.Cells["Date"].Value.ToString();
-                txtStartTime.Text = row.Cells["StartTime"].Value.ToString();
-                txtEndTime.Text = row.Cells["EndTime"].Value.ToString();
-                txtWorkHour.Text = row.Cells["WorkHour"].Value.ToString();
-            }
-        }
         #endregion
         #region Change Value
         private void cbTimeStamp_SelectedValueChanged(object sender, EventArgs e)
@@ -77,7 +66,7 @@ namespace timber_shop_manager
                 cbTime.Visible = true;
             }
         }
-
+        #endregion
         #endregion
 
 
