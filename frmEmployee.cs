@@ -37,7 +37,7 @@ namespace timber_shop_manager
         private DataTable loadData()
         {
             // Load data from database to DataGridView
-            string query = "SELECT * FROM Employee";
+            string query = "SELECT EmployeeID, Name, IdentificationNumber, PhoneNumber, Address, Role, DateOfBirth, Salary FROM Employee";
             DataTable dt = dbHelper.ExecuteQuery(query);
             return dt;
         }
