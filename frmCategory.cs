@@ -12,6 +12,7 @@ namespace timber_shop_manager
 {
     public partial class frmCategory : Form
     {
+
         public frmCategory()
         {
             InitializeComponent();
