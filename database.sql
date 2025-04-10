@@ -1277,15 +1277,4 @@ VALUES
 ('SI0020', 'P0004', 1, 300, 4, 308),
 ('SI0020', 'P0005', 3, 500, 5, 1575),
 ('SI0020', 'P0006', 1, 550, 6, 556);
-GO 
 
-use TimberShop;
-go
-alter table Product
-add Quantity int;
-GO
-
-update Product
-set Quantity = 10
-
-select * from Product

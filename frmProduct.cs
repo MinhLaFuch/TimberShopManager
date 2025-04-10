@@ -36,6 +36,15 @@ namespace timber_shop_manager
             searchEventEnabler(false);
             btnEnabler(false, true);
         }
+        private void clearTextBox()
+        {
+            txtID.Clear();
+            txtName.Clear();
+            txtPriceQuotation.Clear();
+            
+            nudQuantity.Value = nudQuantity.Minimum;
+
+        }
         private DataTable loadData()
         {
             string query = "SELECT * FROM Product WHERE CatagoryID";
