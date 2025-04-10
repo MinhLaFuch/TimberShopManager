@@ -33,16 +33,11 @@ namespace timber_shop_manager
         }
         #endregion
         #region Support Method
-        private void LoadData()
+        private DataTable LoadData()
         {
             string query = "SELECT * FROM Attendance WHERE EmployeeId = @employeeId";
             DataTable dt = dbHelper.ExecuteQuery(query, new SqlParameter("@employeeId", employeeId));
-            if (dt.Rows.Count > 0)
-            {
-                txtEmployeeName.Text = dt.Rows[0]["EmployeeName"].ToString();
-                txtWorkHour.Text = dt.Rows[0]["WorkHour"].ToString();
-                txtSalary.Text = dt.Rows[0]["Salary"].ToString();
-            }
+            return dt;
         }
         #endregion
         #region Event
@@ -50,8 +45,41 @@ namespace timber_shop_manager
         private void frmWorkHour_Load(object sender, EventArgs e)
         {
             this.Text += this.EmployeeName;
+            dgvAttendance.DataSource = LoadData();
         }
         #endregion
+        #region Click
+        private void dgvAttendance_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dgvAttendance.Rows[e.RowIndex];
+                txtDate.Text = row.Cells["Date"].Value.ToString();
+                txtStartTime.Text = row.Cells["StartTime"].Value.ToString();
+                txtEndTime.Text = row.Cells["EndTime"].Value.ToString();
+                txtWorkHour.Text = row.Cells["WorkHour"].Value.ToString();
+            }
+        }
         #endregion
+        #region Change Value
+        private void cbTimeStamp_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cbTimeStamp.SelectedItem.ToString() == "Ngày -> Ngày")
+            {
+                dtpFrom.Visible = true;
+                dtpTo.Visible = true;
+                cbTime.Visible = false;
+            }
+            else
+            {
+                dtpFrom.Visible = false;
+                dtpTo.Visible = false;
+                cbTime.Visible = true;
+            }
+        }
+
+        #endregion
+
+
     }
 }

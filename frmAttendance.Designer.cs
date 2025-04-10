@@ -28,34 +28,96 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvWorkingHour = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dgvWorkingHour).BeginInit();
+            dgvAttendance = new DataGridView();
+            cbTimeStamp = new ComboBox();
+            dtpFrom = new DateTimePicker();
+            dtpTo = new DateTimePicker();
+            cbTime = new ComboBox();
+            lbTimeStamp = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvAttendance).BeginInit();
             SuspendLayout();
             // 
-            // dgvWorkingHour
+            // dgvAttendance
             // 
-            dgvWorkingHour.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvWorkingHour.Location = new Point(288, 125);
-            dgvWorkingHour.Name = "dgvWorkingHour";
-            dgvWorkingHour.RowHeadersWidth = 51;
-            dgvWorkingHour.Size = new Size(300, 188);
-            dgvWorkingHour.TabIndex = 0;
+            dgvAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAttendance.Location = new Point(200, -2);
+            dgvAttendance.Name = "dgvAttendance";
+            dgvAttendance.RowHeadersWidth = 51;
+            dgvAttendance.Size = new Size(352, 440);
+            dgvAttendance.TabIndex = 0;
             // 
-            // frmWorkHour
+            // cbTimeStamp
+            // 
+            cbTimeStamp.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbTimeStamp.FormattingEnabled = true;
+            cbTimeStamp.Items.AddRange(new object[] { "Ngày", "Tuần", "Tháng", "Quý", "Năm", "Ngày -> Ngày" });
+            cbTimeStamp.Location = new Point(-1, 41);
+            cbTimeStamp.Name = "cbTimeStamp";
+            cbTimeStamp.Size = new Size(195, 28);
+            cbTimeStamp.TabIndex = 1;
+            cbTimeStamp.SelectedValueChanged += cbTimeStamp_SelectedValueChanged;
+            // 
+            // dtpFrom
+            // 
+            dtpFrom.Location = new Point(-1, 117);
+            dtpFrom.Name = "dtpFrom";
+            dtpFrom.Size = new Size(195, 27);
+            dtpFrom.TabIndex = 2;
+            dtpFrom.Visible = false;
+            // 
+            // dtpTo
+            // 
+            dtpTo.Location = new Point(-1, 165);
+            dtpTo.Name = "dtpTo";
+            dtpTo.Size = new Size(195, 27);
+            dtpTo.TabIndex = 3;
+            dtpTo.Visible = false;
+            // 
+            // cbTime
+            // 
+            cbTime.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbTime.FormattingEnabled = true;
+            cbTime.Location = new Point(22, 116);
+            cbTime.Name = "cbTime";
+            cbTime.Size = new Size(151, 28);
+            cbTime.TabIndex = 4;
+            cbTime.Visible = false;
+            // 
+            // lbTimeStamp
+            // 
+            lbTimeStamp.AutoSize = true;
+            lbTimeStamp.Location = new Point(-1, 9);
+            lbTimeStamp.Name = "lbTimeStamp";
+            lbTimeStamp.Size = new Size(101, 20);
+            lbTimeStamp.TabIndex = 5;
+            lbTimeStamp.Text = "Mốc thời gian";
+            // 
+            // frmAttendance
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(dgvWorkingHour);
-            Name = "frmWorkHour";
+            ClientSize = new Size(555, 450);
+            Controls.Add(lbTimeStamp);
+            Controls.Add(cbTime);
+            Controls.Add(dtpTo);
+            Controls.Add(dtpFrom);
+            Controls.Add(cbTimeStamp);
+            Controls.Add(dgvAttendance);
+            Name = "frmAttendance";
             Text = "Báo cáo chấm công của ";
             Load += frmWorkHour_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvWorkingHour).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAttendance).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dgvWorkingHour;
+        private DataGridView dgvAttendance;
+        private ComboBox cbTimeStamp;
+        private DateTimePicker dtpFrom;
+        private DateTimePicker dtpTo;
+        private ComboBox cbTime;
+        private Label lbTimeStamp;
     }
 }
