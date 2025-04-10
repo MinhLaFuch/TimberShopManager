@@ -10,7 +10,7 @@ GO
 
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2017                    */
-/* Created on:     4/7/2025 1:25:23 PM                          */
+/* Created on:     09/04/2025 1:04:26 pm                        */
 /*==============================================================*/
 
 
@@ -51,16 +51,9 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('Attendance') and o.name = 'FK_ATTENDAN_RELATIONS_EMPLOYEE')
+   where r.fkeyid = object_id('Attendance') and o.name = 'FK_ATTENDAN_WORK_EMPLOYEE')
 alter table Attendance
-   drop constraint FK_ATTENDAN_RELATIONS_EMPLOYEE
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('Employee') and o.name = 'FK_EMPLOYEE_HAS_ACCOUNT')
-alter table Employee
-   drop constraint FK_EMPLOYEE_HAS_ACCOUNT
+   drop constraint FK_ATTENDAN_WORK_EMPLOYEE
 go
 
 if exists (select 1
@@ -96,6 +89,13 @@ if exists (select 1
    where r.fkeyid = object_id('Manager') and o.name = 'FK_MANAGER_SPECIALIZ_EMPLOYEE')
 alter table Manager
    drop constraint FK_MANAGER_SPECIALIZ_EMPLOYEE
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('Product') and o.name = 'FK_PRODUCT_IS_CATAGORY')
+alter table Product
+   drop constraint FK_PRODUCT_IS_CATAGORY
 go
 
 if exists (select 1
@@ -205,10 +205,10 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('Attendance')
-            and   name  = 'RELATIONSHIP6_FK'
+            and   name  = 'WORK_FK'
             and   indid > 0
             and   indid < 255)
-   drop index Attendance.RELATIONSHIP6_FK
+   drop index Attendance.WORK_FK
 go
 
 if exists (select 1
@@ -216,6 +216,13 @@ if exists (select 1
            where  id = object_id('Attendance')
             and   type = 'U')
    drop table Attendance
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('Catagory')
+            and   type = 'U')
+   drop table Catagory
 go
 
 if exists (select 1
@@ -230,15 +237,6 @@ if exists (select 1
            where  id = object_id('Discount')
             and   type = 'U')
    drop table Discount
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('Employee')
-            and   name  = 'HAS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index Employee.HAS_FK
 go
 
 if exists (select 1
@@ -303,6 +301,15 @@ if exists (select 1
            where  id = object_id('Manager')
             and   type = 'U')
    drop table Manager
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('Product')
+            and   name  = 'IS_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index Product.IS_FK
 go
 
 if exists (select 1
@@ -434,6 +441,13 @@ go
 /*==============================================================*/
 create table Accountant (
    EmployeeId           char(10)             not null,
+   Name                 nvarchar(50)         null,
+   IdentificationNumber char(12)             null,
+   Address              nvarchar(256)        null,
+   DateOfBirth          datetime             null,
+   Salary               float                null,
+   Role                 nvarchar(20)         null,
+   PhoneNumber          char(10)             null,
    constraint PK_ACCOUNTANT primary key (EmployeeId)
 )
 go
@@ -443,6 +457,13 @@ go
 /*==============================================================*/
 create table Administrator (
    EmployeeId           char(10)             not null,
+   Name                 nvarchar(50)         null,
+   IdentificationNumber char(12)             null,
+   Address              nvarchar(256)        null,
+   DateOfBirth          datetime             null,
+   Salary               float                null,
+   Role                 nvarchar(20)         null,
+   PhoneNumber          char(10)             null,
    constraint PK_ADMINISTRATOR primary key (EmployeeId)
 )
 go
@@ -489,13 +510,24 @@ create table Attendance (
 go
 
 /*==============================================================*/
-/* Index: RELATIONSHIP6_FK                                      */
+/* Index: WORK_FK                                               */
 /*==============================================================*/
 
 
 
 
-create nonclustered index RELATIONSHIP6_FK on Attendance (EmployeeId ASC)
+create nonclustered index WORK_FK on Attendance (EmployeeId ASC)
+go
+
+/*==============================================================*/
+/* Table: Catagory                                              */
+/*==============================================================*/
+create table Catagory (
+   CatagoryId           char(256)            not null,
+   Name                 char(256)            null,
+   Description          char(256)            null,
+   constraint PK_CATAGORY primary key (CatagoryId)
+)
 go
 
 /*==============================================================*/
@@ -529,7 +561,6 @@ go
 /*==============================================================*/
 create table Employee (
    EmployeeId           char(10)             not null,
-   Username             varchar(20)          null,
    Name                 nvarchar(50)         null,
    IdentificationNumber char(12)             null,
    Address              nvarchar(256)        null,
@@ -539,16 +570,6 @@ create table Employee (
    PhoneNumber          char(10)             null,
    constraint PK_EMPLOYEE primary key (EmployeeId)
 )
-go
-
-/*==============================================================*/
-/* Index: HAS_FK                                                */
-/*==============================================================*/
-
-
-
-
-create nonclustered index HAS_FK on Employee (Username ASC)
 go
 
 /*==============================================================*/
@@ -625,6 +646,13 @@ go
 /*==============================================================*/
 create table Manager (
    EmployeeId           char(10)             not null,
+   Name                 nvarchar(50)         null,
+   IdentificationNumber char(12)             null,
+   Address              nvarchar(256)        null,
+   DateOfBirth          datetime             null,
+   Salary               float                null,
+   Role                 nvarchar(20)         null,
+   PhoneNumber          char(10)             null,
    constraint PK_MANAGER primary key (EmployeeId)
 )
 go
@@ -634,13 +662,25 @@ go
 /*==============================================================*/
 create table Product (
    ProductId            char(10)             not null,
+   CatagoryId           char(256)            null,
    Name                 nvarchar(50)         null,
    CalculationUnit      nvarchar(50)         null,
    PriceQuotation       float                null,
    CustomerWarranty     int                  null,
    Description          nvarchar(256)        null,
+   Quantity             int                  null,
    constraint PK_PRODUCT primary key (ProductId)
 )
+go
+
+/*==============================================================*/
+/* Index: IS_FK                                                 */
+/*==============================================================*/
+
+
+
+
+create nonclustered index IS_FK on Product (CatagoryId ASC)
 go
 
 /*==============================================================*/
@@ -688,6 +728,13 @@ go
 /*==============================================================*/
 create table SaleAgent (
    EmployeeId           char(10)             not null,
+   Name                 nvarchar(50)         null,
+   IdentificationNumber char(12)             null,
+   Address              nvarchar(256)        null,
+   DateOfBirth          datetime             null,
+   Salary               float                null,
+   Role                 nvarchar(20)         null,
+   PhoneNumber          char(10)             null,
    constraint PK_SALEAGENT primary key (EmployeeId)
 )
 go
@@ -801,13 +848,8 @@ alter table Applied
 go
 
 alter table Attendance
-   add constraint FK_ATTENDAN_RELATIONS_EMPLOYEE foreign key (EmployeeId)
+   add constraint FK_ATTENDAN_WORK_EMPLOYEE foreign key (EmployeeId)
       references Employee (EmployeeId)
-go
-
-alter table Employee
-   add constraint FK_EMPLOYEE_HAS_ACCOUNT foreign key (Username)
-      references Account (Username)
 go
 
 alter table ImportDetail
@@ -833,6 +875,11 @@ go
 alter table Manager
    add constraint FK_MANAGER_SPECIALIZ_EMPLOYEE foreign key (EmployeeId)
       references Employee (EmployeeId)
+go
+
+alter table Product
+   add constraint FK_PRODUCT_IS_CATAGORY foreign key (CatagoryId)
+      references Catagory (CatagoryId)
 go
 
 alter table ProfitAccounting
@@ -868,6 +915,9 @@ go
 alter table SaleInvoice
    add constraint FK_SALEINVO_SELL_SALEAGEN foreign key (EmployeeId)
       references SaleAgent (EmployeeId)
+go
+
+
 go
 
 INSERT INTO Employee (EmployeeId, Name, IdentificationNumber, Address, DateOfBirth, Salary, Role, PhoneNumber) 
@@ -959,51 +1009,63 @@ VALUES
 ('I0019', 'S0008', 'E0001', '2025-05-05', 75000, 'Credit Card'),
 ('I0020', 'S0009', 'E0001', '2025-05-07', 64000, 'Cash');
 GO
-
-INSERT INTO Product (ProductId, Name, CalculationUnit, PriceQuotation, CustomerWarranty, Description)
+INSERT INTO Catagory (CatagoryId, Name, Description)
 VALUES
-('P0001', 'Product A', 'Piece', 500, 12, 'High-quality electronic device, ideal for home use.'),
-('P0002', 'Product B', 'Piece', 250, 6, 'Durable and affordable item, widely used in households.'),
-('P0003', 'Product C', 'Piece', 400, 18, 'Advanced tech gadget with multiple features for professionals.'),
-('P0004', 'Product D', 'Box', 300, 24, 'Pack of 10 items, perfect for small businesses.'),
-('P0005', 'Product E', 'Piece', 500, 12, 'Stylish and portable, designed for personal use.'),
-('P0006', 'Product F', 'Piece', 550, 24, 'Premium product with high performance and durability.'),
-('P0007', 'Product G', 'Piece', 600, 12, 'New generation product with the latest technology.'),
-('P0008', 'Product H', 'Piece', 400, 18, 'Compact and easy-to-use, suitable for both beginners and experts.'),
-('P0009', 'Product I', 'Piece', 700, 6, 'Top-quality item, known for its efficiency and power.'),
-('P0010', 'Product J', 'Box', 600, 12, 'Comes in packs of 5, ideal for industrial use.'),
-('P0011', 'Product K', 'Piece', 300, 24, 'Affordable and functional for everyday use in various fields.'),
-('P0012', 'Product L', 'Piece', 450, 18, 'Multifunctional product designed for professionals in tech.'),
-('P0013', 'Product M', 'Piece', 350, 12, 'Perfect for household use, low-cost and high-efficiency.'),
-('P0014', 'Product N', 'Piece', 500, 12, 'A reliable product with excellent value for money.'),
-('P0015', 'Product O', 'Piece', 550, 24, 'Designed for demanding users who require both quality and performance.'),
-('P0016', 'Product P', 'Box', 500, 18, 'A pack of 6, suitable for high-demand operations.'),
-('P0017', 'Product Q', 'Piece', 600, 6, 'Compact and powerful, great for everyday tasks.'),
-('P0018', 'Product R', 'Piece', 400, 12, 'Efficient and reliable, a top choice for businesses.'),
-('P0019', 'Product S', 'Piece', 550, 24, 'High-quality material, designed for professionals and experts.'),
-('P0020', 'Product T', 'Piece', 200, 6, 'Economical and efficient for daily use.'),
-('P0021', 'Product U', 'Box', 600, 18, 'Ideal for bulk orders, delivers high performance at a low cost.'),
-('P0022', 'Product V', 'Piece', 550, 12, 'Stylish and durable, perfect for modern use.'),
-('P0023', 'Product W', 'Piece', 400, 18, 'Affordable and functional, suitable for general tasks.'),
-('P0024', 'Product X', 'Piece', 450, 6, 'Durable and reliable, designed for tech enthusiasts.'),
-('P0025', 'Product Y', 'Piece', 600, 24, 'Compact design with advanced features for professional users.'),
-('P0026', 'Product Z', 'Box', 450, 12, 'Affordable and efficient, suitable for general operations.'),
-('P0027', 'Product AA', 'Piece', 550, 18, 'Reliable and functional, widely used in different industries.'),
-('P0028', 'Product AB', 'Piece', 500, 24, 'Premium quality, high efficiency and long-lasting performance.'),
-('P0029', 'Product AC', 'Piece', 550, 12, 'Compact and lightweight, designed for personal use.'),
-('P0030', 'Product AD', 'Piece', 600, 18, 'A powerful device, designed for both work and personal use.'),
-('P0031', 'Product AE', 'Piece', 300, 6, 'A budget-friendly solution for everyday tasks.'),
-('P0032', 'Product AF', 'Piece', 550, 12, 'Stylish, compact, and highly functional product.'),
-('P0033', 'Product AG', 'Piece', 600, 24, 'Top-class product, high quality, and long durability.'),
-('P0034', 'Product AH', 'Box', 500, 12, 'Pack of 5, designed for industrial and heavy-duty use.'),
-('P0035', 'Product AI', 'Piece', 450, 18, 'Affordable and efficient product for general usage.'),
-('P0036', 'Product AJ', 'Piece', 500, 24, 'A reliable product, perfect for businesses that need consistency.'),
-('P0037', 'Product AK', 'Piece', 350, 12, 'Functional and economical, great for home use.'),
-('P0038', 'Product AL', 'Piece', 600, 12, 'Compact, powerful, and versatile product for a variety of tasks.'),
-('P0039', 'Product AM', 'Piece', 450, 18, 'Highly functional, easy-to-use, perfect for businesses.'),
-('P0040', 'Product AN', 'Box', 550, 24, 'Durable and reliable, pack of 10 for professional use.'),
-('P0041', 'Product AO', 'Piece', 300, 6, 'Affordable and high-performing product for day-to-day tasks.'),
-('P0042', 'Product AP', 'Piece', 500, 12, 'Designed for demanding users, perfect for technical work.');
+('CAT001', 'Personal Electronics', 'Products designed for personal or home use.'),
+('CAT002', 'Business Essentials', 'Items commonly used in small to medium businesses.'),
+('CAT003', 'Professional Devices', 'Advanced products for technical and professional tasks.'),
+('CAT004', 'Budget Friendly', 'Affordable and cost-effective items for general use.'),
+('CAT005', 'Premium Line', 'High-end, durable, and high-performance products.'),
+('CAT006', 'Portable & Compact', 'Compact products designed for easy transport and use.'),
+('CAT007', 'Household Utilities', 'Products made for regular household tasks.'),
+('CAT008', 'Bulk Packages', 'Boxed or multi-pack products for industrial or group use.'),
+('CAT009', 'Stylish Design', 'Modern and aesthetically pleasing product designs.'),
+('CAT010', 'Heavy Duty Tools', 'Durable items suitable for industrial and intense workloads.');
+
+INSERT INTO Product (ProductId, CatagoryId, Name, CalculationUnit, PriceQuotation, CustomerWarranty, Description, Quantity) VALUES
+('P0001', 'CAT001', 'EchoWave Speaker', 'Piece', 500, 12, 'High-fidelity Bluetooth speaker designed for home entertainment.', 12),
+('P0002', 'CAT007', 'AquaClean Mop', 'Piece', 250, 6, 'Durable spin mop with adjustable handle and water-saving bucket.', 6),
+('P0003', 'CAT003', 'ProSketch Tablet', 'Piece', 400, 18, 'Advanced digital drawing tablet for designers and tech professionals.', 18),
+('P0004', 'CAT008', 'OfficeSupply Kit', 'Box', 300, 24, 'Box of essential stationery items for small offices.', 24),
+('P0005', 'CAT006', 'MiniSmart Projector', 'Piece', 500, 12, 'Compact projector with HD output, perfect for home or travel.', 12),
+('P0006', 'CAT005', 'TitanEdge Laptop', 'Piece', 550, 24, 'Premium business laptop with high-performance specs and durability.', 24),
+('P0007', 'CAT005', 'Nexus VR Headset', 'Piece', 600, 12, 'Immersive virtual reality headset with motion tracking.', 12),
+('P0008', 'CAT006', 'QuickNote Scanner', 'Piece', 400, 18, 'Lightweight document scanner with mobile app support.', 18),
+('P0009', 'CAT005', 'HyperCore Processor', 'Piece', 700, 6, 'Top-tier CPU with exceptional multitasking and processing speed.', 6),
+('P0010', 'CAT008', 'WorkForce Tool Set', 'Box', 600, 12, 'Box of 5 toolkits designed for small-scale construction jobs.', 12),
+('P0011', 'CAT004', 'FlexiLight LED Lamp', 'Piece', 300, 24, 'Adjustable desk lamp with brightness and color temperature control.', 24),
+('P0012', 'CAT003', 'TechMaster Router', 'Piece', 450, 18, 'High-speed dual-band Wi-Fi router for professional environments.', 18),
+('P0013', 'CAT007', 'HomeGuard Smoke Detector', 'Piece', 350, 12, 'Essential safety device for modern homes, easy installation.', 12),
+('P0014', 'CAT004', 'EcoHeat Kettle', 'Piece', 500, 12, 'Energy-efficient electric kettle with auto shut-off feature.', 12),
+('P0015', 'CAT005', 'AlphaX Gaming Console', 'Piece', 550, 24, 'Powerful console with 4K graphics and premium build quality.', 24),
+('P0016', 'CAT008', 'BulkPrinter Cartridge Set', 'Box', 500, 18, 'Box of 6 toner cartridges for heavy-use office printers.', 18),
+('P0017', 'CAT006', 'ZoomMate Webcam', 'Piece', 600, 6, 'Compact HD webcam with built-in mic for video conferencing.', 6),
+('P0018', 'CAT002', 'BusinessLink Fax Machine', 'Piece', 400, 12, 'Reliable fax machine built for small business needs.', 12),
+('P0019', 'CAT003', 'DevPro Monitor 4K', 'Piece', 550, 24, 'High-resolution monitor with color calibration for creators.', 24),
+('P0020', 'CAT004', 'QuickSteam Iron', 'Piece', 200, 6, 'Fast-heating steam iron with safety auto shut-off.', 6),
+('P0021', 'CAT008', 'StorageSafe Box Pack', 'Box', 600, 18, 'Bulk pack of durable plastic storage containers.', 18),
+('P0022', 'CAT009', 'StyleCharge Powerbank', 'Piece', 550, 12, 'Fashionable fast-charging power bank with LED display.', 12),
+('P0023', 'CAT004', 'MultiMate Extension Cord', 'Piece', 400, 18, 'Universal power strip with surge protection.', 18),
+('P0024', 'CAT003', 'NanoGrip Mouse', 'Piece', 450, 6, 'Ergonomic, precision mouse designed for tech professionals.', 6),
+('P0025', 'CAT003', 'CodePro Keyboard', 'Piece', 600, 24, 'Mechanical keyboard optimized for programmers.', 24),
+('P0026', 'CAT008', 'CaféBox Coffee Pods', 'Box', 450, 12, 'Box of 50 assorted coffee pods for office or home.', 12),
+('P0027', 'CAT002', 'WorkSmart Label Printer', 'Piece', 550, 18, 'Efficient labeling machine for warehouse and office use.', 18),
+('P0028', 'CAT005', 'ForceOne SSD Drive', 'Piece', 500, 24, 'Ultra-fast external SSD with encryption support.', 24),
+('P0029', 'CAT006', 'AirSnap Earbuds', 'Piece', 550, 12, 'Lightweight wireless earbuds with noise cancellation.', 12),
+('P0030', 'CAT003', 'StreamStation Dock', 'Piece', 600, 18, 'Professional docking station for work-from-home setups.', 18),
+('P0031', 'CAT004', 'BudgetCalc Calculator', 'Piece', 300, 6, 'Simple solar-powered calculator for everyday use.', 6),
+('P0032', 'CAT009', 'SleekTime Smartwatch', 'Piece', 550, 12, 'Modern smartwatch with fitness and notification tracking.', 12),
+('P0033', 'CAT005', 'UltraView Projector', 'Piece', 600, 24, 'High-definition projector designed for large presentations.', 24),
+('P0034', 'CAT010', 'HeavyDuty Wrench Set', 'Box', 500, 12, 'Set of 5 industrial-grade wrenches in a tool box.', 12),
+('P0035', 'CAT004', 'AllDay Fan', 'Piece', 450, 18, 'Affordable tabletop fan with 3 speed settings.', 18),
+('P0036', 'CAT002', 'PrintEdge Pro', 'Piece', 500, 24, 'Fast, high-capacity printer for business environments.', 24),
+('P0037', 'CAT007', 'KitchenMax Blender', 'Piece', 350, 12, 'High-efficiency blender for everyday meal prep.', 12),
+('P0038', 'CAT006', 'CarryGo Laptop Stand', 'Piece', 600, 12, 'Portable and foldable aluminum stand for laptops.', 12),
+('P0039', 'CAT002', 'BizTask Time Clock', 'Piece', 450, 18, 'Employee punch-in system with digital logging.', 18),
+('P0040', 'CAT010', 'PowerGrip Drill Kit', 'Box', 550, 24, 'Heavy-duty drill set for construction and maintenance.', 24),
+('P0041', 'CAT004', 'Compact Alarm Clock', 'Piece', 300, 6, 'Simple and reliable battery-operated alarm clock.', 6),
+('P0042', 'CAT003', 'CodeX Workstation', 'Piece', 500, 12, 'Designed for developers: compact, powerful mini-PC.', 12);
+
 GO
 
 -- Thêm dữ liệu cho bảng ImportDetail

@@ -29,30 +29,29 @@
         private void InitializeComponent()
         {
             btnMod = new Button();
-            cbSearch = new ComboBox();
             btnSearch = new Button();
-            cbRole = new ComboBox();
-            txtEmployeeID = new TextBox();
-            txtIden = new TextBox();
-            txtAddress = new TextBox();
+            cbCatagory = new ComboBox();
+            txtID = new TextBox();
+            txtPriceQuotation = new TextBox();
+            txtWarranty = new TextBox();
             txtName = new TextBox();
             lbCatagory = new Label();
-            lbCustomerWarranty = new Label();
+            lbWarranty = new Label();
             lbPriceQuotation = new Label();
             lbName = new Label();
-            lbProductID = new Label();
+            lbID = new Label();
             gbAccInfo = new GroupBox();
-            btnAdd = new Button();
-            dgvAccount = new DataGridView();
-            lbVND = new Label();
-            textBox1 = new TextBox();
-            lbQuantity = new Label();
-            lbCalUnit = new Label();
-            btnSave = new Button();
             btnCancel = new Button();
+            btnSave = new Button();
+            lbCalUnit = new Label();
+            lbQuantity = new Label();
+            txtQuantity = new TextBox();
+            lbVND = new Label();
+            btnAdd = new Button();
+            dgvProduct = new DataGridView();
             btnDel = new Button();
             gbAccInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvAccount).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProduct).BeginInit();
             SuspendLayout();
             // 
             // btnMod
@@ -63,14 +62,7 @@
             btnMod.TabIndex = 8;
             btnMod.Text = "Sửa sản phẩm";
             btnMod.UseVisualStyleBackColor = true;
-            // 
-            // cbSearch
-            // 
-            cbSearch.FormattingEnabled = true;
-            cbSearch.Location = new Point(0, 386);
-            cbSearch.Name = "cbSearch";
-            cbSearch.Size = new Size(200, 28);
-            cbSearch.TabIndex = 9;
+            btnMod.Click += btnMod_Click;
             // 
             // btnSearch
             // 
@@ -80,35 +72,36 @@
             btnSearch.TabIndex = 10;
             btnSearch.Text = "Tìm kiếm";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
-            // cbRole
+            // cbCatagory
             // 
-            cbRole.FormattingEnabled = true;
-            cbRole.Location = new Point(705, 114);
-            cbRole.Name = "cbRole";
-            cbRole.Size = new Size(221, 28);
-            cbRole.TabIndex = 11;
+            cbCatagory.FormattingEnabled = true;
+            cbCatagory.Location = new Point(705, 114);
+            cbCatagory.Name = "cbCatagory";
+            cbCatagory.Size = new Size(221, 28);
+            cbCatagory.TabIndex = 11;
             // 
-            // txtEmployeeID
+            // txtID
             // 
-            txtEmployeeID.Location = new Point(154, 16);
-            txtEmployeeID.Name = "txtEmployeeID";
-            txtEmployeeID.Size = new Size(345, 27);
-            txtEmployeeID.TabIndex = 1;
+            txtID.Location = new Point(154, 16);
+            txtID.Name = "txtID";
+            txtID.Size = new Size(345, 27);
+            txtID.TabIndex = 1;
             // 
-            // txtIden
+            // txtPriceQuotation
             // 
-            txtIden.Location = new Point(154, 117);
-            txtIden.Name = "txtIden";
-            txtIden.Size = new Size(273, 27);
-            txtIden.TabIndex = 5;
+            txtPriceQuotation.Location = new Point(154, 117);
+            txtPriceQuotation.Name = "txtPriceQuotation";
+            txtPriceQuotation.Size = new Size(273, 27);
+            txtPriceQuotation.TabIndex = 5;
             // 
-            // txtAddress
+            // txtWarranty
             // 
-            txtAddress.Location = new Point(705, 13);
-            txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(601, 27);
-            txtAddress.TabIndex = 7;
+            txtWarranty.Location = new Point(705, 13);
+            txtWarranty.Name = "txtWarranty";
+            txtWarranty.Size = new Size(601, 27);
+            txtWarranty.TabIndex = 7;
             // 
             // txtName
             // 
@@ -126,14 +119,14 @@
             lbCatagory.TabIndex = 10;
             lbCatagory.Text = "Loại sản phẩm";
             // 
-            // lbCustomerWarranty
+            // lbWarranty
             // 
-            lbCustomerWarranty.AutoSize = true;
-            lbCustomerWarranty.Location = new Point(568, 16);
-            lbCustomerWarranty.Name = "lbCustomerWarranty";
-            lbCustomerWarranty.Size = new Size(102, 20);
-            lbCustomerWarranty.TabIndex = 6;
-            lbCustomerWarranty.Text = "Hạn bảo hành";
+            lbWarranty.AutoSize = true;
+            lbWarranty.Location = new Point(568, 16);
+            lbWarranty.Name = "lbWarranty";
+            lbWarranty.Size = new Size(102, 20);
+            lbWarranty.TabIndex = 6;
+            lbWarranty.Text = "Hạn bảo hành";
             // 
             // lbPriceQuotation
             // 
@@ -153,14 +146,14 @@
             lbName.TabIndex = 2;
             lbName.Text = "Tên sản phẩm";
             // 
-            // lbProductID
+            // lbID
             // 
-            lbProductID.AutoSize = true;
-            lbProductID.Location = new Point(27, 23);
-            lbProductID.Name = "lbProductID";
-            lbProductID.Size = new Size(98, 20);
-            lbProductID.TabIndex = 0;
-            lbProductID.Text = "Mã sản phẩm";
+            lbID.AutoSize = true;
+            lbID.Location = new Point(27, 23);
+            lbID.Name = "lbID";
+            lbID.Size = new Size(98, 20);
+            lbID.TabIndex = 0;
+            lbID.Text = "Mã sản phẩm";
             // 
             // gbAccInfo
             // 
@@ -168,18 +161,18 @@
             gbAccInfo.Controls.Add(btnSave);
             gbAccInfo.Controls.Add(lbCalUnit);
             gbAccInfo.Controls.Add(lbQuantity);
-            gbAccInfo.Controls.Add(textBox1);
+            gbAccInfo.Controls.Add(txtQuantity);
             gbAccInfo.Controls.Add(lbVND);
-            gbAccInfo.Controls.Add(cbRole);
-            gbAccInfo.Controls.Add(txtEmployeeID);
-            gbAccInfo.Controls.Add(txtIden);
-            gbAccInfo.Controls.Add(txtAddress);
+            gbAccInfo.Controls.Add(cbCatagory);
+            gbAccInfo.Controls.Add(txtID);
+            gbAccInfo.Controls.Add(txtPriceQuotation);
+            gbAccInfo.Controls.Add(txtWarranty);
             gbAccInfo.Controls.Add(txtName);
             gbAccInfo.Controls.Add(lbCatagory);
-            gbAccInfo.Controls.Add(lbCustomerWarranty);
+            gbAccInfo.Controls.Add(lbWarranty);
             gbAccInfo.Controls.Add(lbPriceQuotation);
             gbAccInfo.Controls.Add(lbName);
-            gbAccInfo.Controls.Add(lbProductID);
+            gbAccInfo.Controls.Add(lbID);
             gbAccInfo.Location = new Point(0, 5);
             gbAccInfo.Name = "gbAccInfo";
             gbAccInfo.Size = new Size(1312, 155);
@@ -187,48 +180,25 @@
             gbAccInfo.TabStop = false;
             gbAccInfo.Text = "Thông tin";
             // 
-            // btnAdd
+            // btnCancel
             // 
-            btnAdd.Location = new Point(0, 171);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(204, 58);
-            btnAdd.TabIndex = 7;
-            btnAdd.Text = "Thêm sản phẩm";
-            btnAdd.UseVisualStyleBackColor = true;
+            btnCancel.Location = new Point(1189, 115);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(94, 29);
+            btnCancel.TabIndex = 17;
+            btnCancel.Text = "Hủy";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
-            // dgvAccount
+            // btnSave
             // 
-            dgvAccount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAccount.Location = new Point(210, 171);
-            dgvAccount.Name = "dgvAccount";
-            dgvAccount.RowHeadersWidth = 51;
-            dgvAccount.Size = new Size(1102, 344);
-            dgvAccount.TabIndex = 11;
-            // 
-            // lbVND
-            // 
-            lbVND.AutoSize = true;
-            lbVND.Location = new Point(455, 122);
-            lbVND.Name = "lbVND";
-            lbVND.Size = new Size(40, 20);
-            lbVND.TabIndex = 12;
-            lbVND.Text = "VND";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(705, 69);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(165, 27);
-            textBox1.TabIndex = 13;
-            // 
-            // lbQuantity
-            // 
-            lbQuantity.AutoSize = true;
-            lbQuantity.Location = new Point(594, 74);
-            lbQuantity.Name = "lbQuantity";
-            lbQuantity.Size = new Size(69, 20);
-            lbQuantity.TabIndex = 14;
-            lbQuantity.Text = "Số lượng";
+            btnSave.Location = new Point(1087, 117);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(94, 29);
+            btnSave.TabIndex = 16;
+            btnSave.Text = "Lưu";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // lbCalUnit
             // 
@@ -239,23 +209,50 @@
             lbCalUnit.TabIndex = 15;
             lbCalUnit.Text = "_";
             // 
-            // btnSave
+            // lbQuantity
             // 
-            btnSave.Location = new Point(1087, 117);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
-            btnSave.TabIndex = 16;
-            btnSave.Text = "Lưu";
-            btnSave.UseVisualStyleBackColor = true;
+            lbQuantity.AutoSize = true;
+            lbQuantity.Location = new Point(594, 74);
+            lbQuantity.Name = "lbQuantity";
+            lbQuantity.Size = new Size(69, 20);
+            lbQuantity.TabIndex = 14;
+            lbQuantity.Text = "Số lượng";
             // 
-            // btnCancel
+            // txtQuantity
             // 
-            btnCancel.Location = new Point(1189, 115);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 29);
-            btnCancel.TabIndex = 17;
-            btnCancel.Text = "Hủy";
-            btnCancel.UseVisualStyleBackColor = true;
+            txtQuantity.Location = new Point(705, 69);
+            txtQuantity.Name = "txtQuantity";
+            txtQuantity.Size = new Size(165, 27);
+            txtQuantity.TabIndex = 13;
+            // 
+            // lbVND
+            // 
+            lbVND.AutoSize = true;
+            lbVND.Location = new Point(455, 122);
+            lbVND.Name = "lbVND";
+            lbVND.Size = new Size(40, 20);
+            lbVND.TabIndex = 12;
+            lbVND.Text = "VND";
+            // 
+            // btnAdd
+            // 
+            btnAdd.Location = new Point(0, 171);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(204, 58);
+            btnAdd.TabIndex = 7;
+            btnAdd.Text = "Thêm sản phẩm";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // dgvProduct
+            // 
+            dgvProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProduct.Location = new Point(210, 171);
+            dgvProduct.Name = "dgvProduct";
+            dgvProduct.RowHeadersWidth = 51;
+            dgvProduct.Size = new Size(1102, 344);
+            dgvProduct.TabIndex = 11;
+            dgvProduct.CellContentClick += dgvProduct_CellContentClick;
             // 
             // btnDel
             // 
@@ -265,6 +262,7 @@
             btnDel.TabIndex = 12;
             btnDel.Text = "Xóa sản phẩm";
             btnDel.UseVisualStyleBackColor = true;
+            btnDel.Click += btnDel_Click;
             // 
             // frmProduct
             // 
@@ -273,40 +271,39 @@
             ClientSize = new Size(1311, 529);
             Controls.Add(btnDel);
             Controls.Add(btnMod);
-            Controls.Add(cbSearch);
             Controls.Add(btnSearch);
             Controls.Add(gbAccInfo);
             Controls.Add(btnAdd);
-            Controls.Add(dgvAccount);
+            Controls.Add(dgvProduct);
             Name = "frmProduct";
-            Text = "frmProduct";
+            Text = "Sản phẩm";
+            Load += frmProduct_Load;
             gbAccInfo.ResumeLayout(false);
             gbAccInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvAccount).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProduct).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Button btnMod;
-        private ComboBox cbSearch;
         private Button btnSearch;
-        private ComboBox cbRole;
-        private TextBox txtEmployeeID;
-        private TextBox txtIden;
-        private TextBox txtAddress;
+        private ComboBox cbCatagory;
+        private TextBox txtID;
+        private TextBox txtPriceQuotation;
+        private TextBox txtWarranty;
         private TextBox txtName;
         private Label lbCatagory;
-        private Label lbCustomerWarranty;
+        private Label lbWarranty;
         private Label lbPriceQuotation;
         private Label lbName;
-        private Label lbProductID;
+        private Label lbID;
         private GroupBox gbAccInfo;
         private Button btnAdd;
-        private DataGridView dgvAccount;
+        private DataGridView dgvProduct;
         private Label lbVND;
         private Label lbQuantity;
-        private TextBox textBox1;
+        private TextBox txtQuantity;
         private Label lbCalUnit;
         private Button btnCancel;
         private Button btnSave;
