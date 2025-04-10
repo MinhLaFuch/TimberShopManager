@@ -1,6 +1,6 @@
 ﻿namespace timber_shop_manager
 {
-    partial class frmCategory
+    partial class frmManage
     {
         /// <summary>
         /// Required designer variable.

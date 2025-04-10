@@ -201,9 +201,10 @@ namespace timber_shop_manager
         }
         private void btnViewWorkHour_Click(object sender, EventArgs e)
         {
-            frmWorkHour frmWorkHour = new frmWorkHour();
-            frmWorkHour.EmployeeId = txtID.Text;
-            frmWorkHour.ShowDialog();
+            frmAttendance frmAttendance = new frmAttendance();
+            frmAttendance.EmployeeId = txtID.Text;
+            frmAttendance.EmployeeName = txtName.Text;
+            frmAttendance.ShowDialog();
         }
         private void btnSave_Click(object sender, EventArgs e)
         {

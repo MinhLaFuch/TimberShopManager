@@ -13,7 +13,7 @@ namespace timber_shop_manager
 
         private void btnCategory_Click(object sender, EventArgs e)
         {
-            frmCategory frmCategory = new frmCategory();
+            frmManage frmCategory = new frmManage();
             frmCategory.ShowDialog();
         }
 
