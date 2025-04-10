@@ -40,10 +40,10 @@
             lbName = new Label();
             lbID = new Label();
             gbInfo = new GroupBox();
-            txtCalUnit = new TextBox();
+            cbCalUnit = new ComboBox();
+            txtQuantity = new TextBox();
             txtDescription = new RichTextBox();
             lbDescription = new Label();
-            nudQuantity = new NumericUpDown();
             nudWarranty = new NumericUpDown();
             lbMonth = new Label();
             btnCancel = new Button();
@@ -54,7 +54,6 @@
             dgvProduct = new DataGridView();
             btnDel = new Button();
             gbInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)nudQuantity).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudWarranty).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProduct).BeginInit();
             SuspendLayout();
@@ -87,6 +86,7 @@
             cbCatagory.Name = "cbCatagory";
             cbCatagory.Size = new Size(221, 28);
             cbCatagory.TabIndex = 11;
+            cbCatagory.SelectedValueChanged += cbCatagory_SelectedValueChanged;
             // 
             // txtID
             // 
@@ -94,6 +94,7 @@
             txtID.Name = "txtID";
             txtID.Size = new Size(345, 27);
             txtID.TabIndex = 1;
+            txtID.TextChanged += txtID_TextChanged;
             // 
             // txtPriceQuotation
             // 
@@ -101,6 +102,8 @@
             txtPriceQuotation.Name = "txtPriceQuotation";
             txtPriceQuotation.Size = new Size(273, 27);
             txtPriceQuotation.TabIndex = 5;
+            txtPriceQuotation.TextChanged += txtPriceQuotation_TextChanged;
+            txtPriceQuotation.KeyPress += txtPriceQuotation_KeyPress;
             // 
             // txtName
             // 
@@ -108,6 +111,7 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(345, 27);
             txtName.TabIndex = 3;
+            txtName.TextChanged += txtName_TextChanged;
             // 
             // lbCatagory
             // 
@@ -156,10 +160,10 @@
             // 
             // gbInfo
             // 
-            gbInfo.Controls.Add(txtCalUnit);
+            gbInfo.Controls.Add(cbCalUnit);
+            gbInfo.Controls.Add(txtQuantity);
             gbInfo.Controls.Add(txtDescription);
             gbInfo.Controls.Add(lbDescription);
-            gbInfo.Controls.Add(nudQuantity);
             gbInfo.Controls.Add(nudWarranty);
             gbInfo.Controls.Add(lbMonth);
             gbInfo.Controls.Add(btnCancel);
@@ -182,12 +186,20 @@
             gbInfo.TabStop = false;
             gbInfo.Text = "Thông tin";
             // 
-            // txtCalUnit
+            // cbCalUnit
             // 
-            txtCalUnit.Location = new Point(328, 208);
-            txtCalUnit.Name = "txtCalUnit";
-            txtCalUnit.Size = new Size(125, 27);
-            txtCalUnit.TabIndex = 24;
+            cbCalUnit.FormattingEnabled = true;
+            cbCalUnit.Location = new Point(328, 211);
+            cbCalUnit.Name = "cbCalUnit";
+            cbCalUnit.Size = new Size(151, 28);
+            cbCalUnit.TabIndex = 26;
+            // 
+            // txtQuantity
+            // 
+            txtQuantity.Location = new Point(154, 208);
+            txtQuantity.Name = "txtQuantity";
+            txtQuantity.Size = new Size(125, 27);
+            txtQuantity.TabIndex = 25;
             // 
             // txtDescription
             // 
@@ -206,13 +218,6 @@
             lbDescription.Size = new Size(48, 20);
             lbDescription.TabIndex = 21;
             lbDescription.Text = "Mô tả";
-            // 
-            // nudQuantity
-            // 
-            nudQuantity.Location = new Point(154, 209);
-            nudQuantity.Name = "nudQuantity";
-            nudQuantity.Size = new Size(150, 27);
-            nudQuantity.TabIndex = 20;
             // 
             // nudWarranty
             // 
@@ -314,7 +319,6 @@
             Load += frmProduct_Load;
             gbInfo.ResumeLayout(false);
             gbInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)nudQuantity).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudWarranty).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvProduct).EndInit();
             ResumeLayout(false);
@@ -341,11 +345,11 @@
         private Button btnCancel;
         private Button btnSave;
         private Button btnDel;
-        private NumericUpDown nudQuantity;
         private NumericUpDown nudWarranty;
         private Label lbMonth;
         private RichTextBox txtDescription;
         private Label lbDescription;
-        private TextBox txtCalUnit;
+        private TextBox txtQuantity;
+        private ComboBox cbCalUnit;
     }
 }

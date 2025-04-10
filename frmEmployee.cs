@@ -50,10 +50,10 @@ namespace timber_shop_manager
             cbRole.SelectedIndex = -1;
             dtpDOB.Value = DateTime.Now;
         }
-        private void btnEnabler(bool feat_btn, bool init_btn)
+        private void btnEnabler(bool featBtn, bool initBtn)
         {
-            btnDel.Enabled = btnMod.Enabled = btnViewWorkHour.Enabled = feat_btn;
-            btnAdd.Enabled = btnSearch.Enabled = init_btn;
+            btnDel.Enabled = btnMod.Enabled = btnViewWorkHour.Enabled = featBtn;
+            btnAdd.Enabled = btnSearch.Enabled = initBtn;
         }
         private string idGenerator()
         {

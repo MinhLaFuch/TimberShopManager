@@ -47,5 +47,11 @@ namespace timber_shop_manager
             frmSupplier frmSupplier = new frmSupplier();
             frmSupplier.ShowDialog();
         }
+
+        private void btnCatagory_Click(object sender, EventArgs e)
+        {
+            frmCatagory frmCatagory = new frmCatagory();
+            frmCatagory.ShowDialog();
+        }
     }
 }

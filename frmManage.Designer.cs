@@ -33,6 +33,7 @@
             btnCustomer = new Button();
             btnAccount = new Button();
             btnEmployee = new Button();
+            btnCatagory = new Button();
             SuspendLayout();
             // 
             // btnProduct
@@ -89,11 +90,23 @@
             btnEmployee.UseVisualStyleBackColor = true;
             btnEmployee.Click += btnEmployee_Click;
             // 
+            // btnCatagory
+            // 
+            btnCatagory.Location = new Point(16, 436);
+            btnCatagory.Margin = new Padding(3, 4, 3, 4);
+            btnCatagory.Name = "btnCatagory";
+            btnCatagory.Size = new Size(270, 77);
+            btnCatagory.TabIndex = 5;
+            btnCatagory.Text = "Danh mục";
+            btnCatagory.UseVisualStyleBackColor = true;
+            btnCatagory.Click += btnCatagory_Click;
+            // 
             // frmManage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(298, 453);
+            ClientSize = new Size(298, 540);
+            Controls.Add(btnCatagory);
             Controls.Add(btnEmployee);
             Controls.Add(btnAccount);
             Controls.Add(btnCustomer);
@@ -113,5 +126,6 @@
         private Button btnCustomer;
         private Button btnAccount;
         private Button btnEmployee;
+        private Button btnCatagory;
     }
 }
