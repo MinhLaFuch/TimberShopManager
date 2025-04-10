@@ -30,9 +30,8 @@ namespace timber_shop_manager
             dgvEmployee.DataSource = loadData();
             btnEnabler(false, true);
             gbAccInfo.Enabled = false;
-            searchEventEnable(false);
-            btnAdd.Enabled = true;
-            btnSearch.Enabled = true;
+            searchEventEnabler(false);
+            btnEnabler(false, true);
         }
         private DataTable loadData()
         {
@@ -72,7 +71,7 @@ namespace timber_shop_manager
             }
             return "E" + newId;
         }
-        private void searchEventEnable(bool b)
+        private void searchEventEnabler(bool b)
         {
             if (b)
             {
@@ -152,22 +151,6 @@ namespace timber_shop_manager
                 dgvEmployee.DataSource = dv;
             }
         }
-        public static void CheckInputIsDigit(KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true; // Ngừng sự kiện nếu ký tự không hợp lệ
-            }
-        }
-        public static void CheckInputIsLetter(KeyPressEventArgs e)
-        {
-            char c = e.KeyChar;
-
-            if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) && c != (char)8)
-            {
-                e.Handled = true;
-            }
-        }
         #endregion
         #region Event
         #region Form Load
@@ -183,14 +166,12 @@ namespace timber_shop_manager
             clearTextBox();
             txtName.Focus();
             btnEnabler(false, false);
-            btnAdd.Enabled = false;
-            btnSearch.Enabled = false;
         }
         private void btnDel_Click(object sender, EventArgs e)
         {
             string query = "DELETE FROM Employee WHERE EmployeeId = @ID";
             // Get a confirmation from the user
-            DialogResult confirmation = MessageBox.Show("Are you sure you want to delete this employee?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn xóa nhân viên này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirmation == DialogResult.Yes)
             {
                 dbHelper.ExecuteNonQuery(query, new SqlParameter("@ID", txtID.Text));
@@ -249,8 +230,6 @@ namespace timber_shop_manager
             dtpDOB.Enabled = false;
             cbRole.Focus();
             btnEnabler(false, false);
-            btnAdd.Enabled = false;
-            btnSearch.Enabled = false;
         }
         private void dgvEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -279,29 +258,29 @@ namespace timber_shop_manager
             btnSave.Enabled = false;
             txtID.Focus();
             btnEnabler(false, false);
-            searchEventEnable(true);
+            searchEventEnabler(true);
         }
 
         #endregion
         #region Key Press
         private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            frmEmployee.CheckInputIsDigit(e);
+            Program.CheckInputIsDigit(e);
         }
         private void txtSalary_KeyPress(object sender, KeyPressEventArgs e)
         {
-            frmEmployee.CheckInputIsDigit(e);
+            Program.CheckInputIsDigit(e);
         }
         private void txtName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            frmEmployee.CheckInputIsLetter(e);
+            Program.CheckInputIsLetter(e);
         }
         private void txtIden_KeyPress(object sender, KeyPressEventArgs e)
         {
-            frmEmployee.CheckInputIsDigit(e);
+            Program.CheckInputIsDigit(e);
         }
         #endregion
-        #region Search Text Changed
+        #region Text Changed
         private void txtID_TextChanged(object sender, EventArgs e)
         {
             suggestEmployee();

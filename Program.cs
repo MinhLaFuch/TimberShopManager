@@ -2,6 +2,22 @@
 {
     internal static class Program
     {
+        public static void CheckInputIsDigit(KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true; // Ngừng sự kiện nếu ký tự không hợp lệ
+            }
+        }
+        public static void CheckInputIsLetter(KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+
+            if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) && c != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
         public static string GenerateNextCode(string previousCode, string prefix, int codeLength)
         {
             // Nếu mã trước là null, tạo mã đầu tiên bắt đầu từ 1
@@ -23,10 +39,10 @@
             return nextCode;
         }
 
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
-        [STAThread]
+            /// <summary>
+            ///  The main entry point for the application.
+            /// </summary>
+            [STAThread]
         static void Main()
         {
             // To customize application configuration such as set high DPI settings or default font,

@@ -28,255 +28,268 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnCancel = new Button();
-            btnViewWorkHour = new Button();
-            btnLock = new Button();
-            btnSearch = new Button();
+            dgvSupplier = new DataGridView();
             btnAdd = new Button();
-            btnSave = new Button();
-            cbRole = new ComboBox();
-            dtpDOB = new DateTimePicker();
-            txtIden = new TextBox();
-            txtAddress = new TextBox();
-            txtName = new TextBox();
-            lbEmployeeDOB = new Label();
-            lbEmployeeAddress = new Label();
-            lbEmployeeIden = new Label();
-            lbSupllierName = new Label();
-            lbSupplierID = new Label();
-            gbAccInfo = new GroupBox();
+            btnDel = new Button();
+            btnMod = new Button();
+            btnSearch = new Button();
+            gbInfo = new GroupBox();
+            lbID = new Label();
             txtID = new TextBox();
-            lbEmployeeRole = new Label();
-            dgvEmployee = new DataGridView();
-            gbAccInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
+            txtPhoneNumber = new TextBox();
+            lbPhoneNumber = new Label();
+            btnSave = new Button();
+            txtName = new TextBox();
+            btnCancel = new Button();
+            lbName = new Label();
+            lbAddress = new Label();
+            txtWebsite = new TextBox();
+            txtAddress = new TextBox();
+            lbEmail = new Label();
+            lbWebsite = new Label();
+            txtEmail = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)dgvSupplier).BeginInit();
+            gbInfo.SuspendLayout();
             SuspendLayout();
             // 
-            // btnCancel
+            // dgvSupplier
             // 
-            btnCancel.Location = new Point(1173, 122);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 29);
-            btnCancel.TabIndex = 13;
-            btnCancel.Text = "Hủy";
-            btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnViewWorkHour
-            // 
-            btnViewWorkHour.Location = new Point(21, 338);
-            btnViewWorkHour.Name = "btnViewWorkHour";
-            btnViewWorkHour.Size = new Size(188, 81);
-            btnViewWorkHour.TabIndex = 15;
-            btnViewWorkHour.Text = "Xem chấm công";
-            btnViewWorkHour.UseVisualStyleBackColor = true;
-            // 
-            // btnLock
-            // 
-            btnLock.Location = new Point(21, 251);
-            btnLock.Name = "btnLock";
-            btnLock.Size = new Size(188, 81);
-            btnLock.TabIndex = 13;
-            btnLock.Text = "Xóa nhân viên";
-            btnLock.UseVisualStyleBackColor = true;
-            // 
-            // btnSearch
-            // 
-            btnSearch.Location = new Point(21, 427);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(188, 95);
-            btnSearch.TabIndex = 14;
-            btnSearch.Text = "Tìm kiếm";
-            btnSearch.UseVisualStyleBackColor = true;
+            dgvSupplier.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSupplier.Location = new Point(204, 187);
+            dgvSupplier.Name = "dgvSupplier";
+            dgvSupplier.RowHeadersWidth = 51;
+            dgvSupplier.Size = new Size(806, 340);
+            dgvSupplier.TabIndex = 0;
+            dgvSupplier.CellContentClick += dgvSupplier_CellContentClick;
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(21, 164);
+            btnAdd.Location = new Point(2, 187);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(188, 81);
-            btnAdd.TabIndex = 12;
-            btnAdd.Text = "Thêm nhân viên mới";
+            btnAdd.Size = new Size(197, 55);
+            btnAdd.TabIndex = 1;
+            btnAdd.Text = " Thêm nhà cung cấp";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
-            // btnSave
+            // btnDel
             // 
-            btnSave.Location = new Point(1073, 122);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
-            btnSave.TabIndex = 12;
-            btnSave.Text = "Lưu";
-            btnSave.UseVisualStyleBackColor = true;
+            btnDel.Location = new Point(1, 260);
+            btnDel.Name = "btnDel";
+            btnDel.Size = new Size(197, 29);
+            btnDel.TabIndex = 2;
+            btnDel.Text = "Xóa nhà cung cấp";
+            btnDel.UseVisualStyleBackColor = true;
+            btnDel.Click += btnDel_Click;
             // 
-            // cbRole
+            // btnMod
             // 
-            cbRole.FormattingEnabled = true;
-            cbRole.Location = new Point(1085, 66);
-            cbRole.Name = "cbRole";
-            cbRole.Size = new Size(182, 28);
-            cbRole.TabIndex = 11;
+            btnMod.Location = new Point(1, 308);
+            btnMod.Name = "btnMod";
+            btnMod.Size = new Size(197, 29);
+            btnMod.TabIndex = 3;
+            btnMod.Text = "Sửa nhà cung cấp";
+            btnMod.UseVisualStyleBackColor = true;
+            btnMod.Click += btnMod_Click;
             // 
-            // dtpDOB
+            // btnSearch
             // 
-            dtpDOB.Location = new Point(705, 67);
-            dtpDOB.Name = "dtpDOB";
-            dtpDOB.Size = new Size(250, 27);
-            dtpDOB.TabIndex = 9;
+            btnSearch.Location = new Point(2, 386);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(197, 55);
+            btnSearch.TabIndex = 4;
+            btnSearch.Text = "Tìm kiếm";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
-            // txtIden
+            // gbInfo
             // 
-            txtIden.Location = new Point(154, 117);
-            txtIden.Name = "txtIden";
-            txtIden.Size = new Size(345, 27);
-            txtIden.TabIndex = 5;
+            gbInfo.Controls.Add(lbID);
+            gbInfo.Controls.Add(txtID);
+            gbInfo.Controls.Add(txtPhoneNumber);
+            gbInfo.Controls.Add(lbPhoneNumber);
+            gbInfo.Controls.Add(btnSave);
+            gbInfo.Controls.Add(txtName);
+            gbInfo.Controls.Add(btnCancel);
+            gbInfo.Controls.Add(lbName);
+            gbInfo.Controls.Add(lbAddress);
+            gbInfo.Controls.Add(txtWebsite);
+            gbInfo.Controls.Add(txtAddress);
+            gbInfo.Controls.Add(lbEmail);
+            gbInfo.Controls.Add(lbWebsite);
+            gbInfo.Controls.Add(txtEmail);
+            gbInfo.Location = new Point(2, 3);
+            gbInfo.Name = "gbInfo";
+            gbInfo.Size = new Size(1008, 189);
+            gbInfo.TabIndex = 5;
+            gbInfo.TabStop = false;
+            gbInfo.Text = "Thông tin nhà cung cấp";
             // 
-            // txtAddress
+            // lbID
             // 
-            txtAddress.Location = new Point(705, 13);
-            txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(562, 27);
-            txtAddress.TabIndex = 7;
-            // 
-            // txtName
-            // 
-            txtName.Location = new Point(154, 69);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(345, 27);
-            txtName.TabIndex = 3;
-            // 
-            // lbEmployeeDOB
-            // 
-            lbEmployeeDOB.AutoSize = true;
-            lbEmployeeDOB.Location = new Point(568, 67);
-            lbEmployeeDOB.Name = "lbEmployeeDOB";
-            lbEmployeeDOB.Size = new Size(74, 20);
-            lbEmployeeDOB.TabIndex = 8;
-            lbEmployeeDOB.Text = "Ngày sinh";
-            // 
-            // lbEmployeeAddress
-            // 
-            lbEmployeeAddress.AutoSize = true;
-            lbEmployeeAddress.Location = new Point(581, 16);
-            lbEmployeeAddress.Name = "lbEmployeeAddress";
-            lbEmployeeAddress.Size = new Size(46, 20);
-            lbEmployeeAddress.TabIndex = 6;
-            lbEmployeeAddress.Text = "Nơi ở";
-            // 
-            // lbEmployeeIden
-            // 
-            lbEmployeeIden.AutoSize = true;
-            lbEmployeeIden.Location = new Point(27, 117);
-            lbEmployeeIden.Name = "lbEmployeeIden";
-            lbEmployeeIden.Size = new Size(68, 20);
-            lbEmployeeIden.TabIndex = 4;
-            lbEmployeeIden.Text = "Số CCCD";
-            // 
-            // lbSupllierName
-            // 
-            lbSupllierName.AutoSize = true;
-            lbSupllierName.Location = new Point(27, 72);
-            lbSupllierName.Name = "lbSupllierName";
-            lbSupllierName.Size = new Size(121, 20);
-            lbSupllierName.TabIndex = 2;
-            lbSupllierName.Text = "Họ tên nhân viên";
-            // 
-            // lbSupplierID
-            // 
-            lbSupplierID.AutoSize = true;
-            lbSupplierID.Location = new Point(27, 23);
-            lbSupplierID.Name = "lbSupplierID";
-            lbSupplierID.Size = new Size(122, 20);
-            lbSupplierID.TabIndex = 0;
-            lbSupplierID.Text = "Mã nhà cung cấp";
-            // 
-            // gbAccInfo
-            // 
-            gbAccInfo.Controls.Add(btnCancel);
-            gbAccInfo.Controls.Add(btnSave);
-            gbAccInfo.Controls.Add(cbRole);
-            gbAccInfo.Controls.Add(dtpDOB);
-            gbAccInfo.Controls.Add(txtID);
-            gbAccInfo.Controls.Add(txtIden);
-            gbAccInfo.Controls.Add(txtAddress);
-            gbAccInfo.Controls.Add(txtName);
-            gbAccInfo.Controls.Add(lbEmployeeRole);
-            gbAccInfo.Controls.Add(lbEmployeeDOB);
-            gbAccInfo.Controls.Add(lbEmployeeAddress);
-            gbAccInfo.Controls.Add(lbEmployeeIden);
-            gbAccInfo.Controls.Add(lbSupllierName);
-            gbAccInfo.Controls.Add(lbSupplierID);
-            gbAccInfo.Location = new Point(12, 1);
-            gbAccInfo.Name = "gbAccInfo";
-            gbAccInfo.Size = new Size(1282, 157);
-            gbAccInfo.TabIndex = 11;
-            gbAccInfo.TabStop = false;
-            gbAccInfo.Text = "Thông tin";
+            lbID.AutoSize = true;
+            lbID.Location = new Point(32, 33);
+            lbID.Name = "lbID";
+            lbID.Size = new Size(122, 20);
+            lbID.TabIndex = 6;
+            lbID.Text = "Mã nhà cung cấp";
             // 
             // txtID
             // 
-            txtID.Location = new Point(154, 16);
+            txtID.Location = new Point(150, 33);
             txtID.Name = "txtID";
-            txtID.Size = new Size(345, 27);
-            txtID.TabIndex = 1;
+            txtID.Size = new Size(125, 27);
+            txtID.TabIndex = 7;
+            txtID.TextChanged += txtID_TextChanged;
             // 
-            // lbEmployeeRole
+            // txtPhoneNumber
             // 
-            lbEmployeeRole.AutoSize = true;
-            lbEmployeeRole.Location = new Point(989, 67);
-            lbEmployeeRole.Name = "lbEmployeeRole";
-            lbEmployeeRole.Size = new Size(61, 20);
-            lbEmployeeRole.TabIndex = 10;
-            lbEmployeeRole.Text = "Chức vụ";
+            txtPhoneNumber.Location = new Point(150, 141);
+            txtPhoneNumber.Name = "txtPhoneNumber";
+            txtPhoneNumber.Size = new Size(125, 27);
+            txtPhoneNumber.TabIndex = 19;
+            txtPhoneNumber.TextChanged += txtPhoneNumber_TextChanged;
+            txtPhoneNumber.KeyPress += txtPhoneNumber_KeyPress;
             // 
-            // dgvEmployee
+            // lbPhoneNumber
             // 
-            dgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmployee.Location = new Point(219, 164);
-            dgvEmployee.Name = "dgvEmployee";
-            dgvEmployee.RowHeadersWidth = 51;
-            dgvEmployee.Size = new Size(1075, 358);
-            dgvEmployee.TabIndex = 10;
+            lbPhoneNumber.AutoSize = true;
+            lbPhoneNumber.Location = new Point(32, 155);
+            lbPhoneNumber.Name = "lbPhoneNumber";
+            lbPhoneNumber.Size = new Size(97, 20);
+            lbPhoneNumber.TabIndex = 18;
+            lbPhoneNumber.Text = "Số điện thoại";
+            // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(828, 158);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(76, 25);
+            btnSave.TabIndex = 9;
+            btnSave.Text = "Lưu";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
+            // txtName
+            // 
+            txtName.Location = new Point(141, 84);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(125, 27);
+            txtName.TabIndex = 17;
+            txtName.TextChanged += txtName_TextChanged;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Location = new Point(910, 158);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(76, 25);
+            btnCancel.TabIndex = 8;
+            btnCancel.Text = "Hủy";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // lbName
+            // 
+            lbName.AutoSize = true;
+            lbName.Location = new Point(-1, 91);
+            lbName.Name = "lbName";
+            lbName.Size = new Size(124, 20);
+            lbName.TabIndex = 16;
+            lbName.Text = "Tên nhà cung cấp";
+            // 
+            // lbAddress
+            // 
+            lbAddress.AutoSize = true;
+            lbAddress.Location = new Point(420, 33);
+            lbAddress.Name = "lbAddress";
+            lbAddress.Size = new Size(55, 20);
+            lbAddress.TabIndex = 10;
+            lbAddress.Text = "Địa chỉ";
+            // 
+            // txtWebsite
+            // 
+            txtWebsite.Location = new Point(543, 134);
+            txtWebsite.Name = "txtWebsite";
+            txtWebsite.Size = new Size(125, 27);
+            txtWebsite.TabIndex = 15;
+            txtWebsite.TextChanged += txtWebsite_TextChanged;
+            // 
+            // txtAddress
+            // 
+            txtAddress.Location = new Point(543, 26);
+            txtAddress.Name = "txtAddress";
+            txtAddress.Size = new Size(125, 27);
+            txtAddress.TabIndex = 11;
+            txtAddress.TextChanged += txtAddress_TextChanged;
+            // 
+            // lbEmail
+            // 
+            lbEmail.AutoSize = true;
+            lbEmail.Location = new Point(429, 84);
+            lbEmail.Name = "lbEmail";
+            lbEmail.Size = new Size(46, 20);
+            lbEmail.TabIndex = 14;
+            lbEmail.Text = "Email";
+            // 
+            // lbWebsite
+            // 
+            lbWebsite.AutoSize = true;
+            lbWebsite.Location = new Point(420, 141);
+            lbWebsite.Name = "lbWebsite";
+            lbWebsite.Size = new Size(62, 20);
+            lbWebsite.TabIndex = 12;
+            lbWebsite.Text = "Website";
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(543, 72);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(125, 27);
+            txtEmail.TabIndex = 13;
+            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // frmSupplier
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Window;
-            ClientSize = new Size(1315, 522);
-            Controls.Add(btnViewWorkHour);
-            Controls.Add(btnLock);
+            ClientSize = new Size(1012, 522);
+            Controls.Add(gbInfo);
             Controls.Add(btnSearch);
+            Controls.Add(btnMod);
+            Controls.Add(btnDel);
             Controls.Add(btnAdd);
-            Controls.Add(gbAccInfo);
-            Controls.Add(dgvEmployee);
+            Controls.Add(dgvSupplier);
             Name = "frmSupplier";
             Text = "frmSupplier";
             Load += frmSupplier_Load;
-            gbAccInfo.ResumeLayout(false);
-            gbAccInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvEmployee).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSupplier).EndInit();
+            gbInfo.ResumeLayout(false);
+            gbInfo.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button btnCancel;
-        private Button btnViewWorkHour;
-        private Button btnLock;
-        private Button btnSearch;
+        private DataGridView dgvSupplier;
         private Button btnAdd;
-        private Button btnSave;
-        private ComboBox cbRole;
-        private DateTimePicker dtpDOB;
-        private TextBox txtIden;
-        private TextBox txtAddress;
-        private TextBox txtName;
-        private Label lbEmployeeDOB;
-        private Label lbEmployeeAddress;
-        private Label lbEmployeeIden;
-        private Label lbSupllierName;
-        private Label lbSupplierID;
-        private GroupBox gbAccInfo;
+        private Button btnDel;
+        private Button btnMod;
+        private Button btnSearch;
+        private GroupBox gbInfo;
+        private Label lbID;
         private TextBox txtID;
-        private Label lbEmployeeRole;
-        private DataGridView dgvEmployee;
+        private Button btnCancel;
+        private Button btnSave;
+        private TextBox txtAddress;
+        private Label lbAddress;
+        private TextBox txtEmail;
+        private Label lbWebsite;
+        private TextBox txtWebsite;
+        private Label lbEmail;
+        private TextBox txtName;
+        private Label lbName;
+        private TextBox txtPhoneNumber;
+        private Label lbPhoneNumber;
     }
 }
