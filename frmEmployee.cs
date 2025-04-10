@@ -25,17 +25,21 @@ namespace timber_shop_manager
         #region Support Method
         private void loadForm()
         {
+            txtID.ReadOnly = true;
             clearTextBox();
-            loadData();
-            btnEnabler(false);
+            dgvEmployee.DataSource = loadData();
+            btnEnabler(false, true);
             gbAccInfo.Enabled = false;
+            searchEventEnable(false);
+            btnAdd.Enabled = true;
+            btnSearch.Enabled = true;
         }
-        private void loadData()
+        private DataTable loadData()
         {
             // Load data from database to DataGridView
             string query = "SELECT * FROM Employee";
             DataTable dt = dbHelper.ExecuteQuery(query);
-            dgvEmployee.DataSource = dt;
+            return dt;
         }
         private void clearTextBox()
         {
@@ -48,11 +52,10 @@ namespace timber_shop_manager
             cbRole.SelectedIndex = -1;
             dtpDOB.Value = DateTime.Now;
         }
-        private void btnEnabler(bool b)
+        private void btnEnabler(bool feat_btn, bool init_btn)
         {
-            btnDel.Enabled = b;
-            btnViewWorkHour.Enabled = b;
-            btnMod.Enabled = b;
+            btnDel.Enabled = btnMod.Enabled = btnViewWorkHour.Enabled = feat_btn;
+            btnAdd.Enabled = btnSearch.Enabled = init_btn;
         }
         private string idGenerator()
         {
@@ -68,6 +71,86 @@ namespace timber_shop_manager
                 newId = newId.Substring(newId.Length - 4, 4);
             }
             return "E" + newId;
+        }
+        private void searchEventEnable(bool b)
+        {
+            if (b)
+            {
+                txtID.TextChanged += txtID_TextChanged;
+                txtName.TextChanged += txtName_TextChanged;
+                txtIden.TextChanged += txtIden_TextChanged;
+                txtPhoneNumber.TextChanged += txtPhoneNumber_TextChanged;
+                txtAddress.TextChanged += txtAddress_TextChanged;
+                dtpDOB.ValueChanged += dtpDOB_ValueChanged;
+                cbRole.SelectedIndexChanged += cbRole_SelectedIndexChanged;
+                txtSalary.TextChanged += txtSalary_TextChanged;
+            } else
+            {
+                txtID.TextChanged -= txtID_TextChanged;
+                txtName.TextChanged -= txtName_TextChanged;
+                txtIden.TextChanged -= txtIden_TextChanged;
+                txtPhoneNumber.TextChanged -= txtPhoneNumber_TextChanged;
+                txtAddress.TextChanged -= txtAddress_TextChanged;
+                dtpDOB.ValueChanged -= dtpDOB_ValueChanged;
+                cbRole.SelectedIndexChanged -= cbRole_SelectedIndexChanged;
+                txtSalary.TextChanged -= txtSalary_TextChanged;
+            }
+        }
+        // Search incomplete
+        private void suggestEmployee()
+        {
+            // Kiểm tra xem có TextBox nào trống không
+            bool isTextBoxesEmpty = string.IsNullOrEmpty(txtID.Text)
+                                    && string.IsNullOrEmpty(txtName.Text)
+                                    && string.IsNullOrEmpty(txtIden.Text)
+                                    && string.IsNullOrEmpty(txtPhoneNumber.Text)
+                                    && string.IsNullOrEmpty(txtAddress.Text)
+                                    && string.IsNullOrEmpty(cbRole.Text)
+                                    && string.IsNullOrEmpty(txtSalary.Text);
+
+            // Chỉ search khi có ít nhất một TextBox có dữ liệu
+            if (!isTextBoxesEmpty)
+            {
+                // Tạo DataView để lọc dữ liệu từ DataGridView
+                DataView dv = new DataView();
+
+                // Tạo một danh sách điều kiện lọc dựa trên các TextBox có dữ liệu
+                List<string> filters = new List<string>();
+
+                if (!string.IsNullOrEmpty(txtID.Text))
+                {
+                    filters.Add($"EmployeeID LIKE '%{txtID.Text}%'");
+                }
+                if (!string.IsNullOrEmpty(txtName.Text))
+                {
+                    filters.Add($"Name LIKE '%{txtName.Text}%'");
+                }
+                if (!string.IsNullOrEmpty(txtIden.Text))
+                {
+                    filters.Add($"IdentificationNumber LIKE '%{txtIden.Text}%'");
+                }
+                if (!string.IsNullOrEmpty(txtPhoneNumber.Text))
+                {
+                    filters.Add($"Name LIKE '%{txtPhoneNumber.Text}%'");
+                }
+                if (!string.IsNullOrEmpty(txtAddress.Text))
+                {
+                    filters.Add($"Address LIKE '%{txtAddress.Text}%'");
+                }
+                if (!string.IsNullOrEmpty(cbRole.Text))
+                {
+                    filters.Add($"Role LIKE '%{cbRole.Text}%'");
+                }
+
+                // Nếu có điều kiện lọc, kết nối chúng bằng OR
+                if (filters.Count > 0)
+                {
+                    dv.RowFilter = string.Join(" OR ", filters);
+                }
+
+                // Gán DataSource cho DataGridView
+                dgvEmployee.DataSource = dv;
+            }
         }
         public static void CheckInputIsDigit(KeyPressEventArgs e)
         {
@@ -99,7 +182,9 @@ namespace timber_shop_manager
             gbAccInfo.Enabled = true;
             clearTextBox();
             txtName.Focus();
-            btnEnabler(false);
+            btnEnabler(false, false);
+            btnAdd.Enabled = false;
+            btnSearch.Enabled = false;
         }
         private void btnDel_Click(object sender, EventArgs e)
         {
@@ -127,7 +212,7 @@ namespace timber_shop_manager
             if (isAdding)
             {
                 query = "INSERT INTO Employee (EmployeeId, Name, IdentificationNumber, Address, DateOfBirth, Salary, Role, PhoneNumber)" +
-                    "VALUES(@id, @name, @iden, @address, @dob, @salary, @role, @phoneNumber";
+                    "VALUES (@id, @name, @iden, @address, @dob, @salary, @role, @phoneNumber)";
                 dbHelper.ExecuteNonQuery(query, new SqlParameter("@id", idGenerator()),
                     new SqlParameter("@name", txtName.Text),
                     new SqlParameter("@iden", txtIden.Text),
@@ -141,6 +226,7 @@ namespace timber_shop_manager
             {
                 query = "UPDATE Employee SET Salary = @salary, Role = @role WHERE EmployeeId = @id";
                 dbHelper.ExecuteNonQuery(query,
+                    new SqlParameter("@id", txtID.Text),
                     new SqlParameter("@salary", txtSalary.Text),
                     new SqlParameter("@role", cbRole.SelectedItem.ToString()));
             }
@@ -161,7 +247,9 @@ namespace timber_shop_manager
             txtPhoneNumber.Enabled = false;
             dtpDOB.Enabled = false;
             cbRole.Focus();
-            btnEnabler(false);
+            btnEnabler(false, false);
+            btnAdd.Enabled = false;
+            btnSearch.Enabled = false;
         }
         private void dgvEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -180,15 +268,17 @@ namespace timber_shop_manager
                 txtPhoneNumber.Text = dgvEmployee.Rows[rowIndex].Cells["PhoneNumber"].Value.ToString();
 
                 // Enable button
-                btnEnabler(true);
+                btnEnabler(true, true);
             }
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
             gbAccInfo.Enabled = true;
             txtID.ReadOnly = false;
+            btnSave.Enabled = false;
             txtID.Focus();
-            btnEnabler(false);
+            btnEnabler(false, false);
+            searchEventEnable(true);
         }
 
         #endregion
@@ -210,8 +300,40 @@ namespace timber_shop_manager
             frmEmployee.CheckInputIsDigit(e);
         }
         #endregion
+        #region Search Text Changed
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+            suggestEmployee();
+        }
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            suggestEmployee();
+        }
+        private void txtIden_TextChanged(object sender, EventArgs e)
+        {
+            suggestEmployee();
+        }
+        private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
+        {
+            suggestEmployee();
+        }
+        private void txtAddress_TextChanged(object sender, EventArgs e)
+        {
+            suggestEmployee();
+        }
+        private void dtpDOB_ValueChanged(object sender, EventArgs e)
+        {
+            suggestEmployee();
+        }
+        private void cbRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            suggestEmployee();
+        }
+        private void txtSalary_TextChanged(object sender, EventArgs e)
+        {
+            suggestEmployee();
+        }
         #endregion
-
-
+        #endregion
     }
 }

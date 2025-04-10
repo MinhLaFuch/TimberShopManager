@@ -111,6 +111,7 @@
             txtSalary.Name = "txtSalary";
             txtSalary.Size = new Size(187, 27);
             txtSalary.TabIndex = 15;
+            txtSalary.TextChanged += txtSalary_TextChanged;
             txtSalary.KeyPress += txtSalary_KeyPress;
             // 
             // lbSalary
@@ -128,6 +129,7 @@
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(345, 27);
             txtPhoneNumber.TabIndex = 7;
+            txtPhoneNumber.TextChanged += txtPhoneNumber_TextChanged;
             txtPhoneNumber.KeyPress += txtPhoneNumber_KeyPress;
             // 
             // lbPhoneNumber
@@ -168,6 +170,7 @@
             cbRole.Name = "cbRole";
             cbRole.Size = new Size(250, 28);
             cbRole.TabIndex = 13;
+            cbRole.SelectedIndexChanged += cbRole_SelectedIndexChanged;
             // 
             // dtpDOB
             // 
@@ -175,6 +178,7 @@
             dtpDOB.Name = "dtpDOB";
             dtpDOB.Size = new Size(250, 27);
             dtpDOB.TabIndex = 11;
+            dtpDOB.ValueChanged += dtpDOB_ValueChanged;
             // 
             // txtID
             // 
@@ -183,6 +187,7 @@
             txtID.ReadOnly = true;
             txtID.Size = new Size(345, 27);
             txtID.TabIndex = 1;
+            txtID.TextChanged += txtID_TextChanged;
             // 
             // txtIden
             // 
@@ -190,6 +195,7 @@
             txtIden.Name = "txtIden";
             txtIden.Size = new Size(345, 27);
             txtIden.TabIndex = 5;
+            txtIden.TextChanged += txtIden_TextChanged;
             txtIden.KeyPress += txtIden_KeyPress;
             // 
             // txtAddress
@@ -198,6 +204,7 @@
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(562, 27);
             txtAddress.TabIndex = 9;
+            txtAddress.TextChanged += txtAddress_TextChanged;
             // 
             // txtName
             // 
@@ -205,6 +212,7 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(345, 27);
             txtName.TabIndex = 3;
+            txtName.TextChanged += txtName_TextChanged;
             txtName.KeyPress += txtName_KeyPress;
             // 
             // lbEmployeeRole
