@@ -33,7 +33,7 @@ namespace timber_shop_manager
         }
         private DataTable loadData()
         {
-            string sql = "SELECT * FROM Suppliers";
+            string sql = "SELECT * FROM Supplier";
             DataTable dt = dbHelper.ExecuteQuery(sql);
             return dt;
         }
@@ -113,7 +113,6 @@ namespace timber_shop_manager
         private void btnMod_Click(object sender, EventArgs e)
         {
             gbInfo.Enabled = true;
-            clearTextBox();
             txtName.Focus();
             btnEnabler(false, false);
         }
@@ -173,7 +172,7 @@ namespace timber_shop_manager
                 // Fill all info to groupbox
                 txtID.Text = row.Cells["SupplierID"].Value?.ToString();
                 txtName.Text = row.Cells["Name"].Value?.ToString();
-                txtPhoneNumber.Text = row.Cells["PhoneNumber"].Value?.ToString();
+                txtPhoneNumber.Text = row.Cells["ContactNumber"].Value?.ToString();
                 txtAddress.Text = row.Cells["Address"].Value?.ToString();
                 txtEmail.Text = row.Cells["Email"].Value?.ToString();
                 txtWebsite.Text = row.Cells["Website"].Value?.ToString();
