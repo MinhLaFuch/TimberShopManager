@@ -76,7 +76,7 @@ namespace timber_shop_manager.objects
 
         public static Role GetPermission(string username)
         {
-            string query = "SELECT Role FROM Employee WHERE Username = @username";
+            string query = "SELECT e.Role FROM Employee e JOIN Account a ON a.EmployeeId = e.EmployeeId WHERE a.Username = @username";
             string role = Convert.ToString(dbHelper.ExecuteScalar(query, new SqlParameter("@username", username)));
 
             return ConvertRole(role);

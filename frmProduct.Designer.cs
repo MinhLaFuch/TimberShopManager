@@ -39,21 +39,21 @@
             lbPriceQuotation = new Label();
             lbName = new Label();
             lbID = new Label();
-            gbAccInfo = new GroupBox();
+            gbInfo = new GroupBox();
+            txtCalUnit = new TextBox();
+            txtDescription = new RichTextBox();
+            lbDescription = new Label();
             nudQuantity = new NumericUpDown();
             nudWarranty = new NumericUpDown();
             lbMonth = new Label();
             btnCancel = new Button();
             btnSave = new Button();
-            lbCalUnit = new Label();
             lbQuantity = new Label();
             lbVND = new Label();
             btnAdd = new Button();
             dgvProduct = new DataGridView();
             btnDel = new Button();
-            lbDescription = new Label();
-            richTextBox1 = new RichTextBox();
-            gbAccInfo.SuspendLayout();
+            gbInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudQuantity).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudWarranty).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProduct).BeginInit();
@@ -81,6 +81,7 @@
             // 
             // cbCatagory
             // 
+            cbCatagory.DropDownStyle = ComboBoxStyle.DropDownList;
             cbCatagory.FormattingEnabled = true;
             cbCatagory.Location = new Point(154, 126);
             cbCatagory.Name = "cbCatagory";
@@ -153,33 +154,58 @@
             lbID.TabIndex = 0;
             lbID.Text = "Mã sản phẩm";
             // 
-            // gbAccInfo
+            // gbInfo
             // 
-            gbAccInfo.Controls.Add(richTextBox1);
-            gbAccInfo.Controls.Add(lbDescription);
-            gbAccInfo.Controls.Add(nudQuantity);
-            gbAccInfo.Controls.Add(nudWarranty);
-            gbAccInfo.Controls.Add(lbMonth);
-            gbAccInfo.Controls.Add(btnCancel);
-            gbAccInfo.Controls.Add(btnSave);
-            gbAccInfo.Controls.Add(lbCalUnit);
-            gbAccInfo.Controls.Add(lbQuantity);
-            gbAccInfo.Controls.Add(lbVND);
-            gbAccInfo.Controls.Add(cbCatagory);
-            gbAccInfo.Controls.Add(txtID);
-            gbAccInfo.Controls.Add(txtPriceQuotation);
-            gbAccInfo.Controls.Add(txtName);
-            gbAccInfo.Controls.Add(lbCatagory);
-            gbAccInfo.Controls.Add(lbWarranty);
-            gbAccInfo.Controls.Add(lbPriceQuotation);
-            gbAccInfo.Controls.Add(lbName);
-            gbAccInfo.Controls.Add(lbID);
-            gbAccInfo.Location = new Point(0, 5);
-            gbAccInfo.Name = "gbAccInfo";
-            gbAccInfo.Size = new Size(1312, 262);
-            gbAccInfo.TabIndex = 6;
-            gbAccInfo.TabStop = false;
-            gbAccInfo.Text = "Thông tin";
+            gbInfo.Controls.Add(txtCalUnit);
+            gbInfo.Controls.Add(txtDescription);
+            gbInfo.Controls.Add(lbDescription);
+            gbInfo.Controls.Add(nudQuantity);
+            gbInfo.Controls.Add(nudWarranty);
+            gbInfo.Controls.Add(lbMonth);
+            gbInfo.Controls.Add(btnCancel);
+            gbInfo.Controls.Add(btnSave);
+            gbInfo.Controls.Add(lbQuantity);
+            gbInfo.Controls.Add(lbVND);
+            gbInfo.Controls.Add(cbCatagory);
+            gbInfo.Controls.Add(txtID);
+            gbInfo.Controls.Add(txtPriceQuotation);
+            gbInfo.Controls.Add(txtName);
+            gbInfo.Controls.Add(lbCatagory);
+            gbInfo.Controls.Add(lbWarranty);
+            gbInfo.Controls.Add(lbPriceQuotation);
+            gbInfo.Controls.Add(lbName);
+            gbInfo.Controls.Add(lbID);
+            gbInfo.Location = new Point(0, 5);
+            gbInfo.Name = "gbInfo";
+            gbInfo.Size = new Size(1312, 262);
+            gbInfo.TabIndex = 6;
+            gbInfo.TabStop = false;
+            gbInfo.Text = "Thông tin";
+            // 
+            // txtCalUnit
+            // 
+            txtCalUnit.Location = new Point(328, 208);
+            txtCalUnit.Name = "txtCalUnit";
+            txtCalUnit.Size = new Size(125, 27);
+            txtCalUnit.TabIndex = 24;
+            // 
+            // txtDescription
+            // 
+            txtDescription.Location = new Point(771, 16);
+            txtDescription.Name = "txtDescription";
+            txtDescription.ScrollBars = RichTextBoxScrollBars.ForcedHorizontal;
+            txtDescription.Size = new Size(498, 171);
+            txtDescription.TabIndex = 22;
+            txtDescription.Text = "";
+            // 
+            // lbDescription
+            // 
+            lbDescription.AutoSize = true;
+            lbDescription.Location = new Point(653, 38);
+            lbDescription.Name = "lbDescription";
+            lbDescription.Size = new Size(48, 20);
+            lbDescription.TabIndex = 21;
+            lbDescription.Text = "Mô tả";
             // 
             // nudQuantity
             // 
@@ -223,15 +249,6 @@
             btnSave.Text = "Lưu";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
-            // 
-            // lbCalUnit
-            // 
-            lbCalUnit.AutoSize = true;
-            lbCalUnit.Location = new Point(328, 211);
-            lbCalUnit.Name = "lbCalUnit";
-            lbCalUnit.Size = new Size(50, 20);
-            lbCalUnit.TabIndex = 15;
-            lbCalUnit.Text = "đơn vị";
             // 
             // lbQuantity
             // 
@@ -281,23 +298,6 @@
             btnDel.UseVisualStyleBackColor = true;
             btnDel.Click += btnDel_Click;
             // 
-            // lbDescription
-            // 
-            lbDescription.AutoSize = true;
-            lbDescription.Location = new Point(653, 38);
-            lbDescription.Name = "lbDescription";
-            lbDescription.Size = new Size(48, 20);
-            lbDescription.TabIndex = 21;
-            lbDescription.Text = "Mô tả";
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.Location = new Point(771, 16);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(498, 171);
-            richTextBox1.TabIndex = 22;
-            richTextBox1.Text = "";
-            // 
             // frmProduct
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -306,14 +306,14 @@
             Controls.Add(btnDel);
             Controls.Add(btnMod);
             Controls.Add(btnSearch);
-            Controls.Add(gbAccInfo);
+            Controls.Add(gbInfo);
             Controls.Add(btnAdd);
             Controls.Add(dgvProduct);
             Name = "frmProduct";
             Text = "Sản phẩm";
             Load += frmProduct_Load;
-            gbAccInfo.ResumeLayout(false);
-            gbAccInfo.PerformLayout();
+            gbInfo.ResumeLayout(false);
+            gbInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nudQuantity).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudWarranty).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvProduct).EndInit();
@@ -333,19 +333,19 @@
         private Label lbPriceQuotation;
         private Label lbName;
         private Label lbID;
-        private GroupBox gbAccInfo;
+        private GroupBox gbInfo;
         private Button btnAdd;
         private DataGridView dgvProduct;
         private Label lbVND;
         private Label lbQuantity;
-        private Label lbCalUnit;
         private Button btnCancel;
         private Button btnSave;
         private Button btnDel;
         private NumericUpDown nudQuantity;
         private NumericUpDown nudWarranty;
         private Label lbMonth;
-        private RichTextBox richTextBox1;
+        private RichTextBox txtDescription;
         private Label lbDescription;
+        private TextBox txtCalUnit;
     }
 }

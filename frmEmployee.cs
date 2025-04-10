@@ -31,7 +31,6 @@ namespace timber_shop_manager
             btnEnabler(false, true);
             gbAccInfo.Enabled = false;
             searchEventEnabler(false);
-            btnEnabler(false, true);
         }
         private DataTable loadData()
         {

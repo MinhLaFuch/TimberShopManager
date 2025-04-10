@@ -1,4 +1,6 @@
-﻿namespace timber_shop_manager
+﻿using timber_shop_manager.objects;
+
+namespace timber_shop_manager
 {
     internal static class Program
     {
@@ -48,7 +50,7 @@
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmMain(new objects.Account("","")));
+            Application.Run(new frmMain(new Account("","")));
             //Application.Run(new frmLogin());
         }
     }
