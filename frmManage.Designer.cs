@@ -89,7 +89,7 @@
             btnEmployee.UseVisualStyleBackColor = true;
             btnEmployee.Click += btnEmployee_Click;
             // 
-            // frmCategory
+            // frmManage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -100,7 +100,7 @@
             Controls.Add(btnSupplier);
             Controls.Add(btnProduct);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "frmCategory";
+            Name = "frmManage";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Danh mục";
             ResumeLayout(false);

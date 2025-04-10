@@ -51,11 +51,28 @@ namespace timber_shop_manager
             txtEmail.Clear();
             txtWebsite.Clear();
         }
-        // Not done---
         private void searchEventEnabler(bool b)
         {
-
+            if (b)
+            {
+                txtID.TextChanged += txtID_TextChanged;
+                txtName.TextChanged += txtName_TextChanged;
+                txtPhoneNumber.TextChanged += txtPhoneNumber_TextChanged;
+                txtAddress.TextChanged += txtAddress_TextChanged;
+                txtEmail.TextChanged += txtEmail_TextChanged;
+                txtWebsite.TextChanged += txtWebsite_TextChanged;
+            }
+            else
+            {
+                txtID.TextChanged -= txtID_TextChanged;
+                txtName.TextChanged -= txtName_TextChanged;
+                txtPhoneNumber.TextChanged -= txtPhoneNumber_TextChanged;
+                txtAddress.TextChanged -= txtAddress_TextChanged;
+                txtEmail.TextChanged -= txtEmail_TextChanged;
+                txtWebsite.TextChanged -= txtWebsite_TextChanged;
+            }
         }
+        //Not done
         private string idGenerator()
         {
             return "";
@@ -74,7 +91,6 @@ namespace timber_shop_manager
         }
         #endregion
         #region Click
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             gbInfo.Enabled = true;
@@ -82,7 +98,6 @@ namespace timber_shop_manager
             txtName.Focus();
             btnEnabler(false, false);
         }
-
         private void btnDel_Click(object sender, EventArgs e)
         {
             string query = "DELETE FROM Supplier WHERE SupplierID = @id";
@@ -95,7 +110,6 @@ namespace timber_shop_manager
             // Reload form
             loadForm();
         }
-
         private void btnMod_Click(object sender, EventArgs e)
         {
             gbInfo.Enabled = true;
@@ -103,7 +117,6 @@ namespace timber_shop_manager
             txtName.Focus();
             btnEnabler(false, false);
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             gbInfo.Enabled = true;
@@ -113,7 +126,6 @@ namespace timber_shop_manager
             btnEnabler(false, false);
             searchEventEnabler(true);
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             bool isAdding = string.IsNullOrEmpty(txtID.Text);
