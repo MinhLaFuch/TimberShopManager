@@ -90,10 +90,11 @@ namespace timber_shop_manager
 
         private void LoadComboboxSearch()
         {
-            string query = "SELECT ProductId, Name, CalculationUnit, PriceQuotation, CustomerWarranty, Description, Quantity FROM Product";
+            string query = "SELECT ProductId, CatagoryId, Name, CalculationUnit, PriceQuotation, CustomerWarranty, Description, Quantity FROM Product";
 
             List<string> data = dbHelper.GetDataForList(query, reader => new Product(
                 reader.GetString(reader.GetOrdinal("ProductId")),
+                reader.GetString(reader.GetOrdinal("CatagoryId")),
                 reader.GetString(reader.GetOrdinal("Name")),
                 reader.GetString(reader.GetOrdinal("CalculationUnit")),
                 reader.GetDouble(reader.GetOrdinal("PriceQuotation")),

@@ -36,6 +36,8 @@ namespace timber_shop_manager
 
             gbInfo.Enabled = false;
             txtID.Enabled = false;
+            btnSave.Enabled = false;
+            btnCancel.Enabled = false;
             btnEnabler(false, true);
         }
         private DataTable loadData()
