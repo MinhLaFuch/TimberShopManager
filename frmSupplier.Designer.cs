@@ -150,7 +150,6 @@
             txtID.Name = "txtID";
             txtID.Size = new Size(231, 23);
             txtID.TabIndex = 7;
-            txtID.TextChanged += txtID_TextChanged;
             // 
             // txtPhoneNumber
             // 
@@ -159,7 +158,6 @@
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(231, 23);
             txtPhoneNumber.TabIndex = 19;
-            txtPhoneNumber.TextChanged += txtPhoneNumber_TextChanged;
             txtPhoneNumber.KeyPress += txtPhoneNumber_KeyPress;
             // 
             // lbPhoneNumber
@@ -178,7 +176,6 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(231, 23);
             txtName.TabIndex = 17;
-            txtName.TextChanged += txtName_TextChanged;
             // 
             // lbName
             // 
@@ -205,7 +202,6 @@
             txtWebsite.Name = "txtWebsite";
             txtWebsite.Size = new Size(231, 23);
             txtWebsite.TabIndex = 15;
-            txtWebsite.TextChanged += txtWebsite_TextChanged;
             // 
             // txtAddress
             // 
@@ -214,7 +210,6 @@
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(231, 23);
             txtAddress.TabIndex = 11;
-            txtAddress.TextChanged += txtAddress_TextChanged;
             // 
             // lbEmail
             // 
@@ -241,7 +236,6 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(231, 23);
             txtEmail.TabIndex = 13;
-            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // btnSave
             // 

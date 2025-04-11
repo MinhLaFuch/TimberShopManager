@@ -15,6 +15,7 @@ namespace timber_shop_manager
 {
     public partial class frmSupplier : Form
     {
+        private DynamicSearch dynamicSearch = null;
         private Supplier selectedSupplier = null;
 
         #region Properties
@@ -28,17 +29,20 @@ namespace timber_shop_manager
         #region Support Methods
         private void loadForm()
         {
+            dynamicSearch?.Disable();
+
             clearTextBox();
-            loadData();
+            dgvSupplier.DataSource = loadData();
+
             gbInfo.Enabled = false;
-            searchEventEnabler(false);
+            txtID.Enabled = false;
             btnEnabler(false, true);
         }
-        private void loadData()
+        private DataTable loadData()
         {
             string sql = "SELECT * FROM Supplier";
             DataTable dt = dbHelper.ExecuteQuery(sql);
-            dgvSupplier.DataSource = dt;
+            return dt;
         }
         private void btnEnabler(bool featBtn, bool initBtn)
         {
@@ -54,33 +58,7 @@ namespace timber_shop_manager
             txtEmail.Clear();
             txtWebsite.Clear();
         }
-        private void searchEventEnabler(bool enable)
-        {
-            if (enable)
-            {
-                txtID.TextChanged += txtID_TextChanged;
-                txtName.TextChanged += txtName_TextChanged;
-                txtPhoneNumber.TextChanged += txtPhoneNumber_TextChanged;
-                txtAddress.TextChanged += txtAddress_TextChanged;
-                txtEmail.TextChanged += txtEmail_TextChanged;
-                txtWebsite.TextChanged += txtWebsite_TextChanged;
-            }
-            else
-            {
-                txtID.TextChanged -= txtID_TextChanged;
-                txtName.TextChanged -= txtName_TextChanged;
-                txtPhoneNumber.TextChanged -= txtPhoneNumber_TextChanged;
-                txtAddress.TextChanged -= txtAddress_TextChanged;
-                txtEmail.TextChanged -= txtEmail_TextChanged;
-                txtWebsite.TextChanged -= txtWebsite_TextChanged;
-            }
-        }
 
-        private void suggestSupplier()
-        {
-
-        }
-        //---
         #endregion
         #region Events
         #region Load
@@ -92,6 +70,7 @@ namespace timber_shop_manager
         #region Click
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            dynamicSearch?.Disable();
             gbInfo.Enabled = true;
             clearTextBox();
 
@@ -114,6 +93,7 @@ namespace timber_shop_manager
         }
         private void btnMod_Click(object sender, EventArgs e)
         {
+            dynamicSearch?.Disable();
             gbInfo.Enabled = true;
             txtName.Focus();
             btnEnabler(false, false);
@@ -121,11 +101,27 @@ namespace timber_shop_manager
         private void btnSearch_Click(object sender, EventArgs e)
         {
             gbInfo.Enabled = true;
-            txtID.ReadOnly = false;
+            txtID.Enabled = true;
             btnSave.Enabled = false;
             txtID.Focus();
-            btnEnabler(false, false);
-            searchEventEnabler(true);
+            
+            if (dynamicSearch == null)
+            {
+                List<Control> searchControls = new List<Control> {txtID, txtName, txtPhoneNumber, txtAddress, txtEmail, txtWebsite};
+                Dictionary<string, string> columnMappings = new Dictionary<string, string>
+                {
+                    { "txtID", "SupplierID" },
+                    { "txtName", "Name" },
+                    { "txtPhoneNumber", "ContactNumber" },
+                    { "txtAddress", "Address" },
+                    { "txtEmail", "Email" },
+                    { "txtWebsite", "Website" }
+                }; 
+
+                dynamicSearch = new DynamicSearch(searchControls, columnMappings, loadData, dgvSupplier);
+            }
+
+            dynamicSearch.Enable();
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -148,36 +144,11 @@ namespace timber_shop_manager
             Program.CheckInputIsDigit(e);
         }
         #endregion
-        #region Text Change
-        private void txtID_TextChanged(object sender, EventArgs e)
-        {
-            suggestSupplier();
-        }
-        private void txtName_TextChanged(object sender, EventArgs e)
-        {
-            suggestSupplier();
-        }
-        private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
-        {
-            suggestSupplier();
-        }
-        private void txtAddress_TextChanged(object sender, EventArgs e)
-        {
-            suggestSupplier();
-        }
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-            suggestSupplier();
-        }
-        private void txtWebsite_TextChanged(object sender, EventArgs e)
-        {
-            suggestSupplier();
-        }
-        #endregion
         #endregion
 
         private void dgvSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            dynamicSearch?.Disable();
             if (e.RowIndex >= 0 && dgvSupplier.Rows.Count > 0)
             {
                 // Get the selected row
