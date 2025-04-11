@@ -38,9 +38,7 @@
             txtID = new TextBox();
             txtPhoneNumber = new TextBox();
             lbPhoneNumber = new Label();
-            btnSave = new Button();
             txtName = new TextBox();
-            btnCancel = new Button();
             lbName = new Label();
             lbAddress = new Label();
             txtWebsite = new TextBox();
@@ -48,25 +46,32 @@
             lbEmail = new Label();
             lbWebsite = new Label();
             txtEmail = new TextBox();
+            btnSave = new Button();
+            btnCancel = new Button();
+            grbFunction = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dgvSupplier).BeginInit();
             gbInfo.SuspendLayout();
+            grbFunction.SuspendLayout();
             SuspendLayout();
             // 
             // dgvSupplier
             // 
+            dgvSupplier.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvSupplier.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSupplier.Location = new Point(204, 187);
+            dgvSupplier.Location = new Point(2, 195);
+            dgvSupplier.Margin = new Padding(3, 2, 3, 2);
             dgvSupplier.Name = "dgvSupplier";
             dgvSupplier.RowHeadersWidth = 51;
-            dgvSupplier.Size = new Size(806, 340);
+            dgvSupplier.Size = new Size(705, 320);
             dgvSupplier.TabIndex = 0;
-            dgvSupplier.CellContentClick += dgvSupplier_CellContentClick;
+            dgvSupplier.CellClick += dgvSupplier_CellClick;
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(2, 187);
+            btnAdd.Location = new Point(63, 24);
+            btnAdd.Margin = new Padding(3, 2, 3, 2);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(197, 55);
+            btnAdd.Size = new Size(66, 25);
             btnAdd.TabIndex = 1;
             btnAdd.Text = " Thêm nhà cung cấp";
             btnAdd.UseVisualStyleBackColor = true;
@@ -74,29 +79,32 @@
             // 
             // btnDel
             // 
-            btnDel.Location = new Point(1, 260);
+            btnDel.Location = new Point(491, 24);
+            btnDel.Margin = new Padding(3, 2, 3, 2);
             btnDel.Name = "btnDel";
-            btnDel.Size = new Size(197, 29);
+            btnDel.Size = new Size(66, 25);
             btnDel.TabIndex = 2;
-            btnDel.Text = "Xóa nhà cung cấp";
+            btnDel.Text = "Xóa";
             btnDel.UseVisualStyleBackColor = true;
             btnDel.Click += btnDel_Click;
             // 
             // btnMod
             // 
-            btnMod.Location = new Point(1, 308);
+            btnMod.Location = new Point(277, 24);
+            btnMod.Margin = new Padding(3, 2, 3, 2);
             btnMod.Name = "btnMod";
-            btnMod.Size = new Size(197, 29);
+            btnMod.Size = new Size(66, 25);
             btnMod.TabIndex = 3;
-            btnMod.Text = "Sửa nhà cung cấp";
+            btnMod.Text = "Sửa";
             btnMod.UseVisualStyleBackColor = true;
             btnMod.Click += btnMod_Click;
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(2, 386);
+            btnSearch.Location = new Point(598, 24);
+            btnSearch.Margin = new Padding(3, 2, 3, 2);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(197, 55);
+            btnSearch.Size = new Size(66, 25);
             btnSearch.TabIndex = 4;
             btnSearch.Text = "Tìm kiếm";
             btnSearch.UseVisualStyleBackColor = true;
@@ -108,9 +116,7 @@
             gbInfo.Controls.Add(txtID);
             gbInfo.Controls.Add(txtPhoneNumber);
             gbInfo.Controls.Add(lbPhoneNumber);
-            gbInfo.Controls.Add(btnSave);
             gbInfo.Controls.Add(txtName);
-            gbInfo.Controls.Add(btnCancel);
             gbInfo.Controls.Add(lbName);
             gbInfo.Controls.Add(lbAddress);
             gbInfo.Controls.Add(txtWebsite);
@@ -118,9 +124,11 @@
             gbInfo.Controls.Add(lbEmail);
             gbInfo.Controls.Add(lbWebsite);
             gbInfo.Controls.Add(txtEmail);
-            gbInfo.Location = new Point(2, 3);
+            gbInfo.Location = new Point(2, 2);
+            gbInfo.Margin = new Padding(3, 2, 3, 2);
             gbInfo.Name = "gbInfo";
-            gbInfo.Size = new Size(1008, 189);
+            gbInfo.Padding = new Padding(3, 2, 3, 2);
+            gbInfo.Size = new Size(705, 118);
             gbInfo.TabIndex = 5;
             gbInfo.TabStop = false;
             gbInfo.Text = "Thông tin nhà cung cấp";
@@ -128,25 +136,28 @@
             // lbID
             // 
             lbID.AutoSize = true;
-            lbID.Location = new Point(32, 33);
+            lbID.Location = new Point(28, 25);
             lbID.Name = "lbID";
-            lbID.Size = new Size(122, 20);
+            lbID.Size = new Size(99, 15);
             lbID.TabIndex = 6;
             lbID.Text = "Mã nhà cung cấp";
             // 
             // txtID
             // 
-            txtID.Location = new Point(150, 33);
+            txtID.Enabled = false;
+            txtID.Location = new Point(134, 21);
+            txtID.Margin = new Padding(3, 2, 3, 2);
             txtID.Name = "txtID";
-            txtID.Size = new Size(125, 27);
+            txtID.Size = new Size(231, 23);
             txtID.TabIndex = 7;
             txtID.TextChanged += txtID_TextChanged;
             // 
             // txtPhoneNumber
             // 
-            txtPhoneNumber.Location = new Point(150, 141);
+            txtPhoneNumber.Location = new Point(134, 81);
+            txtPhoneNumber.Margin = new Padding(3, 2, 3, 2);
             txtPhoneNumber.Name = "txtPhoneNumber";
-            txtPhoneNumber.Size = new Size(125, 27);
+            txtPhoneNumber.Size = new Size(231, 23);
             txtPhoneNumber.TabIndex = 19;
             txtPhoneNumber.TextChanged += txtPhoneNumber_TextChanged;
             txtPhoneNumber.KeyPress += txtPhoneNumber_KeyPress;
@@ -154,118 +165,139 @@
             // lbPhoneNumber
             // 
             lbPhoneNumber.AutoSize = true;
-            lbPhoneNumber.Location = new Point(32, 155);
+            lbPhoneNumber.Location = new Point(28, 85);
             lbPhoneNumber.Name = "lbPhoneNumber";
-            lbPhoneNumber.Size = new Size(97, 20);
+            lbPhoneNumber.Size = new Size(76, 15);
             lbPhoneNumber.TabIndex = 18;
             lbPhoneNumber.Text = "Số điện thoại";
             // 
-            // btnSave
-            // 
-            btnSave.Location = new Point(828, 158);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(76, 25);
-            btnSave.TabIndex = 9;
-            btnSave.Text = "Lưu";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
-            // 
             // txtName
             // 
-            txtName.Location = new Point(141, 84);
+            txtName.Location = new Point(134, 50);
+            txtName.Margin = new Padding(3, 2, 3, 2);
             txtName.Name = "txtName";
-            txtName.Size = new Size(125, 27);
+            txtName.Size = new Size(231, 23);
             txtName.TabIndex = 17;
             txtName.TextChanged += txtName_TextChanged;
-            // 
-            // btnCancel
-            // 
-            btnCancel.Location = new Point(910, 158);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(76, 25);
-            btnCancel.TabIndex = 8;
-            btnCancel.Text = "Hủy";
-            btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
             // 
             // lbName
             // 
             lbName.AutoSize = true;
-            lbName.Location = new Point(-1, 91);
+            lbName.Location = new Point(28, 54);
             lbName.Name = "lbName";
-            lbName.Size = new Size(124, 20);
+            lbName.Size = new Size(101, 15);
             lbName.TabIndex = 16;
             lbName.Text = "Tên nhà cung cấp";
             // 
             // lbAddress
             // 
             lbAddress.AutoSize = true;
-            lbAddress.Location = new Point(420, 33);
+            lbAddress.Location = new Point(391, 25);
             lbAddress.Name = "lbAddress";
-            lbAddress.Size = new Size(55, 20);
+            lbAddress.Size = new Size(43, 15);
             lbAddress.TabIndex = 10;
             lbAddress.Text = "Địa chỉ";
             // 
             // txtWebsite
             // 
-            txtWebsite.Location = new Point(543, 134);
+            txtWebsite.Location = new Point(455, 81);
+            txtWebsite.Margin = new Padding(3, 2, 3, 2);
             txtWebsite.Name = "txtWebsite";
-            txtWebsite.Size = new Size(125, 27);
+            txtWebsite.Size = new Size(231, 23);
             txtWebsite.TabIndex = 15;
             txtWebsite.TextChanged += txtWebsite_TextChanged;
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(543, 26);
+            txtAddress.Location = new Point(455, 21);
+            txtAddress.Margin = new Padding(3, 2, 3, 2);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(125, 27);
+            txtAddress.Size = new Size(231, 23);
             txtAddress.TabIndex = 11;
             txtAddress.TextChanged += txtAddress_TextChanged;
             // 
             // lbEmail
             // 
             lbEmail.AutoSize = true;
-            lbEmail.Location = new Point(429, 84);
+            lbEmail.Location = new Point(391, 54);
             lbEmail.Name = "lbEmail";
-            lbEmail.Size = new Size(46, 20);
+            lbEmail.Size = new Size(36, 15);
             lbEmail.TabIndex = 14;
             lbEmail.Text = "Email";
             // 
             // lbWebsite
             // 
             lbWebsite.AutoSize = true;
-            lbWebsite.Location = new Point(420, 141);
+            lbWebsite.Location = new Point(391, 85);
             lbWebsite.Name = "lbWebsite";
-            lbWebsite.Size = new Size(62, 20);
+            lbWebsite.Size = new Size(49, 15);
             lbWebsite.TabIndex = 12;
             lbWebsite.Text = "Website";
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(543, 72);
+            txtEmail.Location = new Point(455, 50);
+            txtEmail.Margin = new Padding(3, 2, 3, 2);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(125, 27);
+            txtEmail.Size = new Size(231, 23);
             txtEmail.TabIndex = 13;
             txtEmail.TextChanged += txtEmail_TextChanged;
             // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(170, 24);
+            btnSave.Margin = new Padding(3, 2, 3, 2);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(66, 25);
+            btnSave.TabIndex = 9;
+            btnSave.Text = "Lưu";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Location = new Point(384, 24);
+            btnCancel.Margin = new Padding(3, 2, 3, 2);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(66, 25);
+            btnCancel.TabIndex = 8;
+            btnCancel.Text = "Hủy";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // grbFunction
+            // 
+            grbFunction.Controls.Add(btnAdd);
+            grbFunction.Controls.Add(btnSearch);
+            grbFunction.Controls.Add(btnCancel);
+            grbFunction.Controls.Add(btnSave);
+            grbFunction.Controls.Add(btnMod);
+            grbFunction.Controls.Add(btnDel);
+            grbFunction.Location = new Point(2, 125);
+            grbFunction.Name = "grbFunction";
+            grbFunction.Size = new Size(705, 65);
+            grbFunction.TabIndex = 6;
+            grbFunction.TabStop = false;
+            grbFunction.Text = "Thao tác";
+            // 
             // frmSupplier
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Window;
-            ClientSize = new Size(1012, 522);
+            ClientSize = new Size(713, 517);
+            Controls.Add(grbFunction);
             Controls.Add(gbInfo);
-            Controls.Add(btnSearch);
-            Controls.Add(btnMod);
-            Controls.Add(btnDel);
-            Controls.Add(btnAdd);
             Controls.Add(dgvSupplier);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmSupplier";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "frmSupplier";
             Load += frmSupplier_Load;
             ((System.ComponentModel.ISupportInitialize)dgvSupplier).EndInit();
             gbInfo.ResumeLayout(false);
             gbInfo.PerformLayout();
+            grbFunction.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -291,5 +323,6 @@
         private Label lbName;
         private TextBox txtPhoneNumber;
         private Label lbPhoneNumber;
+        private GroupBox grbFunction;
     }
 }
