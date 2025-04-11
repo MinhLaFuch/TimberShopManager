@@ -47,5 +47,46 @@ namespace timber_shop_manager
         {
             this.Close();
         }
+
+        private void mnuManageSupplier_Click(object sender, EventArgs e)
+        {
+            frmSupplier frmSupplier = new frmSupplier();
+            frmSupplier.ShowDialog();
+        }
+
+        private void mnuManageProduct_Click(object sender, EventArgs e)
+        {
+            frmProduct frmProduct = new frmProduct();
+            frmProduct.ShowDialog();
+        }
+
+        private void mnuManageCustomer_Click(object sender, EventArgs e)
+        {
+            frmCustomer frmCustomer = new frmCustomer();
+            frmCustomer.ShowDialog();
+        }
+
+        private void mnuManageAccount_Click(object sender, EventArgs e)
+        {
+            frmAccount frmAccount = new frmAccount();
+            frmAccount.ShowDialog();
+        }
+
+        private void mnuManageEmployee_Click(object sender, EventArgs e)
+        {
+            frmEmployee frmEmployee = new frmEmployee();
+            frmEmployee.ShowDialog();
+        }
+
+        private void mnuManageCatagory_Click(object sender, EventArgs e)
+        {
+            frmCatagory frmCatagory = new frmCatagory();
+            frmCatagory.ShowDialog();
+        }
+
+        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
