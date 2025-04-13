@@ -88,5 +88,16 @@ namespace timber_shop_manager
         {
             Close();
         }
+
+        private void tàiChínhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFinancialReport frmFinancialReport = new frmFinancialReport();
+            frmFinancialReport.ShowDialog();
+        }
+
+        private void thốngKếHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

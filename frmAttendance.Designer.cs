@@ -32,8 +32,9 @@
             cbTimeStamp = new ComboBox();
             dtpFrom = new DateTimePicker();
             dtpTo = new DateTimePicker();
-            cbTime = new ComboBox();
             lbTimeStamp = new Label();
+            sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
+            btnRefresh = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvAttendance).BeginInit();
             SuspendLayout();
             // 
@@ -64,6 +65,7 @@
             dtpFrom.Size = new Size(195, 27);
             dtpFrom.TabIndex = 2;
             dtpFrom.Visible = false;
+            dtpFrom.ValueChanged += dtpFrom_ValueChanged;
             // 
             // dtpTo
             // 
@@ -72,16 +74,7 @@
             dtpTo.Size = new Size(195, 27);
             dtpTo.TabIndex = 3;
             dtpTo.Visible = false;
-            // 
-            // cbTime
-            // 
-            cbTime.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbTime.FormattingEnabled = true;
-            cbTime.Location = new Point(22, 116);
-            cbTime.Name = "cbTime";
-            cbTime.Size = new Size(151, 28);
-            cbTime.TabIndex = 4;
-            cbTime.Visible = false;
+            dtpTo.ValueChanged += dtpTo_ValueChanged;
             // 
             // lbTimeStamp
             // 
@@ -92,20 +85,30 @@
             lbTimeStamp.TabIndex = 5;
             lbTimeStamp.Text = "Mốc thời gian";
             // 
+            // btnRefresh
+            // 
+            btnRefresh.Location = new Point(12, 253);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(171, 48);
+            btnRefresh.TabIndex = 6;
+            btnRefresh.Text = "Làm mới";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
             // frmAttendance
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(555, 450);
+            Controls.Add(btnRefresh);
             Controls.Add(lbTimeStamp);
-            Controls.Add(cbTime);
             Controls.Add(dtpTo);
             Controls.Add(dtpFrom);
             Controls.Add(cbTimeStamp);
             Controls.Add(dgvAttendance);
             Name = "frmAttendance";
             Text = "Báo cáo chấm công của ";
-            Load += frmWorkHour_Load;
+            Load += frmAttendance_Load;
             ((System.ComponentModel.ISupportInitialize)dgvAttendance).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -117,7 +120,8 @@
         private ComboBox cbTimeStamp;
         private DateTimePicker dtpFrom;
         private DateTimePicker dtpTo;
-        private ComboBox cbTime;
         private Label lbTimeStamp;
+        private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
+        private Button btnRefresh;
     }
 }

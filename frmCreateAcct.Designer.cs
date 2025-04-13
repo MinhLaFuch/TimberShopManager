@@ -30,9 +30,13 @@
         {
             button1 = new Button();
             button2 = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
+            lbEmail = new Label();
+            lbPWReenter = new Label();
+            textBox1 = new TextBox();
+            lbPW = new Label();
+            button3 = new Button();
+            button4 = new Button();
+            lb = new Label();
             SuspendLayout();
             // 
             // button1
@@ -53,41 +57,79 @@
             button2.Text = "button2";
             button2.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lbEmail
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(676, 408);
-            label1.Name = "label1";
-            label1.Size = new Size(50, 20);
-            label1.TabIndex = 2;
-            label1.Text = "label1";
+            lbEmail.AutoSize = true;
+            lbEmail.Location = new Point(54, 47);
+            lbEmail.Name = "lbEmail";
+            lbEmail.Size = new Size(46, 20);
+            lbEmail.TabIndex = 2;
+            lbEmail.Text = "Email";
             // 
-            // label2
+            // lbPWReenter
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(54, 112);
-            label2.Name = "label2";
-            label2.Size = new Size(50, 20);
-            label2.TabIndex = 3;
-            label2.Text = "label2";
+            lbPWReenter.AutoSize = true;
+            lbPWReenter.Location = new Point(54, 252);
+            lbPWReenter.Name = "lbPWReenter";
+            lbPWReenter.Size = new Size(130, 20);
+            lbPWReenter.TabIndex = 3;
+            lbPWReenter.Text = "Nhập lại mật khẩu";
             // 
-            // label3
+            // textBox1
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(54, 173);
-            label3.Name = "label3";
-            label3.Size = new Size(50, 20);
-            label3.TabIndex = 4;
-            label3.Text = "label3";
+            textBox1.Location = new Point(146, 49);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(178, 27);
+            textBox1.TabIndex = 5;
+            // 
+            // lbPW
+            // 
+            lbPW.AutoSize = true;
+            lbPW.Location = new Point(54, 144);
+            lbPW.Name = "lbPW";
+            lbPW.Size = new Size(70, 20);
+            lbPW.TabIndex = 6;
+            lbPW.Text = "Mật khẩu";
+            // 
+            // button3
+            // 
+            button3.Location = new Point(479, 62);
+            button3.Name = "button3";
+            button3.Size = new Size(94, 29);
+            button3.TabIndex = 7;
+            button3.Text = "button3";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(634, 62);
+            button4.Name = "button4";
+            button4.Size = new Size(94, 29);
+            button4.TabIndex = 8;
+            button4.Text = "button4";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // lb
+            // 
+            lb.AutoSize = true;
+            lb.Location = new Point(377, 215);
+            lb.Name = "lb";
+            lb.Size = new Size(46, 20);
+            lb.TabIndex = 9;
+            lb.Text = "Email";
             // 
             // frmCreateAcct
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(lb);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(lbPW);
+            Controls.Add(textBox1);
+            Controls.Add(lbPWReenter);
+            Controls.Add(lbEmail);
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "frmCreateAcct";
@@ -100,8 +142,12 @@
 
         private Button button1;
         private Button button2;
-        private Label label1;
-        private Label label2;
-        private Label label3;
+        private Label lbEmail;
+        private Label lbPWReenter;
+        private TextBox textBox1;
+        private Label lbPW;
+        private Button button3;
+        private Button button4;
+        private Label lb;
     }
 }

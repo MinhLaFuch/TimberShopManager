@@ -123,7 +123,7 @@ namespace timber_shop_manager.objects
             var dataTable = _loadDataFunc.Invoke();
             var dv = new DataView(dataTable);
 
-            dv.RowFilter = filters.Count > 0 ? string.Join(" OR ", filters) : string.Empty;
+            dv.RowFilter = filters.Count > 0 ? string.Join(" AND ", filters) : string.Empty;
             _targetGrid.DataSource = dv;
         }
     }
