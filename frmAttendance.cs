@@ -44,7 +44,7 @@ namespace timber_shop_manager
             DataTable dt = new DataTable();
             if (dtpFrom.Visible && dtpTo.Visible)
             {
-                string query = "SELECT * FROM Attendance WHERE EmployeeId = @employeeId WHERE DATE BETWEEN @from AND @to";
+                string query = "SELECT * FROM Attendance WHERE EmployeeId = @employeeId AND DATE BETWEEN @from AND @to";
                 dt = dbHelper.ExecuteQuery(query, new SqlParameter("@employeeId", employeeId),
                                                   new SqlParameter("@from", dtpFrom.Value.Date),
                                                   new SqlParameter("@to", dtpTo.Value.Date));
