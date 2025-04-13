@@ -105,6 +105,7 @@ namespace timber_shop_manager
             gbInfo.Enabled = true;
             txtID.Enabled = true;
             btnSave.Enabled = false;
+            clearTextBox();
             txtID.Focus();
             
             if (dynamicSearch == null)

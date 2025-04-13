@@ -60,6 +60,7 @@
             // 
             // dtpFrom
             // 
+            dtpFrom.Format = DateTimePickerFormat.Short;
             dtpFrom.Location = new Point(-1, 117);
             dtpFrom.Name = "dtpFrom";
             dtpFrom.Size = new Size(195, 27);
@@ -69,6 +70,7 @@
             // 
             // dtpTo
             // 
+            dtpTo.Format = DateTimePickerFormat.Short;
             dtpTo.Location = new Point(-1, 165);
             dtpTo.Name = "dtpTo";
             dtpTo.Size = new Size(195, 27);

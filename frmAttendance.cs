@@ -125,7 +125,6 @@ namespace timber_shop_manager
         {
             loadForm();
         }
-    }
         #endregion
         #endregion
     }
