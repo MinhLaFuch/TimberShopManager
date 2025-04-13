@@ -220,6 +220,7 @@
             btnAccount.TabIndex = 25;
             btnAccount.Text = "        Tài khoản";
             btnAccount.UseVisualStyleBackColor = false;
+            btnAccount.Click += btnAccount_Click;
             // 
             // btnEmployee
             // 
@@ -237,6 +238,7 @@
             btnEmployee.TabIndex = 26;
             btnEmployee.Text = "        Nhân viên";
             btnEmployee.UseVisualStyleBackColor = false;
+            btnEmployee.Click += btnEmployee_Click;
             // 
             // btnSupplier
             // 
@@ -254,6 +256,7 @@
             btnSupplier.TabIndex = 27;
             btnSupplier.Text = "        Nhà cung cấp";
             btnSupplier.UseVisualStyleBackColor = false;
+            btnSupplier.Click += btnSupplier_Click;
             // 
             // btnCustomer
             // 
@@ -271,6 +274,7 @@
             btnCustomer.TabIndex = 28;
             btnCustomer.Text = "        Khách hàng";
             btnCustomer.UseVisualStyleBackColor = false;
+            btnCustomer.Click += btnCustomer_Click;
             // 
             // btnProduct
             // 
@@ -288,6 +292,7 @@
             btnProduct.TabIndex = 29;
             btnProduct.Text = "        Sản phẩm";
             btnProduct.UseVisualStyleBackColor = false;
+            btnProduct.Click += btnProduct_Click;
             // 
             // btnCategory
             // 
@@ -305,6 +310,7 @@
             btnCategory.TabIndex = 30;
             btnCategory.Text = "        Danh mục";
             btnCategory.UseVisualStyleBackColor = false;
+            btnCategory.Click += btnCategory_Click;
             // 
             // pnReport
             // 

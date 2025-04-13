@@ -1,6 +1,7 @@
 ﻿using System.Xml.Linq;
 using Microsoft.Data.SqlClient;
 using timber_shop_manager.objects;
+using System.Windows.Forms;
 
 namespace timber_shop_manager
 {
@@ -13,6 +14,7 @@ namespace timber_shop_manager
         private bool reportExpand = false;
         private int numOfManageButton = 6;
         private int numOfReportButton = 3;
+        private const int PANEL_STEP = 10;
         public frmMain(Account account)
         {
             InitializeComponent();
@@ -21,6 +23,73 @@ namespace timber_shop_manager
         }
         #endregion
         #region Support Methods
+        private void openChildForm(Form form)
+        {
+            // Check if the form is already open
+            Form? existing = this.MdiChildren.FirstOrDefault(f => f.GetType() == form.GetType());
+            if (existing != null)
+            {
+                existing.BringToFront();
+                return;
+            }
+            // Close all child forms before opening a new one
+            foreach (Form frm in this.MdiChildren)
+            {
+                frm.Close();
+            }
+            // New child form
+            form.MdiParent = this;
+            form.Dock = DockStyle.Fill;
+            form.Show();
+        }
+        private void AnimatePanelSize(Panel panel, int targetSize, bool isHorizontal, System.Windows.Forms.Timer timer)
+        {
+            int step = 10;
+
+            if (isHorizontal)
+            {
+                if (panel.Width < targetSize)
+                {
+                    panel.Width += step;
+                    if (panel.Width >= targetSize)
+                    {
+                        panel.Width = targetSize;
+                        timer.Stop();
+                    }
+                }
+                else
+                {
+                    panel.Width -= step;
+                    if (panel.Width <= targetSize)
+                    {
+                        panel.Width = targetSize;
+                        timer.Stop();
+                    }
+                }
+            }
+            else
+            {
+                if (panel.Height < targetSize)
+                {
+                    panel.Height += step;
+                    if (panel.Height >= targetSize)
+                    {
+                        panel.Height = targetSize;
+                        timer.Stop();
+                    }
+                }
+                else
+                {
+                    panel.Height -= step;
+                    if (panel.Height <= targetSize)
+                    {
+                        panel.Height = targetSize;
+                        timer.Stop();
+                    }
+                }
+            }
+        }
+
         #endregion
         #region Events
         #region Load
@@ -32,23 +101,37 @@ namespace timber_shop_manager
         }
         #endregion
         #region Click
+        private void btnAccount_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmAccount());
+        }
+        private void btnEmployee_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmEmployee());
+        }
+        private void btnSupplier_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmSupplier());
+        }
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmCustomer());
+        }
+        private void btnProduct_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmProduct());
+        }
         private void btnCategory_Click(object sender, EventArgs e)
         {
-            frmCatagory frmCatagory = new frmCatagory();
-            frmCatagory.MdiParent = this;
-            frmCatagory.Show();
+            openChildForm(new frmCatagory());
         }
         private void btnSale_Click(object sender, EventArgs e)
         {
-            frmSale frmSale = new frmSale();
-            frmSale.MdiParent = this;
-            frmSale.Show();
+            openChildForm(new frmSale());
         }
         private void btnImport_Click(object sender, EventArgs e)
         {
-            frmImport frmImport = new frmImport();
-            frmImport.MdiParent = this;
-            frmImport.Show();
+            openChildForm(new frmImport());
         }
         private void pbLogout_Click(object sender, EventArgs e)
         {
@@ -60,9 +143,7 @@ namespace timber_shop_manager
         }
         private void pbUser_Click(object sender, EventArgs e)
         {
-            frmUser frmUser = new frmUser();
-            frmUser.MdiParent = this;
-            frmUser.Show();
+            openChildForm(new frmUser());
         }
         private void btnManage_Click(object sender, EventArgs e)
         {
@@ -78,109 +159,47 @@ namespace timber_shop_manager
         }
         private void btnSalary_Click(object sender, EventArgs e)
         {
-            frmSalaryReport frmSalaryReport = new frmSalaryReport();
-            frmSalaryReport.MdiParent = this;
-            frmSalaryReport.Show();
+            openChildForm(new frmSalaryReport());
         }
-
         private void btnFinancialReport_Click(object sender, EventArgs e)
         {
-            frmFinancialReport frmFinancialReport = new frmFinancialReport();
-            frmFinancialReport.MdiParent = this;
-            frmFinancialReport.Show();
+            openChildForm(new frmFinancialReport());
         }
         private void btnInvoice_Click(object sender, EventArgs e)
         {
-            frmInvoiceReport frmInvoiceReport = new frmInvoiceReport();
-            frmInvoiceReport.MdiParent = this;
-            frmInvoiceReport.Show();
+            openChildForm(new frmInvoiceReport());
         }
         #endregion
         #region Tick
-        private void manageTransistion_Tick(object sender, EventArgs e)
-        {
-            if (!manageExpand)
-            {
-                if (pnManage.Height >= 66 * numOfManageButton)
-                {
-                    manageExpand = true;
-                    manageTransistion.Stop();
-                }
-                else
-                {
-                    pnManage.Height += 50;
-                }
-            }
-            else
-            {
-                if (pnManage.Height <= 66)
-                {
-                    manageExpand = false;
-                    manageTransistion.Stop();
-                }
-                else
-                {
-                    pnManage.Height -= 50;
-                }
-            }
-        }
-        // Not working
         private void menuTransistion_Tick(object sender, EventArgs e)
         {
-            if (!menuExpand)
-            {
-                if (pnMenu.Width >= 271)
-                {
-                    menuExpand = true;
-                    menuTransistion.Stop();
-                }
-                else
-                {
-                    pnMenu.Width += 50;
-                }
-            }
-            else
-            {
-                if (pnMenu.Width <= 72)
-                {
-                    menuExpand = false;
-                    menuTransistion.Stop();
-                }
-                else
-                {
-                    pnMenu.Width -= 50;
-                }
-            }
+            int targetWidth = menuExpand ? 72 : 271;
+            AnimatePanelSize(pnMenu, targetWidth, true, menuTransistion);
+
+            // Flip the flag only once when finished
+            if (pnMenu.Width == targetWidth)
+                menuExpand = !menuExpand;
         }
-        
+        private void manageTransistion_Tick(object sender, EventArgs e)
+        {
+            int targetHeight = manageExpand ? 66 : 66 * (numOfManageButton + 1);
+            AnimatePanelSize(pnManage, targetHeight, false, manageTransistion);
+
+            if (pnManage.Height == targetHeight)
+                manageExpand = !manageExpand;
+        }
         private void reportTransistion_Tick(object sender, EventArgs e)
         {
-            if (!reportExpand)
-            {
-                if (pnReport.Height >= 66 * numOfReportButton)
-                {
-                    reportExpand = true;
-                    reportTransistion.Stop();
-                }
-                else
-                {
-                    pnReport.Height += 50;
-                }
-            }
-            else
-            {
-                if (pnReport.Height <= 66)
-                {
-                    reportExpand = false;
-                    reportTransistion.Stop();
-                }
-                else
-                {
-                    pnReport.Height -= 50;
-                }
-            }
+            int targetHeight = reportExpand ? 66 : 66 * (numOfReportButton + 1);
+            AnimatePanelSize(pnReport, targetHeight, false, reportTransistion);
+
+            if (pnReport.Height == targetHeight)
+                reportExpand = !reportExpand;
         }
+
+
         #endregion
         #endregion
+
     }
 }
