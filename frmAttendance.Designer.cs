@@ -44,7 +44,7 @@
             dgvAttendance.Location = new Point(200, -2);
             dgvAttendance.Name = "dgvAttendance";
             dgvAttendance.RowHeadersWidth = 51;
-            dgvAttendance.Size = new Size(352, 440);
+            dgvAttendance.Size = new Size(558, 440);
             dgvAttendance.TabIndex = 0;
             // 
             // cbTimeStamp
@@ -99,7 +99,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(555, 450);
+            ClientSize = new Size(755, 450);
             Controls.Add(btnRefresh);
             Controls.Add(lbTimeStamp);
             Controls.Add(dtpTo);
