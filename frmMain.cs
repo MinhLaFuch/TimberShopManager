@@ -1,103 +1,182 @@
-﻿using timber_shop_manager.objects;
+﻿using System.Xml.Linq;
+using Microsoft.Data.SqlClient;
+using timber_shop_manager.objects;
 
 namespace timber_shop_manager
 {
     public partial class frmMain : Form
     {
+        #region Properties
         private Account account;
+        private bool manageExpand = false;
+        private bool menuExpand = false;
+        private bool reportExpand = false;
         public frmMain(Account account)
         {
             InitializeComponent();
             this.account = account;
+            this.IsMdiContainer = true;
         }
+        #endregion
+        #region Support Methods
+        #endregion
+        #region Events
+        #region Load
+        private void frmMain_Load(object sender, EventArgs e)
+        {
 
+            lblUsername.Text = account.Username;
+            //lbName.Text = Employee.ConverRole(account.verifyPermission());
+        }
+        #endregion
+        #region Click
         private void btnCategory_Click(object sender, EventArgs e)
         {
-            frmManage frmCategory = new frmManage();
-            frmCategory.ShowDialog();
+            frmCatagory frmCatagory = new frmCatagory();
+            frmCatagory.MdiParent = this;
+            frmCatagory.Show();
         }
-
         private void btnSale_Click(object sender, EventArgs e)
         {
             frmSale frmSale = new frmSale();
-            frmSale.ShowDialog();
+            frmSale.MdiParent = this;
+            frmSale.Show();
         }
-
-        private void frmMain_Load(object sender, EventArgs e)
+        private void btnImport_Click(object sender, EventArgs e)
         {
-            LoadAvatar("../../../assets/img/placehold-avatar.png");
-
-            lblUsername.Text = account.Username;
-            lblRole.Text = Employee.ConverRole(account.verifyPermission());
+            frmImport frmImport = new frmImport();
+            frmImport.MdiParent = this;
+            frmImport.Show();
         }
-
-        private void LoadAvatar(string imagePath)
+        private void pbLogout_Click(object sender, EventArgs e)
         {
-            if (File.Exists(imagePath))
+            DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirmation == DialogResult.Yes)
             {
-                picAvatar.Image = Image.FromFile(imagePath);
+                this.Close();
+            }
+        }
+        private void pbUser_Click(object sender, EventArgs e)
+        {
+            frmUser frmUser = new frmUser();
+            frmUser.MdiParent = this;
+            frmUser.Show();
+        }
+        private void btnManage_Click(object sender, EventArgs e)
+        {
+            manageTransistion.Start();
+        }
+        private void pbMenu_Click(object sender, EventArgs e)
+        {
+            menuTransistion.Start();
+        }
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            reportTransistion.Start();
+        }
+        private void btnSalary_Click(object sender, EventArgs e)
+        {
+            frmSalaryReport frmSalaryReport = new frmSalaryReport();
+            frmSalaryReport.MdiParent = this;
+            frmSalaryReport.Show();
+        }
+
+        private void btnFinancialReport_Click(object sender, EventArgs e)
+        {
+            frmFinancialReport frmFinancialReport = new frmFinancialReport();
+            frmFinancialReport.MdiParent = this;
+            frmFinancialReport.Show();
+        }
+        private void btnInvoice_Click(object sender, EventArgs e)
+        {
+            frmInvoiceReport frmInvoiceReport = new frmInvoiceReport();
+            frmInvoiceReport.MdiParent = this;
+            frmInvoiceReport.Show();
+        }
+        #endregion
+        #region Tick
+        private void manageTransistion_Tick(object sender, EventArgs e)
+        {
+            if (!manageExpand)
+            {
+                if (pnManage.Width >= 200)
+                {
+                    manageExpand = true;
+                    manageTransistion.Stop();
+                }
+                else
+                {
+                    pnManage.Width += 10;
+                }
             }
             else
             {
-                MessageBox.Show("Không tìm thấy ảnh tại đường dẫn đã chỉ định.");
+                if (pnManage.Width <= 0)
+                {
+                    manageExpand = false;
+                    manageTransistion.Stop();
+                }
+                else
+                {
+                    pnManage.Width -= 10;
+                }
             }
         }
-
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void menuTransistion_Tick(object sender, EventArgs e)
         {
-            this.Close();
+            if (!menuExpand)
+            {
+                if (pnMenu.Width >= 200)
+                {
+                    menuExpand = true;
+                    menuTransistion.Stop();
+                }
+                else
+                {
+                    pnMenu.Width += 10;
+                }
+            }
+            else
+            {
+                if (pnMenu.Width <= 0)
+                {
+                    menuExpand = false;
+                    menuTransistion.Stop();
+                }
+                else
+                {
+                    pnMenu.Width -= 10;
+                }
+            }
         }
-
-        private void mnuManageSupplier_Click(object sender, EventArgs e)
+        private void reportTransistion_Tick(object sender, EventArgs e)
         {
-            frmSupplier frmSupplier = new frmSupplier();
-            frmSupplier.ShowDialog();
+            if (!reportExpand)
+            {
+                if (pnReport.Width >= 200)
+                {
+                    reportExpand = true;
+                    reportTransistion.Stop();
+                }
+                else
+                {
+                    pnReport.Width += 10;
+                }
+            }
+            else
+            {
+                if (pnReport.Width <= 0)
+                {
+                    reportExpand = false;
+                    reportTransistion.Stop();
+                }
+                else
+                {
+                    pnReport.Width -= 10;
+                }
+            }
         }
-
-        private void mnuManageProduct_Click(object sender, EventArgs e)
-        {
-            frmProduct frmProduct = new frmProduct();
-            frmProduct.ShowDialog();
-        }
-
-        private void mnuManageCustomer_Click(object sender, EventArgs e)
-        {
-            frmCustomer frmCustomer = new frmCustomer();
-            frmCustomer.ShowDialog();
-        }
-
-        private void mnuManageAccount_Click(object sender, EventArgs e)
-        {
-            frmAccount frmAccount = new frmAccount();
-            frmAccount.ShowDialog();
-        }
-
-        private void mnuManageEmployee_Click(object sender, EventArgs e)
-        {
-            frmEmployee frmEmployee = new frmEmployee();
-            frmEmployee.ShowDialog();
-        }
-
-        private void mnuManageCatagory_Click(object sender, EventArgs e)
-        {
-            frmCatagory frmCatagory = new frmCatagory();
-            frmCatagory.ShowDialog();
-        }
-
-        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void tàiChínhToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmFinancialReport frmFinancialReport = new frmFinancialReport();
-            frmFinancialReport.ShowDialog();
-        }
-
-        private void thốngKếHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
+        #endregion
+        #endregion
     }
 }

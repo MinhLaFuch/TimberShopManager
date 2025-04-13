@@ -28,246 +28,441 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             btnSale = new Button();
+            pbUser = new PictureBox();
+            pnMenu = new FlowLayoutPanel();
+            pnUser = new Panel();
+            pbMenu = new PictureBox();
             btnImport = new Button();
-            picAvatar = new PictureBox();
-            lblUsername = new Label();
-            lblRole = new Label();
-            btnLogout = new Button();
-            menuStrip = new MenuStrip();
-            mnuFunction = new ToolStripMenuItem();
-            mnuFunctionSale = new ToolStripMenuItem();
-            mnuFunctionImport = new ToolStripMenuItem();
-            mnuManage = new ToolStripMenuItem();
-            mnuManageSupplier = new ToolStripMenuItem();
-            mnuManageProduct = new ToolStripMenuItem();
-            mnuManageCustomer = new ToolStripMenuItem();
-            mnuManageAccount = new ToolStripMenuItem();
-            mnuManageEmployee = new ToolStripMenuItem();
-            mnuManageCatagory = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripSeparator();
-            mnuManageExit = new ToolStripMenuItem();
-            báoCáoToolStripMenuItem = new ToolStripMenuItem();
-            hệThốngToolStripMenuItem = new ToolStripMenuItem();
-            tàiChínhToolStripMenuItem = new ToolStripMenuItem();
-            thốngKếHóaĐơnToolStripMenuItem = new ToolStripMenuItem();
-            tiềnLươngNhânViênToolStripMenuItem = new ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)picAvatar).BeginInit();
-            menuStrip.SuspendLayout();
+            btnAttend = new Button();
+            pnManage = new FlowLayoutPanel();
+            btnManage = new Button();
+            btnAccount = new Button();
+            btnEmployee = new Button();
+            btnSupplier = new Button();
+            btnCustomer = new Button();
+            btnProduct = new Button();
+            btnCategory = new Button();
+            pnReport = new FlowLayoutPanel();
+            btnReport = new Button();
+            btnFinancialReport = new Button();
+            btnSalary = new Button();
+            btnInvoice = new Button();
+            pbLogout = new ReaLTaiizor.Controls.HopePictureBox();
+            pnTop = new Panel();
+            headerLabel1 = new ReaLTaiizor.Controls.HeaderLabel();
+            manageTransistion = new System.Windows.Forms.Timer(components);
+            menuTransistion = new System.Windows.Forms.Timer(components);
+            reportTransistion = new System.Windows.Forms.Timer(components);
+            ((System.ComponentModel.ISupportInitialize)pbUser).BeginInit();
+            pnMenu.SuspendLayout();
+            pnUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbMenu).BeginInit();
+            pnManage.SuspendLayout();
+            pnReport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbLogout).BeginInit();
+            pnTop.SuspendLayout();
             SuspendLayout();
             // 
             // btnSale
             // 
-            btnSale.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSale.Location = new Point(54, 148);
-            btnSale.Margin = new Padding(3, 4, 3, 4);
+            btnSale.BackColor = Color.FromArgb(59, 93, 79);
+            btnSale.FlatAppearance.BorderColor = Color.White;
+            btnSale.FlatAppearance.BorderSize = 0;
+            btnSale.FlatStyle = FlatStyle.Flat;
+            btnSale.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSale.Image = (Image)resources.GetObject("btnSale.Image");
+            btnSale.ImageAlign = ContentAlignment.TopLeft;
+            btnSale.Location = new Point(0, 59);
+            btnSale.Margin = new Padding(0);
             btnSale.Name = "btnSale";
-            btnSale.Size = new Size(309, 127);
+            btnSale.Size = new Size(265, 66);
             btnSale.TabIndex = 0;
-            btnSale.Text = "Bán hàng";
-            btnSale.UseVisualStyleBackColor = true;
+            btnSale.Text = "        Bán hàng";
+            btnSale.UseVisualStyleBackColor = false;
             btnSale.Click += btnSale_Click;
+            // 
+            // pbUser
+            // 
+            pbUser.BackColor = Color.Transparent;
+            pbUser.BackgroundImageLayout = ImageLayout.Zoom;
+            pbUser.Image = (Image)resources.GetObject("pbUser.Image");
+            pbUser.Location = new Point(1110, 0);
+            pbUser.Name = "pbUser";
+            pbUser.Size = new Size(45, 59);
+            pbUser.TabIndex = 16;
+            pbUser.TabStop = false;
+            pbUser.Click += pbUser_Click;
+            // 
+            // pnMenu
+            // 
+            pnMenu.AutoScroll = true;
+            pnMenu.AutoSize = true;
+            pnMenu.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            pnMenu.BackColor = Color.FromArgb(59, 93, 79);
+            pnMenu.Controls.Add(pnUser);
+            pnMenu.Controls.Add(btnSale);
+            pnMenu.Controls.Add(btnImport);
+            pnMenu.Controls.Add(btnAttend);
+            pnMenu.Controls.Add(pnManage);
+            pnMenu.Controls.Add(pnReport);
+            pnMenu.Dock = DockStyle.Left;
+            pnMenu.FlowDirection = FlowDirection.TopDown;
+            pnMenu.Location = new Point(0, 0);
+            pnMenu.Name = "pnMenu";
+            pnMenu.Size = new Size(271, 771);
+            pnMenu.TabIndex = 17;
+            pnMenu.WrapContents = false;
+            // 
+            // pnUser
+            // 
+            pnUser.BackColor = Color.FromArgb(59, 93, 79);
+            pnUser.Controls.Add(pbMenu);
+            pnUser.Location = new Point(0, 0);
+            pnUser.Margin = new Padding(0);
+            pnUser.Name = "pnUser";
+            pnUser.Size = new Size(271, 59);
+            pnUser.TabIndex = 22;
+            // 
+            // pbMenu
+            // 
+            pbMenu.Image = (Image)resources.GetObject("pbMenu.Image");
+            pbMenu.Location = new Point(0, 0);
+            pbMenu.Name = "pbMenu";
+            pbMenu.Size = new Size(72, 59);
+            pbMenu.SizeMode = PictureBoxSizeMode.Zoom;
+            pbMenu.TabIndex = 27;
+            pbMenu.TabStop = false;
+            pbMenu.Click += pbMenu_Click;
             // 
             // btnImport
             // 
-            btnImport.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnImport.Location = new Point(54, 307);
-            btnImport.Margin = new Padding(3, 4, 3, 4);
+            btnImport.BackColor = Color.FromArgb(59, 93, 79);
+            btnImport.FlatAppearance.BorderColor = Color.White;
+            btnImport.FlatAppearance.BorderSize = 0;
+            btnImport.FlatStyle = FlatStyle.Flat;
+            btnImport.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnImport.Image = (Image)resources.GetObject("btnImport.Image");
+            btnImport.ImageAlign = ContentAlignment.TopLeft;
+            btnImport.Location = new Point(0, 125);
+            btnImport.Margin = new Padding(0);
             btnImport.Name = "btnImport";
-            btnImport.Size = new Size(309, 127);
-            btnImport.TabIndex = 1;
-            btnImport.Text = "Nhập hàng";
-            btnImport.UseVisualStyleBackColor = true;
+            btnImport.Size = new Size(265, 66);
+            btnImport.TabIndex = 23;
+            btnImport.Text = "        Nhập hàng";
+            btnImport.UseVisualStyleBackColor = false;
+            btnImport.Click += btnImport_Click;
             // 
-            // picAvatar
+            // btnAttend
             // 
-            picAvatar.BackgroundImageLayout = ImageLayout.None;
-            picAvatar.Location = new Point(54, 55);
-            picAvatar.Margin = new Padding(3, 4, 3, 4);
-            picAvatar.Name = "picAvatar";
-            picAvatar.Size = new Size(55, 64);
-            picAvatar.SizeMode = PictureBoxSizeMode.Zoom;
-            picAvatar.TabIndex = 8;
-            picAvatar.TabStop = false;
+            btnAttend.BackColor = Color.FromArgb(59, 93, 79);
+            btnAttend.FlatAppearance.BorderColor = Color.White;
+            btnAttend.FlatAppearance.BorderSize = 0;
+            btnAttend.FlatStyle = FlatStyle.Flat;
+            btnAttend.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAttend.Image = (Image)resources.GetObject("btnAttend.Image");
+            btnAttend.ImageAlign = ContentAlignment.TopLeft;
+            btnAttend.Location = new Point(0, 191);
+            btnAttend.Margin = new Padding(0);
+            btnAttend.Name = "btnAttend";
+            btnAttend.Size = new Size(265, 66);
+            btnAttend.TabIndex = 25;
+            btnAttend.Text = "        Chấm công";
+            btnAttend.UseVisualStyleBackColor = false;
             // 
-            // lblUsername
+            // pnManage
             // 
-            lblUsername.AutoSize = true;
-            lblUsername.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUsername.Location = new Point(115, 55);
-            lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(120, 20);
-            lblUsername.TabIndex = 9;
-            lblUsername.Text = "Hello, username";
+            pnManage.Controls.Add(btnManage);
+            pnManage.Controls.Add(btnAccount);
+            pnManage.Controls.Add(btnEmployee);
+            pnManage.Controls.Add(btnSupplier);
+            pnManage.Controls.Add(btnCustomer);
+            pnManage.Controls.Add(btnProduct);
+            pnManage.Controls.Add(btnCategory);
+            pnManage.Location = new Point(3, 260);
+            pnManage.Name = "pnManage";
+            pnManage.Size = new Size(262, 461);
+            pnManage.TabIndex = 25;
             // 
-            // lblRole
+            // btnManage
             // 
-            lblRole.AutoSize = true;
-            lblRole.Location = new Point(115, 87);
-            lblRole.Name = "lblRole";
-            lblRole.Size = new Size(99, 20);
-            lblRole.TabIndex = 10;
-            lblRole.Text = "Authorization";
+            btnManage.BackColor = Color.FromArgb(59, 93, 79);
+            btnManage.FlatAppearance.BorderColor = Color.White;
+            btnManage.FlatAppearance.BorderSize = 0;
+            btnManage.FlatStyle = FlatStyle.Flat;
+            btnManage.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnManage.Image = (Image)resources.GetObject("btnManage.Image");
+            btnManage.ImageAlign = ContentAlignment.TopLeft;
+            btnManage.Location = new Point(0, 0);
+            btnManage.Margin = new Padding(0);
+            btnManage.Name = "btnManage";
+            btnManage.Size = new Size(262, 66);
+            btnManage.TabIndex = 24;
+            btnManage.Text = "        Quản lý";
+            btnManage.UseVisualStyleBackColor = false;
+            btnManage.Click += btnManage_Click;
             // 
-            // btnLogout
+            // btnAccount
             // 
-            btnLogout.Location = new Point(277, 55);
-            btnLogout.Margin = new Padding(3, 4, 3, 4);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(86, 31);
-            btnLogout.TabIndex = 11;
-            btnLogout.Text = "Đăng xuất";
-            btnLogout.UseVisualStyleBackColor = true;
-            btnLogout.Click += btnLogout_Click;
+            btnAccount.BackColor = Color.FromArgb(59, 93, 79);
+            btnAccount.FlatAppearance.BorderColor = Color.White;
+            btnAccount.FlatAppearance.BorderSize = 0;
+            btnAccount.FlatStyle = FlatStyle.Flat;
+            btnAccount.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAccount.Image = (Image)resources.GetObject("btnAccount.Image");
+            btnAccount.ImageAlign = ContentAlignment.TopLeft;
+            btnAccount.Location = new Point(0, 66);
+            btnAccount.Margin = new Padding(0);
+            btnAccount.Name = "btnAccount";
+            btnAccount.Size = new Size(262, 66);
+            btnAccount.TabIndex = 25;
+            btnAccount.Text = "        Tài khoản";
+            btnAccount.UseVisualStyleBackColor = false;
             // 
-            // menuStrip
+            // btnEmployee
             // 
-            menuStrip.ImageScalingSize = new Size(20, 20);
-            menuStrip.Items.AddRange(new ToolStripItem[] { mnuFunction, mnuManage, báoCáoToolStripMenuItem, hệThốngToolStripMenuItem });
-            menuStrip.Location = new Point(0, 0);
-            menuStrip.Name = "menuStrip";
-            menuStrip.Padding = new Padding(7, 3, 0, 3);
-            menuStrip.Size = new Size(401, 30);
-            menuStrip.TabIndex = 13;
-            menuStrip.Text = "menuStrip1";
+            btnEmployee.BackColor = Color.FromArgb(59, 93, 79);
+            btnEmployee.FlatAppearance.BorderColor = Color.White;
+            btnEmployee.FlatAppearance.BorderSize = 0;
+            btnEmployee.FlatStyle = FlatStyle.Flat;
+            btnEmployee.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEmployee.Image = (Image)resources.GetObject("btnEmployee.Image");
+            btnEmployee.ImageAlign = ContentAlignment.TopLeft;
+            btnEmployee.Location = new Point(0, 132);
+            btnEmployee.Margin = new Padding(0);
+            btnEmployee.Name = "btnEmployee";
+            btnEmployee.Size = new Size(262, 66);
+            btnEmployee.TabIndex = 26;
+            btnEmployee.Text = "        Nhân viên";
+            btnEmployee.UseVisualStyleBackColor = false;
             // 
-            // mnuFunction
+            // btnSupplier
             // 
-            mnuFunction.DropDownItems.AddRange(new ToolStripItem[] { mnuFunctionSale, mnuFunctionImport });
-            mnuFunction.Name = "mnuFunction";
-            mnuFunction.Size = new Size(93, 24);
-            mnuFunction.Text = "Chức năng";
+            btnSupplier.BackColor = Color.FromArgb(59, 93, 79);
+            btnSupplier.FlatAppearance.BorderColor = Color.White;
+            btnSupplier.FlatAppearance.BorderSize = 0;
+            btnSupplier.FlatStyle = FlatStyle.Flat;
+            btnSupplier.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSupplier.Image = (Image)resources.GetObject("btnSupplier.Image");
+            btnSupplier.ImageAlign = ContentAlignment.TopLeft;
+            btnSupplier.Location = new Point(0, 198);
+            btnSupplier.Margin = new Padding(0);
+            btnSupplier.Name = "btnSupplier";
+            btnSupplier.Size = new Size(262, 66);
+            btnSupplier.TabIndex = 27;
+            btnSupplier.Text = "        Nhà cung cấp";
+            btnSupplier.UseVisualStyleBackColor = false;
             // 
-            // mnuFunctionSale
+            // btnCustomer
             // 
-            mnuFunctionSale.Name = "mnuFunctionSale";
-            mnuFunctionSale.ShortcutKeys = Keys.F1;
-            mnuFunctionSale.Size = new Size(189, 26);
-            mnuFunctionSale.Text = "Bán hàng";
+            btnCustomer.BackColor = Color.FromArgb(59, 93, 79);
+            btnCustomer.FlatAppearance.BorderColor = Color.White;
+            btnCustomer.FlatAppearance.BorderSize = 0;
+            btnCustomer.FlatStyle = FlatStyle.Flat;
+            btnCustomer.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCustomer.Image = (Image)resources.GetObject("btnCustomer.Image");
+            btnCustomer.ImageAlign = ContentAlignment.TopLeft;
+            btnCustomer.Location = new Point(0, 264);
+            btnCustomer.Margin = new Padding(0);
+            btnCustomer.Name = "btnCustomer";
+            btnCustomer.Size = new Size(262, 66);
+            btnCustomer.TabIndex = 28;
+            btnCustomer.Text = "        Khách hàng";
+            btnCustomer.UseVisualStyleBackColor = false;
             // 
-            // mnuFunctionImport
+            // btnProduct
             // 
-            mnuFunctionImport.Name = "mnuFunctionImport";
-            mnuFunctionImport.ShortcutKeys = Keys.F2;
-            mnuFunctionImport.Size = new Size(189, 26);
-            mnuFunctionImport.Text = "Nhập hàng";
+            btnProduct.BackColor = Color.FromArgb(59, 93, 79);
+            btnProduct.FlatAppearance.BorderColor = Color.White;
+            btnProduct.FlatAppearance.BorderSize = 0;
+            btnProduct.FlatStyle = FlatStyle.Flat;
+            btnProduct.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnProduct.Image = (Image)resources.GetObject("btnProduct.Image");
+            btnProduct.ImageAlign = ContentAlignment.TopLeft;
+            btnProduct.Location = new Point(0, 330);
+            btnProduct.Margin = new Padding(0);
+            btnProduct.Name = "btnProduct";
+            btnProduct.Size = new Size(262, 66);
+            btnProduct.TabIndex = 29;
+            btnProduct.Text = "        Sản phẩm";
+            btnProduct.UseVisualStyleBackColor = false;
             // 
-            // mnuManage
+            // btnCategory
             // 
-            mnuManage.DropDownItems.AddRange(new ToolStripItem[] { mnuManageSupplier, mnuManageProduct, mnuManageCustomer, mnuManageAccount, mnuManageEmployee, mnuManageCatagory, toolStripMenuItem1, mnuManageExit });
-            mnuManage.Name = "mnuManage";
-            mnuManage.Size = new Size(90, 24);
-            mnuManage.Text = "Danh mục";
+            btnCategory.BackColor = Color.FromArgb(59, 93, 79);
+            btnCategory.FlatAppearance.BorderColor = Color.White;
+            btnCategory.FlatAppearance.BorderSize = 0;
+            btnCategory.FlatStyle = FlatStyle.Flat;
+            btnCategory.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCategory.Image = (Image)resources.GetObject("btnCategory.Image");
+            btnCategory.ImageAlign = ContentAlignment.TopLeft;
+            btnCategory.Location = new Point(0, 396);
+            btnCategory.Margin = new Padding(0);
+            btnCategory.Name = "btnCategory";
+            btnCategory.Size = new Size(262, 66);
+            btnCategory.TabIndex = 30;
+            btnCategory.Text = "        Danh mục";
+            btnCategory.UseVisualStyleBackColor = false;
             // 
-            // mnuManageSupplier
+            // pnReport
             // 
-            mnuManageSupplier.Name = "mnuManageSupplier";
-            mnuManageSupplier.Size = new Size(183, 26);
-            mnuManageSupplier.Text = "Nhà cung cấp";
-            mnuManageSupplier.Click += mnuManageSupplier_Click;
+            pnReport.Controls.Add(btnReport);
+            pnReport.Controls.Add(btnFinancialReport);
+            pnReport.Controls.Add(btnSalary);
+            pnReport.Controls.Add(btnInvoice);
+            pnReport.Location = new Point(3, 727);
+            pnReport.Name = "pnReport";
+            pnReport.Size = new Size(262, 258);
+            pnReport.TabIndex = 32;
             // 
-            // mnuManageProduct
+            // btnReport
             // 
-            mnuManageProduct.Name = "mnuManageProduct";
-            mnuManageProduct.Size = new Size(183, 26);
-            mnuManageProduct.Text = "Hàng hóa";
-            mnuManageProduct.Click += mnuManageProduct_Click;
+            btnReport.BackColor = Color.FromArgb(59, 93, 79);
+            btnReport.FlatAppearance.BorderColor = Color.White;
+            btnReport.FlatAppearance.BorderSize = 0;
+            btnReport.FlatStyle = FlatStyle.Flat;
+            btnReport.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReport.Image = (Image)resources.GetObject("btnReport.Image");
+            btnReport.ImageAlign = ContentAlignment.TopLeft;
+            btnReport.Location = new Point(0, 0);
+            btnReport.Margin = new Padding(0);
+            btnReport.Name = "btnReport";
+            btnReport.Size = new Size(262, 66);
+            btnReport.TabIndex = 31;
+            btnReport.Text = "        Báo cáo";
+            btnReport.UseVisualStyleBackColor = false;
+            btnReport.Click += btnReport_Click;
             // 
-            // mnuManageCustomer
+            // btnFinancialReport
             // 
-            mnuManageCustomer.Name = "mnuManageCustomer";
-            mnuManageCustomer.Size = new Size(183, 26);
-            mnuManageCustomer.Text = "Khách hàng";
-            mnuManageCustomer.Click += mnuManageCustomer_Click;
+            btnFinancialReport.BackColor = Color.FromArgb(59, 93, 79);
+            btnFinancialReport.FlatAppearance.BorderColor = Color.White;
+            btnFinancialReport.FlatAppearance.BorderSize = 0;
+            btnFinancialReport.FlatStyle = FlatStyle.Flat;
+            btnFinancialReport.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnFinancialReport.Image = (Image)resources.GetObject("btnFinancialReport.Image");
+            btnFinancialReport.ImageAlign = ContentAlignment.TopLeft;
+            btnFinancialReport.Location = new Point(0, 66);
+            btnFinancialReport.Margin = new Padding(0);
+            btnFinancialReport.Name = "btnFinancialReport";
+            btnFinancialReport.Size = new Size(262, 66);
+            btnFinancialReport.TabIndex = 32;
+            btnFinancialReport.Text = "        Tài chính";
+            btnFinancialReport.UseVisualStyleBackColor = false;
+            btnFinancialReport.Click += btnFinancialReport_Click;
             // 
-            // mnuManageAccount
+            // btnSalary
             // 
-            mnuManageAccount.Name = "mnuManageAccount";
-            mnuManageAccount.Size = new Size(183, 26);
-            mnuManageAccount.Text = "Tài khoản";
-            mnuManageAccount.Click += mnuManageAccount_Click;
+            btnSalary.BackColor = Color.FromArgb(59, 93, 79);
+            btnSalary.FlatAppearance.BorderColor = Color.White;
+            btnSalary.FlatAppearance.BorderSize = 0;
+            btnSalary.FlatStyle = FlatStyle.Flat;
+            btnSalary.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSalary.Image = (Image)resources.GetObject("btnSalary.Image");
+            btnSalary.ImageAlign = ContentAlignment.TopLeft;
+            btnSalary.Location = new Point(0, 132);
+            btnSalary.Margin = new Padding(0);
+            btnSalary.Name = "btnSalary";
+            btnSalary.Size = new Size(262, 66);
+            btnSalary.TabIndex = 33;
+            btnSalary.Text = "        Tiền lương";
+            btnSalary.UseVisualStyleBackColor = false;
+            btnSalary.Click += btnSalary_Click;
             // 
-            // mnuManageEmployee
+            // btnInvoice
             // 
-            mnuManageEmployee.Name = "mnuManageEmployee";
-            mnuManageEmployee.Size = new Size(183, 26);
-            mnuManageEmployee.Text = "Nhân viên";
-            mnuManageEmployee.Click += mnuManageEmployee_Click;
+            btnInvoice.BackColor = Color.FromArgb(59, 93, 79);
+            btnInvoice.FlatAppearance.BorderColor = Color.White;
+            btnInvoice.FlatAppearance.BorderSize = 0;
+            btnInvoice.FlatStyle = FlatStyle.Flat;
+            btnInvoice.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnInvoice.Image = (Image)resources.GetObject("btnInvoice.Image");
+            btnInvoice.ImageAlign = ContentAlignment.TopLeft;
+            btnInvoice.Location = new Point(0, 198);
+            btnInvoice.Margin = new Padding(0);
+            btnInvoice.Name = "btnInvoice";
+            btnInvoice.Size = new Size(262, 66);
+            btnInvoice.TabIndex = 34;
+            btnInvoice.Text = "        Hóa đơn";
+            btnInvoice.UseVisualStyleBackColor = false;
+            btnInvoice.Click += btnInvoice_Click;
             // 
-            // mnuManageCatagory
+            // pbLogout
             // 
-            mnuManageCatagory.Name = "mnuManageCatagory";
-            mnuManageCatagory.Size = new Size(183, 26);
-            mnuManageCatagory.Text = "Danh mục";
-            mnuManageCatagory.Click += mnuManageCatagory_Click;
+            pbLogout.BackColor = Color.FromArgb(192, 196, 204);
+            pbLogout.Image = (Image)resources.GetObject("pbLogout.Image");
+            pbLogout.Location = new Point(947, 16);
+            pbLogout.Name = "pbLogout";
+            pbLogout.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            pbLogout.Size = new Size(46, 43);
+            pbLogout.SizeMode = PictureBoxSizeMode.Zoom;
+            pbLogout.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            pbLogout.TabIndex = 19;
+            pbLogout.TabStop = false;
+            pbLogout.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            pbLogout.Click += pbLogout_Click;
             // 
-            // toolStripMenuItem1
+            // pnTop
             // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(180, 6);
+            pnTop.Controls.Add(headerLabel1);
+            pnTop.Controls.Add(pbLogout);
+            pnTop.Controls.Add(pbUser);
+            pnTop.Dock = DockStyle.Top;
+            pnTop.Location = new Point(271, 0);
+            pnTop.Name = "pnTop";
+            pnTop.Size = new Size(1172, 59);
+            pnTop.TabIndex = 26;
             // 
-            // mnuManageExit
+            // headerLabel1
             // 
-            mnuManageExit.Name = "mnuManageExit";
-            mnuManageExit.ShortcutKeys = Keys.Alt | Keys.F4;
-            mnuManageExit.Size = new Size(183, 26);
-            mnuManageExit.Text = "Thoát";
-            mnuManageExit.Click += thoátToolStripMenuItem_Click;
+            headerLabel1.AutoSize = true;
+            headerLabel1.BackColor = SystemColors.Control;
+            headerLabel1.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Bold);
+            headerLabel1.ForeColor = Color.Black;
+            headerLabel1.Location = new Point(999, 0);
+            headerLabel1.Name = "headerLabel1";
+            headerLabel1.Size = new Size(105, 24);
+            headerLabel1.TabIndex = 22;
+            headerLabel1.Text = "Username";
+            headerLabel1.TextAlign = ContentAlignment.TopRight;
             // 
-            // báoCáoToolStripMenuItem
+            // manageTransistion
             // 
-            báoCáoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tàiChínhToolStripMenuItem, thốngKếHóaĐơnToolStripMenuItem, tiềnLươngNhânViênToolStripMenuItem });
-            báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
-            báoCáoToolStripMenuItem.Size = new Size(77, 24);
-            báoCáoToolStripMenuItem.Text = "Báo cáo";
+            manageTransistion.Tick += manageTransistion_Tick;
             // 
-            // hệThốngToolStripMenuItem
+            // menuTransistion
             // 
-            hệThốngToolStripMenuItem.Name = "hệThốngToolStripMenuItem";
-            hệThốngToolStripMenuItem.Size = new Size(85, 24);
-            hệThốngToolStripMenuItem.Text = "Hệ thống";
+            menuTransistion.Tick += menuTransistion_Tick;
             // 
-            // tàiChínhToolStripMenuItem
+            // reportTransistion
             // 
-            tàiChínhToolStripMenuItem.Name = "tàiChínhToolStripMenuItem";
-            tàiChínhToolStripMenuItem.Size = new Size(230, 26);
-            tàiChínhToolStripMenuItem.Text = "Tài chính";
-            tàiChínhToolStripMenuItem.Click += tàiChínhToolStripMenuItem_Click;
-            // 
-            // thốngKếHóaĐơnToolStripMenuItem
-            // 
-            thốngKếHóaĐơnToolStripMenuItem.Name = "thốngKếHóaĐơnToolStripMenuItem";
-            thốngKếHóaĐơnToolStripMenuItem.Size = new Size(230, 26);
-            thốngKếHóaĐơnToolStripMenuItem.Text = "Thống kế hóa đơn";
-            thốngKếHóaĐơnToolStripMenuItem.Click += thốngKếHóaĐơnToolStripMenuItem_Click;
-            // 
-            // tiềnLươngNhânViênToolStripMenuItem
-            // 
-            tiềnLươngNhânViênToolStripMenuItem.Name = "tiềnLươngNhânViênToolStripMenuItem";
-            tiềnLươngNhânViênToolStripMenuItem.Size = new Size(230, 26);
-            tiềnLươngNhânViênToolStripMenuItem.Text = "Tiền lương nhân viên";
+            reportTransistion.Tick += reportTransistion_Tick;
             // 
             // frmMain
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(401, 600);
-            Controls.Add(btnLogout);
-            Controls.Add(lblRole);
-            Controls.Add(lblUsername);
-            Controls.Add(picAvatar);
-            Controls.Add(btnImport);
-            Controls.Add(btnSale);
-            Controls.Add(menuStrip);
-            MainMenuStrip = menuStrip;
+            AutoScaleDimensions = new SizeF(120F, 120F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSize = true;
+            ClientSize = new Size(1443, 771);
+            Controls.Add(pnTop);
+            Controls.Add(pnMenu);
+            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Bán hàng";
             Load += frmMain_Load;
-            ((System.ComponentModel.ISupportInitialize)picAvatar).EndInit();
-            menuStrip.ResumeLayout(false);
-            menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbUser).EndInit();
+            pnMenu.ResumeLayout(false);
+            pnUser.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbMenu).EndInit();
+            pnManage.ResumeLayout(false);
+            pnReport.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbLogout).EndInit();
+            pnTop.ResumeLayout(false);
+            pnTop.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -275,28 +470,33 @@
         #endregion
 
         private Button btnSale;
-        private Button btnImport;
-        private PictureBox picAvatar;
         private Label lblUsername;
-        private Label lblRole;
-        private Button btnLogout;
-        private MenuStrip menuStrip;
-        private ToolStripMenuItem mnuManage;
-        private ToolStripMenuItem báoCáoToolStripMenuItem;
-        private ToolStripMenuItem hệThốngToolStripMenuItem;
-        private ToolStripMenuItem mnuManageSupplier;
-        private ToolStripMenuItem mnuManageProduct;
-        private ToolStripMenuItem mnuManageCustomer;
-        private ToolStripMenuItem mnuManageAccount;
-        private ToolStripMenuItem mnuManageEmployee;
-        private ToolStripMenuItem mnuManageCatagory;
-        private ToolStripSeparator toolStripMenuItem1;
-        private ToolStripMenuItem mnuManageExit;
-        private ToolStripMenuItem mnuFunction;
-        private ToolStripMenuItem mnuFunctionSale;
-        private ToolStripMenuItem mnuFunctionImport;
-        private ToolStripMenuItem tàiChínhToolStripMenuItem;
-        private ToolStripMenuItem thốngKếHóaĐơnToolStripMenuItem;
-        private ToolStripMenuItem tiềnLươngNhânViênToolStripMenuItem;
+        private ReaLTaiizor.Controls.NightControlBox nightControlBox;
+        private PictureBox pbUser;
+        private FlowLayoutPanel pnMenu;
+        private Panel pnUser;
+        private ReaLTaiizor.Controls.HopePictureBox pbLogout;
+        private Button btnImprot;
+        private PictureBox pbMenu;
+        private Button btnImport;
+        private Button btnManage;
+        private Button btnAttend;
+        private FlowLayoutPanel pnManage;
+        private Button btnAccount;
+        private Button btnEmployee;
+        private Button btnSupplier;
+        private Button btnCustomer;
+        private Button btnProduct;
+        private Button btnCategory;
+        private Panel pnTop;
+        private System.Windows.Forms.Timer manageTransistion;
+        private System.Windows.Forms.Timer menuTransistion;
+        private ReaLTaiizor.Controls.HeaderLabel headerLabel1;
+        private Button btnReport;
+        private FlowLayoutPanel pnReport;
+        private Button btnFinancialReport;
+        private Button btnSalary;
+        private Button btnInvoice;
+        private System.Windows.Forms.Timer reportTransistion;
     }
 }
