@@ -227,6 +227,7 @@
             Controls.Add(gbAccInfo);
             Controls.Add(btnAdd);
             Controls.Add(dgvAccount);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmAccount";
             Text = "frmAccount";
             Load += frmAccount_Load;

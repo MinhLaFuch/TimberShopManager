@@ -108,6 +108,7 @@
             Controls.Add(dtpFrom);
             Controls.Add(cbTimeStamp);
             Controls.Add(dgvAttendance);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmAttendance";
             Text = "Báo cáo chấm công của ";
             Load += frmAttendance_Load;

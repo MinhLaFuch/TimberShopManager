@@ -283,6 +283,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(gbStatistic);
             Controls.Add(gbTime);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmFinancialReport";
             Text = "Báo cáo tài chính";
             Load += frmFinancialReport_Load;

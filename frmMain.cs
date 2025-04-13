@@ -11,6 +11,8 @@ namespace timber_shop_manager
         private bool manageExpand = false;
         private bool menuExpand = false;
         private bool reportExpand = false;
+        private int numOfManageButton = 6;
+        private int numOfReportButton = 3;
         public frmMain(Account account)
         {
             InitializeComponent();
@@ -99,80 +101,82 @@ namespace timber_shop_manager
         {
             if (!manageExpand)
             {
-                if (pnManage.Width >= 200)
+                if (pnManage.Height >= 66 * numOfManageButton)
                 {
                     manageExpand = true;
                     manageTransistion.Stop();
                 }
                 else
                 {
-                    pnManage.Width += 10;
+                    pnManage.Height += 50;
                 }
             }
             else
             {
-                if (pnManage.Width <= 0)
+                if (pnManage.Height <= 66)
                 {
                     manageExpand = false;
                     manageTransistion.Stop();
                 }
                 else
                 {
-                    pnManage.Width -= 10;
+                    pnManage.Height -= 50;
                 }
             }
         }
+        // Not working
         private void menuTransistion_Tick(object sender, EventArgs e)
         {
             if (!menuExpand)
             {
-                if (pnMenu.Width >= 200)
+                if (pnMenu.Width >= 271)
                 {
                     menuExpand = true;
                     menuTransistion.Stop();
                 }
                 else
                 {
-                    pnMenu.Width += 10;
+                    pnMenu.Width += 50;
                 }
             }
             else
             {
-                if (pnMenu.Width <= 0)
+                if (pnMenu.Width <= 72)
                 {
                     menuExpand = false;
                     menuTransistion.Stop();
                 }
                 else
                 {
-                    pnMenu.Width -= 10;
+                    pnMenu.Width -= 50;
                 }
             }
         }
+        
         private void reportTransistion_Tick(object sender, EventArgs e)
         {
             if (!reportExpand)
             {
-                if (pnReport.Width >= 200)
+                if (pnReport.Height >= 66 * numOfReportButton)
                 {
                     reportExpand = true;
                     reportTransistion.Stop();
                 }
                 else
                 {
-                    pnReport.Width += 10;
+                    pnReport.Height += 50;
                 }
             }
             else
             {
-                if (pnReport.Width <= 0)
+                if (pnReport.Height <= 66)
                 {
                     reportExpand = false;
                     reportTransistion.Stop();
                 }
                 else
                 {
-                    pnReport.Width -= 10;
+                    pnReport.Height -= 50;
                 }
             }
         }

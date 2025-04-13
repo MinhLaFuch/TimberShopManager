@@ -208,6 +208,7 @@
             Controls.Add(btnAdd);
             Controls.Add(gbInfo);
             Controls.Add(dgvCatagory);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmCatagory";
             Text = "frmCatagory";
             Load += frmCatagory_Load;

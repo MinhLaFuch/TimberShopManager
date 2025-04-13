@@ -41,10 +41,10 @@
             lbQuantityCurrency = new Label();
             txtSell = new TextBox();
             lbSellCurrency = new Label();
+            lbQuantity = new Label();
             lbSell = new Label();
             btnExport = new Button();
             txtSalary = new TextBox();
-            lbQuantity = new Label();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             gbTime.SuspendLayout();
             gbStatistic.SuspendLayout();
@@ -178,6 +178,15 @@
             lbSellCurrency.TabIndex = 15;
             lbSellCurrency.Text = "VND";
             // 
+            // lbQuantity
+            // 
+            lbQuantity.AutoSize = true;
+            lbQuantity.Location = new Point(40, 60);
+            lbQuantity.Name = "lbQuantity";
+            lbQuantity.Size = new Size(118, 20);
+            lbQuantity.TabIndex = 16;
+            lbQuantity.Text = "Lương nhân viên";
+            // 
             // lbSell
             // 
             lbSell.AutoSize = true;
@@ -204,15 +213,6 @@
             txtSalary.Size = new Size(100, 27);
             txtSalary.TabIndex = 19;
             // 
-            // lbQuantity
-            // 
-            lbQuantity.AutoSize = true;
-            lbQuantity.Location = new Point(40, 60);
-            lbQuantity.Name = "lbQuantity";
-            lbQuantity.Size = new Size(118, 20);
-            lbQuantity.TabIndex = 16;
-            lbQuantity.Text = "Lương nhân viên";
-            // 
             // frmInvoiceReport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -221,6 +221,7 @@
             Controls.Add(gbStatistic);
             Controls.Add(gbTime);
             Controls.Add(dgv);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmInvoiceReport";
             Text = "frmInvoiceReport";
             ((System.ComponentModel.ISupportInitialize)dgv).EndInit();

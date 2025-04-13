@@ -78,7 +78,7 @@
             btnSale.Location = new Point(0, 59);
             btnSale.Margin = new Padding(0);
             btnSale.Name = "btnSale";
-            btnSale.Size = new Size(265, 66);
+            btnSale.Size = new Size(271, 66);
             btnSale.TabIndex = 0;
             btnSale.Text = "        Bán hàng";
             btnSale.UseVisualStyleBackColor = false;
@@ -149,7 +149,7 @@
             btnImport.Location = new Point(0, 125);
             btnImport.Margin = new Padding(0);
             btnImport.Name = "btnImport";
-            btnImport.Size = new Size(265, 66);
+            btnImport.Size = new Size(271, 66);
             btnImport.TabIndex = 23;
             btnImport.Text = "        Nhập hàng";
             btnImport.UseVisualStyleBackColor = false;
@@ -167,7 +167,7 @@
             btnAttend.Location = new Point(0, 191);
             btnAttend.Margin = new Padding(0);
             btnAttend.Name = "btnAttend";
-            btnAttend.Size = new Size(265, 66);
+            btnAttend.Size = new Size(271, 66);
             btnAttend.TabIndex = 25;
             btnAttend.Text = "        Chấm công";
             btnAttend.UseVisualStyleBackColor = false;
@@ -183,7 +183,7 @@
             pnManage.Controls.Add(btnCategory);
             pnManage.Location = new Point(3, 260);
             pnManage.Name = "pnManage";
-            pnManage.Size = new Size(262, 461);
+            pnManage.Size = new Size(247, 461);
             pnManage.TabIndex = 25;
             // 
             // btnManage
@@ -198,7 +198,7 @@
             btnManage.Location = new Point(0, 0);
             btnManage.Margin = new Padding(0);
             btnManage.Name = "btnManage";
-            btnManage.Size = new Size(262, 66);
+            btnManage.Size = new Size(271, 66);
             btnManage.TabIndex = 24;
             btnManage.Text = "        Quản lý";
             btnManage.UseVisualStyleBackColor = false;
@@ -206,7 +206,7 @@
             // 
             // btnAccount
             // 
-            btnAccount.BackColor = Color.FromArgb(59, 93, 79);
+            btnAccount.BackColor = Color.FromArgb(59, 93, 60);
             btnAccount.FlatAppearance.BorderColor = Color.White;
             btnAccount.FlatAppearance.BorderSize = 0;
             btnAccount.FlatStyle = FlatStyle.Flat;
@@ -216,14 +216,14 @@
             btnAccount.Location = new Point(0, 66);
             btnAccount.Margin = new Padding(0);
             btnAccount.Name = "btnAccount";
-            btnAccount.Size = new Size(262, 66);
+            btnAccount.Size = new Size(271, 66);
             btnAccount.TabIndex = 25;
             btnAccount.Text = "        Tài khoản";
             btnAccount.UseVisualStyleBackColor = false;
             // 
             // btnEmployee
             // 
-            btnEmployee.BackColor = Color.FromArgb(59, 93, 79);
+            btnEmployee.BackColor = Color.FromArgb(59, 93, 60);
             btnEmployee.FlatAppearance.BorderColor = Color.White;
             btnEmployee.FlatAppearance.BorderSize = 0;
             btnEmployee.FlatStyle = FlatStyle.Flat;
@@ -233,14 +233,14 @@
             btnEmployee.Location = new Point(0, 132);
             btnEmployee.Margin = new Padding(0);
             btnEmployee.Name = "btnEmployee";
-            btnEmployee.Size = new Size(262, 66);
+            btnEmployee.Size = new Size(271, 66);
             btnEmployee.TabIndex = 26;
             btnEmployee.Text = "        Nhân viên";
             btnEmployee.UseVisualStyleBackColor = false;
             // 
             // btnSupplier
             // 
-            btnSupplier.BackColor = Color.FromArgb(59, 93, 79);
+            btnSupplier.BackColor = Color.FromArgb(59, 93, 60);
             btnSupplier.FlatAppearance.BorderColor = Color.White;
             btnSupplier.FlatAppearance.BorderSize = 0;
             btnSupplier.FlatStyle = FlatStyle.Flat;
@@ -250,14 +250,14 @@
             btnSupplier.Location = new Point(0, 198);
             btnSupplier.Margin = new Padding(0);
             btnSupplier.Name = "btnSupplier";
-            btnSupplier.Size = new Size(262, 66);
+            btnSupplier.Size = new Size(271, 66);
             btnSupplier.TabIndex = 27;
             btnSupplier.Text = "        Nhà cung cấp";
             btnSupplier.UseVisualStyleBackColor = false;
             // 
             // btnCustomer
             // 
-            btnCustomer.BackColor = Color.FromArgb(59, 93, 79);
+            btnCustomer.BackColor = Color.FromArgb(59, 93, 60);
             btnCustomer.FlatAppearance.BorderColor = Color.White;
             btnCustomer.FlatAppearance.BorderSize = 0;
             btnCustomer.FlatStyle = FlatStyle.Flat;
@@ -267,14 +267,14 @@
             btnCustomer.Location = new Point(0, 264);
             btnCustomer.Margin = new Padding(0);
             btnCustomer.Name = "btnCustomer";
-            btnCustomer.Size = new Size(262, 66);
+            btnCustomer.Size = new Size(271, 66);
             btnCustomer.TabIndex = 28;
             btnCustomer.Text = "        Khách hàng";
             btnCustomer.UseVisualStyleBackColor = false;
             // 
             // btnProduct
             // 
-            btnProduct.BackColor = Color.FromArgb(59, 93, 79);
+            btnProduct.BackColor = Color.FromArgb(59, 93, 60);
             btnProduct.FlatAppearance.BorderColor = Color.White;
             btnProduct.FlatAppearance.BorderSize = 0;
             btnProduct.FlatStyle = FlatStyle.Flat;
@@ -284,14 +284,14 @@
             btnProduct.Location = new Point(0, 330);
             btnProduct.Margin = new Padding(0);
             btnProduct.Name = "btnProduct";
-            btnProduct.Size = new Size(262, 66);
+            btnProduct.Size = new Size(271, 66);
             btnProduct.TabIndex = 29;
             btnProduct.Text = "        Sản phẩm";
             btnProduct.UseVisualStyleBackColor = false;
             // 
             // btnCategory
             // 
-            btnCategory.BackColor = Color.FromArgb(59, 93, 79);
+            btnCategory.BackColor = Color.FromArgb(59, 93, 60);
             btnCategory.FlatAppearance.BorderColor = Color.White;
             btnCategory.FlatAppearance.BorderSize = 0;
             btnCategory.FlatStyle = FlatStyle.Flat;
@@ -301,7 +301,7 @@
             btnCategory.Location = new Point(0, 396);
             btnCategory.Margin = new Padding(0);
             btnCategory.Name = "btnCategory";
-            btnCategory.Size = new Size(262, 66);
+            btnCategory.Size = new Size(271, 66);
             btnCategory.TabIndex = 30;
             btnCategory.Text = "        Danh mục";
             btnCategory.UseVisualStyleBackColor = false;
@@ -314,7 +314,7 @@
             pnReport.Controls.Add(btnInvoice);
             pnReport.Location = new Point(3, 727);
             pnReport.Name = "pnReport";
-            pnReport.Size = new Size(262, 258);
+            pnReport.Size = new Size(247, 258);
             pnReport.TabIndex = 32;
             // 
             // btnReport
@@ -329,7 +329,7 @@
             btnReport.Location = new Point(0, 0);
             btnReport.Margin = new Padding(0);
             btnReport.Name = "btnReport";
-            btnReport.Size = new Size(262, 66);
+            btnReport.Size = new Size(271, 66);
             btnReport.TabIndex = 31;
             btnReport.Text = "        Báo cáo";
             btnReport.UseVisualStyleBackColor = false;
@@ -337,7 +337,7 @@
             // 
             // btnFinancialReport
             // 
-            btnFinancialReport.BackColor = Color.FromArgb(59, 93, 79);
+            btnFinancialReport.BackColor = Color.FromArgb(59, 93, 60);
             btnFinancialReport.FlatAppearance.BorderColor = Color.White;
             btnFinancialReport.FlatAppearance.BorderSize = 0;
             btnFinancialReport.FlatStyle = FlatStyle.Flat;
@@ -347,7 +347,7 @@
             btnFinancialReport.Location = new Point(0, 66);
             btnFinancialReport.Margin = new Padding(0);
             btnFinancialReport.Name = "btnFinancialReport";
-            btnFinancialReport.Size = new Size(262, 66);
+            btnFinancialReport.Size = new Size(271, 66);
             btnFinancialReport.TabIndex = 32;
             btnFinancialReport.Text = "        Tài chính";
             btnFinancialReport.UseVisualStyleBackColor = false;
@@ -355,7 +355,7 @@
             // 
             // btnSalary
             // 
-            btnSalary.BackColor = Color.FromArgb(59, 93, 79);
+            btnSalary.BackColor = Color.FromArgb(59, 93, 60);
             btnSalary.FlatAppearance.BorderColor = Color.White;
             btnSalary.FlatAppearance.BorderSize = 0;
             btnSalary.FlatStyle = FlatStyle.Flat;
@@ -365,7 +365,7 @@
             btnSalary.Location = new Point(0, 132);
             btnSalary.Margin = new Padding(0);
             btnSalary.Name = "btnSalary";
-            btnSalary.Size = new Size(262, 66);
+            btnSalary.Size = new Size(271, 66);
             btnSalary.TabIndex = 33;
             btnSalary.Text = "        Tiền lương";
             btnSalary.UseVisualStyleBackColor = false;
@@ -373,7 +373,7 @@
             // 
             // btnInvoice
             // 
-            btnInvoice.BackColor = Color.FromArgb(59, 93, 79);
+            btnInvoice.BackColor = Color.FromArgb(59, 93, 60);
             btnInvoice.FlatAppearance.BorderColor = Color.White;
             btnInvoice.FlatAppearance.BorderSize = 0;
             btnInvoice.FlatStyle = FlatStyle.Flat;
@@ -383,7 +383,7 @@
             btnInvoice.Location = new Point(0, 198);
             btnInvoice.Margin = new Padding(0);
             btnInvoice.Name = "btnInvoice";
-            btnInvoice.Size = new Size(262, 66);
+            btnInvoice.Size = new Size(271, 66);
             btnInvoice.TabIndex = 34;
             btnInvoice.Text = "        Hóa đơn";
             btnInvoice.UseVisualStyleBackColor = false;
@@ -430,14 +430,17 @@
             // 
             // manageTransistion
             // 
+            manageTransistion.Interval = 10;
             manageTransistion.Tick += manageTransistion_Tick;
             // 
             // menuTransistion
             // 
+            menuTransistion.Interval = 10;
             menuTransistion.Tick += menuTransistion_Tick;
             // 
             // reportTransistion
             // 
+            reportTransistion.Interval = 10;
             reportTransistion.Tick += reportTransistion_Tick;
             // 
             // frmMain

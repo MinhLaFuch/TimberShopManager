@@ -36,7 +36,9 @@
             gbInfo = new GroupBox();
             lbID = new Label();
             txtID = new TextBox();
+            btnCancel = new Button();
             txtPhoneNumber = new TextBox();
+            btnSave = new Button();
             lbPhoneNumber = new Label();
             txtName = new TextBox();
             lbName = new Label();
@@ -46,8 +48,6 @@
             lbEmail = new Label();
             lbWebsite = new Label();
             txtEmail = new TextBox();
-            btnSave = new Button();
-            btnCancel = new Button();
             grbFunction = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dgvSupplier).BeginInit();
             gbInfo.SuspendLayout();
@@ -145,6 +145,16 @@
             txtID.Size = new Size(263, 27);
             txtID.TabIndex = 7;
             // 
+            // btnCancel
+            // 
+            btnCancel.Location = new Point(708, 142);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 33);
+            btnCancel.TabIndex = 8;
+            btnCancel.Text = "Hủy";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
             // txtPhoneNumber
             // 
             txtPhoneNumber.Location = new Point(153, 108);
@@ -152,6 +162,16 @@
             txtPhoneNumber.Size = new Size(263, 27);
             txtPhoneNumber.TabIndex = 19;
             txtPhoneNumber.KeyPress += txtPhoneNumber_KeyPress;
+            // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(627, 142);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(75, 33);
+            btnSave.TabIndex = 9;
+            btnSave.Text = "Lưu";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // lbPhoneNumber
             // 
@@ -226,26 +246,6 @@
             txtEmail.Size = new Size(263, 27);
             txtEmail.TabIndex = 13;
             // 
-            // btnSave
-            // 
-            btnSave.Location = new Point(627, 142);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(75, 33);
-            btnSave.TabIndex = 9;
-            btnSave.Text = "Lưu";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
-            // 
-            // btnCancel
-            // 
-            btnCancel.Location = new Point(708, 142);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(75, 33);
-            btnCancel.TabIndex = 8;
-            btnCancel.Text = "Hủy";
-            btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
-            // 
             // grbFunction
             // 
             grbFunction.Controls.Add(btnAdd);
@@ -270,6 +270,7 @@
             Controls.Add(grbFunction);
             Controls.Add(gbInfo);
             Controls.Add(dgvSupplier);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmSupplier";
             StartPosition = FormStartPosition.CenterParent;
             Text = "frmSupplier";

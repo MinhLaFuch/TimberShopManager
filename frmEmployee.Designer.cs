@@ -332,6 +332,7 @@
             Controls.Add(btnAdd);
             Controls.Add(gbAccInfo);
             Controls.Add(dgvEmployee);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmEmployee";
             Text = "Danh sách nhân viên";
             Load += frmEmployee_Load;
