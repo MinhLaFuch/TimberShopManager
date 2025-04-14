@@ -23,25 +23,24 @@ namespace timber_shop_manager
         #region Support Methods
         private void openChildForm(Form form)
         {
-            // Check if the form is already open
-            Form? existing = this.MdiChildren.FirstOrDefault(f => f.GetType() == form.GetType());
-            if (existing != null)
+            // Remove existing form
+            foreach (Control ctrl in pnMDI.Controls)
             {
-                existing.BringToFront();
-                return;
+                ctrl.Dispose(); // Free memory/resources
             }
-            // Close all child forms before opening a new one
-            foreach (Form frm in this.MdiChildren)
-            {
-                frm.Close();
-            }
-            // New child form
-            form.MdiParent = this;
+            pnMDI.Controls.Clear(); // Remove all references
+
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
+            pnMDI.Controls.Add(form);
+            pnMDI.Tag = form;
+            form.BringToFront();
             form.Show();
         }
         private void AnimatePanelSize(Panel panel, int targetSize, bool isHorizontal, System.Windows.Forms.Timer timer)
         {
+            timer.Interval = 10;
             if (isHorizontal)
             {
                 if (panel.Width < targetSize)
@@ -165,9 +164,12 @@ namespace timber_shop_manager
         #region Load
         private void frmMain_Load(object sender, EventArgs e)
         {
+            pnMenu.VerticalScroll.Enabled = false;
+            pnMenu.VerticalScroll.Visible = false;
+            pnMenu.HorizontalScroll.Enabled = false;
+            pnMenu.HorizontalScroll.Visible = false;
+            lbUsername.Text = account.Username;
             loadFormBasedOnRole();
-            lblUsername.Text = account.Username;
-            //lbName.Text = Employee.ConverRole(account.verifyPermission());
         }
         #endregion
         #region Click

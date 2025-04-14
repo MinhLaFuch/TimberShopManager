@@ -52,10 +52,11 @@
             btnInvoice = new Button();
             pbLogout = new ReaLTaiizor.Controls.HopePictureBox();
             pnTop = new Panel();
-            headerLabel1 = new ReaLTaiizor.Controls.HeaderLabel();
+            lbUsername = new ReaLTaiizor.Controls.HeaderLabel();
             manageTransistion = new System.Windows.Forms.Timer(components);
             menuTransistion = new System.Windows.Forms.Timer(components);
             reportTransistion = new System.Windows.Forms.Timer(components);
+            pnMDI = new Panel();
             ((System.ComponentModel.ISupportInitialize)pbUser).BeginInit();
             pnMenu.SuspendLayout();
             pnUser.SuspendLayout();
@@ -426,7 +427,7 @@
             // 
             // pnTop
             // 
-            pnTop.Controls.Add(headerLabel1);
+            pnTop.Controls.Add(lbUsername);
             pnTop.Controls.Add(pbLogout);
             pnTop.Controls.Add(pbUser);
             pnTop.Dock = DockStyle.Top;
@@ -435,18 +436,18 @@
             pnTop.Size = new Size(1172, 59);
             pnTop.TabIndex = 26;
             // 
-            // headerLabel1
+            // lbUsername
             // 
-            headerLabel1.AutoSize = true;
-            headerLabel1.BackColor = SystemColors.Control;
-            headerLabel1.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Bold);
-            headerLabel1.ForeColor = Color.Black;
-            headerLabel1.Location = new Point(951, 32);
-            headerLabel1.Name = "headerLabel1";
-            headerLabel1.Size = new Size(105, 24);
-            headerLabel1.TabIndex = 22;
-            headerLabel1.Text = "Username";
-            headerLabel1.TextAlign = ContentAlignment.TopRight;
+            lbUsername.AutoSize = true;
+            lbUsername.BackColor = SystemColors.Control;
+            lbUsername.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Bold);
+            lbUsername.ForeColor = Color.Black;
+            lbUsername.Location = new Point(951, 32);
+            lbUsername.Name = "lbUsername";
+            lbUsername.Size = new Size(105, 24);
+            lbUsername.TabIndex = 22;
+            lbUsername.Text = "Username";
+            lbUsername.TextAlign = ContentAlignment.TopRight;
             // 
             // manageTransistion
             // 
@@ -463,12 +464,20 @@
             reportTransistion.Interval = 10;
             reportTransistion.Tick += reportTransistion_Tick;
             // 
+            // pnMDI
+            // 
+            pnMDI.Location = new Point(271, 59);
+            pnMDI.Name = "pnMDI";
+            pnMDI.Size = new Size(1172, 712);
+            pnMDI.TabIndex = 27;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
             AutoSize = true;
             ClientSize = new Size(1443, 771);
+            Controls.Add(pnMDI);
             Controls.Add(pnTop);
             Controls.Add(pnMenu);
             FormBorderStyle = FormBorderStyle.None;
@@ -514,12 +523,13 @@
         private Panel pnTop;
         private System.Windows.Forms.Timer manageTransistion;
         private System.Windows.Forms.Timer menuTransistion;
-        private ReaLTaiizor.Controls.HeaderLabel headerLabel1;
+        private ReaLTaiizor.Controls.HeaderLabel lbUsername;
         private Button btnReport;
         private FlowLayoutPanel pnReport;
         private Button btnFinancialReport;
         private Button btnSalary;
         private Button btnInvoice;
         private System.Windows.Forms.Timer reportTransistion;
+        private Panel pnMDI;
     }
 }
