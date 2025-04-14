@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnMod = new Button();
-            btnSearch = new Button();
             cbCatagory = new ComboBox();
             txtID = new TextBox();
             txtName = new TextBox();
@@ -48,40 +46,14 @@
             lbMonth = new Label();
             lbQuantity = new Label();
             lbVND = new Label();
-            btnCancel = new Button();
-            btnSave = new Button();
-            btnAdd = new Button();
             dgvProduct = new DataGridView();
-            btnDel = new Button();
-            groupBox2 = new GroupBox();
             gbInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudPrice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudQuantity).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudWarranty).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProduct).BeginInit();
-            groupBox2.SuspendLayout();
             SuspendLayout();
-            // 
-            // btnMod
-            // 
-            btnMod.Location = new Point(401, 28);
-            btnMod.Name = "btnMod";
-            btnMod.Size = new Size(94, 29);
-            btnMod.TabIndex = 8;
-            btnMod.Text = "Sửa";
-            btnMod.UseVisualStyleBackColor = true;
-            btnMod.Click += btnMod_Click;
-            // 
-            // btnSearch
-            // 
-            btnSearch.Location = new Point(782, 28);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(94, 29);
-            btnSearch.TabIndex = 10;
-            btnSearch.Text = "Tìm kiếm";
-            btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += btnSearch_Click;
             // 
             // cbCatagory
             // 
@@ -94,16 +66,18 @@
             // 
             // txtID
             // 
+            txtID.BorderStyle = BorderStyle.None;
             txtID.Location = new Point(154, 16);
             txtID.Name = "txtID";
-            txtID.Size = new Size(345, 27);
+            txtID.Size = new Size(345, 20);
             txtID.TabIndex = 1;
             // 
             // txtName
             // 
+            txtName.BorderStyle = BorderStyle.None;
             txtName.Location = new Point(154, 53);
             txtName.Name = "txtName";
-            txtName.Size = new Size(345, 27);
+            txtName.Size = new Size(345, 20);
             txtName.TabIndex = 3;
             // 
             // lbCatagory
@@ -233,8 +207,7 @@
             // 
             // lbMonth
             // 
-            lbMonth.BackColor = SystemColors.ControlLightLight;
-            lbMonth.BorderStyle = BorderStyle.Fixed3D;
+            lbMonth.BackColor = Color.Transparent;
             lbMonth.Location = new Point(438, 171);
             lbMonth.Name = "lbMonth";
             lbMonth.Size = new Size(62, 31);
@@ -253,44 +226,13 @@
             // 
             // lbVND
             // 
-            lbVND.BackColor = SystemColors.ControlLightLight;
-            lbVND.BorderStyle = BorderStyle.Fixed3D;
-            lbVND.Location = new Point(438, 93);
+            lbVND.BackColor = Color.Transparent;
+            lbVND.Location = new Point(437, 88);
             lbVND.Name = "lbVND";
             lbVND.Size = new Size(62, 31);
             lbVND.TabIndex = 12;
             lbVND.Text = "VND";
             lbVND.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // btnCancel
-            // 
-            btnCancel.Location = new Point(528, 28);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 29);
-            btnCancel.TabIndex = 17;
-            btnCancel.Text = "Hủy";
-            btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
-            // 
-            // btnSave
-            // 
-            btnSave.Location = new Point(274, 28);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
-            btnSave.TabIndex = 16;
-            btnSave.Text = "Lưu";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
-            // 
-            // btnAdd
-            // 
-            btnAdd.Location = new Point(147, 28);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(94, 29);
-            btnAdd.TabIndex = 7;
-            btnAdd.Text = "Thêm";
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
             // 
             // dgvProduct
             // 
@@ -303,39 +245,11 @@
             dgvProduct.TabIndex = 11;
             dgvProduct.CellClick += dgvProduct_CellClick;
             // 
-            // btnDel
-            // 
-            btnDel.Location = new Point(655, 28);
-            btnDel.Name = "btnDel";
-            btnDel.Size = new Size(94, 29);
-            btnDel.TabIndex = 12;
-            btnDel.Text = "Xóa";
-            btnDel.UseVisualStyleBackColor = true;
-            btnDel.Click += btnDel_Click;
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(btnAdd);
-            groupBox2.Controls.Add(btnSearch);
-            groupBox2.Controls.Add(btnDel);
-            groupBox2.Controls.Add(btnSave);
-            groupBox2.Controls.Add(btnMod);
-            groupBox2.Controls.Add(btnCancel);
-            groupBox2.Location = new Point(6, 273);
-            groupBox2.Margin = new Padding(3, 4, 3, 4);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(1090, 77);
-            groupBox2.TabIndex = 18;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Chức năng";
-            // 
             // frmProduct
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1101, 807);
-            Controls.Add(groupBox2);
             Controls.Add(gbInfo);
             Controls.Add(dgvProduct);
             FormBorderStyle = FormBorderStyle.None;
@@ -350,14 +264,10 @@
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)nudWarranty).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvProduct).EndInit();
-            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Button btnMod;
-        private Button btnSearch;
         private ComboBox cbCatagory;
         private TextBox txtID;
         private TextBox txtName;
@@ -367,20 +277,15 @@
         private Label lbName;
         private Label lbID;
         private GroupBox gbInfo;
-        private Button btnAdd;
-        private DataGridView dgvProduct;
         private Label lbVND;
         private Label lbQuantity;
-        private Button btnCancel;
-        private Button btnSave;
-        private Button btnDel;
         private NumericUpDown nudWarranty;
         private Label lbMonth;
         private RichTextBox txtDescription;
         private ComboBox cbCalUnit;
         private GroupBox groupBox1;
-        private GroupBox groupBox2;
         private NumericUpDown nudQuantity;
         private NumericUpDown nudPrice;
+        private DataGridView dgvProduct;
     }
 }

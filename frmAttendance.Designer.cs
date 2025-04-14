@@ -28,55 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvAttendance = new DataGridView();
-            cbTimeStamp = new ComboBox();
-            dtpFrom = new DateTimePicker();
-            dtpTo = new DateTimePicker();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             lbTimeStamp = new Label();
             sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
-            btnRefresh = new Button();
+            dgvAttendance = new Guna.UI2.WinForms.Guna2DataGridView();
+            cbTimeStamp = new Guna.UI2.WinForms.Guna2ComboBox();
+            dtpFrom = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            dtpTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            btnRefresh = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)dgvAttendance).BeginInit();
             SuspendLayout();
-            // 
-            // dgvAttendance
-            // 
-            dgvAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAttendance.Location = new Point(200, -2);
-            dgvAttendance.Name = "dgvAttendance";
-            dgvAttendance.RowHeadersWidth = 51;
-            dgvAttendance.Size = new Size(558, 440);
-            dgvAttendance.TabIndex = 0;
-            // 
-            // cbTimeStamp
-            // 
-            cbTimeStamp.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbTimeStamp.FormattingEnabled = true;
-            cbTimeStamp.Items.AddRange(new object[] { "Ngày", "Tuần", "Tháng", "Quý", "Năm", "Ngày -> Ngày" });
-            cbTimeStamp.Location = new Point(-1, 41);
-            cbTimeStamp.Name = "cbTimeStamp";
-            cbTimeStamp.Size = new Size(195, 28);
-            cbTimeStamp.TabIndex = 1;
-            cbTimeStamp.SelectedValueChanged += cbTimeStamp_SelectedValueChanged;
-            // 
-            // dtpFrom
-            // 
-            dtpFrom.Format = DateTimePickerFormat.Short;
-            dtpFrom.Location = new Point(-1, 117);
-            dtpFrom.Name = "dtpFrom";
-            dtpFrom.Size = new Size(195, 27);
-            dtpFrom.TabIndex = 2;
-            dtpFrom.Visible = false;
-            dtpFrom.ValueChanged += dtpFrom_ValueChanged;
-            // 
-            // dtpTo
-            // 
-            dtpTo.Format = DateTimePickerFormat.Short;
-            dtpTo.Location = new Point(-1, 165);
-            dtpTo.Name = "dtpTo";
-            dtpTo.Size = new Size(195, 27);
-            dtpTo.TabIndex = 3;
-            dtpTo.Visible = false;
-            dtpTo.ValueChanged += dtpTo_ValueChanged;
             // 
             // lbTimeStamp
             // 
@@ -87,15 +58,122 @@
             lbTimeStamp.TabIndex = 5;
             lbTimeStamp.Text = "Mốc thời gian";
             // 
+            // dgvAttendance
+            // 
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dgvAttendance.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvAttendance.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dgvAttendance.ColumnHeadersHeight = 4;
+            dgvAttendance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvAttendance.DefaultCellStyle = dataGridViewCellStyle6;
+            dgvAttendance.GridColor = Color.FromArgb(231, 229, 255);
+            dgvAttendance.Location = new Point(212, 4);
+            dgvAttendance.Name = "dgvAttendance";
+            dgvAttendance.RowHeadersVisible = false;
+            dgvAttendance.RowHeadersWidth = 51;
+            dgvAttendance.Size = new Size(531, 450);
+            dgvAttendance.TabIndex = 7;
+            dgvAttendance.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            dgvAttendance.ThemeStyle.AlternatingRowsStyle.Font = null;
+            dgvAttendance.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            dgvAttendance.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            dgvAttendance.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            dgvAttendance.ThemeStyle.BackColor = Color.White;
+            dgvAttendance.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            dgvAttendance.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            dgvAttendance.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvAttendance.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
+            dgvAttendance.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            dgvAttendance.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvAttendance.ThemeStyle.HeaderStyle.Height = 4;
+            dgvAttendance.ThemeStyle.ReadOnly = false;
+            dgvAttendance.ThemeStyle.RowsStyle.BackColor = Color.White;
+            dgvAttendance.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvAttendance.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
+            dgvAttendance.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            dgvAttendance.ThemeStyle.RowsStyle.Height = 29;
+            dgvAttendance.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dgvAttendance.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            // 
+            // cbTimeStamp
+            // 
+            cbTimeStamp.BackColor = Color.Transparent;
+            cbTimeStamp.CustomizableEdges = customizableEdges9;
+            cbTimeStamp.DrawMode = DrawMode.OwnerDrawFixed;
+            cbTimeStamp.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbTimeStamp.FocusedColor = Color.FromArgb(94, 148, 255);
+            cbTimeStamp.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cbTimeStamp.Font = new Font("Segoe UI", 10F);
+            cbTimeStamp.ForeColor = Color.FromArgb(68, 88, 112);
+            cbTimeStamp.ItemHeight = 30;
+            cbTimeStamp.Location = new Point(15, 34);
+            cbTimeStamp.Name = "cbTimeStamp";
+            cbTimeStamp.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            cbTimeStamp.Size = new Size(191, 36);
+            cbTimeStamp.TabIndex = 8;
+            // 
+            // dtpFrom
+            // 
+            dtpFrom.Checked = true;
+            dtpFrom.CustomizableEdges = customizableEdges11;
+            dtpFrom.FillColor = Color.FromArgb(59, 93, 79);
+            dtpFrom.Font = new Font("Segoe UI", 9F);
+            dtpFrom.Format = DateTimePickerFormat.Short;
+            dtpFrom.Location = new Point(12, 91);
+            dtpFrom.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            dtpFrom.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            dtpFrom.Name = "dtpFrom";
+            dtpFrom.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            dtpFrom.Size = new Size(194, 45);
+            dtpFrom.TabIndex = 9;
+            dtpFrom.Value = new DateTime(2025, 4, 14, 10, 42, 36, 85);
+            // 
+            // dtpTo
+            // 
+            dtpTo.Checked = true;
+            dtpTo.CustomizableEdges = customizableEdges13;
+            dtpTo.FillColor = Color.FromArgb(59, 93, 79);
+            dtpTo.Font = new Font("Segoe UI", 9F);
+            dtpTo.Format = DateTimePickerFormat.Short;
+            dtpTo.Location = new Point(15, 151);
+            dtpTo.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            dtpTo.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            dtpTo.Name = "dtpTo";
+            dtpTo.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            dtpTo.Size = new Size(191, 45);
+            dtpTo.TabIndex = 10;
+            dtpTo.Value = new DateTime(2025, 4, 14, 10, 42, 5, 478);
+            // 
             // btnRefresh
             // 
-            btnRefresh.Location = new Point(12, 253);
+            btnRefresh.CustomizableEdges = customizableEdges15;
+            btnRefresh.DisabledState.BorderColor = Color.DarkGray;
+            btnRefresh.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnRefresh.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnRefresh.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnRefresh.FillColor = Color.FromArgb(59, 93, 79);
+            btnRefresh.Font = new Font("Segoe UI", 9F);
+            btnRefresh.ForeColor = Color.White;
+            btnRefresh.Location = new Point(12, 224);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(171, 48);
-            btnRefresh.TabIndex = 6;
+            btnRefresh.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            btnRefresh.Size = new Size(194, 56);
+            btnRefresh.TabIndex = 11;
             btnRefresh.Text = "Làm mới";
-            btnRefresh.UseVisualStyleBackColor = true;
-            btnRefresh.Click += btnRefresh_Click;
             // 
             // frmAttendance
             // 
@@ -103,11 +181,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(755, 450);
             Controls.Add(btnRefresh);
-            Controls.Add(lbTimeStamp);
             Controls.Add(dtpTo);
             Controls.Add(dtpFrom);
             Controls.Add(cbTimeStamp);
             Controls.Add(dgvAttendance);
+            Controls.Add(lbTimeStamp);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmAttendance";
             Text = "Báo cáo chấm công của ";
@@ -118,13 +196,12 @@
         }
 
         #endregion
-
-        private DataGridView dgvAttendance;
-        private ComboBox cbTimeStamp;
-        private DateTimePicker dtpFrom;
-        private DateTimePicker dtpTo;
         private Label lbTimeStamp;
         private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
-        private Button btnRefresh;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvAttendance;
+        private Guna.UI2.WinForms.Guna2ComboBox cbTimeStamp;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpFrom;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpTo;
+        private Guna.UI2.WinForms.Guna2Button btnRefresh;
     }
 }

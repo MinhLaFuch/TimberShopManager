@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvAccount = new DataGridView();
-            btnAdd = new Button();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             gbAccInfo = new GroupBox();
-            cbRole = new ComboBox();
-            dtpDOB = new DateTimePicker();
             txtEmployeeID = new TextBox();
             txtIden = new TextBox();
             txtAddress = new TextBox();
@@ -43,37 +46,21 @@
             lbEmployeeIden = new Label();
             lbEmployeeName = new Label();
             lbEmployeeID = new Label();
-            btnSearch = new Button();
-            cbSearch = new ComboBox();
+            dgvAccount = new ReaLTaiizor.Controls.PoisonDataGridView();
+            btnAdd = new Button();
             btnLock = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvAccount).BeginInit();
+            btnSearch = new Button();
+            dtpDOB = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            cbRole = new Guna.UI2.WinForms.Guna2ComboBox();
             gbAccInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAccount).BeginInit();
             SuspendLayout();
-            // 
-            // dgvAccount
-            // 
-            dgvAccount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAccount.Location = new Point(195, 180);
-            dgvAccount.Name = "dgvAccount";
-            dgvAccount.RowHeadersWidth = 51;
-            dgvAccount.Size = new Size(1073, 344);
-            dgvAccount.TabIndex = 5;
-            // 
-            // btnAdd
-            // 
-            btnAdd.Location = new Point(1, 175);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(188, 81);
-            btnAdd.TabIndex = 1;
-            btnAdd.Text = "Tạo tài khoản";
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
             // 
             // gbAccInfo
             // 
             gbAccInfo.Controls.Add(cbRole);
-            gbAccInfo.Controls.Add(dtpDOB);
             gbAccInfo.Controls.Add(txtEmployeeID);
+            gbAccInfo.Controls.Add(dtpDOB);
             gbAccInfo.Controls.Add(txtIden);
             gbAccInfo.Controls.Add(txtAddress);
             gbAccInfo.Controls.Add(txtName);
@@ -83,54 +70,43 @@
             gbAccInfo.Controls.Add(lbEmployeeIden);
             gbAccInfo.Controls.Add(lbEmployeeName);
             gbAccInfo.Controls.Add(lbEmployeeID);
-            gbAccInfo.Location = new Point(12, 12);
+            gbAccInfo.Location = new Point(1, 0);
             gbAccInfo.Name = "gbAccInfo";
-            gbAccInfo.Size = new Size(1256, 157);
+            gbAccInfo.Size = new Size(1276, 169);
             gbAccInfo.TabIndex = 0;
             gbAccInfo.TabStop = false;
             gbAccInfo.Text = "Thông tin";
             // 
-            // cbRole
-            // 
-            cbRole.FormattingEnabled = true;
-            cbRole.Location = new Point(705, 123);
-            cbRole.Name = "cbRole";
-            cbRole.Size = new Size(327, 28);
-            cbRole.TabIndex = 11;
-            // 
-            // dtpDOB
-            // 
-            dtpDOB.Location = new Point(705, 67);
-            dtpDOB.Name = "dtpDOB";
-            dtpDOB.Size = new Size(327, 27);
-            dtpDOB.TabIndex = 9;
-            // 
             // txtEmployeeID
             // 
+            txtEmployeeID.BorderStyle = BorderStyle.None;
             txtEmployeeID.Location = new Point(154, 16);
             txtEmployeeID.Name = "txtEmployeeID";
-            txtEmployeeID.Size = new Size(345, 27);
+            txtEmployeeID.Size = new Size(345, 20);
             txtEmployeeID.TabIndex = 1;
             // 
             // txtIden
             // 
+            txtIden.BorderStyle = BorderStyle.None;
             txtIden.Location = new Point(154, 117);
             txtIden.Name = "txtIden";
-            txtIden.Size = new Size(345, 27);
+            txtIden.Size = new Size(345, 20);
             txtIden.TabIndex = 5;
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(705, 13);
+            txtAddress.BorderStyle = BorderStyle.None;
+            txtAddress.Location = new Point(705, 23);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(531, 27);
+            txtAddress.Size = new Size(531, 20);
             txtAddress.TabIndex = 7;
             // 
             // txtName
             // 
+            txtName.BorderStyle = BorderStyle.None;
             txtName.Location = new Point(154, 69);
             txtName.Name = "txtName";
-            txtName.Size = new Size(345, 27);
+            txtName.Size = new Size(345, 20);
             txtName.TabIndex = 3;
             // 
             // lbEmployeeRole
@@ -187,59 +163,145 @@
             lbEmployeeID.TabIndex = 0;
             lbEmployeeID.Text = "Mã nhân viên";
             // 
-            // btnSearch
+            // dgvAccount
             // 
-            btnSearch.Location = new Point(1, 429);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(188, 95);
-            btnSearch.TabIndex = 4;
-            btnSearch.Text = "Tìm kiếm";
-            btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += btnSearch_Click;
+            dgvAccount.AllowUserToResizeRows = false;
+            dgvAccount.BackgroundColor = Color.FromArgb(255, 255, 255);
+            dgvAccount.BorderStyle = BorderStyle.None;
+            dgvAccount.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgvAccount.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dgvAccount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(136, 136, 136);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dgvAccount.DefaultCellStyle = dataGridViewCellStyle5;
+            dgvAccount.EnableHeadersVisualStyles = false;
+            dgvAccount.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dgvAccount.GridColor = Color.FromArgb(255, 255, 255);
+            dgvAccount.Location = new Point(256, 213);
+            dgvAccount.Name = "dgvAccount";
+            dgvAccount.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvAccount.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dgvAccount.RowHeadersWidth = 51;
+            dgvAccount.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgvAccount.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAccount.Size = new Size(1012, 311);
+            dgvAccount.TabIndex = 5;
             // 
-            // cbSearch
+            // btnAdd
             // 
-            cbSearch.FormattingEnabled = true;
-            cbSearch.Location = new Point(1, 395);
-            cbSearch.Name = "cbSearch";
-            cbSearch.Size = new Size(188, 28);
-            cbSearch.TabIndex = 3;
-            cbSearch.SelectedIndexChanged += cbSearch_SelectedIndexChanged;
+            btnAdd.BackColor = Color.FromArgb(59, 93, 79);
+            btnAdd.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAdd.ForeColor = SystemColors.ButtonFace;
+            btnAdd.Location = new Point(12, 237);
+            btnAdd.Margin = new Padding(3, 4, 3, 4);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(196, 40);
+            btnAdd.TabIndex = 6;
+            btnAdd.Text = "Tạo tài khoản";
+            btnAdd.UseVisualStyleBackColor = false;
             // 
             // btnLock
             // 
-            btnLock.Location = new Point(1, 262);
+            btnLock.BackColor = Color.FromArgb(59, 93, 79);
+            btnLock.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLock.ForeColor = SystemColors.ButtonFace;
+            btnLock.Location = new Point(12, 336);
+            btnLock.Margin = new Padding(3, 4, 3, 4);
             btnLock.Name = "btnLock";
-            btnLock.Size = new Size(188, 81);
-            btnLock.TabIndex = 2;
+            btnLock.Size = new Size(196, 40);
+            btnLock.TabIndex = 7;
             btnLock.Text = "Khóa tài khoản";
-            btnLock.UseVisualStyleBackColor = true;
-            btnLock.Click += btnLock_Click;
+            btnLock.UseVisualStyleBackColor = false;
+            // 
+            // btnSearch
+            // 
+            btnSearch.BackColor = Color.FromArgb(59, 93, 79);
+            btnSearch.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearch.ForeColor = SystemColors.ButtonFace;
+            btnSearch.Location = new Point(12, 439);
+            btnSearch.Margin = new Padding(3, 4, 3, 4);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(196, 40);
+            btnSearch.TabIndex = 8;
+            btnSearch.Text = "Tìm kiếm";
+            btnSearch.UseVisualStyleBackColor = false;
+            // 
+            // dtpDOB
+            // 
+            dtpDOB.Checked = true;
+            dtpDOB.CustomizableEdges = customizableEdges7;
+            dtpDOB.FillColor = Color.FromArgb(59, 93, 79);
+            dtpDOB.Font = new Font("Segoe UI", 9F);
+            dtpDOB.ForeColor = SystemColors.ButtonFace;
+            dtpDOB.Format = DateTimePickerFormat.Long;
+            dtpDOB.Location = new Point(705, 58);
+            dtpDOB.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            dtpDOB.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            dtpDOB.Name = "dtpDOB";
+            dtpDOB.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            dtpDOB.Size = new Size(250, 45);
+            dtpDOB.TabIndex = 9;
+            dtpDOB.Value = new DateTime(2025, 4, 14, 10, 37, 8, 863);
+            // 
+            // cbRole
+            // 
+            cbRole.BackColor = Color.FromArgb(59, 93, 79);
+            cbRole.BorderColor = Color.FromArgb(59, 93, 79);
+            cbRole.CustomizableEdges = customizableEdges5;
+            cbRole.DrawMode = DrawMode.OwnerDrawFixed;
+            cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbRole.FocusedColor = Color.FromArgb(94, 148, 255);
+            cbRole.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cbRole.Font = new Font("Segoe UI", 10F);
+            cbRole.ForeColor = Color.FromArgb(68, 88, 112);
+            cbRole.ItemHeight = 30;
+            cbRole.Location = new Point(705, 109);
+            cbRole.Name = "cbRole";
+            cbRole.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            cbRole.Size = new Size(250, 36);
+            cbRole.TabIndex = 9;
             // 
             // frmAccount
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1280, 536);
-            Controls.Add(btnLock);
-            Controls.Add(cbSearch);
             Controls.Add(btnSearch);
-            Controls.Add(gbAccInfo);
+            Controls.Add(btnLock);
             Controls.Add(btnAdd);
             Controls.Add(dgvAccount);
+            Controls.Add(gbAccInfo);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmAccount";
             Text = "frmAccount";
             Load += frmAccount_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvAccount).EndInit();
             gbAccInfo.ResumeLayout(false);
             gbAccInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAccount).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private DataGridView dgvAccount;
         private Button btnAdd;
         private GroupBox gbAccInfo;
         private Label lbEmployeeRole;
@@ -249,13 +311,13 @@
         private Label lbEmployeeName;
         private Label lbEmployeeID;
         private Button btnSearch;
-        private ComboBox cbSearch;
         private TextBox txtEmployeeID;
         private TextBox txtIden;
         private TextBox txtAddress;
         private TextBox txtName;
-        private ComboBox cbRole;
-        private DateTimePicker dtpDOB;
         private Button btnLock;
+        private ReaLTaiizor.Controls.PoisonDataGridView dgvAccount;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpDOB;
+        private Guna.UI2.WinForms.Guna2ComboBox cbRole;
     }
 }

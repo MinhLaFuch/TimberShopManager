@@ -133,7 +133,7 @@
             pbMenu.Image = (Image)resources.GetObject("pbMenu.Image");
             pbMenu.Location = new Point(0, 0);
             pbMenu.Name = "pbMenu";
-            pbMenu.Size = new Size(72, 59);
+            pbMenu.Size = new Size(94, 59);
             pbMenu.SizeMode = PictureBoxSizeMode.Zoom;
             pbMenu.TabIndex = 27;
             pbMenu.TabStop = false;
