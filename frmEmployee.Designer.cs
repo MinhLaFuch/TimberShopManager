@@ -60,6 +60,7 @@
             // 
             // dgvEmployee
             // 
+            dgvEmployee.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             dgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmployee.Location = new Point(210, 206);
             dgvEmployee.Name = "dgvEmployee";
@@ -89,9 +90,11 @@
             gbAccInfo.Controls.Add(lbEmployeeIden);
             gbAccInfo.Controls.Add(lbEmployeeName);
             gbAccInfo.Controls.Add(lbID);
-            gbAccInfo.Location = new Point(5, 11);
+            gbAccInfo.Dock = DockStyle.Top;
+            gbAccInfo.ForeColor = SystemColors.ActiveCaptionText;
+            gbAccInfo.Location = new Point(0, 0);
             gbAccInfo.Name = "gbAccInfo";
-            gbAccInfo.Size = new Size(1182, 192);
+            gbAccInfo.Size = new Size(1194, 192);
             gbAccInfo.TabIndex = 0;
             gbAccInfo.TabStop = false;
             gbAccInfo.Text = "Thông tin";

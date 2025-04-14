@@ -73,6 +73,7 @@
             btnSale.FlatAppearance.BorderSize = 0;
             btnSale.FlatStyle = FlatStyle.Flat;
             btnSale.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSale.ForeColor = SystemColors.ButtonFace;
             btnSale.Image = (Image)resources.GetObject("btnSale.Image");
             btnSale.ImageAlign = ContentAlignment.TopLeft;
             btnSale.Location = new Point(0, 59);
@@ -89,7 +90,7 @@
             pbUser.BackColor = Color.Transparent;
             pbUser.BackgroundImageLayout = ImageLayout.Zoom;
             pbUser.Image = (Image)resources.GetObject("pbUser.Image");
-            pbUser.Location = new Point(1110, 0);
+            pbUser.Location = new Point(1062, 0);
             pbUser.Name = "pbUser";
             pbUser.Size = new Size(45, 59);
             pbUser.TabIndex = 16;
@@ -144,6 +145,7 @@
             btnImport.FlatAppearance.BorderSize = 0;
             btnImport.FlatStyle = FlatStyle.Flat;
             btnImport.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnImport.ForeColor = SystemColors.ButtonFace;
             btnImport.Image = (Image)resources.GetObject("btnImport.Image");
             btnImport.ImageAlign = ContentAlignment.TopLeft;
             btnImport.Location = new Point(0, 125);
@@ -162,6 +164,7 @@
             btnAttend.FlatAppearance.BorderSize = 0;
             btnAttend.FlatStyle = FlatStyle.Flat;
             btnAttend.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAttend.ForeColor = SystemColors.ButtonFace;
             btnAttend.Image = (Image)resources.GetObject("btnAttend.Image");
             btnAttend.ImageAlign = ContentAlignment.TopLeft;
             btnAttend.Location = new Point(0, 191);
@@ -193,6 +196,7 @@
             btnManage.FlatAppearance.BorderSize = 0;
             btnManage.FlatStyle = FlatStyle.Flat;
             btnManage.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnManage.ForeColor = SystemColors.ButtonFace;
             btnManage.Image = (Image)resources.GetObject("btnManage.Image");
             btnManage.ImageAlign = ContentAlignment.TopLeft;
             btnManage.Location = new Point(0, 0);
@@ -211,6 +215,7 @@
             btnAccount.FlatAppearance.BorderSize = 0;
             btnAccount.FlatStyle = FlatStyle.Flat;
             btnAccount.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAccount.ForeColor = SystemColors.ButtonFace;
             btnAccount.Image = (Image)resources.GetObject("btnAccount.Image");
             btnAccount.ImageAlign = ContentAlignment.TopLeft;
             btnAccount.Location = new Point(0, 66);
@@ -229,6 +234,7 @@
             btnEmployee.FlatAppearance.BorderSize = 0;
             btnEmployee.FlatStyle = FlatStyle.Flat;
             btnEmployee.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEmployee.ForeColor = SystemColors.ButtonFace;
             btnEmployee.Image = (Image)resources.GetObject("btnEmployee.Image");
             btnEmployee.ImageAlign = ContentAlignment.TopLeft;
             btnEmployee.Location = new Point(0, 132);
@@ -247,6 +253,7 @@
             btnSupplier.FlatAppearance.BorderSize = 0;
             btnSupplier.FlatStyle = FlatStyle.Flat;
             btnSupplier.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSupplier.ForeColor = SystemColors.ButtonFace;
             btnSupplier.Image = (Image)resources.GetObject("btnSupplier.Image");
             btnSupplier.ImageAlign = ContentAlignment.TopLeft;
             btnSupplier.Location = new Point(0, 198);
@@ -265,6 +272,7 @@
             btnCustomer.FlatAppearance.BorderSize = 0;
             btnCustomer.FlatStyle = FlatStyle.Flat;
             btnCustomer.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCustomer.ForeColor = SystemColors.ButtonFace;
             btnCustomer.Image = (Image)resources.GetObject("btnCustomer.Image");
             btnCustomer.ImageAlign = ContentAlignment.TopLeft;
             btnCustomer.Location = new Point(0, 264);
@@ -283,6 +291,7 @@
             btnProduct.FlatAppearance.BorderSize = 0;
             btnProduct.FlatStyle = FlatStyle.Flat;
             btnProduct.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnProduct.ForeColor = SystemColors.ButtonFace;
             btnProduct.Image = (Image)resources.GetObject("btnProduct.Image");
             btnProduct.ImageAlign = ContentAlignment.TopLeft;
             btnProduct.Location = new Point(0, 330);
@@ -301,6 +310,7 @@
             btnCategory.FlatAppearance.BorderSize = 0;
             btnCategory.FlatStyle = FlatStyle.Flat;
             btnCategory.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCategory.ForeColor = SystemColors.ButtonFace;
             btnCategory.Image = (Image)resources.GetObject("btnCategory.Image");
             btnCategory.ImageAlign = ContentAlignment.TopLeft;
             btnCategory.Location = new Point(0, 396);
@@ -330,6 +340,7 @@
             btnReport.FlatAppearance.BorderSize = 0;
             btnReport.FlatStyle = FlatStyle.Flat;
             btnReport.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReport.ForeColor = SystemColors.ButtonFace;
             btnReport.Image = (Image)resources.GetObject("btnReport.Image");
             btnReport.ImageAlign = ContentAlignment.TopLeft;
             btnReport.Location = new Point(0, 0);
@@ -348,6 +359,7 @@
             btnFinancialReport.FlatAppearance.BorderSize = 0;
             btnFinancialReport.FlatStyle = FlatStyle.Flat;
             btnFinancialReport.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnFinancialReport.ForeColor = SystemColors.ButtonFace;
             btnFinancialReport.Image = (Image)resources.GetObject("btnFinancialReport.Image");
             btnFinancialReport.ImageAlign = ContentAlignment.TopLeft;
             btnFinancialReport.Location = new Point(0, 66);
@@ -366,6 +378,7 @@
             btnSalary.FlatAppearance.BorderSize = 0;
             btnSalary.FlatStyle = FlatStyle.Flat;
             btnSalary.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSalary.ForeColor = SystemColors.ButtonFace;
             btnSalary.Image = (Image)resources.GetObject("btnSalary.Image");
             btnSalary.ImageAlign = ContentAlignment.TopLeft;
             btnSalary.Location = new Point(0, 132);
@@ -384,6 +397,7 @@
             btnInvoice.FlatAppearance.BorderSize = 0;
             btnInvoice.FlatStyle = FlatStyle.Flat;
             btnInvoice.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnInvoice.ForeColor = SystemColors.ButtonFace;
             btnInvoice.Image = (Image)resources.GetObject("btnInvoice.Image");
             btnInvoice.ImageAlign = ContentAlignment.TopLeft;
             btnInvoice.Location = new Point(0, 198);
@@ -399,10 +413,10 @@
             // 
             pbLogout.BackColor = Color.FromArgb(192, 196, 204);
             pbLogout.Image = (Image)resources.GetObject("pbLogout.Image");
-            pbLogout.Location = new Point(947, 16);
+            pbLogout.Location = new Point(1113, 3);
             pbLogout.Name = "pbLogout";
             pbLogout.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            pbLogout.Size = new Size(46, 43);
+            pbLogout.Size = new Size(59, 53);
             pbLogout.SizeMode = PictureBoxSizeMode.Zoom;
             pbLogout.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             pbLogout.TabIndex = 19;
@@ -427,7 +441,7 @@
             headerLabel1.BackColor = SystemColors.Control;
             headerLabel1.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Bold);
             headerLabel1.ForeColor = Color.Black;
-            headerLabel1.Location = new Point(999, 0);
+            headerLabel1.Location = new Point(951, 32);
             headerLabel1.Name = "headerLabel1";
             headerLabel1.Size = new Size(105, 24);
             headerLabel1.TabIndex = 22;

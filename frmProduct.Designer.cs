@@ -296,10 +296,10 @@
             // 
             dgvProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProduct.Location = new Point(6, 357);
+            dgvProduct.Location = new Point(3, 357);
             dgvProduct.Name = "dgvProduct";
             dgvProduct.RowHeadersWidth = 51;
-            dgvProduct.Size = new Size(1090, 435);
+            dgvProduct.Size = new Size(1093, 449);
             dgvProduct.TabIndex = 11;
             dgvProduct.CellClick += dgvProduct_CellClick;
             // 

@@ -12,8 +12,6 @@ namespace timber_shop_manager
         private bool manageExpand = false;
         private bool menuExpand = false;
         private bool reportExpand = false;
-        private int numOfManageButton = 6;
-        private int numOfReportButton = 3;
         private const int PANEL_STEP = 10;
         public frmMain(Account account)
         {
@@ -44,13 +42,11 @@ namespace timber_shop_manager
         }
         private void AnimatePanelSize(Panel panel, int targetSize, bool isHorizontal, System.Windows.Forms.Timer timer)
         {
-            int step = 10;
-
             if (isHorizontal)
             {
                 if (panel.Width < targetSize)
                 {
-                    panel.Width += step;
+                    panel.Width += PANEL_STEP;
                     if (panel.Width >= targetSize)
                     {
                         panel.Width = targetSize;
@@ -59,7 +55,7 @@ namespace timber_shop_manager
                 }
                 else
                 {
-                    panel.Width -= step;
+                    panel.Width -= PANEL_STEP;
                     if (panel.Width <= targetSize)
                     {
                         panel.Width = targetSize;
@@ -71,7 +67,7 @@ namespace timber_shop_manager
             {
                 if (panel.Height < targetSize)
                 {
-                    panel.Height += step;
+                    panel.Height += PANEL_STEP;
                     if (panel.Height >= targetSize)
                     {
                         panel.Height = targetSize;
@@ -80,7 +76,7 @@ namespace timber_shop_manager
                 }
                 else
                 {
-                    panel.Height -= step;
+                    panel.Height -= PANEL_STEP;
                     if (panel.Height <= targetSize)
                     {
                         panel.Height = targetSize;
@@ -89,13 +85,87 @@ namespace timber_shop_manager
                 }
             }
         }
-
+        private void loadFormBasedOnRole()
+        {
+            if (account.verifyPermission() == Employee.Role.ADMINISTRATOR)
+            {
+                // Manage
+                btnAccount.Visible = true;
+                btnEmployee.Visible = false;
+                btnSupplier.Visible = true;
+                btnCustomer.Visible = true;
+                btnProduct.Visible = true;
+                btnCategory.Visible = true;
+                // Sale
+                btnSale.Visible = true;
+                // Import
+                btnImport.Visible = true;
+                // Report
+                btnSalary.Visible = false;
+                btnFinancialReport.Visible = false;
+                btnInvoice.Visible = true;
+            }
+            else if (account.verifyPermission() == Employee.Role.MANAGER)
+            {
+                // Manage
+                btnAccount.Visible = false;
+                btnEmployee.Visible = true;
+                btnSupplier.Visible = true;
+                btnCustomer.Visible = true;
+                btnProduct.Visible = true;
+                btnCategory.Visible = true;
+                // Sale
+                btnSale.Visible = true;
+                // Import
+                btnImport.Visible = false;
+                // Report
+                btnSalary.Visible = false;
+                btnFinancialReport.Visible = false;
+                btnInvoice.Visible = true;
+            }
+            else if (account.verifyPermission() == Employee.Role.SALE_AGENT)
+            {
+                // Manage
+                btnAccount.Visible = false;
+                btnEmployee.Visible = false;
+                btnSupplier.Visible = false;
+                btnCustomer.Visible = true;
+                btnProduct.Visible = true;
+                btnCategory.Visible = true;
+                // Sale
+                btnSale.Visible = true;
+                // Import
+                btnImport.Visible = false;
+                // Report
+                btnSalary.Visible = false;
+                btnFinancialReport.Visible = false;
+                btnInvoice.Visible = true;
+            }
+            else if (account.verifyPermission() == Employee.Role.ACCOUNTANT)
+            {
+                // Manage
+                btnAccount.Visible = false;
+                btnEmployee.Visible = false;
+                btnSupplier.Visible = false;
+                btnCustomer.Visible = true;
+                btnProduct.Visible = true;
+                btnCategory.Visible = true;
+                // Sale
+                btnSale.Visible = false;
+                // Import
+                btnImport.Visible = false;
+                // Report
+                btnSalary.Visible = true;
+                btnFinancialReport.Visible = true;
+                btnInvoice.Visible = true;
+            }
+        }
         #endregion
         #region Events
         #region Load
         private void frmMain_Load(object sender, EventArgs e)
         {
-
+            loadFormBasedOnRole();
             lblUsername.Text = account.Username;
             //lbName.Text = Employee.ConverRole(account.verifyPermission());
         }
@@ -182,7 +252,7 @@ namespace timber_shop_manager
         }
         private void manageTransistion_Tick(object sender, EventArgs e)
         {
-            int targetHeight = manageExpand ? 66 : 66 * (numOfManageButton + 1);
+            int targetHeight = manageExpand ? 66 : 66 * (pnManage.Controls.Count + 1);
             AnimatePanelSize(pnManage, targetHeight, false, manageTransistion);
 
             if (pnManage.Height == targetHeight)
@@ -190,14 +260,12 @@ namespace timber_shop_manager
         }
         private void reportTransistion_Tick(object sender, EventArgs e)
         {
-            int targetHeight = reportExpand ? 66 : 66 * (numOfReportButton + 1);
+            int targetHeight = reportExpand ? 66 : 66 * (pnReport.Controls.Count + 1);
             AnimatePanelSize(pnReport, targetHeight, false, reportTransistion);
 
             if (pnReport.Height == targetHeight)
                 reportExpand = !reportExpand;
         }
-
-
         #endregion
         #endregion
 
