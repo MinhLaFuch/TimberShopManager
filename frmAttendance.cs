@@ -38,6 +38,7 @@ namespace timber_shop_manager
         {
             this.account = acc;
             // Get Employee from Account
+            
             InitializeComponent();
         }
         #endregion
