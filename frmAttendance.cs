@@ -46,7 +46,7 @@ namespace timber_shop_manager
         private void loadForm()
         {
             this.Text = "Báo cáo chấm công của " + this.EmployeeName;
-            dgvAttendance.DataSource = LoadData();
+            dgv.DataSource = LoadData();
         }
         private DataTable LoadData()
         {

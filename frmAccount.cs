@@ -56,10 +56,10 @@ namespace timber_shop_manager
             if (dgvAccount.Rows.Count > 0)
             {
                 int rowIndex = e.RowIndex;
-                txtEmployeeID.Text = dgvAccount.Rows[rowIndex].Cells[0].Value.ToString();
+                txtID.Text = dgvAccount.Rows[rowIndex].Cells[0].Value.ToString();
                 txtName.Text = dgvAccount.Rows[rowIndex].Cells[1].Value.ToString();
                 txtAddress.Text = dgvAccount.Rows[rowIndex].Cells[2].Value.ToString();
-                txtIden.Text = dgvAccount.Rows[rowIndex].Cells[3].Value.ToString();
+                txtUsername.Text = dgvAccount.Rows[rowIndex].Cells[3].Value.ToString();
                 dtpDOB.Value = DateTime.Parse(dgvAccount.Rows[rowIndex].Cells[4].Value.ToString());
                 cbRole.SelectedItem = dgvAccount.Rows[rowIndex].Cells[5].Value.ToString();
             }
