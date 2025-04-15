@@ -12,7 +12,7 @@ namespace timber_shop_manager
         private bool manageExpand = false;
         private bool menuExpand = false;
         private bool reportExpand = false;
-        private const int PANEL_STEP = 10;
+        private const int PANEL_STEP = 25;
         private static ToolTip toolTip = new ToolTip();
         public frmMain(Account account)
         {
