@@ -971,6 +971,29 @@ VALUES
 ('E0020');
 GO
 
+INSERT INTO Account (Username, EmployeeId, Password) VALUES
+('john.doe', 'E0001', 'pass123'),
+('jane.smith', 'E0002', 'pass456'),
+('alice.johnson', 'E0003', 'alicepw'),
+('bob.brown', 'E0004', 'bobbypw'),
+('charlie.white', 'E0005', 'charlie1'),
+('david.green', 'E0006', 'green123'),
+('eve.black', 'E0007', 'evepass'),
+('frank.blue', 'E0008', 'bluepass'),
+('grace.red', 'E0009', 'redpass'),
+('hank.gray', 'E0010', 'graypass'),
+('ivy.yellow', 'E0011', 'ivy123'),
+('jack.silver', 'E0012', 'silverpw'),
+('kathy.gold', 'E0013', 'goldpass'),
+('leo.copper', 'E0014', 'copper1'),
+('mona.platinum', 'E0015', 'platinum'),
+('nick.diamond', 'E0016', 'diamond1'),
+('olivia.ruby', 'E0017', 'ruby123'),
+('paul.emerald', 'E0018', 'emerald1'),
+('quincy.sapphire', 'E0019', 'sapphire'),
+('rita.amethyst', 'E0020', 'amethyst');
+
+
 INSERT INTO Supplier (SupplierId, Name, Address, ContactNumber, Email, Website)
 VALUES
 ('S0001', 'ABC Supplies Co.', '123 Supply St', '1112233445', 'contact@abc.com', 'www.abc.com'),

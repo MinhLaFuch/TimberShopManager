@@ -46,6 +46,7 @@
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             btnForgotPassword = new Button();
+            lbGmail = new Label();
             pnLogin.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -56,7 +57,8 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(501, 210);
+            label1.ForeColor = Color.FromArgb(59, 93, 79);
+            label1.Location = new Point(385, 217);
             label1.Name = "label1";
             label1.Size = new Size(145, 25);
             label1.TabIndex = 1;
@@ -66,7 +68,8 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(501, 295);
+            label2.ForeColor = Color.FromArgb(59, 93, 79);
+            label2.Location = new Point(385, 297);
             label2.Name = "label2";
             label2.Size = new Size(93, 25);
             label2.TabIndex = 2;
@@ -76,7 +79,7 @@
             // 
             txtUsername.BackColor = SystemColors.MenuBar;
             txtUsername.BorderStyle = BorderStyle.None;
-            txtUsername.Location = new Point(501, 244);
+            txtUsername.Location = new Point(388, 246);
             txtUsername.Margin = new Padding(3, 4, 3, 4);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(266, 20);
@@ -86,7 +89,7 @@
             // 
             txtPassword.BackColor = SystemColors.MenuBar;
             txtPassword.BorderStyle = BorderStyle.None;
-            txtPassword.Location = new Point(501, 324);
+            txtPassword.Location = new Point(388, 326);
             txtPassword.Margin = new Padding(3, 4, 3, 4);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(266, 20);
@@ -98,7 +101,7 @@
             btnLogin.BackColor = Color.FromArgb(59, 93, 79);
             btnLogin.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = SystemColors.ButtonFace;
-            btnLogin.Location = new Point(552, 406);
+            btnLogin.Location = new Point(490, 405);
             btnLogin.Margin = new Padding(3, 4, 3, 4);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(164, 40);
@@ -112,7 +115,7 @@
             lblUserError.AutoSize = true;
             lblUserError.Font = new Font("Microsoft Sans Serif", 10.2F);
             lblUserError.ForeColor = Color.Red;
-            lblUserError.Location = new Point(501, 268);
+            lblUserError.Location = new Point(385, 270);
             lblUserError.Name = "lblUserError";
             lblUserError.RightToLeft = RightToLeft.No;
             lblUserError.Size = new Size(83, 20);
@@ -124,7 +127,7 @@
             lblPassError.AutoSize = true;
             lblPassError.Font = new Font("Microsoft Sans Serif", 10.2F);
             lblPassError.ForeColor = Color.Red;
-            lblPassError.Location = new Point(498, 357);
+            lblPassError.Location = new Point(388, 350);
             lblPassError.Name = "lblPassError";
             lblPassError.RightToLeft = RightToLeft.No;
             lblPassError.Size = new Size(86, 20);
@@ -188,7 +191,7 @@
             pnLogin.Dock = DockStyle.Left;
             pnLogin.Location = new Point(0, 0);
             pnLogin.Name = "pnLogin";
-            pnLogin.Size = new Size(471, 503);
+            pnLogin.Size = new Size(379, 503);
             pnLogin.TabIndex = 13;
             // 
             // panel1
@@ -198,7 +201,7 @@
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 425);
             panel1.Name = "panel1";
-            panel1.Size = new Size(471, 78);
+            panel1.Size = new Size(379, 78);
             panel1.TabIndex = 15;
             // 
             // label3
@@ -231,9 +234,9 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(471, 37);
+            pictureBox2.Location = new Point(379, 37);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(329, 147);
+            pictureBox2.Size = new Size(421, 147);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 14;
             pictureBox2.TabStop = false;
@@ -241,15 +244,26 @@
             // btnForgotPassword
             // 
             btnForgotPassword.BackColor = Color.FromArgb(59, 93, 79);
-            btnForgotPassword.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnForgotPassword.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnForgotPassword.ForeColor = SystemColors.ButtonFace;
-            btnForgotPassword.Location = new Point(661, 357);
+            btnForgotPassword.Location = new Point(660, 317);
             btnForgotPassword.Margin = new Padding(3, 4, 3, 4);
             btnForgotPassword.Name = "btnForgotPassword";
-            btnForgotPassword.Size = new Size(117, 41);
+            btnForgotPassword.Size = new Size(139, 41);
             btnForgotPassword.TabIndex = 15;
             btnForgotPassword.Text = "Quên mật khẩu?";
             btnForgotPassword.UseVisualStyleBackColor = false;
+            // 
+            // lbGmail
+            // 
+            lbGmail.AutoSize = true;
+            lbGmail.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbGmail.ForeColor = Color.FromArgb(59, 93, 79);
+            lbGmail.Location = new Point(661, 241);
+            lbGmail.Name = "lbGmail";
+            lbGmail.Size = new Size(102, 20);
+            lbGmail.TabIndex = 16;
+            lbGmail.Text = "@gmail.com";
             // 
             // frmLogin
             // 
@@ -257,6 +271,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(801, 503);
+            Controls.Add(lbGmail);
             Controls.Add(btnForgotPassword);
             Controls.Add(pictureBox2);
             Controls.Add(pnLogin);
@@ -302,5 +317,6 @@
         private Label label3;
         private PictureBox pictureBox2;
         private Button btnForgotPassword;
+        private Label lbGmail;
     }
 }
