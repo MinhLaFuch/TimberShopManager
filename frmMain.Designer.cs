@@ -463,6 +463,7 @@
             Controls.Add(pnTop);
             Controls.Add(pnMenu);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
