@@ -28,6 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             cbCatagory = new ComboBox();
             txtID = new TextBox();
             txtName = new TextBox();
@@ -37,21 +57,27 @@
             lbName = new Label();
             lbID = new Label();
             gbInfo = new GroupBox();
-            nudPrice = new NumericUpDown();
-            nudQuantity = new NumericUpDown();
+            cbCalUnit = new Guna.UI2.WinForms.Guna2ComboBox();
+            nudQuantity = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            nudWarranty = new Guna.UI2.WinForms.Guna2NumericUpDown();
             groupBox1 = new GroupBox();
             txtDescription = new RichTextBox();
-            cbCalUnit = new ComboBox();
-            nudWarranty = new NumericUpDown();
+            nudPrice = new Guna.UI2.WinForms.Guna2NumericUpDown();
             lbMonth = new Label();
             lbQuantity = new Label();
             lbVND = new Label();
             dgvProduct = new DataGridView();
+            btnAdd = new Guna.UI2.WinForms.Guna2Button();
+            btnDel = new Guna.UI2.WinForms.Guna2Button();
+            btnMod = new Guna.UI2.WinForms.Guna2Button();
+            btnSave = new Guna.UI2.WinForms.Guna2Button();
+            btnSearch = new Guna.UI2.WinForms.Guna2Button();
+            btnCancel = new Guna.UI2.WinForms.Guna2Button();
             gbInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)nudPrice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudQuantity).BeginInit();
-            groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudWarranty).BeginInit();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nudPrice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProduct).BeginInit();
             SuspendLayout();
             // 
@@ -127,11 +153,11 @@
             // 
             // gbInfo
             // 
-            gbInfo.Controls.Add(nudPrice);
-            gbInfo.Controls.Add(nudQuantity);
-            gbInfo.Controls.Add(groupBox1);
             gbInfo.Controls.Add(cbCalUnit);
+            gbInfo.Controls.Add(nudQuantity);
             gbInfo.Controls.Add(nudWarranty);
+            gbInfo.Controls.Add(groupBox1);
+            gbInfo.Controls.Add(nudPrice);
             gbInfo.Controls.Add(lbMonth);
             gbInfo.Controls.Add(lbQuantity);
             gbInfo.Controls.Add(lbVND);
@@ -150,23 +176,46 @@
             gbInfo.TabStop = false;
             gbInfo.Text = "Thông tin";
             // 
-            // nudPrice
+            // cbCalUnit
             // 
-            nudPrice.Location = new Point(154, 93);
-            nudPrice.Margin = new Padding(3, 4, 3, 4);
-            nudPrice.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
-            nudPrice.Name = "nudPrice";
-            nudPrice.Size = new Size(277, 27);
-            nudPrice.TabIndex = 29;
+            cbCalUnit.BackColor = Color.Transparent;
+            cbCalUnit.CustomizableEdges = customizableEdges1;
+            cbCalUnit.DrawMode = DrawMode.OwnerDrawFixed;
+            cbCalUnit.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbCalUnit.FocusedColor = Color.FromArgb(94, 148, 255);
+            cbCalUnit.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cbCalUnit.Font = new Font("Segoe UI", 10F);
+            cbCalUnit.ForeColor = Color.FromArgb(68, 88, 112);
+            cbCalUnit.ItemHeight = 30;
+            cbCalUnit.Location = new Point(324, 208);
+            cbCalUnit.Name = "cbCalUnit";
+            cbCalUnit.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            cbCalUnit.Size = new Size(175, 36);
+            cbCalUnit.TabIndex = 12;
             // 
             // nudQuantity
             // 
-            nudQuantity.Location = new Point(154, 213);
+            nudQuantity.BackColor = Color.Transparent;
+            nudQuantity.CustomizableEdges = customizableEdges3;
+            nudQuantity.Font = new Font("Segoe UI", 9F);
+            nudQuantity.Location = new Point(154, 211);
             nudQuantity.Margin = new Padding(3, 4, 3, 4);
-            nudQuantity.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             nudQuantity.Name = "nudQuantity";
-            nudQuantity.Size = new Size(277, 27);
-            nudQuantity.TabIndex = 28;
+            nudQuantity.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            nudQuantity.Size = new Size(142, 33);
+            nudQuantity.TabIndex = 13;
+            // 
+            // nudWarranty
+            // 
+            nudWarranty.BackColor = Color.Transparent;
+            nudWarranty.CustomizableEdges = customizableEdges5;
+            nudWarranty.Font = new Font("Segoe UI", 9F);
+            nudWarranty.Location = new Point(154, 169);
+            nudWarranty.Margin = new Padding(3, 4, 3, 4);
+            nudWarranty.Name = "nudWarranty";
+            nudWarranty.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            nudWarranty.Size = new Size(142, 33);
+            nudWarranty.TabIndex = 14;
             // 
             // groupBox1
             // 
@@ -189,26 +238,22 @@
             txtDescription.TabIndex = 22;
             txtDescription.Text = "";
             // 
-            // cbCalUnit
+            // nudPrice
             // 
-            cbCalUnit.FormattingEnabled = true;
-            cbCalUnit.Location = new Point(438, 211);
-            cbCalUnit.Name = "cbCalUnit";
-            cbCalUnit.Size = new Size(61, 28);
-            cbCalUnit.TabIndex = 26;
-            // 
-            // nudWarranty
-            // 
-            nudWarranty.Location = new Point(154, 171);
-            nudWarranty.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
-            nudWarranty.Name = "nudWarranty";
-            nudWarranty.Size = new Size(277, 27);
-            nudWarranty.TabIndex = 19;
+            nudPrice.BackColor = Color.Transparent;
+            nudPrice.CustomizableEdges = customizableEdges7;
+            nudPrice.Font = new Font("Segoe UI", 9F);
+            nudPrice.Location = new Point(154, 91);
+            nudPrice.Margin = new Padding(3, 4, 3, 4);
+            nudPrice.Name = "nudPrice";
+            nudPrice.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            nudPrice.Size = new Size(142, 33);
+            nudPrice.TabIndex = 12;
             // 
             // lbMonth
             // 
             lbMonth.BackColor = Color.Transparent;
-            lbMonth.Location = new Point(438, 171);
+            lbMonth.Location = new Point(313, 171);
             lbMonth.Name = "lbMonth";
             lbMonth.Size = new Size(62, 31);
             lbMonth.TabIndex = 18;
@@ -227,7 +272,7 @@
             // lbVND
             // 
             lbVND.BackColor = Color.Transparent;
-            lbVND.Location = new Point(437, 88);
+            lbVND.Location = new Point(313, 88);
             lbVND.Name = "lbVND";
             lbVND.Size = new Size(62, 31);
             lbVND.TabIndex = 12;
@@ -238,18 +283,126 @@
             // 
             dgvProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProduct.Location = new Point(3, 357);
+            dgvProduct.Location = new Point(319, 357);
             dgvProduct.Name = "dgvProduct";
             dgvProduct.RowHeadersWidth = 51;
-            dgvProduct.Size = new Size(1093, 449);
+            dgvProduct.Size = new Size(777, 449);
             dgvProduct.TabIndex = 11;
             dgvProduct.CellClick += dgvProduct_CellClick;
+            // 
+            // btnAdd
+            // 
+            btnAdd.CustomizableEdges = customizableEdges9;
+            btnAdd.DisabledState.BorderColor = Color.DarkGray;
+            btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAdd.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAdd.FillColor = Color.FromArgb(59, 93, 79);
+            btnAdd.Font = new Font("Segoe UI", 9F);
+            btnAdd.ForeColor = Color.White;
+            btnAdd.Location = new Point(116, 287);
+            btnAdd.Name = "btnAdd";
+            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnAdd.Size = new Size(108, 41);
+            btnAdd.TabIndex = 28;
+            btnAdd.Text = "Thêm";
+            // 
+            // btnDel
+            // 
+            btnDel.CustomizableEdges = customizableEdges11;
+            btnDel.DisabledState.BorderColor = Color.DarkGray;
+            btnDel.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnDel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnDel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnDel.FillColor = Color.FromArgb(59, 93, 79);
+            btnDel.Font = new Font("Segoe UI", 9F);
+            btnDel.ForeColor = Color.White;
+            btnDel.Location = new Point(252, 287);
+            btnDel.Name = "btnDel";
+            btnDel.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnDel.Size = new Size(108, 41);
+            btnDel.TabIndex = 29;
+            btnDel.Text = "Xóa";
+            // 
+            // btnMod
+            // 
+            btnMod.CustomizableEdges = customizableEdges13;
+            btnMod.DisabledState.BorderColor = Color.DarkGray;
+            btnMod.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnMod.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnMod.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnMod.FillColor = Color.FromArgb(59, 93, 79);
+            btnMod.Font = new Font("Segoe UI", 9F);
+            btnMod.ForeColor = Color.White;
+            btnMod.Location = new Point(397, 287);
+            btnMod.Name = "btnMod";
+            btnMod.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btnMod.Size = new Size(108, 41);
+            btnMod.TabIndex = 30;
+            btnMod.Text = "Sửa";
+            // 
+            // btnSave
+            // 
+            btnSave.CustomizableEdges = customizableEdges15;
+            btnSave.DisabledState.BorderColor = Color.DarkGray;
+            btnSave.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSave.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSave.FillColor = Color.FromArgb(59, 93, 79);
+            btnSave.Font = new Font("Segoe UI", 9F);
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(851, 244);
+            btnSave.Name = "btnSave";
+            btnSave.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            btnSave.Size = new Size(108, 41);
+            btnSave.TabIndex = 31;
+            btnSave.Text = "Lưu";
+            // 
+            // btnSearch
+            // 
+            btnSearch.CustomizableEdges = customizableEdges17;
+            btnSearch.DisabledState.BorderColor = Color.DarkGray;
+            btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSearch.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSearch.FillColor = Color.FromArgb(59, 93, 79);
+            btnSearch.Font = new Font("Segoe UI", 9F);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Location = new Point(524, 287);
+            btnSearch.Name = "btnSearch";
+            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btnSearch.Size = new Size(108, 41);
+            btnSearch.TabIndex = 32;
+            btnSearch.Text = "Tìm kiếm";
+            // 
+            // btnCancel
+            // 
+            btnCancel.CustomizableEdges = customizableEdges19;
+            btnCancel.DisabledState.BorderColor = Color.DarkGray;
+            btnCancel.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnCancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnCancel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnCancel.FillColor = Color.FromArgb(59, 93, 79);
+            btnCancel.Font = new Font("Segoe UI", 9F);
+            btnCancel.ForeColor = Color.White;
+            btnCancel.Location = new Point(715, 244);
+            btnCancel.Name = "btnCancel";
+            btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            btnCancel.Size = new Size(108, 41);
+            btnCancel.TabIndex = 33;
+            btnCancel.Text = "Hủy";
             // 
             // frmProduct
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1101, 807);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSearch);
+            Controls.Add(btnSave);
+            Controls.Add(btnMod);
+            Controls.Add(btnDel);
+            Controls.Add(btnAdd);
             Controls.Add(gbInfo);
             Controls.Add(dgvProduct);
             FormBorderStyle = FormBorderStyle.None;
@@ -259,10 +412,10 @@
             Load += frmProduct_Load;
             gbInfo.ResumeLayout(false);
             gbInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)nudPrice).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudQuantity).EndInit();
-            groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)nudWarranty).EndInit();
+            groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)nudPrice).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvProduct).EndInit();
             ResumeLayout(false);
         }
@@ -279,13 +432,19 @@
         private GroupBox gbInfo;
         private Label lbVND;
         private Label lbQuantity;
-        private NumericUpDown nudWarranty;
         private Label lbMonth;
         private RichTextBox txtDescription;
-        private ComboBox cbCalUnit;
         private GroupBox groupBox1;
-        private NumericUpDown nudQuantity;
-        private NumericUpDown nudPrice;
         private DataGridView dgvProduct;
+        private Guna.UI2.WinForms.Guna2ComboBox cbCalUnit;
+        private Guna.UI2.WinForms.Guna2NumericUpDown nudQuantity;
+        private Guna.UI2.WinForms.Guna2NumericUpDown nudWarranty;
+        private Guna.UI2.WinForms.Guna2NumericUpDown nudPrice;
+        private Guna.UI2.WinForms.Guna2Button btnAdd;
+        private Guna.UI2.WinForms.Guna2Button btnDel;
+        private Guna.UI2.WinForms.Guna2Button btnMod;
+        private Guna.UI2.WinForms.Guna2Button btnSave;
+        private Guna.UI2.WinForms.Guna2Button btnSearch;
+        private Guna.UI2.WinForms.Guna2Button btnCancel;
     }
 }

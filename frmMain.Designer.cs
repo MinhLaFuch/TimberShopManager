@@ -31,10 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             btnSale = new Button();
-            pbUser = new PictureBox();
             pnMenu = new FlowLayoutPanel();
-            pnUser = new Panel();
-            pbMenu = new PictureBox();
             btnImport = new Button();
             btnAttend = new Button();
             pnManage = new FlowLayoutPanel();
@@ -50,21 +47,17 @@
             btnFinancialReport = new Button();
             btnSalary = new Button();
             btnInvoice = new Button();
-            pbLogout = new ReaLTaiizor.Controls.HopePictureBox();
             pnTop = new Panel();
             lbUsername = new ReaLTaiizor.Controls.HeaderLabel();
             manageTransistion = new System.Windows.Forms.Timer(components);
-            menuTransistion = new System.Windows.Forms.Timer(components);
             reportTransistion = new System.Windows.Forms.Timer(components);
             pnMDI = new Panel();
-            ((System.ComponentModel.ISupportInitialize)pbUser).BeginInit();
+            pbUser = new PictureBox();
             pnMenu.SuspendLayout();
-            pnUser.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbMenu).BeginInit();
             pnManage.SuspendLayout();
             pnReport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbLogout).BeginInit();
             pnTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbUser).BeginInit();
             SuspendLayout();
             // 
             // btnSale
@@ -76,27 +69,13 @@
             btnSale.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSale.ForeColor = SystemColors.ButtonFace;
             btnSale.Image = (Image)resources.GetObject("btnSale.Image");
-            btnSale.ImageAlign = ContentAlignment.TopLeft;
-            btnSale.Location = new Point(0, 59);
+            btnSale.Location = new Point(0, 0);
             btnSale.Margin = new Padding(0);
             btnSale.Name = "btnSale";
-            btnSale.Size = new Size(271, 66);
+            btnSale.Size = new Size(94, 66);
             btnSale.TabIndex = 0;
-            btnSale.Text = "        Bán hàng";
             btnSale.UseVisualStyleBackColor = false;
             btnSale.Click += btnSale_Click;
-            // 
-            // pbUser
-            // 
-            pbUser.BackColor = Color.Transparent;
-            pbUser.BackgroundImageLayout = ImageLayout.Zoom;
-            pbUser.Image = (Image)resources.GetObject("pbUser.Image");
-            pbUser.Location = new Point(1062, 0);
-            pbUser.Name = "pbUser";
-            pbUser.Size = new Size(45, 59);
-            pbUser.TabIndex = 16;
-            pbUser.TabStop = false;
-            pbUser.Click += pbUser_Click;
             // 
             // pnMenu
             // 
@@ -104,7 +83,6 @@
             pnMenu.AutoSize = true;
             pnMenu.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             pnMenu.BackColor = Color.FromArgb(59, 93, 79);
-            pnMenu.Controls.Add(pnUser);
             pnMenu.Controls.Add(btnSale);
             pnMenu.Controls.Add(btnImport);
             pnMenu.Controls.Add(btnAttend);
@@ -114,30 +92,9 @@
             pnMenu.FlowDirection = FlowDirection.TopDown;
             pnMenu.Location = new Point(0, 0);
             pnMenu.Name = "pnMenu";
-            pnMenu.Size = new Size(271, 771);
+            pnMenu.Size = new Size(100, 771);
             pnMenu.TabIndex = 17;
             pnMenu.WrapContents = false;
-            // 
-            // pnUser
-            // 
-            pnUser.BackColor = Color.FromArgb(59, 93, 79);
-            pnUser.Controls.Add(pbMenu);
-            pnUser.Location = new Point(0, 0);
-            pnUser.Margin = new Padding(0);
-            pnUser.Name = "pnUser";
-            pnUser.Size = new Size(271, 59);
-            pnUser.TabIndex = 22;
-            // 
-            // pbMenu
-            // 
-            pbMenu.Image = (Image)resources.GetObject("pbMenu.Image");
-            pbMenu.Location = new Point(0, 0);
-            pbMenu.Name = "pbMenu";
-            pbMenu.Size = new Size(94, 59);
-            pbMenu.SizeMode = PictureBoxSizeMode.Zoom;
-            pbMenu.TabIndex = 27;
-            pbMenu.TabStop = false;
-            pbMenu.Click += pbMenu_Click;
             // 
             // btnImport
             // 
@@ -148,13 +105,11 @@
             btnImport.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnImport.ForeColor = SystemColors.ButtonFace;
             btnImport.Image = (Image)resources.GetObject("btnImport.Image");
-            btnImport.ImageAlign = ContentAlignment.TopLeft;
-            btnImport.Location = new Point(0, 125);
+            btnImport.Location = new Point(0, 66);
             btnImport.Margin = new Padding(0);
             btnImport.Name = "btnImport";
-            btnImport.Size = new Size(271, 66);
+            btnImport.Size = new Size(94, 66);
             btnImport.TabIndex = 23;
-            btnImport.Text = "        Nhập hàng";
             btnImport.UseVisualStyleBackColor = false;
             btnImport.Click += btnImport_Click;
             // 
@@ -167,13 +122,11 @@
             btnAttend.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAttend.ForeColor = SystemColors.ButtonFace;
             btnAttend.Image = (Image)resources.GetObject("btnAttend.Image");
-            btnAttend.ImageAlign = ContentAlignment.TopLeft;
-            btnAttend.Location = new Point(0, 191);
+            btnAttend.Location = new Point(0, 132);
             btnAttend.Margin = new Padding(0);
             btnAttend.Name = "btnAttend";
-            btnAttend.Size = new Size(271, 66);
+            btnAttend.Size = new Size(94, 66);
             btnAttend.TabIndex = 25;
-            btnAttend.Text = "        Chấm công";
             btnAttend.UseVisualStyleBackColor = false;
             // 
             // pnManage
@@ -185,9 +138,9 @@
             pnManage.Controls.Add(btnCustomer);
             pnManage.Controls.Add(btnProduct);
             pnManage.Controls.Add(btnCategory);
-            pnManage.Location = new Point(3, 260);
+            pnManage.Location = new Point(3, 201);
             pnManage.Name = "pnManage";
-            pnManage.Size = new Size(247, 461);
+            pnManage.Size = new Size(94, 461);
             pnManage.TabIndex = 25;
             // 
             // btnManage
@@ -199,13 +152,11 @@
             btnManage.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnManage.ForeColor = SystemColors.ButtonFace;
             btnManage.Image = (Image)resources.GetObject("btnManage.Image");
-            btnManage.ImageAlign = ContentAlignment.TopLeft;
             btnManage.Location = new Point(0, 0);
             btnManage.Margin = new Padding(0);
             btnManage.Name = "btnManage";
-            btnManage.Size = new Size(271, 66);
+            btnManage.Size = new Size(94, 66);
             btnManage.TabIndex = 24;
-            btnManage.Text = "        Quản lý";
             btnManage.UseVisualStyleBackColor = false;
             btnManage.Click += btnManage_Click;
             // 
@@ -218,13 +169,11 @@
             btnAccount.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAccount.ForeColor = SystemColors.ButtonFace;
             btnAccount.Image = (Image)resources.GetObject("btnAccount.Image");
-            btnAccount.ImageAlign = ContentAlignment.TopLeft;
             btnAccount.Location = new Point(0, 66);
             btnAccount.Margin = new Padding(0);
             btnAccount.Name = "btnAccount";
-            btnAccount.Size = new Size(271, 66);
+            btnAccount.Size = new Size(94, 66);
             btnAccount.TabIndex = 25;
-            btnAccount.Text = "        Tài khoản";
             btnAccount.UseVisualStyleBackColor = false;
             btnAccount.Click += btnAccount_Click;
             // 
@@ -237,13 +186,11 @@
             btnEmployee.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEmployee.ForeColor = SystemColors.ButtonFace;
             btnEmployee.Image = (Image)resources.GetObject("btnEmployee.Image");
-            btnEmployee.ImageAlign = ContentAlignment.TopLeft;
             btnEmployee.Location = new Point(0, 132);
             btnEmployee.Margin = new Padding(0);
             btnEmployee.Name = "btnEmployee";
-            btnEmployee.Size = new Size(271, 66);
+            btnEmployee.Size = new Size(94, 66);
             btnEmployee.TabIndex = 26;
-            btnEmployee.Text = "        Nhân viên";
             btnEmployee.UseVisualStyleBackColor = false;
             btnEmployee.Click += btnEmployee_Click;
             // 
@@ -256,13 +203,11 @@
             btnSupplier.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSupplier.ForeColor = SystemColors.ButtonFace;
             btnSupplier.Image = (Image)resources.GetObject("btnSupplier.Image");
-            btnSupplier.ImageAlign = ContentAlignment.TopLeft;
             btnSupplier.Location = new Point(0, 198);
             btnSupplier.Margin = new Padding(0);
             btnSupplier.Name = "btnSupplier";
-            btnSupplier.Size = new Size(271, 66);
+            btnSupplier.Size = new Size(94, 66);
             btnSupplier.TabIndex = 27;
-            btnSupplier.Text = "        Nhà cung cấp";
             btnSupplier.UseVisualStyleBackColor = false;
             btnSupplier.Click += btnSupplier_Click;
             // 
@@ -275,13 +220,11 @@
             btnCustomer.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCustomer.ForeColor = SystemColors.ButtonFace;
             btnCustomer.Image = (Image)resources.GetObject("btnCustomer.Image");
-            btnCustomer.ImageAlign = ContentAlignment.TopLeft;
             btnCustomer.Location = new Point(0, 264);
             btnCustomer.Margin = new Padding(0);
             btnCustomer.Name = "btnCustomer";
-            btnCustomer.Size = new Size(271, 66);
+            btnCustomer.Size = new Size(94, 66);
             btnCustomer.TabIndex = 28;
-            btnCustomer.Text = "        Khách hàng";
             btnCustomer.UseVisualStyleBackColor = false;
             btnCustomer.Click += btnCustomer_Click;
             // 
@@ -294,13 +237,11 @@
             btnProduct.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnProduct.ForeColor = SystemColors.ButtonFace;
             btnProduct.Image = (Image)resources.GetObject("btnProduct.Image");
-            btnProduct.ImageAlign = ContentAlignment.TopLeft;
             btnProduct.Location = new Point(0, 330);
             btnProduct.Margin = new Padding(0);
             btnProduct.Name = "btnProduct";
-            btnProduct.Size = new Size(271, 66);
+            btnProduct.Size = new Size(94, 66);
             btnProduct.TabIndex = 29;
-            btnProduct.Text = "        Sản phẩm";
             btnProduct.UseVisualStyleBackColor = false;
             btnProduct.Click += btnProduct_Click;
             // 
@@ -313,13 +254,11 @@
             btnCategory.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCategory.ForeColor = SystemColors.ButtonFace;
             btnCategory.Image = (Image)resources.GetObject("btnCategory.Image");
-            btnCategory.ImageAlign = ContentAlignment.TopLeft;
             btnCategory.Location = new Point(0, 396);
             btnCategory.Margin = new Padding(0);
             btnCategory.Name = "btnCategory";
-            btnCategory.Size = new Size(271, 66);
+            btnCategory.Size = new Size(94, 66);
             btnCategory.TabIndex = 30;
-            btnCategory.Text = "        Danh mục";
             btnCategory.UseVisualStyleBackColor = false;
             btnCategory.Click += btnCategory_Click;
             // 
@@ -329,9 +268,9 @@
             pnReport.Controls.Add(btnFinancialReport);
             pnReport.Controls.Add(btnSalary);
             pnReport.Controls.Add(btnInvoice);
-            pnReport.Location = new Point(3, 727);
+            pnReport.Location = new Point(3, 668);
             pnReport.Name = "pnReport";
-            pnReport.Size = new Size(247, 258);
+            pnReport.Size = new Size(94, 258);
             pnReport.TabIndex = 32;
             // 
             // btnReport
@@ -343,13 +282,11 @@
             btnReport.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnReport.ForeColor = SystemColors.ButtonFace;
             btnReport.Image = (Image)resources.GetObject("btnReport.Image");
-            btnReport.ImageAlign = ContentAlignment.TopLeft;
             btnReport.Location = new Point(0, 0);
             btnReport.Margin = new Padding(0);
             btnReport.Name = "btnReport";
-            btnReport.Size = new Size(271, 66);
+            btnReport.Size = new Size(94, 66);
             btnReport.TabIndex = 31;
-            btnReport.Text = "        Báo cáo";
             btnReport.UseVisualStyleBackColor = false;
             btnReport.Click += btnReport_Click;
             // 
@@ -362,13 +299,11 @@
             btnFinancialReport.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnFinancialReport.ForeColor = SystemColors.ButtonFace;
             btnFinancialReport.Image = (Image)resources.GetObject("btnFinancialReport.Image");
-            btnFinancialReport.ImageAlign = ContentAlignment.TopLeft;
             btnFinancialReport.Location = new Point(0, 66);
             btnFinancialReport.Margin = new Padding(0);
             btnFinancialReport.Name = "btnFinancialReport";
-            btnFinancialReport.Size = new Size(271, 66);
+            btnFinancialReport.Size = new Size(94, 66);
             btnFinancialReport.TabIndex = 32;
-            btnFinancialReport.Text = "        Tài chính";
             btnFinancialReport.UseVisualStyleBackColor = false;
             btnFinancialReport.Click += btnFinancialReport_Click;
             // 
@@ -381,13 +316,11 @@
             btnSalary.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSalary.ForeColor = SystemColors.ButtonFace;
             btnSalary.Image = (Image)resources.GetObject("btnSalary.Image");
-            btnSalary.ImageAlign = ContentAlignment.TopLeft;
             btnSalary.Location = new Point(0, 132);
             btnSalary.Margin = new Padding(0);
             btnSalary.Name = "btnSalary";
-            btnSalary.Size = new Size(271, 66);
+            btnSalary.Size = new Size(94, 66);
             btnSalary.TabIndex = 33;
-            btnSalary.Text = "        Tiền lương";
             btnSalary.UseVisualStyleBackColor = false;
             btnSalary.Click += btnSalary_Click;
             // 
@@ -400,40 +333,22 @@
             btnInvoice.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnInvoice.ForeColor = SystemColors.ButtonFace;
             btnInvoice.Image = (Image)resources.GetObject("btnInvoice.Image");
-            btnInvoice.ImageAlign = ContentAlignment.TopLeft;
             btnInvoice.Location = new Point(0, 198);
             btnInvoice.Margin = new Padding(0);
             btnInvoice.Name = "btnInvoice";
-            btnInvoice.Size = new Size(271, 66);
+            btnInvoice.Size = new Size(94, 66);
             btnInvoice.TabIndex = 34;
-            btnInvoice.Text = "        Hóa đơn";
             btnInvoice.UseVisualStyleBackColor = false;
             btnInvoice.Click += btnInvoice_Click;
-            // 
-            // pbLogout
-            // 
-            pbLogout.BackColor = Color.FromArgb(192, 196, 204);
-            pbLogout.Image = (Image)resources.GetObject("pbLogout.Image");
-            pbLogout.Location = new Point(1113, 3);
-            pbLogout.Name = "pbLogout";
-            pbLogout.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            pbLogout.Size = new Size(59, 53);
-            pbLogout.SizeMode = PictureBoxSizeMode.Zoom;
-            pbLogout.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            pbLogout.TabIndex = 19;
-            pbLogout.TabStop = false;
-            pbLogout.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            pbLogout.Click += pbLogout_Click;
             // 
             // pnTop
             // 
             pnTop.Controls.Add(lbUsername);
-            pnTop.Controls.Add(pbLogout);
             pnTop.Controls.Add(pbUser);
             pnTop.Dock = DockStyle.Top;
-            pnTop.Location = new Point(271, 0);
+            pnTop.Location = new Point(100, 0);
             pnTop.Name = "pnTop";
-            pnTop.Size = new Size(1172, 59);
+            pnTop.Size = new Size(1343, 59);
             pnTop.TabIndex = 26;
             // 
             // lbUsername
@@ -442,7 +357,7 @@
             lbUsername.BackColor = SystemColors.Control;
             lbUsername.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Bold);
             lbUsername.ForeColor = Color.Black;
-            lbUsername.Location = new Point(951, 32);
+            lbUsername.Location = new Point(51, 35);
             lbUsername.Name = "lbUsername";
             lbUsername.Size = new Size(105, 24);
             lbUsername.TabIndex = 22;
@@ -454,11 +369,6 @@
             manageTransistion.Interval = 10;
             manageTransistion.Tick += manageTransistion_Tick;
             // 
-            // menuTransistion
-            // 
-            menuTransistion.Interval = 10;
-            menuTransistion.Tick += menuTransistion_Tick;
-            // 
             // reportTransistion
             // 
             reportTransistion.Interval = 10;
@@ -466,10 +376,23 @@
             // 
             // pnMDI
             // 
-            pnMDI.Location = new Point(271, 59);
+            pnMDI.Location = new Point(169, 59);
             pnMDI.Name = "pnMDI";
-            pnMDI.Size = new Size(1172, 712);
+            pnMDI.Size = new Size(1274, 712);
             pnMDI.TabIndex = 27;
+            // 
+            // pbUser
+            // 
+            pbUser.BackColor = Color.Transparent;
+            pbUser.BackgroundImageLayout = ImageLayout.Zoom;
+            pbUser.Dock = DockStyle.Left;
+            pbUser.Image = (Image)resources.GetObject("pbUser.Image");
+            pbUser.Location = new Point(0, 0);
+            pbUser.Name = "pbUser";
+            pbUser.Size = new Size(45, 59);
+            pbUser.TabIndex = 16;
+            pbUser.TabStop = false;
+            pbUser.Click += pbUser_Click;
             // 
             // frmMain
             // 
@@ -486,15 +409,12 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Bán hàng";
             Load += frmMain_Load;
-            ((System.ComponentModel.ISupportInitialize)pbUser).EndInit();
             pnMenu.ResumeLayout(false);
-            pnUser.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pbMenu).EndInit();
             pnManage.ResumeLayout(false);
             pnReport.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pbLogout).EndInit();
             pnTop.ResumeLayout(false);
             pnTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbUser).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -502,14 +422,7 @@
         #endregion
 
         private Button btnSale;
-        private Label lblUsername;
-        private ReaLTaiizor.Controls.NightControlBox nightControlBox;
-        private PictureBox pbUser;
         private FlowLayoutPanel pnMenu;
-        private Panel pnUser;
-        private ReaLTaiizor.Controls.HopePictureBox pbLogout;
-        private Button btnImprot;
-        private PictureBox pbMenu;
         private Button btnImport;
         private Button btnManage;
         private Button btnAttend;
@@ -522,7 +435,6 @@
         private Button btnCategory;
         private Panel pnTop;
         private System.Windows.Forms.Timer manageTransistion;
-        private System.Windows.Forms.Timer menuTransistion;
         private ReaLTaiizor.Controls.HeaderLabel lbUsername;
         private Button btnReport;
         private FlowLayoutPanel pnReport;
@@ -531,5 +443,6 @@
         private Button btnInvoice;
         private System.Windows.Forms.Timer reportTransistion;
         private Panel pnMDI;
+        private PictureBox pbUser;
     }
 }

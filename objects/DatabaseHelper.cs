@@ -14,7 +14,7 @@ namespace timber_shop_manager
 
         public DatabaseHelper()
         {
-            connectionString = $"Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=TimberShop;Integrated Security=True";
+            connectionString = "Data Source=FUCHS_LAPTOP;Initial Catalog=TimberShop;Integrated Security=True;Trust Server Certificate=True";
         }
 
         // Kiểm tra kết nối

@@ -170,6 +170,14 @@ namespace timber_shop_manager
             pnMenu.HorizontalScroll.Visible = false;
             lbUsername.Text = account.Username;
             loadFormBasedOnRole();
+            // Attach MouseHover event to all buttons in pnMenu
+            foreach (Control control in pnMenu.Controls)
+            {
+                if (control is Button button)
+                {
+                    button.MouseHover += btn_MouseHover;
+                }
+            }
         }
         #endregion
         #region Click
@@ -243,15 +251,6 @@ namespace timber_shop_manager
         }
         #endregion
         #region Tick
-        private void menuTransistion_Tick(object sender, EventArgs e)
-        {
-            int targetWidth = menuExpand ? 72 : 271;
-            AnimatePanelSize(pnMenu, targetWidth, true, menuTransistion);
-
-            // Flip the flag only once when finished
-            if (pnMenu.Width == targetWidth)
-                menuExpand = !menuExpand;
-        }
         private void manageTransistion_Tick(object sender, EventArgs e)
         {
             int targetHeight = manageExpand ? 66 : 66 * (pnManage.Controls.Count + 1);
@@ -269,7 +268,17 @@ namespace timber_shop_manager
                 reportExpand = !reportExpand;
         }
         #endregion
+        #region Hover
+        private void btn_MouseHover(object sender, EventArgs e)
+        {
+            Button hoveredButton = sender as Button;
+            if (hoveredButton != null)
+            {
+                ToolTip toolTip = new ToolTip();
+                toolTip.SetToolTip(hoveredButton, hoveredButton.Text);
+            }
+        }
         #endregion
-
+        #endregion
     }
 }
