@@ -12,6 +12,8 @@ namespace timber_shop_manager
         private bool manageExpand = false;
         private bool reportExpand = false;
         private const int PANEL_STEP = 25;
+        private int pnManageQuantity = 6;
+        private int pnReportQuantity = 3;
         private static ToolTip toolTip = new ToolTip();
         private static Color afterClickColor = Color.FromArgb(0, 0, 0);
         private static Color outerBtnColor = Color.FromArgb(59, 93, 79);
@@ -98,6 +100,7 @@ namespace timber_shop_manager
                 btnCustomer.Visible = true;
                 btnProduct.Visible = true;
                 btnCategory.Visible = true;
+                pnManageQuantity = 5;
                 // Sale
                 btnSale.Visible = true;
                 // Import
@@ -106,6 +109,7 @@ namespace timber_shop_manager
                 btnSalary.Visible = false;
                 btnFinancialReport.Visible = false;
                 btnInvoice.Visible = true;
+                pnReportQuantity = 1;
             }
             else if (account.verifyPermission() == Employee.Role.MANAGER)
             {
@@ -116,6 +120,7 @@ namespace timber_shop_manager
                 btnCustomer.Visible = true;
                 btnProduct.Visible = true;
                 btnCategory.Visible = true;
+                pnManageQuantity = 5;
                 // Sale
                 btnSale.Visible = true;
                 // Import
@@ -124,6 +129,7 @@ namespace timber_shop_manager
                 btnSalary.Visible = false;
                 btnFinancialReport.Visible = false;
                 btnInvoice.Visible = true;
+                pnReportQuantity = 1;
             }
             else if (account.verifyPermission() == Employee.Role.SALE_AGENT)
             {
@@ -134,6 +140,7 @@ namespace timber_shop_manager
                 btnCustomer.Visible = true;
                 btnProduct.Visible = true;
                 btnCategory.Visible = true;
+                pnManageQuantity = 3;
                 // Sale
                 btnSale.Visible = true;
                 // Import
@@ -142,6 +149,7 @@ namespace timber_shop_manager
                 btnSalary.Visible = false;
                 btnFinancialReport.Visible = false;
                 btnInvoice.Visible = true;
+                pnReportQuantity = 1;
             }
             else if (account.verifyPermission() == Employee.Role.ACCOUNTANT)
             {
@@ -152,6 +160,7 @@ namespace timber_shop_manager
                 btnCustomer.Visible = true;
                 btnProduct.Visible = true;
                 btnCategory.Visible = true;
+                pnManageQuantity = 3;
                 // Sale
                 btnSale.Visible = false;
                 // Import
@@ -160,6 +169,7 @@ namespace timber_shop_manager
                 btnSalary.Visible = true;
                 btnFinancialReport.Visible = true;
                 btnInvoice.Visible = true;
+                pnReportQuantity = 3;
             }
         }
         private void ResetButtonColors()
@@ -292,7 +302,7 @@ namespace timber_shop_manager
         #region Tick
         private void manageTransistion_Tick(object sender, EventArgs e)
         {
-            int targetHeight = manageExpand ? 66 : 66 * (pnManage.Controls.Count);
+            int targetHeight = manageExpand ? 66 : 66 * (pnManageQuantity);
             AnimatePanelSize(pnManage, targetHeight, false, manageTransistion);
 
             if (pnManage.Height == targetHeight)
@@ -300,7 +310,7 @@ namespace timber_shop_manager
         }
         private void reportTransistion_Tick(object sender, EventArgs e)
         {
-            int targetHeight = reportExpand ? 66 : 66 * (pnReport.Controls.Count);
+            int targetHeight = reportExpand ? 66 : 66 * (pnReportQuantity);
             AnimatePanelSize(pnReport, targetHeight, false, reportTransistion);
 
             if (pnReport.Height == targetHeight)
