@@ -65,7 +65,7 @@
             btnSendEmail.FillColor = Color.FromArgb(59, 93, 79);
             btnSendEmail.Font = new Font("Segoe UI", 9F);
             btnSendEmail.ForeColor = Color.White;
-            btnSendEmail.Location = new Point(176, 97);
+            btnSendEmail.Location = new Point(174, 38);
             btnSendEmail.Name = "btnSendEmail";
             btnSendEmail.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnSendEmail.Size = new Size(206, 31);
@@ -77,7 +77,7 @@
             // 
             lbGmail.AutoSize = true;
             lbGmail.ForeColor = Color.FromArgb(59, 93, 79);
-            lbGmail.Location = new Point(24, 71);
+            lbGmail.Location = new Point(22, 12);
             lbGmail.Name = "lbGmail";
             lbGmail.Size = new Size(48, 20);
             lbGmail.TabIndex = 2;
@@ -86,7 +86,7 @@
             // txtGmail
             // 
             txtGmail.BorderStyle = BorderStyle.None;
-            txtGmail.Location = new Point(176, 71);
+            txtGmail.Location = new Point(174, 12);
             txtGmail.Name = "txtGmail";
             txtGmail.Size = new Size(401, 20);
             txtGmail.TabIndex = 3;
@@ -128,12 +128,12 @@
             btnSave.FillColor = Color.FromArgb(59, 93, 79);
             btnSave.Font = new Font("Segoe UI", 9F);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(432, 363);
+            btnSave.Location = new Point(431, 243);
             btnSave.Name = "btnSave";
             btnSave.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnSave.Size = new Size(123, 30);
             btnSave.TabIndex = 8;
-            btnSave.Text = "Đổi";
+            btnSave.Text = "Lưu";
             btnSave.Click += btnSave_Click;
             // 
             // btnCancel
@@ -146,7 +146,7 @@
             btnCancel.FillColor = Color.FromArgb(59, 93, 79);
             btnCancel.Font = new Font("Segoe UI", 9F);
             btnCancel.ForeColor = Color.White;
-            btnCancel.Location = new Point(561, 363);
+            btnCancel.Location = new Point(560, 243);
             btnCancel.Name = "btnCancel";
             btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnCancel.Size = new Size(123, 30);
@@ -178,7 +178,7 @@
             // 
             lbPlaceholder.AutoSize = true;
             lbPlaceholder.ForeColor = Color.FromArgb(59, 93, 79);
-            lbPlaceholder.Location = new Point(577, 71);
+            lbPlaceholder.Location = new Point(575, 12);
             lbPlaceholder.Name = "lbPlaceholder";
             lbPlaceholder.Size = new Size(93, 20);
             lbPlaceholder.TabIndex = 14;
@@ -192,9 +192,9 @@
             pnNewPassword.Controls.Add(lbNewPasswordAgainWarning);
             pnNewPassword.Controls.Add(txtNewPasswordAgain);
             pnNewPassword.Controls.Add(lbNewPasswordWarning);
-            pnNewPassword.Location = new Point(2, 200);
+            pnNewPassword.Location = new Point(3, 75);
             pnNewPassword.Name = "pnNewPassword";
-            pnNewPassword.Size = new Size(694, 150);
+            pnNewPassword.Size = new Size(697, 150);
             pnNewPassword.TabIndex = 15;
             // 
             // lbNewPassword
@@ -243,16 +243,16 @@
             pnCode.Controls.Add(txtCode);
             pnCode.Controls.Add(lbCode);
             pnCode.Controls.Add(lbCodeWarning);
-            pnCode.Location = new Point(5, 134);
+            pnCode.Location = new Point(0, 75);
             pnCode.Name = "pnCode";
-            pnCode.Size = new Size(694, 78);
+            pnCode.Size = new Size(697, 78);
             pnCode.TabIndex = 12;
             // 
             // frmChangePW
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(696, 405);
+            ClientSize = new Size(696, 280);
             Controls.Add(btnSave);
             Controls.Add(btnCancel);
             Controls.Add(pnCode);

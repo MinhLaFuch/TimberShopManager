@@ -38,7 +38,7 @@ namespace timber_shop_manager
         #region Events
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmCreateAcct createAccount = new frmCreateAcct();
+            frmChangePW createAccount = new frmChangePW();
             createAccount.ShowDialog();
         }
         private void btnLock_Click(object sender, EventArgs e)

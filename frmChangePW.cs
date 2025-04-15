@@ -39,6 +39,7 @@ namespace timber_shop_manager
             {
                 pnNewPassword.Visible = true;
                 pnCode.Visible = false;
+                btnSave.Visible = true;
             }
             else
             {
@@ -99,6 +100,7 @@ namespace timber_shop_manager
         {
             pnCode.Visible = false;
             pnNewPassword.Visible = false;
+            btnSave.Visible = false;
         }
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
@@ -107,6 +109,8 @@ namespace timber_shop_manager
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            lbNewPasswordAgainWarning.Text = String.Empty;
+
             if (txtNewPassword.Text == txtNewPasswordAgain.Text)
             {
                 string query = "UPDATE Account SET Password = @newPass WHERE Username = @user";
@@ -152,7 +156,11 @@ namespace timber_shop_manager
             }
             else if (!Program.ContainsSpecialCharacter(txtNewPassword.Text))
             {
-                lbNewPasswordWarning.Text = "Password must contain at least one number.";
+                lbNewPasswordWarning.Text = "Mật khẩu ít nhất phải có 1 kí tự đặc biệt";
+            }
+            else
+            {
+                lbNewPasswordWarning.Text = String.Empty;
             }
         }
         #endregion

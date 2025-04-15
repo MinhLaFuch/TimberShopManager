@@ -24,7 +24,7 @@ namespace timber_shop_manager
         {
             FormLoad();
 
-            grbCustomer.Enabled = true;
+            gbCustomer.Enabled = true;
             pnlSearch.Enabled = true;
 
             string query = "SELECT TOP 1 SaleInvoiceId FROM SaleInvoice ORDER BY SaleInvoiceId DESC";
@@ -36,10 +36,10 @@ namespace timber_shop_manager
 
         private void cbbSearch_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cbbSearch.SelectedIndex != -1)
+            if (cbSearchProduct.SelectedIndex != -1)
             {
                 btnAddProduct.Enabled = true;
-                string id = GetIdFromString(cbbSearch.Text);
+                string id = GetIdFromString(cbSearchProduct.Text);
 
                 string queryQuantity = "SELECT Quantity FROM Product WHERE ProductId = @id";
                 string queryUnit = "SELECT CalculationUnit FROM Product WHERE ProductId = @id";
@@ -82,8 +82,8 @@ namespace timber_shop_manager
             ClearGroupBoxCustomer();
 
             pnlSearch.Enabled = false;
-            grbCustomer.Enabled = false;
-            
+            gbCustomer.Enabled = false;
+
 
             txtInvoiceId.Clear();
         }
@@ -103,8 +103,8 @@ namespace timber_shop_manager
                 reader.GetInt32(reader.GetOrdinal("Quantity"))
                 ).ToString());
 
-            cbbSearch.DataSource = data;
-            cbbSearch.SelectedIndex = -1;
+            cbSearchProduct.DataSource = data;
+            cbSearchProduct.SelectedIndex = -1;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -133,6 +133,11 @@ namespace timber_shop_manager
             txtPhoneNumber.Clear();
             txtCustomerName.Clear();
             txtAddress.Clear();
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

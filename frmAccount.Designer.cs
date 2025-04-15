@@ -304,7 +304,7 @@
             gbAccInfo.Location = new Point(12, 12);
             gbAccInfo.Name = "gbAccInfo";
             gbAccInfo.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            gbAccInfo.Size = new Size(1193, 397);
+            gbAccInfo.Size = new Size(1193, 223);
             gbAccInfo.TabIndex = 11;
             gbAccInfo.Text = "Thông tin";
             // 
