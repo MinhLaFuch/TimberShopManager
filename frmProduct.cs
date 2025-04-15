@@ -31,8 +31,8 @@ namespace timber_shop_manager
         {
             string query = "SELECT DISTINCT Name FROM Catagory";
             List<string> ls = dbHelper.GetDataForComboBox(query, "Name");
-            cbCatagory.DataSource = ls;
-            cbCatagory.SelectedIndex = -1;
+            cbCategory.DataSource = ls;
+            cbCategory.SelectedIndex = -1;
         }
         private void LoadComboBoxUnit()
         {
@@ -45,7 +45,7 @@ namespace timber_shop_manager
         {
             txtID.Enabled = false;
             nudQuantity.Enabled = false;
-            dgvProduct.DataSource = loadData();
+            dgv.DataSource = loadData();
 
             btnEnabler(false, true);
 
@@ -68,7 +68,7 @@ namespace timber_shop_manager
             nudWarranty.Value = nudWarranty.Minimum;
             txtDescription.Clear();
             cbCalUnit.SelectedIndex = -1;
-            cbCatagory.SelectedIndex = -1;
+            cbCategory.SelectedIndex = -1;
         }
         private DataTable loadData()
         {
@@ -109,7 +109,7 @@ namespace timber_shop_manager
                     {"cbCalUnit", "CalculationUnit" },
                     {"txtDescription", "Description" }
                 };
-                dynamicSearch = new DynamicSearch(searchControls, columnMappings, loadData, dgvProduct);
+                dynamicSearch = new DynamicSearch(searchControls, columnMappings, loadData, dgv);
             }
             dynamicSearch?.Enable();
         }
@@ -139,7 +139,7 @@ namespace timber_shop_manager
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Product product = new Product(txtID.Text, Catagory.getId(cbCatagory.Text), txtName.Text, cbCalUnit.Text, Convert.ToDouble(nudPrice.Value), Convert.ToInt32(nudWarranty.Value), txtDescription.Text, Convert.ToInt32(nudWarranty.Value));
+            Product product = new Product(txtID.Text, Catagory.getId(cbCategory.Text), txtName.Text, cbCalUnit.Text, Convert.ToDouble(nudPrice.Value), Convert.ToInt32(nudWarranty.Value), txtDescription.Text, Convert.ToInt32(nudWarranty.Value));
             Product.add(product);
             // Reload form
             loadForm();
@@ -168,19 +168,19 @@ namespace timber_shop_manager
             if (e.RowIndex >= 0)
             {
                 // Get the selected row
-                DataGridViewRow selectedRow = dgvProduct.Rows[e.RowIndex];
+                DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
 
                 // Populate the form fields with the selected row's data
                 txtID.Text = selectedRow.Cells["ProductId"].Value?.ToString().Trim();
                 txtName.Text = selectedRow.Cells["Name"].Value?.ToString();
                 cbCalUnit.Text = selectedRow.Cells["CalculationUnit"].Value?.ToString();
                 nudPrice.Value = Convert.ToInt32(selectedRow.Cells["PriceQuotation"].Value);
-                cbCatagory.Text = Catagory.getName(selectedRow.Cells["CatagoryId"].Value?.ToString());
+                cbCategory.Text = Catagory.getName(selectedRow.Cells["CatagoryId"].Value?.ToString());
                 nudWarranty.Value = Convert.ToDecimal(selectedRow.Cells["CustomerWarranty"].Value);
                 nudQuantity.Text = selectedRow.Cells["Quantity"].Value?.ToString();
                 txtDescription.Text = selectedRow.Cells["Description"].Value?.ToString();
 
-                selectedProduct = new Product(txtID.Text, cbCatagory.Text, txtName.Text, cbCalUnit.Text, Convert.ToDouble(nudPrice.Value), Convert.ToInt32(nudWarranty.Value), txtDescription.Text, Convert.ToInt32(nudQuantity.Value));
+                selectedProduct = new Product(txtID.Text, cbCategory.Text, txtName.Text, cbCalUnit.Text, Convert.ToDouble(nudPrice.Value), Convert.ToInt32(nudWarranty.Value), txtDescription.Text, Convert.ToInt32(nudQuantity.Value));
 
                 btnEnabler(true, true);
             }

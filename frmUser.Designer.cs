@@ -127,13 +127,13 @@
             cbRole.DrawMode = DrawMode.OwnerDrawFixed;
             cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
             cbRole.Enabled = false;
-            cbRole.FillColor = Color.WhiteSmoke;
             cbRole.FocusedColor = Color.FromArgb(94, 148, 255);
             cbRole.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             cbRole.Font = new Font("Segoe UI", 10F);
-            cbRole.ForeColor = Color.FromArgb(68, 88, 112);
+            cbRole.ForeColor = Color.FromArgb(59, 93, 79);
             cbRole.ItemHeight = 30;
-            cbRole.Location = new Point(629, 136);
+            cbRole.Items.AddRange(new object[] { "Quản lý cửa hàng", "Quản trị viên", "Nhân viên bán hàng", "Nhân viên kế toán" });
+            cbRole.Location = new Point(629, 152);
             cbRole.Name = "cbRole";
             cbRole.ShadowDecoration.CustomizableEdges = customizableEdges6;
             cbRole.Size = new Size(148, 36);
@@ -188,6 +188,7 @@
             // txtPhoneNumber
             // 
             txtPhoneNumber.BorderStyle = BorderStyle.None;
+            txtPhoneNumber.ForeColor = Color.FromArgb(59, 93, 79);
             txtPhoneNumber.Location = new Point(156, 219);
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(345, 20);
@@ -206,6 +207,7 @@
             // txtIden
             // 
             txtIden.BorderStyle = BorderStyle.None;
+            txtIden.ForeColor = Color.FromArgb(59, 93, 79);
             txtIden.Location = new Point(156, 181);
             txtIden.Name = "txtIden";
             txtIden.Size = new Size(345, 20);
@@ -214,6 +216,7 @@
             // txtAddress
             // 
             txtAddress.BorderStyle = BorderStyle.None;
+            txtAddress.ForeColor = Color.FromArgb(59, 93, 79);
             txtAddress.Location = new Point(629, 63);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(562, 20);
@@ -222,6 +225,7 @@
             // txtName
             // 
             txtName.BorderStyle = BorderStyle.None;
+            txtName.ForeColor = Color.FromArgb(59, 93, 79);
             txtName.Location = new Point(156, 136);
             txtName.Name = "txtName";
             txtName.Size = new Size(345, 20);
@@ -313,6 +317,7 @@
             // txtPassword
             // 
             txtPassword.BorderStyle = BorderStyle.None;
+            txtPassword.ForeColor = Color.FromArgb(59, 93, 79);
             txtPassword.Location = new Point(156, 97);
             txtPassword.Name = "txtPassword";
             txtPassword.ReadOnly = true;
@@ -332,6 +337,7 @@
             // txtGmail
             // 
             txtGmail.BorderStyle = BorderStyle.None;
+            txtGmail.ForeColor = Color.FromArgb(59, 93, 79);
             txtGmail.Location = new Point(156, 63);
             txtGmail.Name = "txtGmail";
             txtGmail.ReadOnly = true;

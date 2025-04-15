@@ -32,7 +32,7 @@ namespace timber_shop_manager
             dynamicSearch?.Disable();
 
             clearTextBox();
-            dgvSupplier.DataSource = loadData();
+            dgv.DataSource = loadData();
 
             gbInfo.Enabled = false;
             txtID.Enabled = false;
@@ -121,7 +121,7 @@ namespace timber_shop_manager
                     { "txtWebsite", "Website" }
                 };
 
-                dynamicSearch = new DynamicSearch(searchControls, columnMappings, loadData, dgvSupplier);
+                dynamicSearch = new DynamicSearch(searchControls, columnMappings, loadData, dgv);
             }
 
             dynamicSearch.Enable();
@@ -152,10 +152,10 @@ namespace timber_shop_manager
         private void dgvSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dynamicSearch?.Disable();
-            if (e.RowIndex >= 0 && dgvSupplier.Rows.Count > 0)
+            if (e.RowIndex >= 0 && dgv.Rows.Count > 0)
             {
                 // Get the selected row
-                DataGridViewRow row = dgvSupplier.Rows[e.RowIndex];
+                DataGridViewRow row = dgv.Rows[e.RowIndex];
 
                 // Fill all info to groupbox
                 txtID.Text = row.Cells["SupplierID"].Value?.ToString();

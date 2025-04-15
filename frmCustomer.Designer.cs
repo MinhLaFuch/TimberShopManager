@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            dataGridView = new DataGridView();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
             txtPhoneNumber = new TextBox();
             txtName = new TextBox();
@@ -41,24 +43,12 @@
             groupBox2 = new GroupBox();
             btnClear = new Button();
             button2 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
+            dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             SuspendLayout();
-            // 
-            // dataGridView
-            // 
-            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
-            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Dock = DockStyle.Bottom;
-            dataGridView.Location = new Point(0, 400);
-            dataGridView.Margin = new Padding(3, 4, 3, 4);
-            dataGridView.Name = "dataGridView";
-            dataGridView.RowHeadersWidth = 51;
-            dataGridView.Size = new Size(1281, 312);
-            dataGridView.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -135,6 +125,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(dgv);
             groupBox2.Controls.Add(btnClear);
             groupBox2.Controls.Add(button2);
             groupBox2.Dock = DockStyle.Fill;
@@ -142,7 +133,7 @@
             groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(1281, 231);
+            groupBox2.Size = new Size(1281, 543);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
@@ -168,6 +159,56 @@
             button2.Text = "Xóa";
             button2.UseVisualStyleBackColor = true;
             // 
+            // dgv
+            // 
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgv.DefaultCellStyle = dataGridViewCellStyle3;
+            dgv.GridColor = Color.FromArgb(231, 229, 255);
+            dgv.Location = new Point(534, 150);
+            dgv.Name = "dgv";
+            dgv.RowHeadersVisible = false;
+            dgv.RowHeadersWidth = 51;
+            dgv.Size = new Size(300, 188);
+            dgv.TabIndex = 4;
+            dgv.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            dgv.ThemeStyle.AlternatingRowsStyle.Font = null;
+            dgv.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            dgv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            dgv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            dgv.ThemeStyle.BackColor = Color.White;
+            dgv.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            dgv.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            dgv.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgv.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
+            dgv.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            dgv.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv.ThemeStyle.HeaderStyle.Height = 4;
+            dgv.ThemeStyle.ReadOnly = false;
+            dgv.ThemeStyle.RowsStyle.BackColor = Color.White;
+            dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgv.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
+            dgv.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            dgv.ThemeStyle.RowsStyle.Height = 29;
+            dgv.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dgv.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            // 
             // frmCustomer
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -175,24 +216,21 @@
             ClientSize = new Size(1281, 712);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(dataGridView);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
             Name = "frmCustomer";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Khách hàng";
             Load += frmCustomer_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private DataGridView dataGridView;
         private GroupBox groupBox1;
         private TextBox txtPhoneNumber;
         private TextBox txtName;
@@ -204,5 +242,6 @@
         private GroupBox groupBox2;
         private Button button2;
         private Button btnClear;
+        private Guna.UI2.WinForms.Guna2DataGridView dgv;
     }
 }

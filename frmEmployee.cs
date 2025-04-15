@@ -27,9 +27,9 @@ namespace timber_shop_manager
         {
             txtID.ReadOnly = true;
             clearTextBox();
-            dgvEmployee.DataSource = loadData();
+            dgv.DataSource = loadData();
             btnEnabler(false, true);
-            gbAccInfo.Enabled = false;
+            gbInfo.Enabled = false;
             searchEventEnabler(false);
         }
         private DataTable loadData()
@@ -147,7 +147,7 @@ namespace timber_shop_manager
                 }
 
                 // Gán DataSource cho DataGridView
-                dgvEmployee.DataSource = dv;
+                dgv.DataSource = dv;
             }
         }
         #endregion
@@ -161,7 +161,7 @@ namespace timber_shop_manager
         #region Click Events
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            gbAccInfo.Enabled = true;
+            gbInfo.Enabled = true;
             clearTextBox();
             txtName.Focus();
             btnEnabler(false, false);
@@ -221,7 +221,7 @@ namespace timber_shop_manager
         private void btnMod_Click(object sender, EventArgs e)
         {
             // Can only access salary and role info
-            gbAccInfo.Enabled = true;
+            gbInfo.Enabled = true;
             txtName.Enabled = false;
             txtIden.Enabled = false;
             txtAddress.Enabled = false;
@@ -232,19 +232,19 @@ namespace timber_shop_manager
         }
         private void dgvEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvEmployee.Rows.Count > 0)
+            if (dgv.Rows.Count > 0)
             {
                 int rowIndex = e.RowIndex;
 
                 // Fill all info to groupbox
-                txtID.Text = dgvEmployee.Rows[rowIndex].Cells["EmployeeId"].Value.ToString();
-                txtName.Text = dgvEmployee.Rows[rowIndex].Cells["Name"].Value.ToString();
-                txtIden.Text = dgvEmployee.Rows[rowIndex].Cells["IdentificationNumber"].Value.ToString();
-                txtAddress.Text = dgvEmployee.Rows[rowIndex].Cells["Address"].Value.ToString();
-                cbRole.SelectedItem = dgvEmployee.Rows[rowIndex].Cells["Role"].Value.ToString();
-                dtpDOB.Value = Convert.ToDateTime(dgvEmployee.Rows[rowIndex].Cells["DateOfBirth"].Value);
-                txtSalary.Text = dgvEmployee.Rows[rowIndex].Cells["Salary"].Value.ToString();
-                txtPhoneNumber.Text = dgvEmployee.Rows[rowIndex].Cells["PhoneNumber"].Value.ToString();
+                txtID.Text = dgv.Rows[rowIndex].Cells["EmployeeId"].Value.ToString();
+                txtName.Text = dgv.Rows[rowIndex].Cells["Name"].Value.ToString();
+                txtIden.Text = dgv.Rows[rowIndex].Cells["IdentificationNumber"].Value.ToString();
+                txtAddress.Text = dgv.Rows[rowIndex].Cells["Address"].Value.ToString();
+                cbRole.SelectedItem = dgv.Rows[rowIndex].Cells["Role"].Value.ToString();
+                dtpDOB.Value = Convert.ToDateTime(dgv.Rows[rowIndex].Cells["DateOfBirth"].Value);
+                txtSalary.Text = dgv.Rows[rowIndex].Cells["Salary"].Value.ToString();
+                txtPhoneNumber.Text = dgv.Rows[rowIndex].Cells["PhoneNumber"].Value.ToString();
 
                 // Enable button
                 btnEnabler(true, true);
@@ -252,7 +252,7 @@ namespace timber_shop_manager
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            gbAccInfo.Enabled = true;
+            gbInfo.Enabled = true;
             txtID.ReadOnly = false;
             btnSave.Enabled = false;
             txtID.Focus();

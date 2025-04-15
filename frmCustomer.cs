@@ -45,7 +45,7 @@ namespace timber_shop_manager
             string query = "SELECT * FROM Customer";
 
             DataTable dt = dbHelper.ExecuteQuery(query);
-            dataGridView.DataSource = dt;
+            dgv.DataSource = dt;
             return dt;
         }
 
@@ -84,12 +84,12 @@ namespace timber_shop_manager
                 }
 
                 // Gán DataSource cho DataGridView
-                dataGridView.DataSource = dv;
+                dgv.DataSource = dv;
             }
             else
             {
                 // Nếu tất cả các TextBox trống, hiển thị dữ liệu gốc
-                dataGridView.DataSource = LoadDataGridView();
+                dgv.DataSource = LoadDataGridView();
             }
         }
 

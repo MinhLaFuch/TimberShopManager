@@ -79,6 +79,7 @@
             // 
             txtUsername.BackColor = SystemColors.MenuBar;
             txtUsername.BorderStyle = BorderStyle.None;
+            txtUsername.ForeColor = Color.FromArgb(59, 93, 79);
             txtUsername.Location = new Point(388, 246);
             txtUsername.Margin = new Padding(3, 4, 3, 4);
             txtUsername.Name = "txtUsername";
@@ -89,6 +90,7 @@
             // 
             txtPassword.BackColor = SystemColors.MenuBar;
             txtPassword.BorderStyle = BorderStyle.None;
+            txtPassword.ForeColor = Color.FromArgb(59, 93, 79);
             txtPassword.Location = new Point(388, 326);
             txtPassword.Margin = new Padding(3, 4, 3, 4);
             txtPassword.Name = "txtPassword";

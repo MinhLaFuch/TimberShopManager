@@ -26,7 +26,7 @@ namespace timber_shop_manager
         {
             txtID.ReadOnly = true;
             clearTextBox();
-            dgvCategory.DataSource = loadData();
+            dgv.DataSource = loadData();
             btnEnabler(false, true);
             gbInfo.Enabled = false;
             searchEventEnabler(false);
@@ -145,7 +145,7 @@ namespace timber_shop_manager
             if (e.RowIndex >= 0)
             {
                 // Retrieve the selected row
-                DataGridViewRow row = dgvCategory.Rows[e.RowIndex];
+                DataGridViewRow row = dgv.Rows[e.RowIndex];
 
                 // Populate the text boxes with the selected row's data
                 txtID.Text = row.Cells["CatagoryID"].Value.ToString();

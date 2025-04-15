@@ -210,7 +210,7 @@
             // txtCode
             // 
             txtCode.BorderStyle = BorderStyle.None;
-            txtCode.Location = new Point(171, 37);
+            txtCode.Location = new Point(174, 37);
             txtCode.MaxLength = 6;
             txtCode.Name = "txtCode";
             txtCode.Size = new Size(157, 20);
@@ -232,7 +232,7 @@
             // 
             lbCodeWarning.AutoSize = true;
             lbCodeWarning.ForeColor = Color.Red;
-            lbCodeWarning.Location = new Point(334, 37);
+            lbCodeWarning.Location = new Point(340, 37);
             lbCodeWarning.Name = "lbCodeWarning";
             lbCodeWarning.Size = new Size(70, 20);
             lbCodeWarning.TabIndex = 14;
