@@ -83,13 +83,13 @@ namespace timber_shop_manager
                 this.Hide();
                 frmMain.ShowDialog();
             }
+        }
         private void btnForgotPassword_Click(object sender, EventArgs e)
         {
             frmChangePW frmChangePW = new frmChangePW();
             this.Hide();
             frmChangePW.ShowDialog();
         }
-    }
         #endregion
         #endregion
     }
