@@ -376,6 +376,18 @@
         RNwnFkvEfWKxRNxnxKvNNvrAVebNS/AHRIacciyA2rYAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="pbLogout.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EAAACxABrSO9dQAAAYFJREFUaEPtmjlOxEAURAsCUiRIuQjiYKQkbDfhBCSIAxCwBGSkwDVAJbWR9WX3
+        dM3AdzWaJ3Uw0y6rnjyLZX0A2ANwDeATwJfJ+gBwWbo1czVxIpd1EcvWoD1Dx3FjQU5KJ3ZrZrB3Q+4l
+        B5KQe8mBJOReciAJuZccSELuJQeSkHvJgSRO1V6uIuQsvlHDWURiK/KH3AC4BbAfN2o4ijyWTg+KjKPI
+        EYC30otSB/GAKRxFiCzjKkLGMk+rZJxFSLOMuwiJMofxANKDCFkp04sIGcs8R5meRMisTG8iZFJmE5Ed
+        AC+jcyy1+D/z82IddssXL544e20sshS//tFagtmf4Z5EZiVILyJVCdKDSJSYvN9yF2m+nXcWaZYgriKS
+        BHEUkSWIo8hr6dT9w4d7AHeKBHEUWYutSAL/4iE2JaReriJyLzmQhNxLDiQh95IDSci95EASci85kITc
+        axiq4SCLC8NQzXvcqMG5qMHebZ3HsjU43EWZ4co4LF4JSjQPnn0DnHGRsROhfIAAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="pbUser.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAudJREFUaEPt

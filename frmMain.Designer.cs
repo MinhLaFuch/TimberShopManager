@@ -48,15 +48,17 @@
             btnSalary = new Button();
             btnInvoice = new Button();
             pnTop = new Panel();
+            pbLogout = new PictureBox();
             lbUsername = new ReaLTaiizor.Controls.HeaderLabel();
+            pbUser = new PictureBox();
             manageTransistion = new System.Windows.Forms.Timer(components);
             reportTransistion = new System.Windows.Forms.Timer(components);
             pnMDI = new Panel();
-            pbUser = new PictureBox();
             pnMenu.SuspendLayout();
             pnManage.SuspendLayout();
             pnReport.SuspendLayout();
             pnTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbLogout).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbUser).BeginInit();
             SuspendLayout();
             // 
@@ -67,15 +69,17 @@
             btnSale.FlatAppearance.BorderSize = 0;
             btnSale.FlatStyle = FlatStyle.Flat;
             btnSale.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSale.ForeColor = SystemColors.ButtonFace;
+            btnSale.ForeColor = Color.FromArgb(59, 93, 79);
             btnSale.Image = (Image)resources.GetObject("btnSale.Image");
             btnSale.Location = new Point(0, 0);
             btnSale.Margin = new Padding(0);
             btnSale.Name = "btnSale";
-            btnSale.Size = new Size(94, 66);
+            btnSale.Size = new Size(141, 66);
             btnSale.TabIndex = 0;
+            btnSale.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSale.UseVisualStyleBackColor = false;
             btnSale.Click += btnSale_Click;
+            btnSale.MouseHover += btnSale_MouseHover;
             // 
             // pnMenu
             // 
@@ -92,7 +96,7 @@
             pnMenu.FlowDirection = FlowDirection.TopDown;
             pnMenu.Location = new Point(0, 0);
             pnMenu.Name = "pnMenu";
-            pnMenu.Size = new Size(100, 771);
+            pnMenu.Size = new Size(162, 771);
             pnMenu.TabIndex = 17;
             pnMenu.WrapContents = false;
             // 
@@ -103,15 +107,16 @@
             btnImport.FlatAppearance.BorderSize = 0;
             btnImport.FlatStyle = FlatStyle.Flat;
             btnImport.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnImport.ForeColor = SystemColors.ButtonFace;
             btnImport.Image = (Image)resources.GetObject("btnImport.Image");
             btnImport.Location = new Point(0, 66);
             btnImport.Margin = new Padding(0);
             btnImport.Name = "btnImport";
-            btnImport.Size = new Size(94, 66);
+            btnImport.Size = new Size(141, 66);
             btnImport.TabIndex = 23;
+            btnImport.TextImageRelation = TextImageRelation.ImageAboveText;
             btnImport.UseVisualStyleBackColor = false;
             btnImport.Click += btnImport_Click;
+            btnImport.MouseHover += btnImport_MouseHover;
             // 
             // btnAttend
             // 
@@ -125,9 +130,11 @@
             btnAttend.Location = new Point(0, 132);
             btnAttend.Margin = new Padding(0);
             btnAttend.Name = "btnAttend";
-            btnAttend.Size = new Size(94, 66);
+            btnAttend.Size = new Size(141, 66);
             btnAttend.TabIndex = 25;
+            btnAttend.TextImageRelation = TextImageRelation.ImageAboveText;
             btnAttend.UseVisualStyleBackColor = false;
+            btnAttend.MouseHover += btnAttend_MouseHover;
             // 
             // pnManage
             // 
@@ -140,7 +147,7 @@
             pnManage.Controls.Add(btnCategory);
             pnManage.Location = new Point(3, 201);
             pnManage.Name = "pnManage";
-            pnManage.Size = new Size(94, 461);
+            pnManage.Size = new Size(138, 461);
             pnManage.TabIndex = 25;
             // 
             // btnManage
@@ -155,10 +162,12 @@
             btnManage.Location = new Point(0, 0);
             btnManage.Margin = new Padding(0);
             btnManage.Name = "btnManage";
-            btnManage.Size = new Size(94, 66);
+            btnManage.Size = new Size(138, 66);
             btnManage.TabIndex = 24;
+            btnManage.TextImageRelation = TextImageRelation.ImageAboveText;
             btnManage.UseVisualStyleBackColor = false;
             btnManage.Click += btnManage_Click;
+            btnManage.MouseHover += btnManage_MouseHover;
             // 
             // btnAccount
             // 
@@ -172,10 +181,12 @@
             btnAccount.Location = new Point(0, 66);
             btnAccount.Margin = new Padding(0);
             btnAccount.Name = "btnAccount";
-            btnAccount.Size = new Size(94, 66);
+            btnAccount.Size = new Size(138, 66);
             btnAccount.TabIndex = 25;
+            btnAccount.TextImageRelation = TextImageRelation.ImageAboveText;
             btnAccount.UseVisualStyleBackColor = false;
             btnAccount.Click += btnAccount_Click;
+            btnAccount.MouseHover += btnAccount_MouseHover;
             // 
             // btnEmployee
             // 
@@ -189,10 +200,12 @@
             btnEmployee.Location = new Point(0, 132);
             btnEmployee.Margin = new Padding(0);
             btnEmployee.Name = "btnEmployee";
-            btnEmployee.Size = new Size(94, 66);
+            btnEmployee.Size = new Size(138, 66);
             btnEmployee.TabIndex = 26;
+            btnEmployee.TextImageRelation = TextImageRelation.ImageAboveText;
             btnEmployee.UseVisualStyleBackColor = false;
             btnEmployee.Click += btnEmployee_Click;
+            btnEmployee.MouseHover += btnEmployee_MouseHover;
             // 
             // btnSupplier
             // 
@@ -206,10 +219,12 @@
             btnSupplier.Location = new Point(0, 198);
             btnSupplier.Margin = new Padding(0);
             btnSupplier.Name = "btnSupplier";
-            btnSupplier.Size = new Size(94, 66);
+            btnSupplier.Size = new Size(138, 66);
             btnSupplier.TabIndex = 27;
+            btnSupplier.TextImageRelation = TextImageRelation.ImageAboveText;
             btnSupplier.UseVisualStyleBackColor = false;
             btnSupplier.Click += btnSupplier_Click;
+            btnSupplier.MouseHover += btnSupplier_MouseHover;
             // 
             // btnCustomer
             // 
@@ -223,10 +238,11 @@
             btnCustomer.Location = new Point(0, 264);
             btnCustomer.Margin = new Padding(0);
             btnCustomer.Name = "btnCustomer";
-            btnCustomer.Size = new Size(94, 66);
+            btnCustomer.Size = new Size(138, 66);
             btnCustomer.TabIndex = 28;
             btnCustomer.UseVisualStyleBackColor = false;
             btnCustomer.Click += btnCustomer_Click;
+            btnCustomer.MouseHover += btnCustomer_MouseHover;
             // 
             // btnProduct
             // 
@@ -240,10 +256,11 @@
             btnProduct.Location = new Point(0, 330);
             btnProduct.Margin = new Padding(0);
             btnProduct.Name = "btnProduct";
-            btnProduct.Size = new Size(94, 66);
+            btnProduct.Size = new Size(138, 66);
             btnProduct.TabIndex = 29;
             btnProduct.UseVisualStyleBackColor = false;
             btnProduct.Click += btnProduct_Click;
+            btnProduct.MouseHover += btnProduct_MouseHover;
             // 
             // btnCategory
             // 
@@ -257,10 +274,11 @@
             btnCategory.Location = new Point(0, 396);
             btnCategory.Margin = new Padding(0);
             btnCategory.Name = "btnCategory";
-            btnCategory.Size = new Size(94, 66);
+            btnCategory.Size = new Size(138, 66);
             btnCategory.TabIndex = 30;
             btnCategory.UseVisualStyleBackColor = false;
             btnCategory.Click += btnCategory_Click;
+            btnCategory.MouseHover += btnCategory_MouseHover;
             // 
             // pnReport
             // 
@@ -270,7 +288,7 @@
             pnReport.Controls.Add(btnInvoice);
             pnReport.Location = new Point(3, 668);
             pnReport.Name = "pnReport";
-            pnReport.Size = new Size(94, 258);
+            pnReport.Size = new Size(156, 258);
             pnReport.TabIndex = 32;
             // 
             // btnReport
@@ -285,10 +303,12 @@
             btnReport.Location = new Point(0, 0);
             btnReport.Margin = new Padding(0);
             btnReport.Name = "btnReport";
-            btnReport.Size = new Size(94, 66);
+            btnReport.Size = new Size(138, 66);
             btnReport.TabIndex = 31;
+            btnReport.TextImageRelation = TextImageRelation.ImageAboveText;
             btnReport.UseVisualStyleBackColor = false;
             btnReport.Click += btnReport_Click;
+            btnReport.MouseHover += btnReport_MouseHover;
             // 
             // btnFinancialReport
             // 
@@ -302,10 +322,12 @@
             btnFinancialReport.Location = new Point(0, 66);
             btnFinancialReport.Margin = new Padding(0);
             btnFinancialReport.Name = "btnFinancialReport";
-            btnFinancialReport.Size = new Size(94, 66);
+            btnFinancialReport.Size = new Size(138, 66);
             btnFinancialReport.TabIndex = 32;
+            btnFinancialReport.TextImageRelation = TextImageRelation.ImageAboveText;
             btnFinancialReport.UseVisualStyleBackColor = false;
             btnFinancialReport.Click += btnFinancialReport_Click;
+            btnFinancialReport.MouseHover += btnFinancialReport_MouseHover;
             // 
             // btnSalary
             // 
@@ -319,10 +341,12 @@
             btnSalary.Location = new Point(0, 132);
             btnSalary.Margin = new Padding(0);
             btnSalary.Name = "btnSalary";
-            btnSalary.Size = new Size(94, 66);
+            btnSalary.Size = new Size(138, 66);
             btnSalary.TabIndex = 33;
+            btnSalary.TextImageRelation = TextImageRelation.ImageAboveText;
             btnSalary.UseVisualStyleBackColor = false;
             btnSalary.Click += btnSalary_Click;
+            btnSalary.MouseHover += btnSalary_MouseHover;
             // 
             // btnInvoice
             // 
@@ -336,20 +360,36 @@
             btnInvoice.Location = new Point(0, 198);
             btnInvoice.Margin = new Padding(0);
             btnInvoice.Name = "btnInvoice";
-            btnInvoice.Size = new Size(94, 66);
+            btnInvoice.Size = new Size(138, 66);
             btnInvoice.TabIndex = 34;
+            btnInvoice.TextImageRelation = TextImageRelation.ImageAboveText;
             btnInvoice.UseVisualStyleBackColor = false;
             btnInvoice.Click += btnInvoice_Click;
+            btnInvoice.MouseHover += btnInvoice_MouseHover;
             // 
             // pnTop
             // 
+            pnTop.Controls.Add(pbLogout);
             pnTop.Controls.Add(lbUsername);
             pnTop.Controls.Add(pbUser);
             pnTop.Dock = DockStyle.Top;
-            pnTop.Location = new Point(100, 0);
+            pnTop.Location = new Point(162, 0);
             pnTop.Name = "pnTop";
-            pnTop.Size = new Size(1343, 59);
+            pnTop.Size = new Size(1281, 59);
             pnTop.TabIndex = 26;
+            // 
+            // pbLogout
+            // 
+            pbLogout.BackColor = Color.Transparent;
+            pbLogout.BackgroundImageLayout = ImageLayout.Zoom;
+            pbLogout.Dock = DockStyle.Right;
+            pbLogout.Image = (Image)resources.GetObject("pbLogout.Image");
+            pbLogout.Location = new Point(1236, 0);
+            pbLogout.Name = "pbLogout";
+            pbLogout.Size = new Size(45, 59);
+            pbLogout.TabIndex = 23;
+            pbLogout.TabStop = false;
+            pbLogout.Click += pbLogout_Click;
             // 
             // lbUsername
             // 
@@ -364,23 +404,6 @@
             lbUsername.Text = "Username";
             lbUsername.TextAlign = ContentAlignment.TopRight;
             // 
-            // manageTransistion
-            // 
-            manageTransistion.Interval = 10;
-            manageTransistion.Tick += manageTransistion_Tick;
-            // 
-            // reportTransistion
-            // 
-            reportTransistion.Interval = 10;
-            reportTransistion.Tick += reportTransistion_Tick;
-            // 
-            // pnMDI
-            // 
-            pnMDI.Location = new Point(169, 59);
-            pnMDI.Name = "pnMDI";
-            pnMDI.Size = new Size(1274, 712);
-            pnMDI.TabIndex = 27;
-            // 
             // pbUser
             // 
             pbUser.BackColor = Color.Transparent;
@@ -393,6 +416,23 @@
             pbUser.TabIndex = 16;
             pbUser.TabStop = false;
             pbUser.Click += pbUser_Click;
+            // 
+            // manageTransistion
+            // 
+            manageTransistion.Interval = 10;
+            manageTransistion.Tick += manageTransistion_Tick;
+            // 
+            // reportTransistion
+            // 
+            reportTransistion.Interval = 10;
+            reportTransistion.Tick += reportTransistion_Tick;
+            // 
+            // pnMDI
+            // 
+            pnMDI.Location = new Point(162, 59);
+            pnMDI.Name = "pnMDI";
+            pnMDI.Size = new Size(1281, 712);
+            pnMDI.TabIndex = 27;
             // 
             // frmMain
             // 
@@ -414,6 +454,7 @@
             pnReport.ResumeLayout(false);
             pnTop.ResumeLayout(false);
             pnTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbLogout).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbUser).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -443,6 +484,7 @@
         private Button btnInvoice;
         private System.Windows.Forms.Timer reportTransistion;
         private Panel pnMDI;
+        private PictureBox pbLogout;
         private PictureBox pbUser;
     }
 }

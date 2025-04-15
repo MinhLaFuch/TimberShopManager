@@ -13,6 +13,7 @@ namespace timber_shop_manager
         private bool menuExpand = false;
         private bool reportExpand = false;
         private const int PANEL_STEP = 10;
+        private static ToolTip toolTip = new ToolTip();
         public frmMain(Account account)
         {
             InitializeComponent();
@@ -170,14 +171,6 @@ namespace timber_shop_manager
             pnMenu.HorizontalScroll.Visible = false;
             lbUsername.Text = account.Username;
             loadFormBasedOnRole();
-            // Attach MouseHover event to all buttons in pnMenu
-            foreach (Control control in pnMenu.Controls)
-            {
-                if (control is Button button)
-                {
-                    button.MouseHover += btn_MouseHover;
-                }
-            }
         }
         #endregion
         #region Click
@@ -229,10 +222,6 @@ namespace timber_shop_manager
         {
             manageTransistion.Start();
         }
-        private void pbMenu_Click(object sender, EventArgs e)
-        {
-            menuTransistion.Start();
-        }
         private void btnReport_Click(object sender, EventArgs e)
         {
             reportTransistion.Start();
@@ -249,6 +238,7 @@ namespace timber_shop_manager
         {
             openChildForm(new frmInvoiceReport());
         }
+
         #endregion
         #region Tick
         private void manageTransistion_Tick(object sender, EventArgs e)
@@ -269,16 +259,78 @@ namespace timber_shop_manager
         }
         #endregion
         #region Hover
-        private void btn_MouseHover(object sender, EventArgs e)
+        private void btnSale_MouseHover(object sender, EventArgs e)
         {
-            Button hoveredButton = sender as Button;
-            if (hoveredButton != null)
-            {
-                ToolTip toolTip = new ToolTip();
-                toolTip.SetToolTip(hoveredButton, hoveredButton.Text);
-            }
+            toolTip.SetToolTip(btnSale, "Bán hàng");
+        }
+
+        private void btnImport_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(btnImport, "Nhập hàng");
+        }
+
+        private void btnAttend_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(btnAttend, "Chấm công");
+        }
+
+        private void btnManage_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(btnManage, "Quản lý");
+        }
+
+        private void btnAccount_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(btnAccount, "Tài khoản");
+        }
+
+        private void btnEmployee_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(btnEmployee, "Nhân viên");
+        }
+
+        private void btnSupplier_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(btnSupplier, "Nhà cung cấp");
+        }
+
+        private void btnCustomer_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(btnCustomer, "Khách hàng");
+        }
+
+        private void btnProduct_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(btnProduct, "Sản phẩm");
+        }
+
+        private void btnCategory_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(btnCategory, "Danh mục");
+        }
+
+        private void btnReport_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(btnReport, "Báo cáo");
+        }
+
+        private void btnFinancialReport_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(btnFinancialReport, "Tài chính");
+        }
+
+        private void btnSalary_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(btnSalary, "Lương");
+        }
+
+        private void btnInvoice_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(btnInvoice, "Hóa đơn");
         }
         #endregion
         #endregion
+
+
     }
 }
