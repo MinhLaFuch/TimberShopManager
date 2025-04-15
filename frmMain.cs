@@ -12,8 +12,8 @@ namespace timber_shop_manager
         private bool manageExpand = false;
         private bool reportExpand = false;
         private const int PANEL_STEP = 25;
-        private int pnManageQuantity = 6;
-        private int pnReportQuantity = 3;
+        private int pnManageQuantity = 1;
+        private int pnReportQuantity = 1;
         private static ToolTip toolTip = new ToolTip();
         private static Color afterClickColor = Color.FromArgb(0, 0, 0);
         private static Color outerBtnColor = Color.FromArgb(59, 93, 79);
@@ -302,7 +302,7 @@ namespace timber_shop_manager
         #region Tick
         private void manageTransistion_Tick(object sender, EventArgs e)
         {
-            int targetHeight = manageExpand ? 66 : 66 * (pnManageQuantity);
+            int targetHeight = manageExpand ? 66 : 66 * (pnManageQuantity + 1);
             AnimatePanelSize(pnManage, targetHeight, false, manageTransistion);
 
             if (pnManage.Height == targetHeight)
@@ -310,7 +310,7 @@ namespace timber_shop_manager
         }
         private void reportTransistion_Tick(object sender, EventArgs e)
         {
-            int targetHeight = reportExpand ? 66 : 66 * (pnReportQuantity);
+            int targetHeight = reportExpand ? 66 : 66 * (pnReportQuantity + 1);
             AnimatePanelSize(pnReport, targetHeight, false, reportTransistion);
 
             if (pnReport.Height == targetHeight)
