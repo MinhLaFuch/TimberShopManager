@@ -85,7 +85,7 @@
             // lbPW
             // 
             lbPW.AutoSize = true;
-            lbPW.Location = new Point(54, 144);
+            lbPW.Location = new Point(54, 107);
             lbPW.Name = "lbPW";
             lbPW.Size = new Size(70, 20);
             lbPW.TabIndex = 6;
@@ -93,7 +93,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(479, 62);
+            button3.Location = new Point(429, 38);
             button3.Name = "button3";
             button3.Size = new Size(94, 29);
             button3.TabIndex = 7;

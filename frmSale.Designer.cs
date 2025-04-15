@@ -28,7 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSale));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             grbInvoice = new GroupBox();
             dateTimePicker1 = new DateTimePicker();
             txtInvoiceId = new TextBox();
@@ -37,8 +48,6 @@
             label1 = new Label();
             txtEmployee = new TextBox();
             grbCustomer = new GroupBox();
-            btnClear = new Button();
-            btnSearchCustomer = new Button();
             txtPhoneNumber = new TextBox();
             txtCustomerName = new TextBox();
             txtAddress = new TextBox();
@@ -48,15 +57,18 @@
             grbCost = new GroupBox();
             dataGridView1 = new DataGridView();
             groupBox1 = new GroupBox();
-            btnComfirm = new Button();
-            btnCancel = new Button();
-            btnCreate = new Button();
             label7 = new Label();
-            btnAddProduct = new Button();
             cbbSearch = new ComboBox();
             nudQuantity = new NumericUpDown();
             lblUnit = new Label();
             pnlSearch = new Panel();
+            btnCreate = new Guna.UI2.WinForms.Guna2Button();
+            // Update the initialization code for btnAddProduct and other buttons to match the correct type.  
+            btnAddProduct = new Guna.UI2.WinForms.Guna2Button();
+            btnSearchCustomer = new Guna.UI2.WinForms.Guna2Button();
+            btnClear = new Guna.UI2.WinForms.Guna2Button();
+            btnConfirm = new Guna.UI2.WinForms.Guna2Button();
+            btnCancel = new Guna.UI2.WinForms.Guna2Button();
             grbInvoice.SuspendLayout();
             grbCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -140,9 +152,9 @@
             // 
             // grbCustomer
             // 
-            grbCustomer.Controls.Add(btnClear);
             grbCustomer.Controls.Add(btnSearchCustomer);
             grbCustomer.Controls.Add(txtPhoneNumber);
+            grbCustomer.Controls.Add(btnClear);
             grbCustomer.Controls.Add(txtCustomerName);
             grbCustomer.Controls.Add(txtAddress);
             grbCustomer.Controls.Add(label4);
@@ -156,29 +168,6 @@
             grbCustomer.TabIndex = 1;
             grbCustomer.TabStop = false;
             grbCustomer.Text = "Khách hàng";
-            // 
-            // btnClear
-            // 
-            btnClear.Location = new Point(163, 124);
-            btnClear.Margin = new Padding(3, 4, 3, 4);
-            btnClear.Name = "btnClear";
-            btnClear.Size = new Size(86, 36);
-            btnClear.TabIndex = 13;
-            btnClear.Text = "Làm sạch";
-            btnClear.UseVisualStyleBackColor = true;
-            btnClear.Click += btnClear_Click;
-            // 
-            // btnSearchCustomer
-            // 
-            btnSearchCustomer.BackgroundImage = (Image)resources.GetObject("btnSearchCustomer.BackgroundImage");
-            btnSearchCustomer.BackgroundImageLayout = ImageLayout.Zoom;
-            btnSearchCustomer.Location = new Point(256, 124);
-            btnSearchCustomer.Margin = new Padding(3, 4, 3, 4);
-            btnSearchCustomer.Name = "btnSearchCustomer";
-            btnSearchCustomer.Size = new Size(31, 36);
-            btnSearchCustomer.TabIndex = 12;
-            btnSearchCustomer.UseVisualStyleBackColor = true;
-            btnSearchCustomer.Click += btnSearchCustomer_Click;
             // 
             // txtPhoneNumber
             // 
@@ -246,7 +235,7 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(5, 332);
+            dataGridView1.Location = new Point(-10, 281);
             dataGridView1.Margin = new Padding(3, 4, 3, 4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
@@ -255,9 +244,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btnComfirm);
-            groupBox1.Controls.Add(btnCancel);
-            groupBox1.Controls.Add(btnCreate);
+            groupBox1.Controls.Add(btnAddProduct);
             groupBox1.Location = new Point(5, 187);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
@@ -267,38 +254,6 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Chức năng";
             // 
-            // btnComfirm
-            // 
-            btnComfirm.Location = new Point(304, 29);
-            btnComfirm.Margin = new Padding(3, 4, 3, 4);
-            btnComfirm.Name = "btnComfirm";
-            btnComfirm.Size = new Size(96, 31);
-            btnComfirm.TabIndex = 2;
-            btnComfirm.Text = "Lập hoá đơn";
-            btnComfirm.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            btnCancel.Location = new Point(194, 29);
-            btnCancel.Margin = new Padding(3, 4, 3, 4);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(96, 31);
-            btnCancel.TabIndex = 1;
-            btnCancel.Text = "Hủy phiếu";
-            btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
-            // 
-            // btnCreate
-            // 
-            btnCreate.Location = new Point(91, 29);
-            btnCreate.Margin = new Padding(3, 4, 3, 4);
-            btnCreate.Name = "btnCreate";
-            btnCreate.Size = new Size(96, 31);
-            btnCreate.TabIndex = 0;
-            btnCreate.Text = "Tạo phiếu";
-            btnCreate.UseVisualStyleBackColor = true;
-            btnCreate.Click += btnCreate_Click;
-            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -307,16 +262,6 @@
             label7.Size = new Size(70, 20);
             label7.TabIndex = 4;
             label7.Text = "Tìm kiếm";
-            // 
-            // btnAddProduct
-            // 
-            btnAddProduct.Location = new Point(808, 8);
-            btnAddProduct.Margin = new Padding(3, 4, 3, 4);
-            btnAddProduct.Name = "btnAddProduct";
-            btnAddProduct.Size = new Size(86, 31);
-            btnAddProduct.TabIndex = 5;
-            btnAddProduct.Text = "Thêm";
-            btnAddProduct.UseVisualStyleBackColor = true;
             // 
             // cbbSearch
             // 
@@ -355,18 +300,120 @@
             pnlSearch.Controls.Add(lblUnit);
             pnlSearch.Controls.Add(label7);
             pnlSearch.Controls.Add(nudQuantity);
-            pnlSearch.Controls.Add(btnAddProduct);
             pnlSearch.Location = new Point(5, 281);
             pnlSearch.Margin = new Padding(3, 4, 3, 4);
             pnlSearch.Name = "pnlSearch";
             pnlSearch.Size = new Size(905, 43);
             pnlSearch.TabIndex = 9;
             // 
+            // btnCreate
+            // 
+            btnCreate.CustomizableEdges = customizableEdges25;
+            btnCreate.DisabledState.BorderColor = Color.DarkGray;
+            btnCreate.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnCreate.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnCreate.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnCreate.FillColor = Color.FromArgb(59, 93, 79);
+            btnCreate.Font = new Font("Segoe UI", 9F);
+            btnCreate.ForeColor = Color.White;
+            btnCreate.Location = new Point(813, 140);
+            btnCreate.Name = "btnCreate";
+            btnCreate.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            btnCreate.Size = new Size(225, 56);
+            btnCreate.TabIndex = 0;
+            btnCreate.Text = "Tạo phiếu";
+            // 
+            // btnAddProduct
+            // 
+            btnAddProduct.CustomizableEdges = customizableEdges27;
+            btnAddProduct.DisabledState.BorderColor = Color.DarkGray;
+            btnAddProduct.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAddProduct.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAddProduct.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAddProduct.FillColor = Color.FromArgb(59, 93, 79);
+            btnAddProduct.Font = new Font("Segoe UI", 9F);
+            btnAddProduct.ForeColor = Color.White;
+            btnAddProduct.Location = new Point(326, 10);
+            btnAddProduct.Name = "btnAddProduct";
+            btnAddProduct.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            btnAddProduct.Size = new Size(225, 56);
+            btnAddProduct.TabIndex = 10;
+            btnAddProduct.Text = "Thêm sản phẩm";
+            // 
+            // btnSearchCustomer
+            // 
+            btnSearchCustomer.CustomizableEdges = customizableEdges29;
+            btnSearchCustomer.DisabledState.BorderColor = Color.DarkGray;
+            btnSearchCustomer.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSearchCustomer.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSearchCustomer.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSearchCustomer.Font = new Font("Segoe UI", 9F);
+            btnSearchCustomer.ForeColor = Color.White;
+            btnSearchCustomer.Location = new Point(9, 57);
+            btnSearchCustomer.Name = "btnSearchCustomer";
+            btnSearchCustomer.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            btnSearchCustomer.Size = new Size(225, 56);
+            btnSearchCustomer.TabIndex = 11;
+            // 
+            // btnClear
+            // 
+            btnClear.CustomizableEdges = customizableEdges31;
+            btnClear.DisabledState.BorderColor = Color.DarkGray;
+            btnClear.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnClear.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnClear.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnClear.FillColor = Color.FromArgb(59, 93, 79);
+            btnClear.Font = new Font("Segoe UI", 9F);
+            btnClear.ForeColor = Color.White;
+            btnClear.Location = new Point(70, 124);
+            btnClear.Name = "btnClear";
+            btnClear.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            btnClear.Size = new Size(164, 33);
+            btnClear.TabIndex = 12;
+            btnClear.Text = "Làm mới";
+            // 
+            // btnConfirm
+            // 
+            btnConfirm.CustomizableEdges = customizableEdges33;
+            btnConfirm.DisabledState.BorderColor = Color.DarkGray;
+            btnConfirm.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnConfirm.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnConfirm.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnConfirm.FillColor = Color.FromArgb(59, 93, 79);
+            btnConfirm.Font = new Font("Segoe UI", 9F);
+            btnConfirm.ForeColor = Color.White;
+            btnConfirm.Location = new Point(901, 270);
+            btnConfirm.Name = "btnConfirm";
+            btnConfirm.ShadowDecoration.CustomizableEdges = customizableEdges34;
+            btnConfirm.Size = new Size(225, 56);
+            btnConfirm.TabIndex = 13;
+            btnConfirm.Text = "Lập hóa đơn";
+            // 
+            // btnCancel
+            // 
+            btnCancel.CustomizableEdges = customizableEdges35;
+            btnCancel.DisabledState.BorderColor = Color.DarkGray;
+            btnCancel.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnCancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnCancel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnCancel.FillColor = Color.FromArgb(59, 93, 79);
+            btnCancel.Font = new Font("Segoe UI", 9F);
+            btnCancel.ForeColor = Color.White;
+            btnCancel.Location = new Point(901, 332);
+            btnCancel.Name = "btnCancel";
+            btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges36;
+            btnCancel.Size = new Size(225, 56);
+            btnCancel.TabIndex = 14;
+            btnCancel.Text = "Hủy phiếu";
+            // 
             // frmSale
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1217, 651);
+            Controls.Add(btnCancel);
+            Controls.Add(btnConfirm);
+            Controls.Add(btnCreate);
             Controls.Add(pnlSearch);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
@@ -410,16 +457,22 @@
         private Label label6;
         private Label label5;
         private GroupBox groupBox1;
-        private Button btnComfirm;
-        private Button btnCancel;
-        private Button btnCreate;
-        private Button btnSearchCustomer;
+        private Guna.UI2.WinForms.Guna2Button btnSearchCustomer;
         private Label label7;
-        private Button btnAddProduct;
+        // Replace the declaration and initialization of btnAddProduct and other Guna2Button instances  
+        // to ensure they are correctly typed as Guna.UI2.WinForms.Guna2Button instead of System.Windows.Forms.Button.  
+
+        private Guna.UI2.WinForms.Guna2Button btnAddProduct;
         private ComboBox cbbSearch;
         private NumericUpDown nudQuantity;
         private Label lblUnit;
         private Panel pnlSearch;
-        private Button btnClear;
+        private Guna.UI2.WinForms.Guna2Button btnClear;
+        private Guna.UI2.WinForms.Guna2Button btnCreate;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        private Guna.UI2.WinForms.Guna2Button guna2Button4;
+        private Guna.UI2.WinForms.Guna2Button btnConfirm;
+        private Guna.UI2.WinForms.Guna2Button btnCancel;
     }
 }

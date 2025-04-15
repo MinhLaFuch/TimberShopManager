@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             gbAccInfo = new GroupBox();
             cbRole = new Guna.UI2.WinForms.Guna2ComboBox();
             txtEmployeeID = new TextBox();
@@ -52,8 +52,10 @@
             btnAdd = new Button();
             btnLock = new Button();
             btnSearch = new Button();
+            pnButton = new FlowLayoutPanel();
             gbAccInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAccount).BeginInit();
+            pnButton.SuspendLayout();
             SuspendLayout();
             // 
             // gbAccInfo
@@ -81,7 +83,7 @@
             // 
             cbRole.BackColor = Color.FromArgb(59, 93, 79);
             cbRole.BorderColor = Color.FromArgb(59, 93, 79);
-            cbRole.CustomizableEdges = customizableEdges13;
+            cbRole.CustomizableEdges = customizableEdges1;
             cbRole.DrawMode = DrawMode.OwnerDrawFixed;
             cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
             cbRole.FocusedColor = Color.FromArgb(94, 148, 255);
@@ -89,9 +91,10 @@
             cbRole.Font = new Font("Segoe UI", 10F);
             cbRole.ForeColor = Color.FromArgb(68, 88, 112);
             cbRole.ItemHeight = 30;
+            cbRole.Items.AddRange(new object[] { "Quản lý cửa hàng", "Quản trị viên", "Nhân viên bán hàng", "Nhân viên kế toán" });
             cbRole.Location = new Point(705, 109);
             cbRole.Name = "cbRole";
-            cbRole.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            cbRole.ShadowDecoration.CustomizableEdges = customizableEdges2;
             cbRole.Size = new Size(250, 36);
             cbRole.TabIndex = 9;
             // 
@@ -106,7 +109,7 @@
             // dtpDOB
             // 
             dtpDOB.Checked = true;
-            dtpDOB.CustomizableEdges = customizableEdges15;
+            dtpDOB.CustomizableEdges = customizableEdges3;
             dtpDOB.FillColor = Color.FromArgb(59, 93, 79);
             dtpDOB.Font = new Font("Segoe UI", 9F);
             dtpDOB.ForeColor = SystemColors.ButtonFace;
@@ -115,7 +118,7 @@
             dtpDOB.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dtpDOB.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dtpDOB.Name = "dtpDOB";
-            dtpDOB.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            dtpDOB.ShadowDecoration.CustomizableEdges = customizableEdges4;
             dtpDOB.Size = new Size(250, 45);
             dtpDOB.TabIndex = 9;
             dtpDOB.Value = new DateTime(2025, 4, 14, 10, 37, 8, 863);
@@ -205,41 +208,41 @@
             dgvAccount.BorderStyle = BorderStyle.None;
             dgvAccount.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvAccount.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle10.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle10.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            dgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvAccount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle11.ForeColor = Color.FromArgb(136, 136, 136);
-            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle11.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
-            dgvAccount.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(136, 136, 136);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvAccount.DefaultCellStyle = dataGridViewCellStyle2;
             dgvAccount.EnableHeadersVisualStyles = false;
             dgvAccount.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             dgvAccount.GridColor = Color.FromArgb(255, 255, 255);
-            dgvAccount.Location = new Point(256, 213);
+            dgvAccount.Location = new Point(215, 175);
             dgvAccount.Name = "dgvAccount";
             dgvAccount.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle12.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
-            dgvAccount.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvAccount.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvAccount.RowHeadersWidth = 51;
             dgvAccount.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvAccount.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAccount.Size = new Size(1012, 311);
+            dgvAccount.Size = new Size(1000, 472);
             dgvAccount.TabIndex = 5;
             // 
             // btnAdd
@@ -247,7 +250,7 @@
             btnAdd.BackColor = Color.FromArgb(59, 93, 79);
             btnAdd.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAdd.ForeColor = SystemColors.ButtonFace;
-            btnAdd.Location = new Point(12, 237);
+            btnAdd.Location = new Point(3, 4);
             btnAdd.Margin = new Padding(3, 4, 3, 4);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(196, 40);
@@ -260,7 +263,7 @@
             btnLock.BackColor = Color.FromArgb(59, 93, 79);
             btnLock.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLock.ForeColor = SystemColors.ButtonFace;
-            btnLock.Location = new Point(12, 336);
+            btnLock.Location = new Point(3, 52);
             btnLock.Margin = new Padding(3, 4, 3, 4);
             btnLock.Name = "btnLock";
             btnLock.Size = new Size(196, 40);
@@ -273,7 +276,7 @@
             btnSearch.BackColor = Color.FromArgb(59, 93, 79);
             btnSearch.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = SystemColors.ButtonFace;
-            btnSearch.Location = new Point(12, 439);
+            btnSearch.Location = new Point(3, 100);
             btnSearch.Margin = new Padding(3, 4, 3, 4);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(196, 40);
@@ -281,14 +284,22 @@
             btnSearch.Text = "Tìm kiếm";
             btnSearch.UseVisualStyleBackColor = false;
             // 
+            // pnButton
+            // 
+            pnButton.Controls.Add(btnAdd);
+            pnButton.Controls.Add(btnLock);
+            pnButton.Controls.Add(btnSearch);
+            pnButton.Location = new Point(1, 335);
+            pnButton.Name = "pnButton";
+            pnButton.Size = new Size(208, 145);
+            pnButton.TabIndex = 9;
+            // 
             // frmAccount
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1217, 651);
-            Controls.Add(btnSearch);
-            Controls.Add(btnLock);
-            Controls.Add(btnAdd);
+            Controls.Add(pnButton);
             Controls.Add(dgvAccount);
             Controls.Add(gbAccInfo);
             FormBorderStyle = FormBorderStyle.None;
@@ -298,6 +309,7 @@
             gbAccInfo.ResumeLayout(false);
             gbAccInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAccount).EndInit();
+            pnButton.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -319,5 +331,6 @@
         private ReaLTaiizor.Controls.PoisonDataGridView dgvAccount;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpDOB;
         private Guna.UI2.WinForms.Guna2ComboBox cbRole;
+        private FlowLayoutPanel pnButton;
     }
 }

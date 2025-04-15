@@ -14,6 +14,7 @@ namespace timber_shop_manager
         private bool reportExpand = false;
         private const int PANEL_STEP = 25;
         private static ToolTip toolTip = new ToolTip();
+        private static Color afterClick = Color.FromArgb(0, 0, 0);
         public frmMain(Account account)
         {
             InitializeComponent();
@@ -177,34 +178,42 @@ namespace timber_shop_manager
         private void btnAccount_Click(object sender, EventArgs e)
         {
             openChildForm(new frmAccount());
+            btnAccount.BackColor = afterClick;
         }
         private void btnEmployee_Click(object sender, EventArgs e)
         {
             openChildForm(new frmEmployee());
+            btnEmployee.BackColor = afterClick;
         }
         private void btnSupplier_Click(object sender, EventArgs e)
         {
             openChildForm(new frmSupplier());
+            btnSupplier.BackColor = afterClick;
         }
         private void btnCustomer_Click(object sender, EventArgs e)
         {
             openChildForm(new frmCustomer());
+            btnCustomer.BackColor = afterClick;
         }
         private void btnProduct_Click(object sender, EventArgs e)
         {
             openChildForm(new frmProduct());
+            btnProduct.BackColor = afterClick;
         }
         private void btnCategory_Click(object sender, EventArgs e)
         {
             openChildForm(new frmCategory());
+            btnCategory.BackColor = afterClick;
         }
         private void btnSale_Click(object sender, EventArgs e)
         {
             openChildForm(new frmSale());
+            btnSale.BackColor = afterClick;
         }
         private void btnImport_Click(object sender, EventArgs e)
         {
             openChildForm(new frmImport());
+            btnImport.BackColor = afterClick;
         }
         private void pbLogout_Click(object sender, EventArgs e)
         {
@@ -229,16 +238,18 @@ namespace timber_shop_manager
         private void btnSalary_Click(object sender, EventArgs e)
         {
             openChildForm(new frmSalaryReport());
+            btnSalary.BackColor = afterClick;
         }
         private void btnFinancialReport_Click(object sender, EventArgs e)
         {
             openChildForm(new frmFinancialReport());
+            btnFinancialReport.BackColor = afterClick;
         }
         private void btnInvoice_Click(object sender, EventArgs e)
         {
             openChildForm(new frmInvoiceReport());
+            btnInvoice.BackColor = afterClick;
         }
-
         #endregion
         #region Tick
         private void manageTransistion_Tick(object sender, EventArgs e)
@@ -330,6 +341,5 @@ namespace timber_shop_manager
         }
         #endregion
         #endregion
-
     }
 }
