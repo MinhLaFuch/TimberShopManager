@@ -253,6 +253,7 @@
             btnForgotPassword.TabIndex = 15;
             btnForgotPassword.Text = "Quên mật khẩu?";
             btnForgotPassword.UseVisualStyleBackColor = false;
+            btnForgotPassword.Click += btnForgotPassword_Click;
             // 
             // lbGmail
             // 
