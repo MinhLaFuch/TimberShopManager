@@ -48,7 +48,7 @@ namespace timber_shop_manager
         private void sendEmail()
         {
             string email = "ph18122005@gmail.com";
-            string password = "Phuc1812";
+            string password = "kbsifafkyvvpjpjt";
             string smtpHost = "smtp.gmail.com"; // or your provider
 
             // Generate 6-digit code
@@ -68,7 +68,7 @@ namespace timber_shop_manager
                     smtpClient.EnableSsl = true;
                     smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-                    mailMessage.From = new MailAddress(email);
+                    mailMessage.From = new MailAddress(email, password);
                     mailMessage.To.Add(txtGmail.Text + "@gmail.com"); // safer than assuming @gmail.com
                     mailMessage.Subject = subject;
                     mailMessage.Body = body;
