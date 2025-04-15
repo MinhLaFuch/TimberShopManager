@@ -107,10 +107,10 @@ namespace timber_shop_manager
             btnSave.Enabled = false;
             clearTextBox();
             txtID.Focus();
-            
+
             if (dynamicSearch == null)
             {
-                List<Control> searchControls = new List<Control> {txtID, txtName, txtPhoneNumber, txtAddress, txtEmail, txtWebsite};
+                List<Control> searchControls = new List<Control> { txtID, txtName, txtPhoneNumber, txtAddress, txtEmail, txtWebsite };
                 Dictionary<string, string> columnMappings = new Dictionary<string, string>
                 {
                     { "txtID", "SupplierID" },
@@ -119,7 +119,7 @@ namespace timber_shop_manager
                     { "txtAddress", "Address" },
                     { "txtEmail", "Email" },
                     { "txtWebsite", "Website" }
-                }; 
+                };
 
                 dynamicSearch = new DynamicSearch(searchControls, columnMappings, loadData, dgvSupplier);
             }
@@ -170,6 +170,11 @@ namespace timber_shop_manager
                 // Enable buttons
                 btnEnabler(true, true);
             }
+        }
+
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

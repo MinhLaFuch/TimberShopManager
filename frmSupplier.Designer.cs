@@ -38,14 +38,14 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Guna2Button btnSearch;
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            gbInfo = new GroupBox();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnInfoButton = new FlowLayoutPanel();
             btnSave = new Guna.UI2.WinForms.Guna2Button();
             btnCancel = new Guna.UI2.WinForms.Guna2Button();
@@ -65,43 +65,20 @@
             btnAdd = new Guna.UI2.WinForms.Guna2Button();
             btnMod = new Guna.UI2.WinForms.Guna2Button();
             btnDel = new Guna.UI2.WinForms.Guna2Button();
-            btnViewWorkHour = new Guna.UI2.WinForms.Guna2Button();
-            btnSearch = new Guna.UI2.WinForms.Guna2Button();
             dgvSupplier = new Guna.UI2.WinForms.Guna2DataGridView();
-            gbInfo.SuspendLayout();
+            gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
+            btnSearch = new Guna.UI2.WinForms.Guna2Button();
             pnInfoButton.SuspendLayout();
             pnButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSupplier).BeginInit();
+            gbInfo.SuspendLayout();
             SuspendLayout();
-            // 
-            // gbInfo
-            // 
-            gbInfo.BackColor = Color.White;
-            gbInfo.Controls.Add(pnInfoButton);
-            gbInfo.Controls.Add(lbID);
-            gbInfo.Controls.Add(txtID);
-            gbInfo.Controls.Add(txtPhoneNumber);
-            gbInfo.Controls.Add(lbPhoneNumber);
-            gbInfo.Controls.Add(txtName);
-            gbInfo.Controls.Add(lbName);
-            gbInfo.Controls.Add(lbAddress);
-            gbInfo.Controls.Add(txtWebsite);
-            gbInfo.Controls.Add(txtAddress);
-            gbInfo.Controls.Add(lbEmail);
-            gbInfo.Controls.Add(lbWebsite);
-            gbInfo.Controls.Add(txtEmail);
-            gbInfo.Location = new Point(2, 3);
-            gbInfo.Name = "gbInfo";
-            gbInfo.Size = new Size(806, 214);
-            gbInfo.TabIndex = 5;
-            gbInfo.TabStop = false;
-            gbInfo.Text = "Thông tin nhà cung cấp";
             // 
             // pnInfoButton
             // 
             pnInfoButton.Controls.Add(btnSave);
             pnInfoButton.Controls.Add(btnCancel);
-            pnInfoButton.Location = new Point(457, 154);
+            pnInfoButton.Location = new Point(877, 236);
             pnInfoButton.Name = "pnInfoButton";
             pnInfoButton.Size = new Size(349, 45);
             pnInfoButton.TabIndex = 31;
@@ -145,7 +122,8 @@
             // lbID
             // 
             lbID.AutoSize = true;
-            lbID.Location = new Point(32, 33);
+            lbID.ForeColor = Color.FromArgb(125, 137, 149);
+            lbID.Location = new Point(30, 69);
             lbID.Name = "lbID";
             lbID.Size = new Size(122, 20);
             lbID.TabIndex = 6;
@@ -155,15 +133,16 @@
             // 
             txtID.BorderStyle = BorderStyle.None;
             txtID.Enabled = false;
-            txtID.Location = new Point(153, 28);
+            txtID.Location = new Point(188, 69);
             txtID.Name = "txtID";
             txtID.Size = new Size(263, 20);
             txtID.TabIndex = 7;
+            txtID.TextChanged += txtID_TextChanged;
             // 
             // txtPhoneNumber
             // 
             txtPhoneNumber.BorderStyle = BorderStyle.None;
-            txtPhoneNumber.Location = new Point(153, 108);
+            txtPhoneNumber.Location = new Point(188, 149);
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(263, 20);
             txtPhoneNumber.TabIndex = 19;
@@ -172,7 +151,8 @@
             // lbPhoneNumber
             // 
             lbPhoneNumber.AutoSize = true;
-            lbPhoneNumber.Location = new Point(32, 113);
+            lbPhoneNumber.ForeColor = Color.FromArgb(125, 137, 149);
+            lbPhoneNumber.Location = new Point(41, 159);
             lbPhoneNumber.Name = "lbPhoneNumber";
             lbPhoneNumber.Size = new Size(97, 20);
             lbPhoneNumber.TabIndex = 18;
@@ -181,7 +161,7 @@
             // txtName
             // 
             txtName.BorderStyle = BorderStyle.None;
-            txtName.Location = new Point(153, 67);
+            txtName.Location = new Point(188, 108);
             txtName.Name = "txtName";
             txtName.Size = new Size(263, 20);
             txtName.TabIndex = 17;
@@ -189,7 +169,8 @@
             // lbName
             // 
             lbName.AutoSize = true;
-            lbName.Location = new Point(32, 72);
+            lbName.ForeColor = Color.FromArgb(125, 137, 149);
+            lbName.Location = new Point(30, 108);
             lbName.Name = "lbName";
             lbName.Size = new Size(124, 20);
             lbName.TabIndex = 16;
@@ -198,7 +179,8 @@
             // lbAddress
             // 
             lbAddress.AutoSize = true;
-            lbAddress.Location = new Point(447, 33);
+            lbAddress.ForeColor = Color.FromArgb(125, 137, 149);
+            lbAddress.Location = new Point(667, 69);
             lbAddress.Name = "lbAddress";
             lbAddress.Size = new Size(55, 20);
             lbAddress.TabIndex = 10;
@@ -207,7 +189,7 @@
             // txtWebsite
             // 
             txtWebsite.BorderStyle = BorderStyle.None;
-            txtWebsite.Location = new Point(520, 108);
+            txtWebsite.Location = new Point(761, 149);
             txtWebsite.Name = "txtWebsite";
             txtWebsite.Size = new Size(263, 20);
             txtWebsite.TabIndex = 15;
@@ -215,7 +197,7 @@
             // txtAddress
             // 
             txtAddress.BorderStyle = BorderStyle.None;
-            txtAddress.Location = new Point(520, 28);
+            txtAddress.Location = new Point(761, 69);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(263, 20);
             txtAddress.TabIndex = 11;
@@ -223,7 +205,8 @@
             // lbEmail
             // 
             lbEmail.AutoSize = true;
-            lbEmail.Location = new Point(447, 72);
+            lbEmail.ForeColor = Color.FromArgb(125, 137, 149);
+            lbEmail.Location = new Point(667, 108);
             lbEmail.Name = "lbEmail";
             lbEmail.Size = new Size(46, 20);
             lbEmail.TabIndex = 14;
@@ -232,7 +215,8 @@
             // lbWebsite
             // 
             lbWebsite.AutoSize = true;
-            lbWebsite.Location = new Point(447, 113);
+            lbWebsite.ForeColor = Color.FromArgb(125, 137, 149);
+            lbWebsite.Location = new Point(667, 149);
             lbWebsite.Name = "lbWebsite";
             lbWebsite.Size = new Size(62, 20);
             lbWebsite.TabIndex = 12;
@@ -241,7 +225,7 @@
             // txtEmail
             // 
             txtEmail.BorderStyle = BorderStyle.None;
-            txtEmail.Location = new Point(520, 67);
+            txtEmail.Location = new Point(761, 108);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(263, 20);
             txtEmail.TabIndex = 13;
@@ -251,11 +235,10 @@
             pnButton.Controls.Add(btnAdd);
             pnButton.Controls.Add(btnMod);
             pnButton.Controls.Add(btnDel);
-            pnButton.Controls.Add(btnViewWorkHour);
             pnButton.Controls.Add(btnSearch);
-            pnButton.Location = new Point(2, 358);
+            pnButton.Location = new Point(12, 281);
             pnButton.Name = "pnButton";
-            pnButton.Size = new Size(198, 329);
+            pnButton.Size = new Size(218, 358);
             pnButton.TabIndex = 29;
             // 
             // btnAdd
@@ -272,9 +255,9 @@
             btnAdd.Location = new Point(3, 3);
             btnAdd.Name = "btnAdd";
             btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnAdd.Size = new Size(195, 59);
+            btnAdd.Size = new Size(201, 81);
             btnAdd.TabIndex = 24;
-            btnAdd.Text = "Thêm nhân viên";
+            btnAdd.Text = "Thêm nhà cung cấp";
             // 
             // btnMod
             // 
@@ -287,12 +270,12 @@
             btnMod.FillColor = Color.FromArgb(59, 93, 79);
             btnMod.Font = new Font("Segoe UI", 9F);
             btnMod.ForeColor = Color.White;
-            btnMod.Location = new Point(3, 68);
+            btnMod.Location = new Point(3, 90);
             btnMod.Name = "btnMod";
             btnMod.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnMod.Size = new Size(195, 59);
+            btnMod.Size = new Size(201, 81);
             btnMod.TabIndex = 21;
-            btnMod.Text = "Sửa nhân viên";
+            btnMod.Text = "Sửa nhà cung cấp";
             // 
             // btnDel
             // 
@@ -305,35 +288,17 @@
             btnDel.FillColor = Color.FromArgb(59, 93, 79);
             btnDel.Font = new Font("Segoe UI", 9F);
             btnDel.ForeColor = Color.White;
-            btnDel.Location = new Point(3, 133);
+            btnDel.Location = new Point(3, 177);
             btnDel.Name = "btnDel";
             btnDel.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btnDel.Size = new Size(195, 59);
+            btnDel.Size = new Size(201, 81);
             btnDel.TabIndex = 22;
-            btnDel.Text = "Xóa nhân viên";
-            // 
-            // btnViewWorkHour
-            // 
-            btnViewWorkHour.BackColor = Color.FromArgb(59, 93, 79);
-            btnViewWorkHour.CustomizableEdges = customizableEdges11;
-            btnViewWorkHour.DisabledState.BorderColor = Color.DarkGray;
-            btnViewWorkHour.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnViewWorkHour.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnViewWorkHour.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnViewWorkHour.FillColor = Color.FromArgb(59, 93, 79);
-            btnViewWorkHour.Font = new Font("Segoe UI", 9F);
-            btnViewWorkHour.ForeColor = Color.White;
-            btnViewWorkHour.Location = new Point(3, 198);
-            btnViewWorkHour.Name = "btnViewWorkHour";
-            btnViewWorkHour.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnViewWorkHour.Size = new Size(195, 59);
-            btnViewWorkHour.TabIndex = 23;
-            btnViewWorkHour.Text = "Xem chấm công";
+            btnDel.Text = "Xóa nhà cung cấp";
             // 
             // btnSearch
             // 
             btnSearch.BackColor = Color.FromArgb(59, 93, 79);
-            btnSearch.CustomizableEdges = customizableEdges13;
+            btnSearch.CustomizableEdges = customizableEdges11;
             btnSearch.DisabledState.BorderColor = Color.DarkGray;
             btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -341,10 +306,10 @@
             btnSearch.FillColor = Color.FromArgb(59, 93, 79);
             btnSearch.Font = new Font("Segoe UI", 9F);
             btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(3, 263);
+            btnSearch.Location = new Point(3, 264);
             btnSearch.Name = "btnSearch";
-            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            btnSearch.Size = new Size(195, 59);
+            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnSearch.Size = new Size(201, 81);
             btnSearch.TabIndex = 25;
             btnSearch.Text = "Tìm kiếm";
             // 
@@ -371,11 +336,11 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvSupplier.DefaultCellStyle = dataGridViewCellStyle3;
             dgvSupplier.GridColor = Color.FromArgb(231, 229, 255);
-            dgvSupplier.Location = new Point(211, 361);
+            dgvSupplier.Location = new Point(236, 284);
             dgvSupplier.Name = "dgvSupplier";
             dgvSupplier.RowHeadersVisible = false;
             dgvSupplier.RowHeadersWidth = 51;
-            dgvSupplier.Size = new Size(597, 319);
+            dgvSupplier.Size = new Size(969, 355);
             dgvSupplier.TabIndex = 30;
             dgvSupplier.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvSupplier.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -399,30 +364,56 @@
             dgvSupplier.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvSupplier.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
+            // gbInfo
+            // 
+            gbInfo.Controls.Add(pnInfoButton);
+            gbInfo.Controls.Add(lbID);
+            gbInfo.Controls.Add(txtID);
+            gbInfo.Controls.Add(txtEmail);
+            gbInfo.Controls.Add(txtPhoneNumber);
+            gbInfo.Controls.Add(lbPhoneNumber);
+            gbInfo.Controls.Add(txtName);
+            gbInfo.Controls.Add(txtAddress);
+            gbInfo.Controls.Add(lbName);
+            gbInfo.Controls.Add(txtWebsite);
+            gbInfo.Controls.Add(lbAddress);
+            gbInfo.Controls.Add(lbEmail);
+            gbInfo.Controls.Add(lbWebsite);
+            gbInfo.CustomBorderColor = Color.FromArgb(59, 93, 79);
+            gbInfo.CustomizableEdges = customizableEdges13;
+            gbInfo.FillColor = Color.WhiteSmoke;
+            gbInfo.Font = new Font("Segoe UI", 9F);
+            gbInfo.ForeColor = Color.White;
+            gbInfo.Location = new Point(-1, -6);
+            gbInfo.Name = "gbInfo";
+            gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            gbInfo.Size = new Size(1226, 284);
+            gbInfo.TabIndex = 31;
+            gbInfo.Text = "Thông tin";
+            // 
             // frmSupplier
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Window;
+            BackColor = SystemColors.MenuBar;
             ClientSize = new Size(1217, 651);
+            Controls.Add(gbInfo);
             Controls.Add(dgvSupplier);
             Controls.Add(pnButton);
-            Controls.Add(gbInfo);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmSupplier";
             StartPosition = FormStartPosition.CenterParent;
             Text = "frmSupplier";
             Load += frmSupplier_Load;
-            gbInfo.ResumeLayout(false);
-            gbInfo.PerformLayout();
             pnInfoButton.ResumeLayout(false);
             pnButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvSupplier).EndInit();
+            gbInfo.ResumeLayout(false);
+            gbInfo.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-        private GroupBox gbInfo;
         private Label lbID;
         private TextBox txtID;
         private TextBox txtAddress;
@@ -439,11 +430,11 @@
         private Guna.UI2.WinForms.Guna2Button btnAdd;
         private Guna.UI2.WinForms.Guna2Button btnMod;
         private Guna.UI2.WinForms.Guna2Button btnDel;
-        private Guna.UI2.WinForms.Guna2Button btnViewWorkHour;
         private Guna.UI2.WinForms.Guna2Button btnSearch;
         private Guna.UI2.WinForms.Guna2DataGridView dgvSupplier;
         private FlowLayoutPanel pnInfoButton;
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private Guna.UI2.WinForms.Guna2Button btnCancel;
+        private Guna.UI2.WinForms.Guna2GroupBox gbInfo;
     }
 }

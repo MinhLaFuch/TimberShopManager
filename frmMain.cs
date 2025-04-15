@@ -170,18 +170,18 @@ namespace timber_shop_manager
                 {
                     button.BackColor = outerBtnColor;
                 }
-                if(control is Panel panel)
+                if (control is Panel panel)
                 {
                     int i = 0;
-                    foreach(Control innerControl in panel.Controls)
+                    foreach (Control innerControl in panel.Controls)
                     {
                         if (innerControl is Button innerButton)
                         {
-                            innerButton.BackColor = i > 0 ? innerBtnColor: outerBtnColor;
+                            innerButton.BackColor = i > 0 ? innerBtnColor : outerBtnColor;
                             i++;
                         }
                     }
-                }   
+                }
             }
         }
         private void HighlightButton(Button clickedButton)
@@ -201,40 +201,46 @@ namespace timber_shop_manager
             lbUsername.Text = account.Username;
             loadFormBasedOnRole();
         }
+        #endregion
+        #region Click
+        private void pbConfig_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmConfig());
+        }
         private void btnAccount_Click(object sender, EventArgs e)
         {
             openChildForm(new frmAccount());
-            HighlightButton((Button) sender);
+            HighlightButton((Button)sender);
         }
         private void btnEmployee_Click(object sender, EventArgs e)
         {
             openChildForm(new frmEmployee());
-            HighlightButton((Button) sender);
+            HighlightButton((Button)sender);
         }
         private void btnSupplier_Click(object sender, EventArgs e)
         {
             openChildForm(new frmSupplier());
-            HighlightButton((Button) sender);
+            HighlightButton((Button)sender);
         }
         private void btnCustomer_Click(object sender, EventArgs e)
         {
             openChildForm(new frmCustomer());
-            HighlightButton((Button) sender);
+            HighlightButton((Button)sender);
         }
         private void btnProduct_Click(object sender, EventArgs e)
         {
             openChildForm(new frmProduct());
-            HighlightButton((Button) sender);
+            HighlightButton((Button)sender);
         }
         private void btnCategory_Click(object sender, EventArgs e)
         {
             openChildForm(new frmCategory());
-            HighlightButton((Button) sender);
+            HighlightButton((Button)sender);
         }
         private void btnSale_Click(object sender, EventArgs e)
         {
             openChildForm(new frmSale());
-            HighlightButton((Button) sender);
+            HighlightButton((Button)sender);
         }
         private void btnImport_Click(object sender, EventArgs e)
         {
@@ -372,5 +378,7 @@ namespace timber_shop_manager
         }
         #endregion
         #endregion
+
+
     }
 }

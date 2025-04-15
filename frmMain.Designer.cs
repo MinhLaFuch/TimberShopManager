@@ -54,12 +54,14 @@
             manageTransistion = new System.Windows.Forms.Timer(components);
             reportTransistion = new System.Windows.Forms.Timer(components);
             pnMDI = new Panel();
+            pbConfig = new PictureBox();
             pnMenu.SuspendLayout();
             pnManage.SuspendLayout();
             pnReport.SuspendLayout();
             pnTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbLogout).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbUser).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbConfig).BeginInit();
             SuspendLayout();
             // 
             // btnSale
@@ -370,6 +372,7 @@
             // 
             // pnTop
             // 
+            pnTop.Controls.Add(pbConfig);
             pnTop.Controls.Add(pbLogout);
             pnTop.Controls.Add(lbUsername);
             pnTop.Controls.Add(pbUser);
@@ -436,6 +439,20 @@
             pnMDI.Size = new Size(1217, 651);
             pnMDI.TabIndex = 27;
             // 
+            // pbConfig
+            // 
+            pbConfig.BackColor = Color.Transparent;
+            pbConfig.BackgroundImageLayout = ImageLayout.Zoom;
+            pbConfig.Dock = DockStyle.Right;
+            pbConfig.Image = (Image)resources.GetObject("pbConfig.Image");
+            pbConfig.Location = new Point(1127, 0);
+            pbConfig.Margin = new Padding(3, 3, 300, 3);
+            pbConfig.Name = "pbConfig";
+            pbConfig.Size = new Size(45, 59);
+            pbConfig.TabIndex = 24;
+            pbConfig.TabStop = false;
+            pbConfig.Click += pbConfig_Click;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(120F, 120F);
@@ -458,6 +475,7 @@
             pnTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbLogout).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbUser).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbConfig).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -488,5 +506,6 @@
         private Panel pnMDI;
         private PictureBox pbLogout;
         private PictureBox pbUser;
+        private PictureBox pbConfig;
     }
 }
