@@ -5,12 +5,11 @@ namespace timber_shop_manager
 {
     internal static class Program
     {
-        private static bool ContainsSpecialCharacter(string text)
+        public static bool ContainsSpecialCharacter(string text)
         {
             // This pattern checks for any character that is NOT a letter or digit
             return Regex.IsMatch(text, @"[^a-zA-Z0-9]");
         }
-
         public static void CheckInputIsDigit(KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)

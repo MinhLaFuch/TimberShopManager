@@ -144,13 +144,15 @@ namespace timber_shop_manager
         {
             if (txtNewPassword.Text.Length < 8)
             {
-                lbNewPasswordWarning.Text = "Mật khẩu phải ít nhất 8 kí tự";
-                lbNewPasswordWarning.ForeColor = Color.Red;
+                lbNewPasswordWarning.Text = "Mật khẩu ít nhất 8 kí tự";
             }
-            else if (Program.C)
+            else if (!txtNewPassword.Text.Any(char.IsUpper))
             {
-                lbNewPasswordWarning.Text = "Mật khẩu phải có ít nhất 1 kí tự đặc biệt";
-                lbNewPasswordWarning.ForeColor = Color.Red;
+                lbNewPasswordWarning.Text = "Mật khẩu ít nhất phải có 1 kí tự in hoa";
+            }
+            else if (!Program.ContainsSpecialCharacter(txtNewPassword.Text))
+            {
+                lbNewPasswordWarning.Text = "Password must contain at least one number.";
             }
         }
         #endregion
