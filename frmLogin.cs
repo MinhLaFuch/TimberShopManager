@@ -40,29 +40,6 @@ namespace timber_shop_manager
             //lblUserError.Text = string.Empty;
             //lblPassError.Text = string.Empty;
         }
-        private void ApplyRoundedBorderToPanel()
-        {
-            int radius = 25; // Adjust the radius as needed
-            Rectangle rect = new Rectangle(0, 0, pnLogin.Width, pnLogin.Height);
-            using (GraphicsPath path = GetRoundedRectPath(rect, radius))
-            {
-                pnLogin.Region = new Region(path);
-            }
-        }
-        private GraphicsPath GetRoundedRectPath(Rectangle rect, int radius)
-        {
-            GraphicsPath path = new GraphicsPath();
-            float curveSize = radius * 2F;
-
-            path.StartFigure();
-            path.AddArc(rect.X, rect.Y, curveSize, curveSize, 180, 90); // Top-left corner
-            path.AddArc(rect.Right - curveSize, rect.Y, curveSize, curveSize, 270, 90); // Top-right
-            path.AddArc(rect.Right - curveSize, rect.Bottom - curveSize, curveSize, curveSize, 0, 90); // Bottom-right
-            path.AddArc(rect.X, rect.Bottom - curveSize, curveSize, curveSize, 90, 90); // Bottom-left
-            path.CloseFigure();
-
-            return path;
-        }
         #endregion
         #region Events
         #region Load
@@ -70,9 +47,6 @@ namespace timber_shop_manager
         {
             // Load form
             LoadForm();
-
-            // Changing the panel style
-            ApplyRoundedBorderToPanel();
 
             // Set the error text
             lblUserError.Text = string.Empty;
@@ -110,18 +84,6 @@ namespace timber_shop_manager
                 frmMain.ShowDialog();
             }
 
-        }
-        #endregion
-        #region Paint
-        private void pnLogin_Paint(object sender, PaintEventArgs e)
-        {
-            int radius = 5;
-            using (GraphicsPath path = GetRoundedRectPath(pnLogin.ClientRectangle, radius))
-            using (Pen pen = new Pen(Color.DarkGreen, 2)) // Change color/size here
-            {
-                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                e.Graphics.DrawPath(pen, path);
-            }
         }
         #endregion
         #endregion
