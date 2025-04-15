@@ -12,11 +12,11 @@ using Microsoft.Data.SqlClient;
 
 namespace timber_shop_manager
 {
-    public partial class frmCatagory : Form
+    public partial class frmCategory : Form
     {
         #region Properties
         private DatabaseHelper dbHelper = new DatabaseHelper();
-        public frmCatagory()
+        public frmCategory()
         {
             InitializeComponent();
         }
@@ -26,7 +26,7 @@ namespace timber_shop_manager
         {
             txtID.ReadOnly = true;
             clearTextBox();
-            dgvCatagory.DataSource = loadData();
+            dgvCategory.DataSource = loadData();
             btnEnabler(false, true);
             gbInfo.Enabled = false;
             searchEventEnabler(false);
@@ -145,7 +145,7 @@ namespace timber_shop_manager
             if (e.RowIndex >= 0)
             {
                 // Retrieve the selected row
-                DataGridViewRow row = dgvCatagory.Rows[e.RowIndex];
+                DataGridViewRow row = dgvCategory.Rows[e.RowIndex];
 
                 // Populate the text boxes with the selected row's data
                 txtID.Text = row.Cells["CatagoryID"].Value.ToString();

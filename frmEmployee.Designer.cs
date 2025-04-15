@@ -107,7 +107,7 @@
             gbAccInfo.ForeColor = SystemColors.ActiveCaptionText;
             gbAccInfo.Location = new Point(0, 0);
             gbAccInfo.Name = "gbAccInfo";
-            gbAccInfo.Size = new Size(1281, 232);
+            gbAccInfo.Size = new Size(1217, 232);
             gbAccInfo.TabIndex = 0;
             gbAccInfo.TabStop = false;
             gbAccInfo.Text = "Thông tin";
@@ -490,7 +490,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1281, 712);
+            ClientSize = new Size(1217, 651);
             Controls.Add(dgvEmployee);
             Controls.Add(pnButton);
             Controls.Add(gbAccInfo);

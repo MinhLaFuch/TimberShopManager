@@ -196,7 +196,7 @@ namespace timber_shop_manager
         }
         private void btnCategory_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmCatagory());
+            openChildForm(new frmCategory());
         }
         private void btnSale_Click(object sender, EventArgs e)
         {

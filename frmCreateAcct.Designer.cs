@@ -132,6 +132,7 @@
             Controls.Add(lbEmail);
             Controls.Add(button2);
             Controls.Add(button1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmCreateAcct";
             Text = "frmCreateAcct";
             ResumeLayout(false);

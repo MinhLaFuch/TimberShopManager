@@ -96,7 +96,7 @@
             pnMenu.FlowDirection = FlowDirection.TopDown;
             pnMenu.Location = new Point(0, 0);
             pnMenu.Name = "pnMenu";
-            pnMenu.Size = new Size(162, 771);
+            pnMenu.Size = new Size(162, 710);
             pnMenu.TabIndex = 17;
             pnMenu.WrapContents = false;
             // 
@@ -375,7 +375,7 @@
             pnTop.Dock = DockStyle.Top;
             pnTop.Location = new Point(162, 0);
             pnTop.Name = "pnTop";
-            pnTop.Size = new Size(1281, 59);
+            pnTop.Size = new Size(1217, 59);
             pnTop.TabIndex = 26;
             // 
             // pbLogout
@@ -384,7 +384,7 @@
             pbLogout.BackgroundImageLayout = ImageLayout.Zoom;
             pbLogout.Dock = DockStyle.Right;
             pbLogout.Image = (Image)resources.GetObject("pbLogout.Image");
-            pbLogout.Location = new Point(1236, 0);
+            pbLogout.Location = new Point(1172, 0);
             pbLogout.Name = "pbLogout";
             pbLogout.Size = new Size(45, 59);
             pbLogout.TabIndex = 23;
@@ -429,9 +429,10 @@
             // 
             // pnMDI
             // 
+            pnMDI.Dock = DockStyle.Fill;
             pnMDI.Location = new Point(162, 59);
             pnMDI.Name = "pnMDI";
-            pnMDI.Size = new Size(1281, 712);
+            pnMDI.Size = new Size(1217, 651);
             pnMDI.TabIndex = 27;
             // 
             // frmMain
@@ -439,7 +440,7 @@
             AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
             AutoSize = true;
-            ClientSize = new Size(1443, 771);
+            ClientSize = new Size(1379, 710);
             Controls.Add(pnMDI);
             Controls.Add(pnTop);
             Controls.Add(pnMenu);

@@ -404,7 +404,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Window;
-            ClientSize = new Size(1281, 712);
+            ClientSize = new Size(1217, 651);
             Controls.Add(dgvSupplier);
             Controls.Add(pnButton);
             Controls.Add(gbInfo);
