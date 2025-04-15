@@ -243,7 +243,7 @@ namespace timber_shop_manager
         #region Tick
         private void manageTransistion_Tick(object sender, EventArgs e)
         {
-            int targetHeight = manageExpand ? 66 : 66 * (pnManage.Controls.Count + 1);
+            int targetHeight = manageExpand ? 66 : 66 * (pnManage.Controls.Count);
             AnimatePanelSize(pnManage, targetHeight, false, manageTransistion);
 
             if (pnManage.Height == targetHeight)
@@ -251,7 +251,7 @@ namespace timber_shop_manager
         }
         private void reportTransistion_Tick(object sender, EventArgs e)
         {
-            int targetHeight = reportExpand ? 66 : 66 * (pnReport.Controls.Count + 1);
+            int targetHeight = reportExpand ? 66 : 66 * (pnReport.Controls.Count);
             AnimatePanelSize(pnReport, targetHeight, false, reportTransistion);
 
             if (pnReport.Height == targetHeight)
@@ -330,7 +330,6 @@ namespace timber_shop_manager
         }
         #endregion
         #endregion
-
 
     }
 }
