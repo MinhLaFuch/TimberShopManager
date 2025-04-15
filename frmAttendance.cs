@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using timber_shop_manager.objects;
 
 namespace timber_shop_manager
 {
@@ -16,6 +17,7 @@ namespace timber_shop_manager
     {
         #region Properties
         private DatabaseHelper dbHelper = new DatabaseHelper();
+        private Account account;
         private string employeeId = "";
         private string employeeName = "";
         public string EmployeeId
@@ -30,6 +32,12 @@ namespace timber_shop_manager
         }
         public frmAttendance()
         {
+            InitializeComponent();
+        }
+        public frmAttendance(Account acc)
+        {
+            this.account = acc;
+            // Get Employee from Account
             InitializeComponent();
         }
         #endregion

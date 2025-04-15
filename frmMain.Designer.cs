@@ -134,6 +134,7 @@
             btnAttend.TabIndex = 25;
             btnAttend.TextImageRelation = TextImageRelation.ImageAboveText;
             btnAttend.UseVisualStyleBackColor = false;
+            btnAttend.Click += btnAttend_Click;
             btnAttend.MouseHover += btnAttend_MouseHover;
             // 
             // pnManage

@@ -19,8 +19,11 @@ namespace timber_shop_manager.objects
         }
 
         private static DatabaseHelper dbHelper = new DatabaseHelper();
-        
-        protected string id, name, identificationNumber, address;
+
+        protected string id;
+        protected string name;
+        protected string identificationNumber;
+        protected string address;
         protected DateTime dateOfBirth;
         protected float salary;
         protected Role role;

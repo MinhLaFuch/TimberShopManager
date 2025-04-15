@@ -38,6 +38,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnInfoButton = new FlowLayoutPanel();
             btnSave = new Guna.UI2.WinForms.Guna2Button();
             btnCancel = new Guna.UI2.WinForms.Guna2Button();
@@ -57,19 +61,23 @@
             lbEmployeeIden = new Label();
             lbEmployeeName = new Label();
             gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
-            label1 = new Label();
-            textBox2 = new TextBox();
-            label2 = new Label();
-            textBox1 = new TextBox();
+            txtPassword = new TextBox();
+            lbPassword = new Label();
+            txtGmail = new TextBox();
+            lbGmail = new Label();
+            pnButton = new FlowLayoutPanel();
+            btnChangeInfo = new Guna.UI2.WinForms.Guna2Button();
+            btnChangePW = new Guna.UI2.WinForms.Guna2Button();
             pnInfoButton.SuspendLayout();
             gbInfo.SuspendLayout();
+            pnButton.SuspendLayout();
             SuspendLayout();
             // 
             // pnInfoButton
             // 
             pnInfoButton.Controls.Add(btnSave);
             pnInfoButton.Controls.Add(btnCancel);
-            pnInfoButton.Location = new Point(854, 228);
+            pnInfoButton.Location = new Point(856, 286);
             pnInfoButton.Name = "pnInfoButton";
             pnInfoButton.Size = new Size(349, 45);
             pnInfoButton.TabIndex = 28;
@@ -91,6 +99,7 @@
             btnSave.Size = new Size(163, 32);
             btnSave.TabIndex = 26;
             btnSave.Text = "Lưu";
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
@@ -109,6 +118,7 @@
             btnCancel.Size = new Size(163, 32);
             btnCancel.TabIndex = 27;
             btnCancel.Text = "Hủy";
+            btnCancel.Click += btnCancel_Click;
             // 
             // cbRole
             // 
@@ -116,6 +126,7 @@
             cbRole.CustomizableEdges = customizableEdges5;
             cbRole.DrawMode = DrawMode.OwnerDrawFixed;
             cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbRole.Enabled = false;
             cbRole.FillColor = Color.WhiteSmoke;
             cbRole.FocusedColor = Color.FromArgb(94, 148, 255);
             cbRole.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
@@ -160,6 +171,7 @@
             txtSalary.BorderStyle = BorderStyle.None;
             txtSalary.Location = new Point(629, 194);
             txtSalary.Name = "txtSalary";
+            txtSalary.ReadOnly = true;
             txtSalary.Size = new Size(187, 20);
             txtSalary.TabIndex = 15;
             // 
@@ -176,7 +188,7 @@
             // txtPhoneNumber
             // 
             txtPhoneNumber.BorderStyle = BorderStyle.None;
-            txtPhoneNumber.Location = new Point(156, 152);
+            txtPhoneNumber.Location = new Point(156, 219);
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(345, 20);
             txtPhoneNumber.TabIndex = 7;
@@ -185,7 +197,7 @@
             // 
             lbPhoneNumber.AutoSize = true;
             lbPhoneNumber.ForeColor = Color.FromArgb(59, 93, 79);
-            lbPhoneNumber.Location = new Point(3, 152);
+            lbPhoneNumber.Location = new Point(3, 219);
             lbPhoneNumber.Name = "lbPhoneNumber";
             lbPhoneNumber.Size = new Size(97, 20);
             lbPhoneNumber.TabIndex = 6;
@@ -194,7 +206,7 @@
             // txtIden
             // 
             txtIden.BorderStyle = BorderStyle.None;
-            txtIden.Location = new Point(156, 104);
+            txtIden.Location = new Point(156, 181);
             txtIden.Name = "txtIden";
             txtIden.Size = new Size(345, 20);
             txtIden.TabIndex = 5;
@@ -210,7 +222,7 @@
             // txtName
             // 
             txtName.BorderStyle = BorderStyle.None;
-            txtName.Location = new Point(156, 63);
+            txtName.Location = new Point(156, 136);
             txtName.Name = "txtName";
             txtName.Size = new Size(345, 20);
             txtName.TabIndex = 3;
@@ -249,7 +261,7 @@
             // 
             lbEmployeeIden.AutoSize = true;
             lbEmployeeIden.ForeColor = Color.FromArgb(59, 93, 79);
-            lbEmployeeIden.Location = new Point(10, 104);
+            lbEmployeeIden.Location = new Point(3, 181);
             lbEmployeeIden.Name = "lbEmployeeIden";
             lbEmployeeIden.Size = new Size(68, 20);
             lbEmployeeIden.TabIndex = 4;
@@ -259,7 +271,7 @@
             // 
             lbEmployeeName.AutoSize = true;
             lbEmployeeName.ForeColor = Color.FromArgb(59, 93, 79);
-            lbEmployeeName.Location = new Point(0, 63);
+            lbEmployeeName.Location = new Point(0, 136);
             lbEmployeeName.Name = "lbEmployeeName";
             lbEmployeeName.Size = new Size(121, 20);
             lbEmployeeName.TabIndex = 2;
@@ -267,10 +279,13 @@
             // 
             // gbInfo
             // 
-            gbInfo.Controls.Add(pnInfoButton);
+            gbInfo.Controls.Add(txtPassword);
             gbInfo.Controls.Add(txtName);
+            gbInfo.Controls.Add(lbPassword);
             gbInfo.Controls.Add(cbRole);
+            gbInfo.Controls.Add(txtGmail);
             gbInfo.Controls.Add(txtIden);
+            gbInfo.Controls.Add(lbGmail);
             gbInfo.Controls.Add(dtpDOB);
             gbInfo.Controls.Add(txtPhoneNumber);
             gbInfo.Controls.Add(lbCurrency);
@@ -291,64 +306,112 @@
             gbInfo.Location = new Point(2, 12);
             gbInfo.Name = "gbInfo";
             gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            gbInfo.Size = new Size(1203, 289);
+            gbInfo.Size = new Size(1203, 268);
             gbInfo.TabIndex = 2;
             gbInfo.Text = "Thông tin";
             // 
-            // label1
+            // txtPassword
             // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.FromArgb(59, 93, 79);
-            label1.Location = new Point(158, 379);
-            label1.Name = "label1";
-            label1.Size = new Size(121, 20);
-            label1.TabIndex = 29;
-            label1.Text = "Họ tên nhân viên";
+            txtPassword.BorderStyle = BorderStyle.None;
+            txtPassword.Location = new Point(156, 97);
+            txtPassword.Name = "txtPassword";
+            txtPassword.ReadOnly = true;
+            txtPassword.Size = new Size(345, 20);
+            txtPassword.TabIndex = 32;
             // 
-            // textBox2
+            // lbPassword
             // 
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(304, 379);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(345, 20);
-            textBox2.TabIndex = 30;
+            lbPassword.AutoSize = true;
+            lbPassword.ForeColor = Color.FromArgb(59, 93, 79);
+            lbPassword.Location = new Point(1, 97);
+            lbPassword.Name = "lbPassword";
+            lbPassword.Size = new Size(70, 20);
+            lbPassword.TabIndex = 31;
+            lbPassword.Text = "Mật khẩu";
             // 
-            // label2
+            // txtGmail
             // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.FromArgb(59, 93, 79);
-            label2.Location = new Point(158, 413);
-            label2.Name = "label2";
-            label2.Size = new Size(121, 20);
-            label2.TabIndex = 31;
-            label2.Text = "Họ tên nhân viên";
+            txtGmail.BorderStyle = BorderStyle.None;
+            txtGmail.Location = new Point(156, 63);
+            txtGmail.Name = "txtGmail";
+            txtGmail.ReadOnly = true;
+            txtGmail.Size = new Size(345, 20);
+            txtGmail.TabIndex = 30;
             // 
-            // textBox1
+            // lbGmail
             // 
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(304, 420);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(345, 20);
-            textBox1.TabIndex = 32;
+            lbGmail.AutoSize = true;
+            lbGmail.ForeColor = Color.FromArgb(59, 93, 79);
+            lbGmail.Location = new Point(3, 63);
+            lbGmail.Name = "lbGmail";
+            lbGmail.Size = new Size(48, 20);
+            lbGmail.TabIndex = 29;
+            lbGmail.Text = "Gmail";
+            // 
+            // pnButton
+            // 
+            pnButton.Controls.Add(btnChangeInfo);
+            pnButton.Controls.Add(btnChangePW);
+            pnButton.Location = new Point(856, 286);
+            pnButton.Name = "pnButton";
+            pnButton.Size = new Size(349, 45);
+            pnButton.TabIndex = 29;
+            // 
+            // btnChangeInfo
+            // 
+            btnChangeInfo.BackColor = Color.FromArgb(59, 93, 79);
+            btnChangeInfo.CustomizableEdges = customizableEdges11;
+            btnChangeInfo.DisabledState.BorderColor = Color.DarkGray;
+            btnChangeInfo.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnChangeInfo.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnChangeInfo.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnChangeInfo.FillColor = Color.FromArgb(59, 93, 79);
+            btnChangeInfo.Font = new Font("Segoe UI", 9F);
+            btnChangeInfo.ForeColor = Color.White;
+            btnChangeInfo.Location = new Point(3, 3);
+            btnChangeInfo.Name = "btnChangeInfo";
+            btnChangeInfo.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnChangeInfo.Size = new Size(163, 32);
+            btnChangeInfo.TabIndex = 26;
+            btnChangeInfo.Text = "Sửa thông tin";
+            btnChangeInfo.Click += btnChangeInfo_Click;
+            // 
+            // btnChangePW
+            // 
+            btnChangePW.BackColor = Color.FromArgb(59, 93, 79);
+            btnChangePW.CustomizableEdges = customizableEdges13;
+            btnChangePW.DisabledState.BorderColor = Color.DarkGray;
+            btnChangePW.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnChangePW.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnChangePW.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnChangePW.FillColor = Color.FromArgb(59, 93, 79);
+            btnChangePW.Font = new Font("Segoe UI", 9F);
+            btnChangePW.ForeColor = Color.White;
+            btnChangePW.Location = new Point(172, 3);
+            btnChangePW.Name = "btnChangePW";
+            btnChangePW.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btnChangePW.Size = new Size(163, 32);
+            btnChangePW.TabIndex = 27;
+            btnChangePW.Text = "Đổi mật khẩu";
+            btnChangePW.Click += btnChangePW_Click;
             // 
             // frmUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1217, 651);
-            Controls.Add(textBox1);
             Controls.Add(gbInfo);
-            Controls.Add(label2);
-            Controls.Add(textBox2);
-            Controls.Add(label1);
+            Controls.Add(pnInfoButton);
+            Controls.Add(pnButton);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmUser";
             Text = "frmUser";
+            Load += frmUser_Load;
             pnInfoButton.ResumeLayout(false);
             gbInfo.ResumeLayout(false);
             gbInfo.PerformLayout();
+            pnButton.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -372,9 +435,12 @@
         private Label lbEmployeeIden;
         private Label lbEmployeeName;
         private Guna.UI2.WinForms.Guna2GroupBox gbInfo;
-        private TextBox textBox2;
-        private Label label1;
-        private Label label2;
-        private TextBox textBox1;
+        private TextBox txtGmail;
+        private Label lbGmail;
+        private Label lbPassword;
+        private TextBox txtPassword;
+        private FlowLayoutPanel pnButton;
+        private Guna.UI2.WinForms.Guna2Button btnChangeInfo;
+        private Guna.UI2.WinForms.Guna2Button btnChangePW;
     }
 }
