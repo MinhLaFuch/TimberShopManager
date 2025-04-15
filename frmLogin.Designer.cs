@@ -190,7 +190,6 @@
             pnLogin.Name = "pnLogin";
             pnLogin.Size = new Size(471, 503);
             pnLogin.TabIndex = 13;
-            pnLogin.Paint += pnLogin_Paint;
             // 
             // panel1
             // 
