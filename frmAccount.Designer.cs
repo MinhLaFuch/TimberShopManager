@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             gbAccInfo = new GroupBox();
+            cbRole = new Guna.UI2.WinForms.Guna2ComboBox();
             txtEmployeeID = new TextBox();
+            dtpDOB = new Guna.UI2.WinForms.Guna2DateTimePicker();
             txtIden = new TextBox();
             txtAddress = new TextBox();
             txtName = new TextBox();
@@ -50,8 +52,6 @@
             btnAdd = new Button();
             btnLock = new Button();
             btnSearch = new Button();
-            dtpDOB = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            cbRole = new Guna.UI2.WinForms.Guna2ComboBox();
             gbAccInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAccount).BeginInit();
             SuspendLayout();
@@ -77,6 +77,24 @@
             gbAccInfo.TabStop = false;
             gbAccInfo.Text = "Thông tin";
             // 
+            // cbRole
+            // 
+            cbRole.BackColor = Color.FromArgb(59, 93, 79);
+            cbRole.BorderColor = Color.FromArgb(59, 93, 79);
+            cbRole.CustomizableEdges = customizableEdges1;
+            cbRole.DrawMode = DrawMode.OwnerDrawFixed;
+            cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbRole.FocusedColor = Color.FromArgb(94, 148, 255);
+            cbRole.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cbRole.Font = new Font("Segoe UI", 10F);
+            cbRole.ForeColor = Color.FromArgb(68, 88, 112);
+            cbRole.ItemHeight = 30;
+            cbRole.Location = new Point(705, 109);
+            cbRole.Name = "cbRole";
+            cbRole.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            cbRole.Size = new Size(250, 36);
+            cbRole.TabIndex = 9;
+            // 
             // txtEmployeeID
             // 
             txtEmployeeID.BorderStyle = BorderStyle.None;
@@ -84,6 +102,23 @@
             txtEmployeeID.Name = "txtEmployeeID";
             txtEmployeeID.Size = new Size(345, 20);
             txtEmployeeID.TabIndex = 1;
+            // 
+            // dtpDOB
+            // 
+            dtpDOB.Checked = true;
+            dtpDOB.CustomizableEdges = customizableEdges3;
+            dtpDOB.FillColor = Color.FromArgb(59, 93, 79);
+            dtpDOB.Font = new Font("Segoe UI", 9F);
+            dtpDOB.ForeColor = SystemColors.ButtonFace;
+            dtpDOB.Format = DateTimePickerFormat.Long;
+            dtpDOB.Location = new Point(705, 58);
+            dtpDOB.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            dtpDOB.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            dtpDOB.Name = "dtpDOB";
+            dtpDOB.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            dtpDOB.Size = new Size(250, 45);
+            dtpDOB.TabIndex = 9;
+            dtpDOB.Value = new DateTime(2025, 4, 14, 10, 37, 8, 863);
             // 
             // txtIden
             // 
@@ -170,37 +205,37 @@
             dgvAccount.BorderStyle = BorderStyle.None;
             dgvAccount.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvAccount.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvAccount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(136, 136, 136);
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvAccount.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(136, 136, 136);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvAccount.DefaultCellStyle = dataGridViewCellStyle2;
             dgvAccount.EnableHeadersVisualStyles = false;
             dgvAccount.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             dgvAccount.GridColor = Color.FromArgb(255, 255, 255);
             dgvAccount.Location = new Point(256, 213);
             dgvAccount.Name = "dgvAccount";
             dgvAccount.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgvAccount.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvAccount.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvAccount.RowHeadersWidth = 51;
             dgvAccount.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvAccount.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -246,46 +281,11 @@
             btnSearch.Text = "Tìm kiếm";
             btnSearch.UseVisualStyleBackColor = false;
             // 
-            // dtpDOB
-            // 
-            dtpDOB.Checked = true;
-            dtpDOB.CustomizableEdges = customizableEdges7;
-            dtpDOB.FillColor = Color.FromArgb(59, 93, 79);
-            dtpDOB.Font = new Font("Segoe UI", 9F);
-            dtpDOB.ForeColor = SystemColors.ButtonFace;
-            dtpDOB.Format = DateTimePickerFormat.Long;
-            dtpDOB.Location = new Point(705, 58);
-            dtpDOB.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
-            dtpDOB.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
-            dtpDOB.Name = "dtpDOB";
-            dtpDOB.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            dtpDOB.Size = new Size(250, 45);
-            dtpDOB.TabIndex = 9;
-            dtpDOB.Value = new DateTime(2025, 4, 14, 10, 37, 8, 863);
-            // 
-            // cbRole
-            // 
-            cbRole.BackColor = Color.FromArgb(59, 93, 79);
-            cbRole.BorderColor = Color.FromArgb(59, 93, 79);
-            cbRole.CustomizableEdges = customizableEdges5;
-            cbRole.DrawMode = DrawMode.OwnerDrawFixed;
-            cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbRole.FocusedColor = Color.FromArgb(94, 148, 255);
-            cbRole.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cbRole.Font = new Font("Segoe UI", 10F);
-            cbRole.ForeColor = Color.FromArgb(68, 88, 112);
-            cbRole.ItemHeight = 30;
-            cbRole.Location = new Point(705, 109);
-            cbRole.Name = "cbRole";
-            cbRole.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            cbRole.Size = new Size(250, 36);
-            cbRole.TabIndex = 9;
-            // 
             // frmAccount
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1280, 536);
+            ClientSize = new Size(1281, 712);
             Controls.Add(btnSearch);
             Controls.Add(btnLock);
             Controls.Add(btnAdd);

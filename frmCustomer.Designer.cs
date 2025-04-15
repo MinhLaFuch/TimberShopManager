@@ -53,11 +53,11 @@
             dataGridView.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Dock = DockStyle.Bottom;
-            dataGridView.Location = new Point(0, 288);
+            dataGridView.Location = new Point(0, 400);
             dataGridView.Margin = new Padding(3, 4, 3, 4);
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersWidth = 51;
-            dataGridView.Size = new Size(474, 312);
+            dataGridView.Size = new Size(1281, 312);
             dataGridView.TabIndex = 0;
             // 
             // groupBox1
@@ -73,7 +73,7 @@
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(474, 169);
+            groupBox1.Size = new Size(1281, 169);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin khách hàng";
@@ -142,7 +142,7 @@
             groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(474, 119);
+            groupBox2.Size = new Size(1281, 231);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
@@ -172,7 +172,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(474, 600);
+            ClientSize = new Size(1281, 712);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView);
