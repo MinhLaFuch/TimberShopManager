@@ -44,7 +44,6 @@
             btnCancel = new Guna.UI2.WinForms.Guna2Button();
             lbNewPasswordWarning = new Label();
             lbNewPasswordAgainWarning = new Label();
-            pnButton = new FlowLayoutPanel();
             lbPlaceholder = new Label();
             pnNewPassword = new Panel();
             lbNewPassword = new Label();
@@ -52,7 +51,6 @@
             lbCode = new Label();
             lbCodeWarning = new Label();
             pnCode = new Panel();
-            pnButton.SuspendLayout();
             pnNewPassword.SuspendLayout();
             pnCode.SuspendLayout();
             SuspendLayout();
@@ -130,7 +128,7 @@
             btnSave.FillColor = Color.FromArgb(59, 93, 79);
             btnSave.Font = new Font("Segoe UI", 9F);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(3, 3);
+            btnSave.Location = new Point(432, 363);
             btnSave.Name = "btnSave";
             btnSave.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnSave.Size = new Size(123, 30);
@@ -148,7 +146,7 @@
             btnCancel.FillColor = Color.FromArgb(59, 93, 79);
             btnCancel.Font = new Font("Segoe UI", 9F);
             btnCancel.ForeColor = Color.White;
-            btnCancel.Location = new Point(132, 3);
+            btnCancel.Location = new Point(561, 363);
             btnCancel.Name = "btnCancel";
             btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnCancel.Size = new Size(123, 30);
@@ -175,15 +173,6 @@
             lbNewPasswordAgainWarning.Size = new Size(70, 20);
             lbNewPasswordAgainWarning.TabIndex = 11;
             lbNewPasswordAgainWarning.Text = "cảnh báo";
-            // 
-            // pnButton
-            // 
-            pnButton.Controls.Add(btnSave);
-            pnButton.Controls.Add(btnCancel);
-            pnButton.Location = new Point(426, 353);
-            pnButton.Name = "pnButton";
-            pnButton.Size = new Size(270, 45);
-            pnButton.TabIndex = 13;
             // 
             // lbPlaceholder
             // 
@@ -264,10 +253,11 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(696, 405);
+            Controls.Add(btnSave);
+            Controls.Add(btnCancel);
             Controls.Add(pnCode);
             Controls.Add(pnNewPassword);
             Controls.Add(lbPlaceholder);
-            Controls.Add(pnButton);
             Controls.Add(txtGmail);
             Controls.Add(lbGmail);
             Controls.Add(btnSendEmail);
@@ -275,7 +265,6 @@
             Name = "frmChangePW";
             Text = "frmChangePW";
             Load += frmChangePW_Load;
-            pnButton.ResumeLayout(false);
             pnNewPassword.ResumeLayout(false);
             pnNewPassword.PerformLayout();
             pnCode.ResumeLayout(false);
@@ -296,7 +285,6 @@
         private Guna.UI2.WinForms.Guna2Button btnCancel;
         private Label lbNewPasswordWarning;
         private Label lbNewPasswordAgainWarning;
-        private FlowLayoutPanel pnButton;
         private Label lbPlaceholder;
         private Panel pnNewPassword;
         private Label lbNewPassword;

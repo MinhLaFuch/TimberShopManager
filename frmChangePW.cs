@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using timber_shop_manager.objects;
+using Microsoft.Data.SqlClient;
 
 namespace timber_shop_manager
 {
@@ -48,12 +49,12 @@ namespace timber_shop_manager
         private void sendEmail()
         {
             string email = "ph18122005@gmail.com";
-            string password = "kbsifafkyvvpjpjt";
-            string smtpHost = "smtp.gmail.com"; // or your provider
+            string appPassword = "kbsifafkyvvpjpjt"; // Use App Password for Gmail
+            string smtpHost = "smtp.gmail.com";
 
-            // Generate 6-digit code
+            // Generate 6-digit verification code
             Random random = new Random();
-            verificationCode = random.Next(100000, 999999);
+            int verificationCode = random.Next(100000, 999999);
 
             string subject = "Your Verification Code";
             string body = $"Hello {txtGmail.Text},\n\nYour verification code is: {verificationCode}\n\nPlease use this code to proceed with changing your password.\n\nThank you.";
@@ -64,12 +65,12 @@ namespace timber_shop_manager
                 using (MailMessage mailMessage = new MailMessage())
                 {
                     smtpClient.Port = 587;
-                    smtpClient.Credentials = new NetworkCredential(email, password);
+                    smtpClient.Credentials = new NetworkCredential(email, appPassword); // Use app password
                     smtpClient.EnableSsl = true;
                     smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-                    mailMessage.From = new MailAddress(email, password);
-                    mailMessage.To.Add(txtGmail.Text + "@gmail.com"); // safer than assuming @gmail.com
+                    mailMessage.From = new MailAddress(email);
+                    mailMessage.To.Add(txtGmail.Text + "@gmail.com"); // Validate user input more carefully
                     mailMessage.Subject = subject;
                     mailMessage.Body = body;
 
@@ -79,12 +80,18 @@ namespace timber_shop_manager
                 MessageBox.Show("Verification code sent successfully. Please check your email.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 pnCode.Visible = true;
             }
+            catch (SmtpException smtpEx)
+            {
+                // Handle specific SMTP-related errors (e.g., server timeout, authentication issues)
+                MessageBox.Show($"SMTP error: {smtpEx.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
+                // Handle other errors (e.g., network issues)
                 MessageBox.Show($"Failed to send verification code. Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+
         #endregion
         #region Events
         #region Load
@@ -100,7 +107,17 @@ namespace timber_shop_manager
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            if (txtNewPassword.Text == txtNewPasswordAgain.Text)
+            {
+                string query = "UPDATE Account SET Password = @newPass WHERE Username = @user";
+                dbHelper.ExecuteNonQuery(query,
+                    new SqlParameter("@newPass", txtNewPassword.Text),
+                    new SqlParameter("@user", txtGmail.Text));
+            }
+            else
+            {
+                lbNewPasswordAgainWarning.Text = "Mật khẩu không khớp. Vui lòng kiểm tra lại.";
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -115,11 +132,25 @@ namespace timber_shop_manager
         }
         #endregion
         #region Text Change
+
         private void txtCode_TextChanged(object sender, EventArgs e)
         {
             if (txtCode.Text.Length == txtCode.MaxLength)
             {
                 checkVerifyCode();
+            }
+        }
+        private void txtNewPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNewPassword.Text.Length < 8)
+            {
+                lbNewPasswordWarning.Text = "Mật khẩu phải ít nhất 8 kí tự";
+                lbNewPasswordWarning.ForeColor = Color.Red;
+            }
+            else if (Program.C)
+            {
+                lbNewPasswordWarning.Text = "Mật khẩu phải có ít nhất 1 kí tự đặc biệt";
+                lbNewPasswordWarning.ForeColor = Color.Red;
             }
         }
         #endregion
