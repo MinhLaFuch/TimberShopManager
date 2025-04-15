@@ -56,7 +56,7 @@ namespace timber_shop_manager
             verificationCode = random.Next(100000, 999999);
 
             string subject = "Your Verification Code";
-            string body = $"Hello {account.Username},\n\nYour verification code is: {verificationCode}\n\nPlease use this code to proceed with changing your password.\n\nThank you.";
+            string body = $"Hello {txtGmail.Text},\n\nYour verification code is: {verificationCode}\n\nPlease use this code to proceed with changing your password.\n\nThank you.";
 
             try
             {
@@ -69,7 +69,7 @@ namespace timber_shop_manager
                     smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
 
                     mailMessage.From = new MailAddress(email);
-                    mailMessage.To.Add(account.Username + "@gmail.com"); // safer than assuming @gmail.com
+                    mailMessage.To.Add(txtGmail.Text + "@gmail.com"); // safer than assuming @gmail.com
                     mailMessage.Subject = subject;
                     mailMessage.Body = body;
 

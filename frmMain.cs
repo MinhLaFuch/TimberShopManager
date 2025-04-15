@@ -253,6 +253,7 @@ namespace timber_shop_manager
             if (confirmation == DialogResult.Yes)
             {
                 this.Close();
+                Application.Exit();
             }
         }
         private void pbUser_Click(object sender, EventArgs e)
