@@ -208,6 +208,8 @@ namespace timber_shop_manager
             pnMenu.VerticalScroll.Visible = false;
             pnMenu.HorizontalScroll.Enabled = false;
             pnMenu.HorizontalScroll.Visible = false;
+            pnManage.Height = 66;
+            pnReport.Height = 66;
             lbUsername.Text = account.Username;
             loadFormBasedOnRole();
         }
