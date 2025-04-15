@@ -31,7 +31,7 @@ namespace timber_shop_manager
 
             string currentInvoiceId = Convert.ToString(dbHelper.ExecuteScalar(query));
             string invoiceId = Program.GenerateNextCode(currentInvoiceId, Product.PREFIX, Product.CODE_LENGTH);
-            txtInvoiceId.Text = invoiceId;
+            txtID.Text = invoiceId;
         }
 
         private void cbbSearch_SelectedValueChanged(object sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace timber_shop_manager
             gbCustomer.Enabled = false;
 
 
-            txtInvoiceId.Clear();
+            txtID.Clear();
         }
 
         private void LoadComboboxSearch()
