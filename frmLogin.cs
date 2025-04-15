@@ -40,6 +40,15 @@ namespace timber_shop_manager
             //lblUserError.Text = string.Empty;
             //lblPassError.Text = string.Empty;
         }
+        private void ApplyRoundedBorderToPanel()
+        {
+            int radius = 25; // Adjust the radius as needed
+            Rectangle rect = new Rectangle(0, 0, pnLogin.Width, pnLogin.Height);
+            using (GraphicsPath path = GetRoundedRectPath(rect, radius))
+            {
+                pnLogin.Region = new Region(path);
+            }
+        }
         private GraphicsPath GetRoundedRectPath(Rectangle rect, int radius)
         {
             GraphicsPath path = new GraphicsPath();
@@ -63,13 +72,14 @@ namespace timber_shop_manager
             LoadForm();
 
             // Changing the panel style
-            int radius = 25;
-            Rectangle rect = new Rectangle(0, 0, pnLogin.Width, pnLogin.Height);
-            pnLogin.Region = new Region(GetRoundedRectPath(rect, radius));
+            ApplyRoundedBorderToPanel();
 
             // Set the error text
             lblUserError.Text = string.Empty;
             lblPassError.Text = string.Empty;
+
+            // Hide Forgor Password button
+            btnForgotPassword.Visible = false;
         }
         #endregion
         #region Click
@@ -89,6 +99,7 @@ namespace timber_shop_manager
                 SaveUsername(txtUsername.Text);
                 lblUserError.Text = string.Empty;
                 txtPassword.Text = string.Empty;
+                btnForgotPassword.Visible = true;
             }
             else
             {
@@ -112,7 +123,6 @@ namespace timber_shop_manager
                 e.Graphics.DrawPath(pen, path);
             }
         }
-
         #endregion
         #endregion
     }

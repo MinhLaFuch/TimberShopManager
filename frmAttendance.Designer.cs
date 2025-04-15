@@ -39,6 +39,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             lbTimeStamp = new Label();
             sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
             dgvAttendance = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -46,6 +48,7 @@
             dtpFrom = new Guna.UI2.WinForms.Guna2DateTimePicker();
             dtpTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
             btnRefresh = new Guna.UI2.WinForms.Guna2Button();
+            btnAttend = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)dgvAttendance).BeginInit();
             SuspendLayout();
             // 
@@ -175,11 +178,29 @@
             btnRefresh.TabIndex = 11;
             btnRefresh.Text = "Làm mới";
             // 
+            // btnAttend
+            // 
+            btnAttend.CustomizableEdges = customizableEdges9;
+            btnAttend.DisabledState.BorderColor = Color.DarkGray;
+            btnAttend.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAttend.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAttend.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAttend.FillColor = Color.FromArgb(59, 93, 79);
+            btnAttend.Font = new Font("Segoe UI", 9F);
+            btnAttend.ForeColor = Color.White;
+            btnAttend.Location = new Point(12, 393);
+            btnAttend.Name = "btnAttend";
+            btnAttend.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnAttend.Size = new Size(211, 56);
+            btnAttend.TabIndex = 12;
+            btnAttend.Text = "Chấm công";
+            // 
             // frmAttendance
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1217, 651);
+            Controls.Add(btnAttend);
             Controls.Add(btnRefresh);
             Controls.Add(dtpTo);
             Controls.Add(dtpFrom);
@@ -203,5 +224,6 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpFrom;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpTo;
         private Guna.UI2.WinForms.Guna2Button btnRefresh;
+        private Guna.UI2.WinForms.Guna2Button btnAttend;
     }
 }

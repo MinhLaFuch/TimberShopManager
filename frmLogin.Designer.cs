@@ -45,6 +45,7 @@
             lbFooter = new Label();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            btnForgotPassword = new Button();
             pnLogin.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -238,12 +239,26 @@
             pictureBox2.TabIndex = 14;
             pictureBox2.TabStop = false;
             // 
+            // btnForgotPassword
+            // 
+            btnForgotPassword.BackColor = Color.FromArgb(59, 93, 79);
+            btnForgotPassword.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnForgotPassword.ForeColor = SystemColors.ButtonFace;
+            btnForgotPassword.Location = new Point(661, 357);
+            btnForgotPassword.Margin = new Padding(3, 4, 3, 4);
+            btnForgotPassword.Name = "btnForgotPassword";
+            btnForgotPassword.Size = new Size(117, 41);
+            btnForgotPassword.TabIndex = 15;
+            btnForgotPassword.Text = "Quên mật khẩu?";
+            btnForgotPassword.UseVisualStyleBackColor = false;
+            // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(801, 503);
+            Controls.Add(btnForgotPassword);
             Controls.Add(pictureBox2);
             Controls.Add(pnLogin);
             Controls.Add(controlBox);
@@ -287,5 +302,6 @@
         private Label lbFooter;
         private Label label3;
         private PictureBox pictureBox2;
+        private Button btnForgotPassword;
     }
 }
