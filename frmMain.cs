@@ -172,11 +172,13 @@ namespace timber_shop_manager
                 }
                 if(control is Panel panel)
                 {
+                    int i = 0;
                     foreach(Control innerControl in panel.Controls)
                     {
                         if (innerControl is Button innerButton)
                         {
-                            innerButton.BackColor = innerBtnColor;
+                            innerButton.BackColor = i > 0 ? innerBtnColor: outerBtnColor;
+                            i++;
                         }
                     }
                 }   
