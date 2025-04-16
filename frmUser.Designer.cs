@@ -36,12 +36,12 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnInfoButton = new FlowLayoutPanel();
             btnSave = new Guna.UI2.WinForms.Guna2Button();
             btnCancel = new Guna.UI2.WinForms.Guna2Button();
@@ -65,11 +65,13 @@
             lbPassword = new Label();
             txtGmail = new TextBox();
             lbGmail = new Label();
-            pnButton = new FlowLayoutPanel();
+            pnFeatureButton = new FlowLayoutPanel();
             btnChangeInfo = new Guna.UI2.WinForms.Guna2Button();
             btnChangePW = new Guna.UI2.WinForms.Guna2Button();
+            pnButton = new FlowLayoutPanel();
             pnInfoButton.SuspendLayout();
             gbInfo.SuspendLayout();
+            pnFeatureButton.SuspendLayout();
             pnButton.SuspendLayout();
             SuspendLayout();
             // 
@@ -77,7 +79,7 @@
             // 
             pnInfoButton.Controls.Add(btnSave);
             pnInfoButton.Controls.Add(btnCancel);
-            pnInfoButton.Location = new Point(841, 223);
+            pnInfoButton.Location = new Point(3, 57);
             pnInfoButton.Name = "pnInfoButton";
             pnInfoButton.Size = new Size(349, 45);
             pnInfoButton.TabIndex = 28;
@@ -198,7 +200,7 @@
             // 
             lbPhoneNumber.AutoSize = true;
             lbPhoneNumber.ForeColor = Color.FromArgb(59, 93, 79);
-            lbPhoneNumber.Location = new Point(3, 219);
+            lbPhoneNumber.Location = new Point(16, 219);
             lbPhoneNumber.Name = "lbPhoneNumber";
             lbPhoneNumber.Size = new Size(97, 20);
             lbPhoneNumber.TabIndex = 6;
@@ -265,7 +267,7 @@
             // 
             lbEmployeeIden.AutoSize = true;
             lbEmployeeIden.ForeColor = Color.FromArgb(59, 93, 79);
-            lbEmployeeIden.Location = new Point(3, 181);
+            lbEmployeeIden.Location = new Point(16, 181);
             lbEmployeeIden.Name = "lbEmployeeIden";
             lbEmployeeIden.Size = new Size(68, 20);
             lbEmployeeIden.TabIndex = 4;
@@ -275,7 +277,7 @@
             // 
             lbEmployeeName.AutoSize = true;
             lbEmployeeName.ForeColor = Color.FromArgb(59, 93, 79);
-            lbEmployeeName.Location = new Point(0, 136);
+            lbEmployeeName.Location = new Point(16, 136);
             lbEmployeeName.Name = "lbEmployeeName";
             lbEmployeeName.Size = new Size(121, 20);
             lbEmployeeName.TabIndex = 2;
@@ -284,9 +286,7 @@
             // gbInfo
             // 
             gbInfo.Controls.Add(txtPassword);
-            gbInfo.Controls.Add(pnInfoButton);
             gbInfo.Controls.Add(txtName);
-            gbInfo.Controls.Add(pnButton);
             gbInfo.Controls.Add(lbPassword);
             gbInfo.Controls.Add(cbRole);
             gbInfo.Controls.Add(txtGmail);
@@ -305,14 +305,14 @@
             gbInfo.Controls.Add(lbEmployeeDOB);
             gbInfo.Controls.Add(lbEmployeeAddress);
             gbInfo.CustomBorderColor = Color.FromArgb(59, 93, 79);
-            gbInfo.CustomizableEdges = customizableEdges13;
+            gbInfo.CustomizableEdges = customizableEdges9;
             gbInfo.FillColor = SystemColors.Control;
             gbInfo.Font = new Font("Segoe UI", 9F);
             gbInfo.ForeColor = Color.White;
             gbInfo.Location = new Point(12, 12);
             gbInfo.Name = "gbInfo";
-            gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            gbInfo.Size = new Size(1193, 268);
+            gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            gbInfo.Size = new Size(1193, 263);
             gbInfo.TabIndex = 2;
             gbInfo.Text = "Thông tin";
             // 
@@ -330,7 +330,7 @@
             // 
             lbPassword.AutoSize = true;
             lbPassword.ForeColor = Color.FromArgb(59, 93, 79);
-            lbPassword.Location = new Point(1, 97);
+            lbPassword.Location = new Point(14, 97);
             lbPassword.Name = "lbPassword";
             lbPassword.Size = new Size(70, 20);
             lbPassword.TabIndex = 31;
@@ -350,25 +350,25 @@
             // 
             lbGmail.AutoSize = true;
             lbGmail.ForeColor = Color.FromArgb(59, 93, 79);
-            lbGmail.Location = new Point(3, 63);
+            lbGmail.Location = new Point(14, 63);
             lbGmail.Name = "lbGmail";
             lbGmail.Size = new Size(48, 20);
             lbGmail.TabIndex = 29;
             lbGmail.Text = "Gmail";
             // 
-            // pnButton
+            // pnFeatureButton
             // 
-            pnButton.Controls.Add(btnChangeInfo);
-            pnButton.Controls.Add(btnChangePW);
-            pnButton.Location = new Point(841, 223);
-            pnButton.Name = "pnButton";
-            pnButton.Size = new Size(349, 45);
-            pnButton.TabIndex = 29;
+            pnFeatureButton.Controls.Add(btnChangeInfo);
+            pnFeatureButton.Controls.Add(btnChangePW);
+            pnFeatureButton.Location = new Point(3, 3);
+            pnFeatureButton.Name = "pnFeatureButton";
+            pnFeatureButton.Size = new Size(349, 48);
+            pnFeatureButton.TabIndex = 29;
             // 
             // btnChangeInfo
             // 
             btnChangeInfo.BackColor = Color.FromArgb(59, 93, 79);
-            btnChangeInfo.CustomizableEdges = customizableEdges9;
+            btnChangeInfo.CustomizableEdges = customizableEdges11;
             btnChangeInfo.DisabledState.BorderColor = Color.DarkGray;
             btnChangeInfo.DisabledState.CustomBorderColor = Color.DarkGray;
             btnChangeInfo.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -378,7 +378,7 @@
             btnChangeInfo.ForeColor = Color.White;
             btnChangeInfo.Location = new Point(3, 3);
             btnChangeInfo.Name = "btnChangeInfo";
-            btnChangeInfo.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnChangeInfo.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnChangeInfo.Size = new Size(163, 32);
             btnChangeInfo.TabIndex = 26;
             btnChangeInfo.Text = "Sửa thông tin";
@@ -387,7 +387,7 @@
             // btnChangePW
             // 
             btnChangePW.BackColor = Color.FromArgb(59, 93, 79);
-            btnChangePW.CustomizableEdges = customizableEdges11;
+            btnChangePW.CustomizableEdges = customizableEdges13;
             btnChangePW.DisabledState.BorderColor = Color.DarkGray;
             btnChangePW.DisabledState.CustomBorderColor = Color.DarkGray;
             btnChangePW.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -397,17 +397,27 @@
             btnChangePW.ForeColor = Color.White;
             btnChangePW.Location = new Point(172, 3);
             btnChangePW.Name = "btnChangePW";
-            btnChangePW.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnChangePW.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnChangePW.Size = new Size(163, 32);
             btnChangePW.TabIndex = 27;
             btnChangePW.Text = "Đổi mật khẩu";
             btnChangePW.Click += btnChangePW_Click;
+            // 
+            // pnButton
+            // 
+            pnButton.Controls.Add(pnFeatureButton);
+            pnButton.Controls.Add(pnInfoButton);
+            pnButton.Location = new Point(846, 275);
+            pnButton.Name = "pnButton";
+            pnButton.Size = new Size(359, 43);
+            pnButton.TabIndex = 30;
             // 
             // frmUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1217, 651);
+            Controls.Add(pnButton);
             Controls.Add(gbInfo);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmUser";
@@ -416,6 +426,7 @@
             pnInfoButton.ResumeLayout(false);
             gbInfo.ResumeLayout(false);
             gbInfo.PerformLayout();
+            pnFeatureButton.ResumeLayout(false);
             pnButton.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -445,8 +456,9 @@
         private Label lbGmail;
         private Label lbPassword;
         private TextBox txtPassword;
-        private FlowLayoutPanel pnButton;
+        private FlowLayoutPanel pnFeatureButton;
         private Guna.UI2.WinForms.Guna2Button btnChangeInfo;
         private Guna.UI2.WinForms.Guna2Button btnChangePW;
+        private FlowLayoutPanel pnButton;
     }
 }

@@ -66,7 +66,7 @@
             lbEmail = new Label();
             lbWebsite = new Label();
             txtEmail = new TextBox();
-            pnButton = new FlowLayoutPanel();
+            pnFeatureButton = new FlowLayoutPanel();
             btnAdd = new Guna.UI2.WinForms.Guna2Button();
             btnMod = new Guna.UI2.WinForms.Guna2Button();
             btnDel = new Guna.UI2.WinForms.Guna2Button();
@@ -74,12 +74,14 @@
             gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
             dgvInvoice = new Guna.UI2.WinForms.Guna2DataGridView();
             gbPurchaseHistory = new Guna.UI2.WinForms.Guna2GroupBox();
+            pnButton = new FlowLayoutPanel();
             btnSearch = new Guna.UI2.WinForms.Guna2Button();
             pnInfoButton.SuspendLayout();
-            pnButton.SuspendLayout();
+            pnFeatureButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             gbInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInvoice).BeginInit();
+            pnButton.SuspendLayout();
             SuspendLayout();
             // 
             // btnSearch
@@ -104,7 +106,7 @@
             // 
             pnInfoButton.Controls.Add(btnSave);
             pnInfoButton.Controls.Add(btnCancel);
-            pnInfoButton.Location = new Point(421, 228);
+            pnInfoButton.Location = new Point(3, 58);
             pnInfoButton.Name = "pnInfoButton";
             pnInfoButton.Size = new Size(275, 45);
             pnInfoButton.TabIndex = 31;
@@ -269,16 +271,16 @@
             txtEmail.Size = new Size(241, 20);
             txtEmail.TabIndex = 13;
             // 
-            // pnButton
+            // pnFeatureButton
             // 
-            pnButton.Controls.Add(btnAdd);
-            pnButton.Controls.Add(btnMod);
-            pnButton.Controls.Add(btnDel);
-            pnButton.Controls.Add(btnSearch);
-            pnButton.Location = new Point(15, 228);
-            pnButton.Name = "pnButton";
-            pnButton.Size = new Size(567, 43);
-            pnButton.TabIndex = 29;
+            pnFeatureButton.Controls.Add(btnAdd);
+            pnFeatureButton.Controls.Add(btnMod);
+            pnFeatureButton.Controls.Add(btnDel);
+            pnFeatureButton.Controls.Add(btnSearch);
+            pnFeatureButton.Location = new Point(3, 3);
+            pnFeatureButton.Name = "pnFeatureButton";
+            pnFeatureButton.Size = new Size(567, 49);
+            pnFeatureButton.TabIndex = 29;
             // 
             // btnAdd
             // 
@@ -357,11 +359,11 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgv.DefaultCellStyle = dataGridViewCellStyle3;
             dgv.GridColor = Color.FromArgb(231, 229, 255);
-            dgv.Location = new Point(12, 284);
+            dgv.Location = new Point(15, 268);
             dgv.Name = "dgv";
             dgv.RowHeadersVisible = false;
             dgv.RowHeadersWidth = 51;
-            dgv.Size = new Size(718, 355);
+            dgv.Size = new Size(718, 371);
             dgv.TabIndex = 30;
             dgv.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgv.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -387,9 +389,8 @@
             // 
             // gbInfo
             // 
-            gbInfo.Controls.Add(pnInfoButton);
-            gbInfo.Controls.Add(lbID);
             gbInfo.Controls.Add(pnButton);
+            gbInfo.Controls.Add(lbID);
             gbInfo.Controls.Add(txtID);
             gbInfo.Controls.Add(txtEmail);
             gbInfo.Controls.Add(txtPhoneNumber);
@@ -409,7 +410,7 @@
             gbInfo.Location = new Point(15, 5);
             gbInfo.Name = "gbInfo";
             gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            gbInfo.Size = new Size(715, 273);
+            gbInfo.Size = new Size(715, 257);
             gbInfo.TabIndex = 31;
             gbInfo.Text = "Thông tin";
             // 
@@ -436,11 +437,11 @@
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
             dgvInvoice.DefaultCellStyle = dataGridViewCellStyle6;
             dgvInvoice.GridColor = Color.FromArgb(231, 229, 255);
-            dgvInvoice.Location = new Point(739, 284);
+            dgvInvoice.Location = new Point(739, 268);
             dgvInvoice.Name = "dgvInvoice";
             dgvInvoice.RowHeadersVisible = false;
             dgvInvoice.RowHeadersWidth = 51;
-            dgvInvoice.Size = new Size(448, 355);
+            dgvInvoice.Size = new Size(448, 371);
             dgvInvoice.TabIndex = 32;
             dgvInvoice.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvInvoice.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -473,9 +474,18 @@
             gbPurchaseHistory.Location = new Point(736, 5);
             gbPurchaseHistory.Name = "gbPurchaseHistory";
             gbPurchaseHistory.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            gbPurchaseHistory.Size = new Size(451, 273);
+            gbPurchaseHistory.Size = new Size(451, 254);
             gbPurchaseHistory.TabIndex = 32;
             gbPurchaseHistory.Text = "Hóa đơn";
+            // 
+            // pnButton
+            // 
+            pnButton.Controls.Add(pnFeatureButton);
+            pnButton.Controls.Add(pnInfoButton);
+            pnButton.Location = new Point(161, 203);
+            pnButton.Name = "pnButton";
+            pnButton.Size = new Size(572, 48);
+            pnButton.TabIndex = 32;
             // 
             // frmSupplier
             // 
@@ -493,11 +503,12 @@
             Text = "frmSupplier";
             Load += frmSupplier_Load;
             pnInfoButton.ResumeLayout(false);
-            pnButton.ResumeLayout(false);
+            pnFeatureButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             gbInfo.ResumeLayout(false);
             gbInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInvoice).EndInit();
+            pnButton.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -514,7 +525,7 @@
         private Label lbName;
         private TextBox txtPhoneNumber;
         private Label lbPhoneNumber;
-        private FlowLayoutPanel pnButton;
+        private FlowLayoutPanel pnFeatureButton;
         private Guna.UI2.WinForms.Guna2Button btnAdd;
         private Guna.UI2.WinForms.Guna2Button btnMod;
         private Guna.UI2.WinForms.Guna2Button btnDel;
@@ -526,5 +537,6 @@
         private Guna.UI2.WinForms.Guna2GroupBox gbInfo;
         private Guna.UI2.WinForms.Guna2DataGridView dgvInvoice;
         private Guna.UI2.WinForms.Guna2GroupBox gbPurchaseHistory;
+        private FlowLayoutPanel pnButton;
     }
 }

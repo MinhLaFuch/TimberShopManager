@@ -32,7 +32,7 @@ namespace timber_shop_manager
         private void btnVisibleEnabler(bool b)
         {
             pnInfoButton.Visible = b;
-            pnButton.Visible = !b;
+            pnFeatureButton.Visible = !b;
         }
         private void loadInfo()
         {
