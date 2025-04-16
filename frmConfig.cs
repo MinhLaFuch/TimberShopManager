@@ -16,5 +16,10 @@ namespace timber_shop_manager
         {
             InitializeComponent();
         }
+
+        private void chbWindowAuthetication_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

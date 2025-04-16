@@ -186,7 +186,7 @@
             btnRefresh.Location = new Point(12, 254);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnRefresh.Size = new Size(194, 56);
+            btnRefresh.Size = new Size(201, 56);
             btnRefresh.TabIndex = 11;
             btnRefresh.Text = "Làm mới";
             // 
@@ -203,7 +203,7 @@
             btnAttend.Location = new Point(3, 23);
             btnAttend.Name = "btnAttend";
             btnAttend.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btnAttend.Size = new Size(191, 56);
+            btnAttend.Size = new Size(200, 56);
             btnAttend.TabIndex = 12;
             btnAttend.Text = "Chấm công";
             btnAttend.Click += btnAttend_Click;
@@ -261,7 +261,7 @@
             pnAttend.Controls.Add(lbHour);
             pnAttend.Controls.Add(btnAttend);
             pnAttend.Controls.Add(lbAttendStatus);
-            pnAttend.Location = new Point(5, 387);
+            pnAttend.Location = new Point(12, 388);
             pnAttend.Name = "pnAttend";
             pnAttend.Size = new Size(201, 125);
             pnAttend.TabIndex = 16;
