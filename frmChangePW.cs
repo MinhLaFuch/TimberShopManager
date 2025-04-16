@@ -11,13 +11,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using timber_shop_manager.objects;
 using Microsoft.Data.SqlClient;
+using System.Security.Cryptography;
+using ReaLTaiizor.Controls;
 
 namespace timber_shop_manager
 {
     public partial class frmChangePW : Form
     {
         #region Properties
-        private frmLogin loginForm;
+        private Form form;
         private DatabaseHelper dbHelper = new DatabaseHelper();
         private Account account;
         private int verificationCode;
@@ -26,9 +28,9 @@ namespace timber_shop_manager
         {
             InitializeComponent();
         }
-        public frmChangePW(frmLogin loginForm) : this()
+        public frmChangePW(Form form) : this()
         {
-            this.loginForm = loginForm;
+            this.form = form;
             InitializeComponent();
         }
         public frmChangePW(Account acc) : this()
@@ -139,7 +141,7 @@ namespace timber_shop_manager
                     new SqlParameter("@user", txtGmail.Text));
                 MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
-                loginForm.Show();
+                form.Show();
             }
             else
             {

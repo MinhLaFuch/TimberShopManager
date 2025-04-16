@@ -80,7 +80,7 @@ namespace timber_shop_manager
                 SaveUsername(txtUsername.Text);
 
                 frmMain frmMain = new frmMain(account);
-                this.Hide();
+                this.Close();
                 frmMain.ShowDialog();
             }
         }
