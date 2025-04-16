@@ -122,8 +122,6 @@ namespace timber_shop_manager
                 txtPassword.Text = dgv.Rows[rowIndex].Cells["Mật khẩu"].Value.ToString();
                 cbRole.Text = dgv.Rows[rowIndex].Cells["Chức vụ"].Value.ToString();
 
-
-                pnInfo.Enabled = true;
                 featureButtonEnabler(true, true);
             }
         }
