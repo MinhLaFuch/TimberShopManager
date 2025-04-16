@@ -111,9 +111,9 @@ namespace timber_shop_manager
         }
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
-            sendEmail();
             btnSendEmail.Visible = false;
             lbCodeCountdown.Visible = true;
+            sendEmail();
             expirationTime = DateTime.Now.AddMinutes(1);
             codeExpiration.Start();
         }
@@ -185,7 +185,7 @@ namespace timber_shop_manager
                 codeExpiration.Stop();
                 lbCodeCountdown.Visible = false;
                 btnSendEmail.Visible = true;
-                btnSendEmail.Text = "Gửi mã xác thực";
+                btnSendEmail.Text = "Gửi lại mã xác thực";
             }
             else
             {
