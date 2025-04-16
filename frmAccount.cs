@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using timber_shop_manager.objects;
 
 namespace timber_shop_manager
 {
@@ -26,12 +27,18 @@ namespace timber_shop_manager
         {
             pnInfo.Enabled = false;
             clearTextBox();
-            btnEnabler(true, false);
+            pnButtonEnabler(true, false);
+            featureButtonEnabler(true, false);
             dgv.DataSource = loadData();
         }
         private DataTable loadData()
         {
-            string query = "select * from Account acc join Employee emp ON acc.EmployeeId = emp.EmployeeId";
+            // Load data from database
+            string query = "SELECT emp.EmployeeId AS 'Mã nhân viên', emp.Name AS 'Tên', " +
+                          "acc.Username AS 'Tên tài khoản', acc.Password AS 'Mật khẩu', " +
+                          "emp.Role AS 'Chức vụ' FROM Account acc " +
+                          "JOIN Employee emp ON acc.EmployeeId = emp.EmployeeId " +
+                          "WHERE emp.EmployeeId NOT IN (SELECT EmployeeId FROM LockedAccount)";
             DataTable dt = dbHelper.ExecuteQuery(query);
             return dt;
         }
@@ -39,15 +46,19 @@ namespace timber_shop_manager
         {
             txtID.Clear();
             txtName.Clear();
-            txtAddress.Clear();
             txtUsername.Clear();
-            dtpDOB.Value = DateTime.Now;
+            txtPassword.Clear();
             cbRole.SelectedIndex = -1;
         }
-        private void btnEnabler(bool featBtn, bool infoBtn)
+        private void pnButtonEnabler(bool featBtn, bool infoBtn)
         {
-            btnAdd.Visible = btnLock.Visible = btnSearch.Visible = featBtn;
-            btnCancel.Visible = infoBtn;
+            pnFeatureButton.Visible = featBtn;
+            pnInfoButton.Visible = infoBtn;
+        }
+        private void featureButtonEnabler(bool nonCellBtn, bool cellBtn)
+        {
+            btnAdd.Visible = btnSearch.Visible = nonCellBtn;
+            btnLock.Visible = cellBtn;
         }
         #endregion
         #region Events
@@ -67,26 +78,53 @@ namespace timber_shop_manager
         // Have not done the lock in database
         private void btnLock_Click(object sender, EventArgs e)
         {
-            
-        }
+            string query = @"
+                INSERT INTO LockedAccount (EmployeeId, Username, Password)
+                SELECT acc.EmployeeId, acc.Username, acc.Password
+                FROM Account acc
+                WHERE acc.EmployeeId IN (SELECT EmployeeId FROM DeletedEmployee);
 
+                DELETE FROM Account
+                WHERE EmployeeId IN (SELECT EmployeeId FROM DeletedEmployee);
+            ";
+
+            try
+            {
+                int rowsAffected = dbHelper.ExecuteNonQuery(query);
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Tài khoản đã khóa thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgv.DataSource = loadData(); // Refresh the data grid view
+                }
+                else
+                {
+                    MessageBox.Show("Nhân viên hiện vẫn còn trong hệ thống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         // Not done yet
         private void btnSearch_Click(object sender, EventArgs e)
         {
 
         }
-        // Need to change
-        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgv.Rows.Count > 0)
             {
                 int rowIndex = e.RowIndex;
-                txtID.Text = dgv.Rows[rowIndex].Cells[0].Value.ToString();
-                txtName.Text = dgv.Rows[rowIndex].Cells[1].Value.ToString();
-                txtAddress.Text = dgv.Rows[rowIndex].Cells[2].Value.ToString();
-                txtUsername.Text = dgv.Rows[rowIndex].Cells[3].Value.ToString();
-                dtpDOB.Value = DateTime.Parse(dgv.Rows[rowIndex].Cells[4].Value.ToString());
-                cbRole.SelectedItem = dgv.Rows[rowIndex].Cells[5].Value.ToString();
+                txtID.Text = dgv.Rows[rowIndex].Cells["Mã nhân viên"].Value.ToString();
+                txtName.Text = dgv.Rows[rowIndex].Cells["Tên"].Value.ToString();
+                txtUsername.Text = dgv.Rows[rowIndex].Cells["Tên tài khoản"].Value.ToString();
+                txtPassword.Text = dgv.Rows[rowIndex].Cells["Mật khẩu"].Value.ToString();
+                cbRole.Text = dgv.Rows[rowIndex].Cells["Chức vụ"].Value.ToString();
+
+
+                pnInfo.Enabled = true;
+                featureButtonEnabler(true, true);
             }
         }
         #endregion
@@ -97,5 +135,7 @@ namespace timber_shop_manager
         }
         #endregion
         #endregion
+
+
     }
 }

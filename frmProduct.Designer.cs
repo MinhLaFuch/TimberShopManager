@@ -66,7 +66,8 @@
             pnInfoButton = new FlowLayoutPanel();
             gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
             pnInfo = new Panel();
-            pnButton = new FlowLayoutPanel();
+            txtDescription = new RichTextBox();
+            lbDescription = new Label();
             cbCategory = new Guna.UI2.WinForms.Guna2ComboBox();
             txtID = new TextBox();
             txtName = new TextBox();
@@ -82,17 +83,16 @@
             lbPriceQuotation = new Label();
             lbName = new Label();
             nudPrice = new Guna.UI2.WinForms.Guna2NumericUpDown();
-            txtDescription = new RichTextBox();
-            lbDescription = new Label();
+            pnButton = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             pnFeatureButton.SuspendLayout();
             pnInfoButton.SuspendLayout();
             gbInfo.SuspendLayout();
             pnInfo.SuspendLayout();
-            pnButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudQuantity).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudWarranty).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudPrice).BeginInit();
+            pnButton.SuspendLayout();
             SuspendLayout();
             // 
             // btnAdd
@@ -307,18 +307,28 @@
             pnInfo.Controls.Add(nudPrice);
             pnInfo.Location = new Point(3, 43);
             pnInfo.Name = "pnInfo";
-            pnInfo.Size = new Size(1184, 237);
+            pnInfo.Size = new Size(1184, 243);
             pnInfo.TabIndex = 36;
             // 
-            // pnButton
+            // txtDescription
             // 
-            pnButton.Controls.Add(pnFeatureButton);
-            pnButton.Controls.Add(pnInfoButton);
-            pnButton.FlowDirection = FlowDirection.RightToLeft;
-            pnButton.Location = new Point(646, 286);
-            pnButton.Name = "pnButton";
-            pnButton.Size = new Size(541, 110);
-            pnButton.TabIndex = 37;
+            txtDescription.BorderStyle = BorderStyle.None;
+            txtDescription.Location = new Point(590, 7);
+            txtDescription.Name = "txtDescription";
+            txtDescription.ScrollBars = RichTextBoxScrollBars.ForcedHorizontal;
+            txtDescription.Size = new Size(591, 186);
+            txtDescription.TabIndex = 46;
+            txtDescription.Text = "";
+            // 
+            // lbDescription
+            // 
+            lbDescription.AutoSize = true;
+            lbDescription.ForeColor = Color.FromArgb(59, 93, 79);
+            lbDescription.Location = new Point(515, 7);
+            lbDescription.Name = "lbDescription";
+            lbDescription.Size = new Size(48, 20);
+            lbDescription.TabIndex = 47;
+            lbDescription.Text = "Mô tả";
             // 
             // cbCategory
             // 
@@ -496,25 +506,15 @@
             nudPrice.TabIndex = 40;
             nudPrice.UpDownButtonFillColor = Color.FromArgb(59, 93, 79);
             // 
-            // txtDescription
+            // pnButton
             // 
-            txtDescription.BorderStyle = BorderStyle.None;
-            txtDescription.Location = new Point(590, 7);
-            txtDescription.Name = "txtDescription";
-            txtDescription.ScrollBars = RichTextBoxScrollBars.ForcedHorizontal;
-            txtDescription.Size = new Size(591, 186);
-            txtDescription.TabIndex = 46;
-            txtDescription.Text = "";
-            // 
-            // lbDescription
-            // 
-            lbDescription.AutoSize = true;
-            lbDescription.ForeColor = Color.FromArgb(59, 93, 79);
-            lbDescription.Location = new Point(515, 7);
-            lbDescription.Name = "lbDescription";
-            lbDescription.Size = new Size(48, 20);
-            lbDescription.TabIndex = 47;
-            lbDescription.Text = "Mô tả";
+            pnButton.Controls.Add(pnFeatureButton);
+            pnButton.Controls.Add(pnInfoButton);
+            pnButton.FlowDirection = FlowDirection.RightToLeft;
+            pnButton.Location = new Point(646, 286);
+            pnButton.Name = "pnButton";
+            pnButton.Size = new Size(541, 110);
+            pnButton.TabIndex = 37;
             // 
             // frmProduct
             // 
@@ -534,10 +534,10 @@
             gbInfo.ResumeLayout(false);
             pnInfo.ResumeLayout(false);
             pnInfo.PerformLayout();
-            pnButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)nudQuantity).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudWarranty).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudPrice).EndInit();
+            pnButton.ResumeLayout(false);
             ResumeLayout(false);
         }
 

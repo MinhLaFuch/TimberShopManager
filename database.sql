@@ -7,10 +7,9 @@ CREATE DATABASE TimberShop;
 GO
 USE TimberShop;
 GO
-
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2017                    */
-/* Created on:     16/04/2025 8:31:38 pm                        */
+/* Created on:     17/04/2025 5:11:59 am                        */
 /*==============================================================*/
 
 
@@ -86,8 +85,8 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('LockedAcocunt') and o.name = 'FK_LOCKEDAC_HAS_DELETEDE')
-alter table LockedAcocunt
+   where r.fkeyid = object_id('LockedAccount') and o.name = 'FK_LOCKEDAC_HAS_DELETEDE')
+alter table LockedAccount
    drop constraint FK_LOCKEDAC_HAS_DELETEDE
 go
 
@@ -333,18 +332,18 @@ go
 
 if exists (select 1
             from  sysindexes
-           where  id    = object_id('LockedAcocunt')
+           where  id    = object_id('LockedAccount')
             and   name  = 'HAS_FK'
             and   indid > 0
             and   indid < 255)
-   drop index LockedAcocunt.HAS_FK
+   drop index LockedAccount.HAS_FK
 go
 
 if exists (select 1
             from  sysobjects
-           where  id = object_id('LockedAcocunt')
+           where  id = object_id('LockedAccount')
             and   type = 'U')
-   drop table LockedAcocunt
+   drop table LockedAccount
 go
 
 if exists (select 1
@@ -757,13 +756,13 @@ create nonclustered index IMPORT_FK on ImportInvoice (EmployeeId ASC)
 go
 
 /*==============================================================*/
-/* Table: LockedAcocunt                                         */
+/* Table: LockedAccount                                         */
 /*==============================================================*/
-create table LockedAcocunt (
+create table LockedAccount (
    Username             varchar(20)          not null,
    EmployeeId           char(10)             not null,
    Password             char(64)             null,
-   constraint PK_LOCKEDACOCUNT primary key (Username)
+   constraint PK_LOCKEDACCOUNT primary key (Username)
 )
 go
 
@@ -774,7 +773,7 @@ go
 
 
 
-create nonclustered index HAS_FK on LockedAcocunt (EmployeeId ASC)
+create nonclustered index HAS_FK on LockedAccount (EmployeeId ASC)
 go
 
 /*==============================================================*/
@@ -1023,7 +1022,7 @@ alter table ImportInvoice
       references Supplier (SupplierId)
 go
 
-alter table LockedAcocunt
+alter table LockedAccount
    add constraint FK_LOCKEDAC_HAS_DELETEDE foreign key (EmployeeId)
       references DeletedEmployee (EmployeeId)
 go
@@ -1072,6 +1071,8 @@ alter table SaleInvoice
    add constraint FK_SALEINVO_SELL_SALEAGEN foreign key (EmployeeId)
       references SaleAgent (EmployeeId)
 go
+
+
 
 
 
