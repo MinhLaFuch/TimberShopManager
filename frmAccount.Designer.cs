@@ -48,20 +48,20 @@
             btnSearch = new Button();
             dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
-            pnButton = new FlowLayoutPanel();
-            pnFeatureButton = new FlowLayoutPanel();
-            pnInfoButton = new FlowLayoutPanel();
-            btnCancel = new Button();
             pnInfo = new Panel();
             lbGmail = new Label();
             label2 = new Label();
             txtPassword = new TextBox();
+            pnButton = new FlowLayoutPanel();
+            pnFeatureButton = new FlowLayoutPanel();
+            pnInfoButton = new FlowLayoutPanel();
+            btnCancel = new Button();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             gbInfo.SuspendLayout();
+            pnInfo.SuspendLayout();
             pnButton.SuspendLayout();
             pnFeatureButton.SuspendLayout();
             pnInfoButton.SuspendLayout();
-            pnInfo.SuspendLayout();
             SuspendLayout();
             // 
             // cbRole
@@ -82,6 +82,7 @@
             cbRole.ShadowDecoration.CustomizableEdges = customizableEdges2;
             cbRole.Size = new Size(250, 36);
             cbRole.TabIndex = 9;
+            cbRole.SelectedValueChanged += cbRole_SelectedValueChanged;
             // 
             // txtID
             // 
@@ -91,6 +92,7 @@
             txtID.Name = "txtID";
             txtID.Size = new Size(345, 20);
             txtID.TabIndex = 1;
+            txtID.TextChanged += txtID_TextChanged;
             // 
             // txtUsername
             // 
@@ -100,6 +102,7 @@
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(243, 20);
             txtUsername.TabIndex = 5;
+            txtUsername.TextChanged += txtUsername_TextChanged;
             // 
             // txtName
             // 
@@ -109,6 +112,8 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(345, 20);
             txtName.TabIndex = 3;
+            txtName.TextChanged += txtName_TextChanged;
+            txtName.KeyPress += txtName_KeyPress;
             // 
             // lbRole
             // 
@@ -260,50 +265,6 @@
             gbInfo.TabIndex = 11;
             gbInfo.Text = "Thông tin";
             // 
-            // pnButton
-            // 
-            pnButton.Controls.Add(pnFeatureButton);
-            pnButton.Controls.Add(pnInfoButton);
-            pnButton.FlowDirection = FlowDirection.RightToLeft;
-            pnButton.Location = new Point(672, 197);
-            pnButton.Name = "pnButton";
-            pnButton.Size = new Size(502, 165);
-            pnButton.TabIndex = 12;
-            // 
-            // pnFeatureButton
-            // 
-            pnFeatureButton.Controls.Add(btnSearch);
-            pnFeatureButton.Controls.Add(btnLock);
-            pnFeatureButton.Controls.Add(btnAdd);
-            pnFeatureButton.FlowDirection = FlowDirection.RightToLeft;
-            pnFeatureButton.Location = new Point(55, 3);
-            pnFeatureButton.Name = "pnFeatureButton";
-            pnFeatureButton.Size = new Size(444, 60);
-            pnFeatureButton.TabIndex = 18;
-            // 
-            // pnInfoButton
-            // 
-            pnInfoButton.Controls.Add(btnCancel);
-            pnInfoButton.FlowDirection = FlowDirection.RightToLeft;
-            pnInfoButton.Location = new Point(354, 69);
-            pnInfoButton.Name = "pnInfoButton";
-            pnInfoButton.Size = new Size(145, 55);
-            pnInfoButton.TabIndex = 16;
-            // 
-            // btnCancel
-            // 
-            btnCancel.BackColor = Color.FromArgb(59, 93, 79);
-            btnCancel.FlatStyle = FlatStyle.Flat;
-            btnCancel.Font = new Font("Segoe UI", 9F);
-            btnCancel.ForeColor = SystemColors.ButtonFace;
-            btnCancel.Location = new Point(10, 4);
-            btnCancel.Margin = new Padding(3, 4, 3, 4);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(132, 40);
-            btnCancel.TabIndex = 9;
-            btnCancel.Text = "Hủy";
-            btnCancel.UseVisualStyleBackColor = false;
-            // 
             // pnInfo
             // 
             pnInfo.Controls.Add(txtUsername);
@@ -351,6 +312,51 @@
             txtPassword.Size = new Size(345, 20);
             txtPassword.TabIndex = 14;
             // 
+            // pnButton
+            // 
+            pnButton.Controls.Add(pnFeatureButton);
+            pnButton.Controls.Add(pnInfoButton);
+            pnButton.FlowDirection = FlowDirection.RightToLeft;
+            pnButton.Location = new Point(672, 208);
+            pnButton.Name = "pnButton";
+            pnButton.Size = new Size(502, 165);
+            pnButton.TabIndex = 12;
+            // 
+            // pnFeatureButton
+            // 
+            pnFeatureButton.Controls.Add(btnSearch);
+            pnFeatureButton.Controls.Add(btnLock);
+            pnFeatureButton.Controls.Add(btnAdd);
+            pnFeatureButton.FlowDirection = FlowDirection.RightToLeft;
+            pnFeatureButton.Location = new Point(55, 3);
+            pnFeatureButton.Name = "pnFeatureButton";
+            pnFeatureButton.Size = new Size(444, 60);
+            pnFeatureButton.TabIndex = 18;
+            // 
+            // pnInfoButton
+            // 
+            pnInfoButton.Controls.Add(btnCancel);
+            pnInfoButton.FlowDirection = FlowDirection.RightToLeft;
+            pnInfoButton.Location = new Point(354, 69);
+            pnInfoButton.Name = "pnInfoButton";
+            pnInfoButton.Size = new Size(145, 55);
+            pnInfoButton.TabIndex = 16;
+            // 
+            // btnCancel
+            // 
+            btnCancel.BackColor = Color.FromArgb(59, 93, 79);
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.Font = new Font("Segoe UI", 9F);
+            btnCancel.ForeColor = SystemColors.ButtonFace;
+            btnCancel.Location = new Point(10, 4);
+            btnCancel.Margin = new Padding(3, 4, 3, 4);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(132, 40);
+            btnCancel.TabIndex = 9;
+            btnCancel.Text = "Hủy";
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
+            // 
             // frmAccount
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -365,11 +371,11 @@
             Load += frmAccount_Load;
             ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             gbInfo.ResumeLayout(false);
+            pnInfo.ResumeLayout(false);
+            pnInfo.PerformLayout();
             pnButton.ResumeLayout(false);
             pnFeatureButton.ResumeLayout(false);
             pnInfoButton.ResumeLayout(false);
-            pnInfo.ResumeLayout(false);
-            pnInfo.PerformLayout();
             ResumeLayout(false);
         }
 

@@ -26,10 +26,12 @@ namespace timber_shop_manager
         private void loadForm()
         {
             pnInfo.Enabled = false;
+            txtPassword.ReadOnly = true;
             clearTextBox();
             pnButtonEnabler(true, false);
             featureButtonEnabler(true, false);
             dgv.DataSource = loadData();
+            searchEventEnabler(false);
         }
         private DataTable loadData()
         {
@@ -59,6 +61,28 @@ namespace timber_shop_manager
         {
             btnAdd.Visible = btnSearch.Visible = nonCellBtn;
             btnLock.Visible = cellBtn;
+        }
+        private void searchEventEnabler(bool b)
+        {
+            if (b)
+            {
+                txtID.TextChanged += txtID_TextChanged;
+                txtName.TextChanged += txtName_TextChanged;
+                txtUsername.TextChanged += txtUsername_TextChanged;
+                cbRole.SelectedIndexChanged += cbRole_SelectedValueChanged;
+            }
+            else
+            {
+                txtID.TextChanged -= txtID_TextChanged;
+                txtName.TextChanged -= txtName_TextChanged;
+                txtUsername.TextChanged -= txtUsername_TextChanged;
+                cbRole.SelectedIndexChanged -= cbRole_SelectedValueChanged;
+            }
+        }
+        // I need search method
+        private void suggest()
+        {
+
         }
         #endregion
         #region Events
@@ -106,10 +130,17 @@ namespace timber_shop_manager
                 MessageBox.Show($"Xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            loadForm();
+        }
         // Not done yet
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
+            pnInfo.Enabled = true;
+            clearTextBox();
+            txtID.Focus();
+            searchEventEnabler(true);
         }
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -127,13 +158,30 @@ namespace timber_shop_manager
         }
         #endregion
         #region Text Change
-        private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)
+        private void txtID_TextChanged(object sender, EventArgs e)
         {
+            suggest();
+        }
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            suggest();
+        }
 
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+            suggest();
+        }
+        private void cbRole_SelectedValueChanged(object sender, EventArgs e)
+        {
+            suggest();
+        }
+        #endregion
+        #region Key Press
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Program.CheckInputIsLetter(e);
         }
         #endregion
         #endregion
-
-
     }
 }
