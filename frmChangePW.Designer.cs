@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -51,6 +52,8 @@
             lbCode = new Label();
             lbCodeWarning = new Label();
             pnCode = new Panel();
+            codeExpiration = new System.Windows.Forms.Timer(components);
+            lbCodeCountdown = new Label();
             pnNewPassword.SuspendLayout();
             pnCode.SuspendLayout();
             SuspendLayout();
@@ -70,7 +73,7 @@
             btnSendEmail.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnSendEmail.Size = new Size(206, 31);
             btnSendEmail.TabIndex = 1;
-            btnSendEmail.Text = "Gửi mail xác nhận";
+            btnSendEmail.Text = "Gửi mã xác thực";
             btnSendEmail.Click += btnSendEmail_Click;
             // 
             // lbGmail
@@ -248,11 +251,28 @@
             pnCode.Size = new Size(697, 78);
             pnCode.TabIndex = 12;
             // 
+            // codeExpiration
+            // 
+            codeExpiration.Interval = 1000;
+            codeExpiration.Tick += codeExpiration_Tick;
+            // 
+            // lbCodeCountdown
+            // 
+            lbCodeCountdown.AutoSize = true;
+            lbCodeCountdown.Font = new Font("Segoe UI", 12F);
+            lbCodeCountdown.ForeColor = Color.Red;
+            lbCodeCountdown.Location = new Point(174, 35);
+            lbCodeCountdown.Name = "lbCodeCountdown";
+            lbCodeCountdown.Size = new Size(112, 28);
+            lbCodeCountdown.TabIndex = 15;
+            lbCodeCountdown.Text = "đếm ngược";
+            // 
             // frmChangePW
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(696, 280);
+            Controls.Add(lbCodeCountdown);
             Controls.Add(btnSave);
             Controls.Add(btnCancel);
             Controls.Add(pnCode);
@@ -292,5 +312,7 @@
         private Label lbCode;
         private Label lbCodeWarning;
         private Panel pnCode;
+        private System.Windows.Forms.Timer codeExpiration;
+        private Label lbCodeCountdown;
     }
 }

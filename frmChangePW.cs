@@ -20,6 +20,7 @@ namespace timber_shop_manager
         private DatabaseHelper dbHelper = new DatabaseHelper();
         private Account account;
         private int verificationCode;
+        private DateTime expirationTime;
         public frmChangePW(Account acc)
         {
             this.account = acc;
@@ -35,7 +36,12 @@ namespace timber_shop_manager
         #region Support methods
         private void checkVerifyCode()
         {
-            if (txtCode.Text == verificationCode.ToString())
+            if (DateTime.Now > expirationTime)
+            {
+                lbCodeWarning.Text = "Mã xác thực đã hết hạn. Vui lòng gửi lại mã xác thực mới.";
+                txtCode.Clear();
+            }
+            else if (txtCode.Text == verificationCode.ToString())
             {
                 pnNewPassword.Visible = true;
                 pnCode.Visible = false;
@@ -55,7 +61,7 @@ namespace timber_shop_manager
 
             // Generate 6-digit verification code
             Random random = new Random();
-            int verificationCode = random.Next(100000, 999999);
+            verificationCode = random.Next(100000, 999999);
 
             string subject = "Your Verification Code";
             string body = $"Hello {txtGmail.Text},\n\nYour verification code is: {verificationCode}\n\nPlease use this code to proceed with changing your password.\n\nThank you.";
@@ -105,6 +111,10 @@ namespace timber_shop_manager
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
             sendEmail();
+            btnSendEmail.Visible = false;
+            lbCodeCountdown.Visible = true;
+            expirationTime = DateTime.Now.AddMinutes(1);
+            codeExpiration.Start();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -165,5 +175,22 @@ namespace timber_shop_manager
         }
         #endregion
         #endregion
+
+        private void codeExpiration_Tick(object sender, EventArgs e)
+        {
+            TimeSpan timeLeft = expirationTime - DateTime.Now;
+
+            if (timeLeft.TotalSeconds <= 0)
+            {
+                codeExpiration.Stop();
+                btnSendEmail.Visible = true;
+                btnSendEmail.Text = "Gửi mã xác thực";
+            }
+            else
+            {
+                lbCodeCountdown.Text = $"Mã hết hạn sau: {timeLeft.Minutes:D2}:{timeLeft.Seconds:D2}";
+            }
+        }
+    }
     }
 }
