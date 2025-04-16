@@ -174,8 +174,7 @@ namespace timber_shop_manager
             }
         }
         #endregion
-        #endregion
-
+        #region Tick
         private void codeExpiration_Tick(object sender, EventArgs e)
         {
             TimeSpan timeLeft = expirationTime - DateTime.Now;
@@ -192,5 +191,6 @@ namespace timber_shop_manager
             }
         }
     }
-    }
+    #endregion
+    #endregion
 }
