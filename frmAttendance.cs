@@ -48,10 +48,11 @@ namespace timber_shop_manager
         #region Support Method
         private void loadForm()
         {
-            this.Text = "Báo cáo chấm công của " + this.EmployeeName;
-            dgv.DataSource = LoadData();
+            cbTimeStamp.SelectedIndex = 0;
+            dtpFrom.Visible = dtpTo.Visible = false;
+            dgv.DataSource = loadData();
         }
-        private DataTable LoadData()
+        private DataTable loadData()
         {
             DataTable dt = new DataTable();
             if (dtpFrom.Visible && dtpTo.Visible)
@@ -102,8 +103,6 @@ namespace timber_shop_manager
         #region Load
         private void frmAttendance_Load(object sender, EventArgs e)
         {
-            cbTimeStamp.SelectedIndex = 0;
-            dtpFrom.Visible = dtpTo.Visible = false;
             loadForm();
         }
         #endregion
@@ -111,6 +110,31 @@ namespace timber_shop_manager
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             loadForm();
+        }
+        private void btnAttend_Click(object sender, EventArgs e)
+        {
+            DateTime currentTime = DateTime.Now;
+            string review = String.Empty;
+
+            // Determine attendance status
+            if (currentTime.Hour >= 7 && currentTime.Hour < 9)
+            {
+                lbAttendStatus.Text = "You are on time.";
+                review = "On time";
+            }
+            else if (currentTime.Hour >= 9)
+            {
+                lbAttendStatus.Text = "You are late.";
+                review = "Late";
+            }
+
+            // Update attendance in the database
+            string query = "INSERT INTO Attendance (EmployeeId, Date, Time, Review) VALUES (@employeeId, @date, @time, @review)";
+            dbHelper.ExecuteNonQuery(query,
+                new SqlParameter("@employeeId", employeeId),
+                new SqlParameter("@date", currentTime.Date),
+                new SqlParameter("@time", currentTime.TimeOfDay),
+                new SqlParameter("@review", review));
         }
         #endregion
         #region Change Value
@@ -126,30 +150,26 @@ namespace timber_shop_manager
             {
                 dtpFrom.Visible = dtpTo.Visible = false;
             }
-            loadForm();
+            dgv.DataSource = loadData();
         }
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
-            loadForm();
+            dgv.DataSource = loadData();
         }
 
         private void dtpTo_ValueChanged(object sender, EventArgs e)
         {
-            loadForm();
+            dgv.DataSource = loadData();
         }
         #endregion
         #region Tick
-        #endregion
-        #endregion
-
-        #region Timer and Attendance Logic
         private void realTimeClock_Tick(object sender, EventArgs e)
         {
             DateTime currentTime = DateTime.Now;
             lbHour.Text = currentTime.ToString("HH:mm:ss"); // Display real-time clock
 
             // Disable or enable btnAttend based on time
-            if (currentTime.Hour >= 17 || currentTime.Hour < 7)
+            if (currentTime.Hour >= 17 || currentTime.Hour < 7 || account == null)
             {
                 btnAttend.Enabled = false;
             }
@@ -158,28 +178,7 @@ namespace timber_shop_manager
                 btnAttend.Enabled = true;
             }
         }
-
-        private void btnAttend_Click(object sender, EventArgs e)
-        {
-            DateTime currentTime = DateTime.Now;
-
-            // Determine attendance status
-            if (currentTime.Hour >= 7 && currentTime.Hour < 9)
-            {
-                lbAttendStatus.Text = "You are on time.";
-            }
-            else if (currentTime.Hour >= 9)
-            {
-                lbAttendStatus.Text = "You are late.";
-            }
-
-            // Update attendance in the database
-            string query = "INSERT INTO Attendance (EmployeeId, Date, Time) VALUES (@employeeId, @date, @time)";
-            dbHelper.ExecuteNonQuery(query,
-                new SqlParameter("@employeeId", employeeId),
-                new SqlParameter("@date", currentTime.Date),
-                new SqlParameter("@time", currentTime.TimeOfDay));
-        }
+        #endregion
         #endregion
     }
 }

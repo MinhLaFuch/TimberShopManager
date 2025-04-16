@@ -154,6 +154,7 @@ namespace timber_shop_manager
                 cbRole.Text = dgv.Rows[rowIndex].Cells["Chức vụ"].Value.ToString();
 
                 featureButtonEnabler(true, true);
+                // Need to paint the row in green if the employee is deleted to remind the user to lock the account
             }
         }
         #endregion
