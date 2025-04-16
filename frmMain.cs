@@ -195,6 +195,13 @@ namespace timber_shop_manager
                     }
                 }
             }
+            foreach(Control control in pnTop.Controls)
+            {
+                if (control is Button button)
+                {
+                    button.BackColor = Color.Transparent;
+                }
+            }
         }
         private void HighlightButton(Button clickedButton)
         {
@@ -217,10 +224,6 @@ namespace timber_shop_manager
         }
         #endregion
         #region Click
-        private void pbConfig_Click(object sender, EventArgs e)
-        {
-            openChildForm(new frmConfig());
-        }
         private void btnAccount_Click(object sender, EventArgs e)
         {
             openChildForm(new frmAccount());
@@ -261,15 +264,6 @@ namespace timber_shop_manager
             openChildForm(new frmImport());
             HighlightButton((Button)sender);
         }
-        private void pbLogout_Click(object sender, EventArgs e)
-        {
-            DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (confirmation == DialogResult.Yes)
-            {
-                this.Close();
-                Application.Exit();
-            }
-        }
         private void pbUser_Click(object sender, EventArgs e)
         {
             openChildForm(new frmUser(account));
@@ -301,6 +295,20 @@ namespace timber_shop_manager
         {
             openChildForm(new frmAttendance(account));
             HighlightButton((Button)sender);
+        }
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmConfig());
+            HighlightButton((Button)sender);
+        }
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirmation == DialogResult.Yes)
+            {
+                this.Close();
+                Application.Exit();
+            }
         }
         #endregion
         #region Tick

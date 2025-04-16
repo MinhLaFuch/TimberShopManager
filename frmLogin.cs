@@ -63,13 +63,13 @@ namespace timber_shop_manager
 
             if (!account.verifyUsername())
             {
-                lblUserError.Text = "*Tên đăng nhập không đúng!";
+                lblUserError.Text = "Tên đăng nhập không đúng!";
                 SaveUsername(txtUsername.Text);
                 LoadForm();
             }
             else if (!account.verifyPassword())
             {
-                lblPassError.Text = "*Mật khẩu không đúng";
+                lblPassError.Text = "Mật khẩu không đúng";
                 SaveUsername(txtUsername.Text);
                 lblUserError.Text = string.Empty;
                 txtPassword.Text = string.Empty;
@@ -80,9 +80,10 @@ namespace timber_shop_manager
                 SaveUsername(txtUsername.Text);
 
                 frmMain frmMain = new frmMain(account);
-                this.Close();
+                this.Hide();
                 frmMain.ShowDialog();
             }
+            // Add a case for locked account
         }
         private void btnForgotPassword_Click(object sender, EventArgs e)
         {

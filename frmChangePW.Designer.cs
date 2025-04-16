@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             txtNewPassword = new TextBox();
             txtNewPasswordAgain = new TextBox();
             lbNewPasswordAgain = new Label();
@@ -90,7 +90,7 @@
             // 
             // btnSave
             // 
-            btnSave.CustomizableEdges = customizableEdges7;
+            btnSave.CustomizableEdges = customizableEdges1;
             btnSave.DisabledState.BorderColor = Color.DarkGray;
             btnSave.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -100,7 +100,7 @@
             btnSave.ForeColor = Color.White;
             btnSave.Location = new Point(441, 3);
             btnSave.Name = "btnSave";
-            btnSave.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnSave.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnSave.Size = new Size(123, 30);
             btnSave.TabIndex = 8;
             btnSave.Text = "Lưu";
@@ -108,7 +108,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.CustomizableEdges = customizableEdges9;
+            btnCancel.CustomizableEdges = customizableEdges3;
             btnCancel.DisabledState.BorderColor = Color.DarkGray;
             btnCancel.DisabledState.CustomBorderColor = Color.DarkGray;
             btnCancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -118,7 +118,7 @@
             btnCancel.ForeColor = Color.White;
             btnCancel.Location = new Point(570, 3);
             btnCancel.Name = "btnCancel";
-            btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnCancel.Size = new Size(123, 30);
             btnCancel.TabIndex = 9;
             btnCancel.Text = "Hủy";
@@ -278,7 +278,7 @@
             // 
             // btnSendEmail
             // 
-            btnSendEmail.CustomizableEdges = customizableEdges11;
+            btnSendEmail.CustomizableEdges = customizableEdges5;
             btnSendEmail.DisabledState.BorderColor = Color.DarkGray;
             btnSendEmail.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSendEmail.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -288,7 +288,7 @@
             btnSendEmail.ForeColor = Color.White;
             btnSendEmail.Location = new Point(175, 31);
             btnSendEmail.Name = "btnSendEmail";
-            btnSendEmail.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnSendEmail.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnSendEmail.Size = new Size(206, 31);
             btnSendEmail.TabIndex = 15;
             btnSendEmail.Text = "Gửi mã xác thực";
@@ -297,6 +297,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnCancel;
             ClientSize = new Size(696, 280);
             Controls.Add(pnGmail);
             Controls.Add(pnButton);

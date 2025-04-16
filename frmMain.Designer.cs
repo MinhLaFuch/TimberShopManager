@@ -30,6 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             btnSale = new Button();
             pnMenu = new FlowLayoutPanel();
             btnImport = new Button();
@@ -48,20 +54,18 @@
             btnSalary = new Button();
             btnInvoice = new Button();
             pnTop = new Panel();
-            pbConfig = new PictureBox();
-            pbLogout = new PictureBox();
+            btnConfig = new Guna.UI2.WinForms.Guna2Button();
+            btnLogout = new Guna.UI2.WinForms.Guna2Button();
+            btnUser = new Guna.UI2.WinForms.Guna2Button();
             lbUsername = new ReaLTaiizor.Controls.HeaderLabel();
-            pbUser = new PictureBox();
             manageTransistion = new System.Windows.Forms.Timer(components);
             reportTransistion = new System.Windows.Forms.Timer(components);
             pnMDI = new Panel();
+            btnVoucher = new Button();
             pnMenu.SuspendLayout();
             pnManage.SuspendLayout();
             pnReport.SuspendLayout();
             pnTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbConfig).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbLogout).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbUser).BeginInit();
             SuspendLayout();
             // 
             // btnSale
@@ -148,9 +152,10 @@
             pnManage.Controls.Add(btnCustomer);
             pnManage.Controls.Add(btnProduct);
             pnManage.Controls.Add(btnCategory);
+            pnManage.Controls.Add(btnVoucher);
             pnManage.Location = new Point(3, 201);
             pnManage.Name = "pnManage";
-            pnManage.Size = new Size(138, 461);
+            pnManage.Size = new Size(138, 533);
             pnManage.TabIndex = 25;
             // 
             // btnManage
@@ -289,7 +294,7 @@
             pnReport.Controls.Add(btnFinancialReport);
             pnReport.Controls.Add(btnSalary);
             pnReport.Controls.Add(btnInvoice);
-            pnReport.Location = new Point(3, 668);
+            pnReport.Location = new Point(3, 740);
             pnReport.Name = "pnReport";
             pnReport.Size = new Size(156, 258);
             pnReport.TabIndex = 32;
@@ -372,42 +377,74 @@
             // 
             // pnTop
             // 
-            pnTop.Controls.Add(pbConfig);
-            pnTop.Controls.Add(pbLogout);
+            pnTop.Controls.Add(btnConfig);
+            pnTop.Controls.Add(btnLogout);
+            pnTop.Controls.Add(btnUser);
             pnTop.Controls.Add(lbUsername);
-            pnTop.Controls.Add(pbUser);
             pnTop.Dock = DockStyle.Top;
             pnTop.Location = new Point(162, 0);
             pnTop.Name = "pnTop";
             pnTop.Size = new Size(1217, 59);
             pnTop.TabIndex = 26;
             // 
-            // pbConfig
+            // btnConfig
             // 
-            pbConfig.BackColor = Color.Transparent;
-            pbConfig.BackgroundImageLayout = ImageLayout.Zoom;
-            pbConfig.Dock = DockStyle.Right;
-            pbConfig.Image = (Image)resources.GetObject("pbConfig.Image");
-            pbConfig.Location = new Point(1092, 0);
-            pbConfig.Margin = new Padding(3, 3, 300, 3);
-            pbConfig.Name = "pbConfig";
-            pbConfig.Size = new Size(80, 59);
-            pbConfig.TabIndex = 24;
-            pbConfig.TabStop = false;
-            pbConfig.Click += pbConfig_Click;
+            btnConfig.CustomizableEdges = customizableEdges1;
+            btnConfig.DisabledState.BorderColor = Color.DarkGray;
+            btnConfig.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnConfig.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnConfig.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnConfig.Dock = DockStyle.Right;
+            btnConfig.FillColor = Color.Transparent;
+            btnConfig.Font = new Font("Segoe UI", 9F);
+            btnConfig.ForeColor = Color.White;
+            btnConfig.Image = (Image)resources.GetObject("btnConfig.Image");
+            btnConfig.ImageSize = new Size(50, 50);
+            btnConfig.Location = new Point(1011, 0);
+            btnConfig.Name = "btnConfig";
+            btnConfig.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnConfig.Size = new Size(103, 59);
+            btnConfig.TabIndex = 26;
+            btnConfig.Click += btnConfig_Click;
             // 
-            // pbLogout
+            // btnLogout
             // 
-            pbLogout.BackColor = Color.Transparent;
-            pbLogout.BackgroundImageLayout = ImageLayout.Zoom;
-            pbLogout.Dock = DockStyle.Right;
-            pbLogout.Image = (Image)resources.GetObject("pbLogout.Image");
-            pbLogout.Location = new Point(1172, 0);
-            pbLogout.Name = "pbLogout";
-            pbLogout.Size = new Size(45, 59);
-            pbLogout.TabIndex = 23;
-            pbLogout.TabStop = false;
-            pbLogout.Click += pbLogout_Click;
+            btnLogout.CustomizableEdges = customizableEdges3;
+            btnLogout.DisabledState.BorderColor = Color.DarkGray;
+            btnLogout.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnLogout.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnLogout.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnLogout.Dock = DockStyle.Right;
+            btnLogout.FillColor = Color.Transparent;
+            btnLogout.Font = new Font("Segoe UI", 9F);
+            btnLogout.ForeColor = Color.White;
+            btnLogout.Image = (Image)resources.GetObject("btnLogout.Image");
+            btnLogout.ImageSize = new Size(50, 50);
+            btnLogout.Location = new Point(1114, 0);
+            btnLogout.Name = "btnLogout";
+            btnLogout.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnLogout.Size = new Size(103, 59);
+            btnLogout.TabIndex = 25;
+            btnLogout.Click += btnLogout_Click;
+            // 
+            // btnUser
+            // 
+            btnUser.CustomizableEdges = customizableEdges5;
+            btnUser.DisabledState.BorderColor = Color.DarkGray;
+            btnUser.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnUser.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnUser.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnUser.Dock = DockStyle.Left;
+            btnUser.FillColor = Color.Transparent;
+            btnUser.Font = new Font("Segoe UI", 9F);
+            btnUser.ForeColor = Color.White;
+            btnUser.Image = (Image)resources.GetObject("btnUser.Image");
+            btnUser.ImageSize = new Size(50, 50);
+            btnUser.Location = new Point(0, 0);
+            btnUser.Name = "btnUser";
+            btnUser.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnUser.Size = new Size(52, 59);
+            btnUser.TabIndex = 0;
             // 
             // lbUsername
             // 
@@ -421,19 +458,6 @@
             lbUsername.TabIndex = 22;
             lbUsername.Text = "Username";
             lbUsername.TextAlign = ContentAlignment.TopRight;
-            // 
-            // pbUser
-            // 
-            pbUser.BackColor = Color.Transparent;
-            pbUser.BackgroundImageLayout = ImageLayout.Zoom;
-            pbUser.Dock = DockStyle.Left;
-            pbUser.Image = (Image)resources.GetObject("pbUser.Image");
-            pbUser.Location = new Point(0, 0);
-            pbUser.Name = "pbUser";
-            pbUser.Size = new Size(45, 59);
-            pbUser.TabIndex = 16;
-            pbUser.TabStop = false;
-            pbUser.Click += pbUser_Click;
             // 
             // manageTransistion
             // 
@@ -452,6 +476,22 @@
             pnMDI.Name = "pnMDI";
             pnMDI.Size = new Size(1217, 651);
             pnMDI.TabIndex = 27;
+            // 
+            // btnVoucher
+            // 
+            btnVoucher.BackColor = Color.FromArgb(59, 93, 60);
+            btnVoucher.FlatAppearance.BorderColor = Color.White;
+            btnVoucher.FlatAppearance.BorderSize = 0;
+            btnVoucher.FlatStyle = FlatStyle.Flat;
+            btnVoucher.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnVoucher.ForeColor = SystemColors.ButtonFace;
+            btnVoucher.Image = (Image)resources.GetObject("btnVoucher.Image");
+            btnVoucher.Location = new Point(0, 462);
+            btnVoucher.Margin = new Padding(0);
+            btnVoucher.Name = "btnVoucher";
+            btnVoucher.Size = new Size(138, 66);
+            btnVoucher.TabIndex = 31;
+            btnVoucher.UseVisualStyleBackColor = false;
             // 
             // frmMain
             // 
@@ -474,9 +514,6 @@
             pnReport.ResumeLayout(false);
             pnTop.ResumeLayout(false);
             pnTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbConfig).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbLogout).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbUser).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -505,8 +542,9 @@
         private Button btnInvoice;
         private System.Windows.Forms.Timer reportTransistion;
         private Panel pnMDI;
-        private PictureBox pbLogout;
-        private PictureBox pbUser;
-        private PictureBox pbConfig;
+        private Guna.UI2.WinForms.Guna2Button btnConfig;
+        private Guna.UI2.WinForms.Guna2Button btnLogout;
+        private Guna.UI2.WinForms.Guna2Button btnUser;
+        private Button btnVoucher;
     }
 }
