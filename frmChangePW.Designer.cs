@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             btnSendEmail = new Guna.UI2.WinForms.Guna2Button();
             lbGmail = new Label();
             txtGmail = new TextBox();
@@ -60,7 +60,7 @@
             // 
             // btnSendEmail
             // 
-            btnSendEmail.CustomizableEdges = customizableEdges1;
+            btnSendEmail.CustomizableEdges = customizableEdges7;
             btnSendEmail.DisabledState.BorderColor = Color.DarkGray;
             btnSendEmail.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSendEmail.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -70,7 +70,7 @@
             btnSendEmail.ForeColor = Color.White;
             btnSendEmail.Location = new Point(174, 38);
             btnSendEmail.Name = "btnSendEmail";
-            btnSendEmail.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnSendEmail.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnSendEmail.Size = new Size(206, 31);
             btnSendEmail.TabIndex = 1;
             btnSendEmail.Text = "Gửi mã xác thực";
@@ -123,7 +123,7 @@
             // 
             // btnSave
             // 
-            btnSave.CustomizableEdges = customizableEdges3;
+            btnSave.CustomizableEdges = customizableEdges9;
             btnSave.DisabledState.BorderColor = Color.DarkGray;
             btnSave.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -133,7 +133,7 @@
             btnSave.ForeColor = Color.White;
             btnSave.Location = new Point(431, 243);
             btnSave.Name = "btnSave";
-            btnSave.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnSave.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnSave.Size = new Size(123, 30);
             btnSave.TabIndex = 8;
             btnSave.Text = "Lưu";
@@ -141,7 +141,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.CustomizableEdges = customizableEdges5;
+            btnCancel.CustomizableEdges = customizableEdges11;
             btnCancel.DisabledState.BorderColor = Color.DarkGray;
             btnCancel.DisabledState.CustomBorderColor = Color.DarkGray;
             btnCancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -151,7 +151,7 @@
             btnCancel.ForeColor = Color.White;
             btnCancel.Location = new Point(560, 243);
             btnCancel.Name = "btnCancel";
-            btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnCancel.Size = new Size(123, 30);
             btnCancel.TabIndex = 9;
             btnCancel.Text = "Hủy";
@@ -259,13 +259,12 @@
             // lbCodeCountdown
             // 
             lbCodeCountdown.AutoSize = true;
-            lbCodeCountdown.Font = new Font("Segoe UI", 12F);
+            lbCodeCountdown.Font = new Font("Segoe UI", 9F);
             lbCodeCountdown.ForeColor = Color.Red;
-            lbCodeCountdown.Location = new Point(174, 35);
+            lbCodeCountdown.Location = new Point(174, 38);
             lbCodeCountdown.Name = "lbCodeCountdown";
-            lbCodeCountdown.Size = new Size(112, 28);
+            lbCodeCountdown.Size = new Size(0, 20);
             lbCodeCountdown.TabIndex = 15;
-            lbCodeCountdown.Text = "đếm ngược";
             // 
             // frmChangePW
             // 
