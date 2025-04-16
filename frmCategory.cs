@@ -47,8 +47,8 @@ namespace timber_shop_manager
         }
         private void btnEnabler(bool featBtn, bool initBtn)
         {
-            btnMod.Enabled = btnDel.Enabled = btnViewProduct.Enabled = featBtn;
-            btnAdd.Enabled = btnSearch.Enabled = initBtn;
+            btnMod.Visible = btnDel.Visible = btnViewProduct.Visible = featBtn;
+            btnAdd.Visible = btnSearch.Visible = initBtn;
         }
         private void pnButtonEnabler(bool b)
         {
@@ -84,7 +84,7 @@ namespace timber_shop_manager
             }
         }
         // Incomplete
-        private void suggestCatagory()
+        private void suggest()
         {
 
         }
@@ -112,8 +112,10 @@ namespace timber_shop_manager
         }
         private void btnDel_Click(object sender, EventArgs e)
         {
-            string query = "DELETE FROM Catagory WHERE Catagory = @ID";
-            // Get a confirmation from the user
+            string deleteQuery = "DELETE FROM Catagory WHERE CatagoryID = @ID;";
+            string insertDeletedQuery = "INSERT INTO DeletedCatagory (CatagoryID, CatagoryName, Description) SELECT CatagoryID, CatagoryName, Description FROM Catagory WHERE CatagoryID = @ID;";
+
+            // Get a confirmation from the user  
             DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn xóa danh mục này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirmation == DialogResult.Yes)
             {
@@ -124,11 +126,14 @@ namespace timber_shop_manager
                 }
                 else
                 {
-                    dbHelper.ExecuteNonQuery(query, new SqlParameter("@ID", txtID.Text));
+                    // Insert into DeletedCatagory table  
+                    dbHelper.ExecuteNonQuery(insertDeletedQuery, new SqlParameter("@ID", txtID.Text));
 
+                    // Delete from Catagory table  
+                    dbHelper.ExecuteNonQuery(deleteQuery, new SqlParameter("@ID", txtID.Text));
                 }
             }
-            // Reload form
+            // Reload form  
             loadForm();
         }
         private void btnSearch_Click(object sender, EventArgs e)
@@ -148,7 +153,7 @@ namespace timber_shop_manager
             //frmProduct.CatagoryName = txtName.Text;
             frmProduct.ShowDialog();
         }
-        private void dgvCatagory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -193,20 +198,14 @@ namespace timber_shop_manager
         #region Text Changed
         private void txtID_TextChanged(object sender, EventArgs e)
         {
-            suggestCatagory();
+            suggest();
         }
         private void txtName_TextChanged(object sender, EventArgs e)
         {
-            suggestCatagory();
+            suggest();
 
         }
         #endregion
         #endregion
-
-
-        private void lbName_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

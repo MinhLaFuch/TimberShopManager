@@ -9,7 +9,7 @@ USE TimberShop;
 GO
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2017                    */
-/* Created on:     17/04/2025 5:11:59 am                        */
+/* Created on:     17/04/2025 6:54:24 am                        */
 /*==============================================================*/
 
 
@@ -529,9 +529,9 @@ go
 /* Table: Applied                                               */
 /*==============================================================*/
 create table Applied (
-   DiscountId           char(10)             not null,
+   VoucherID            char(10)             not null,
    SaleInvoiceId        char(10)             not null,
-   constraint PK_APPLIED primary key (DiscountId, SaleInvoiceId)
+   constraint PK_APPLIED primary key (VoucherID, SaleInvoiceId)
 )
 go
 
@@ -542,7 +542,7 @@ go
 
 
 
-create nonclustered index APPLIED_FK on Applied (DiscountId ASC)
+create nonclustered index APPLIED_FK on Applied (VoucherID ASC)
 go
 
 /*==============================================================*/
@@ -659,14 +659,14 @@ go
 /* Table: DeletedVoucher                                        */
 /*==============================================================*/
 create table DeletedVoucher (
-   DiscountId           char(10)             not null,
-   DiscountName         nvarchar(50)         null,
+   VoucherID            char(10)             not null,
+   Name                 char(256)            null,
    Type                 nvarchar(50)         null,
    StartTime            datetime             null,
    EndTime              datetime             null,
    StartDate            datetime             null,
    EndDate              datetime             null,
-   constraint PK_DELETEDVOUCHER primary key (DiscountId)
+   constraint PK_DELETEDVOUCHER primary key (VoucherID)
 )
 go
 
@@ -961,14 +961,14 @@ go
 /* Table: Voucher                                               */
 /*==============================================================*/
 create table Voucher (
-   DiscountId           char(10)             not null,
-   DiscountName         nvarchar(50)         null,
+   VoucherID            char(10)             not null,
+   Name                 nvarchar(50)         null,
    Type                 nvarchar(50)         null,
    StartTime            datetime             null,
    EndTime              datetime             null,
    StartDate            datetime             null,
    EndDate              datetime             null,
-   constraint PK_VOUCHER primary key (DiscountId)
+   constraint PK_VOUCHER primary key (VoucherID)
 )
 go
 
@@ -993,8 +993,8 @@ alter table Applied
 go
 
 alter table Applied
-   add constraint FK_APPLIED_APPLIED_VOUCHER foreign key (DiscountId)
-      references Voucher (DiscountId)
+   add constraint FK_APPLIED_APPLIED_VOUCHER foreign key (VoucherID)
+      references Voucher (VoucherID)
 go
 
 alter table Attendance
@@ -1071,6 +1071,8 @@ alter table SaleInvoice
    add constraint FK_SALEINVO_SELL_SALEAGEN foreign key (EmployeeId)
       references SaleAgent (EmployeeId)
 go
+
+
 
 
 
