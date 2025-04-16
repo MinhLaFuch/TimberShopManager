@@ -105,6 +105,8 @@ namespace timber_shop_manager
                 btnSale.Visible = true;
                 // Import
                 btnImport.Visible = true;
+                // Attend
+                btnAttend.Visible = false;
                 // Report
                 btnSalary.Visible = false;
                 btnFinancialReport.Visible = false;

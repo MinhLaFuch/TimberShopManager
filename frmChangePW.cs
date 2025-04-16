@@ -46,6 +46,7 @@ namespace timber_shop_manager
                 pnNewPassword.Visible = true;
                 pnCode.Visible = false;
                 btnSave.Visible = true;
+                lbCodeCountdown.Text = String.Empty;
             }
             else
             {
