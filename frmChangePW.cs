@@ -108,6 +108,8 @@ namespace timber_shop_manager
             pnNewPassword.Visible = false;
             btnSave.Visible = false;
             lbCodeCountdown.Visible = false;
+            lbNewPasswordWarning.Text = String.Empty;
+            lbNewPasswordAgainWarning.Text = String.Empty;
         }
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
