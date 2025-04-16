@@ -195,5 +195,9 @@ namespace timber_shop_manager
         #endregion
 
 
+        private void lbName_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -337,7 +337,7 @@
             btnMod.Location = new Point(3, 75);
             btnMod.Name = "btnMod";
             btnMod.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btnMod.Size = new Size(195, 66);
+            btnMod.Size = new Size(172, 66);
             btnMod.TabIndex = 21;
             btnMod.Text = "Sửa nhân viên";
             // 
@@ -355,7 +355,7 @@
             btnDel.Location = new Point(3, 147);
             btnDel.Name = "btnDel";
             btnDel.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnDel.Size = new Size(195, 66);
+            btnDel.Size = new Size(172, 66);
             btnDel.TabIndex = 22;
             btnDel.Text = "Xóa nhân viên";
             // 
@@ -373,7 +373,7 @@
             btnViewWorkHour.Location = new Point(3, 219);
             btnViewWorkHour.Name = "btnViewWorkHour";
             btnViewWorkHour.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            btnViewWorkHour.Size = new Size(195, 66);
+            btnViewWorkHour.Size = new Size(172, 66);
             btnViewWorkHour.TabIndex = 23;
             btnViewWorkHour.Text = "Xem chấm công";
             // 
@@ -391,7 +391,7 @@
             btnSearch.Location = new Point(3, 291);
             btnSearch.Name = "btnSearch";
             btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            btnSearch.Size = new Size(195, 66);
+            btnSearch.Size = new Size(172, 66);
             btnSearch.TabIndex = 25;
             btnSearch.Text = "Tìm kiếm";
             // 
@@ -402,9 +402,9 @@
             pnButton.Controls.Add(btnDel);
             pnButton.Controls.Add(btnViewWorkHour);
             pnButton.Controls.Add(btnSearch);
-            pnButton.Location = new Point(0, 279);
+            pnButton.Location = new Point(12, 279);
             pnButton.Name = "pnButton";
-            pnButton.Size = new Size(198, 360);
+            pnButton.Size = new Size(186, 360);
             pnButton.TabIndex = 28;
             // 
             // btnAdd
@@ -421,7 +421,7 @@
             btnAdd.Location = new Point(3, 3);
             btnAdd.Name = "btnAdd";
             btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            btnAdd.Size = new Size(195, 66);
+            btnAdd.Size = new Size(172, 66);
             btnAdd.TabIndex = 24;
             btnAdd.Text = "Thêm nhân viên";
             // 
@@ -509,10 +509,10 @@
             gbInfo.FillColor = SystemColors.Control;
             gbInfo.Font = new Font("Segoe UI", 9F);
             gbInfo.ForeColor = Color.White;
-            gbInfo.Location = new Point(0, -3);
+            gbInfo.Location = new Point(12, -3);
             gbInfo.Name = "gbInfo";
             gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            gbInfo.Size = new Size(1205, 276);
+            gbInfo.Size = new Size(1193, 276);
             gbInfo.TabIndex = 29;
             gbInfo.Text = "Thông tin";
             // 

@@ -13,6 +13,7 @@ namespace timber_shop_manager
 {
     public partial class frmCustomer : Form
     {
+        #region Properties
         private Employee.Role role = Employee.Role.UNKNOWN;
 
         private DatabaseHelper dbHelper = new DatabaseHelper();
@@ -25,19 +26,20 @@ namespace timber_shop_manager
         {
             this.role = role;
         }
-
-        private void frmCustomer_Load(object sender, EventArgs e)
-        {
-            FromLoad();
-        }
-
+        #endregion
+        #region Support methods
         private void FromLoad()
+        {
+            clearTextBox();
+            gbInfo.Enabled = false;
+            gbPurchaseHistory.Enabled = false;
+            LoadDataGridView();
+        }
+        private void clearTextBox()
         {
             txtPhoneNumber.Clear();
             txtName.Clear();
             txtAddress.Clear();
-
-            LoadDataGridView();
         }
 
         private DataTable LoadDataGridView()
@@ -92,6 +94,16 @@ namespace timber_shop_manager
                 dgv.DataSource = LoadDataGridView();
             }
         }
+        #endregion
+        #region Events
+        #region Load
+        private void frmCustomer_Load(object sender, EventArgs e)
+        {
+            FromLoad();
+        }
+        #endregion
+        #region 
+
 
         private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
         {

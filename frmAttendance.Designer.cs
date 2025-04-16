@@ -49,6 +49,8 @@
             dtpTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
             btnRefresh = new Guna.UI2.WinForms.Guna2Button();
             btnAttend = new Guna.UI2.WinForms.Guna2Button();
+            lbDate = new Label();
+            lbAttendStatus = new Label();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             SuspendLayout();
             // 
@@ -195,11 +197,31 @@
             btnAttend.TabIndex = 12;
             btnAttend.Text = "Chấm công";
             // 
+            // lbDate
+            // 
+            lbDate.AutoSize = true;
+            lbDate.Location = new Point(12, 358);
+            lbDate.Name = "lbDate";
+            lbDate.Size = new Size(12, 20);
+            lbDate.TabIndex = 13;
+            lbDate.Text = ".";
+            // 
+            // lbAttendStatus
+            // 
+            lbAttendStatus.AutoSize = true;
+            lbAttendStatus.Location = new Point(15, 468);
+            lbAttendStatus.Name = "lbAttendStatus";
+            lbAttendStatus.Size = new Size(12, 20);
+            lbAttendStatus.TabIndex = 14;
+            lbAttendStatus.Text = ".";
+            // 
             // frmAttendance
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1217, 651);
+            Controls.Add(lbAttendStatus);
+            Controls.Add(lbDate);
             Controls.Add(btnAttend);
             Controls.Add(btnRefresh);
             Controls.Add(dtpTo);
@@ -225,5 +247,7 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpTo;
         private Guna.UI2.WinForms.Guna2Button btnRefresh;
         private Guna.UI2.WinForms.Guna2Button btnAttend;
+        private Label lbDate;
+        private Label lbAttendStatus;
     }
 }

@@ -115,7 +115,7 @@
             // 
             lbNewPasswordAgain.AutoSize = true;
             lbNewPasswordAgain.ForeColor = Color.FromArgb(59, 93, 79);
-            lbNewPasswordAgain.Location = new Point(22, 99);
+            lbNewPasswordAgain.Location = new Point(19, 99);
             lbNewPasswordAgain.Name = "lbNewPasswordAgain";
             lbNewPasswordAgain.Size = new Size(130, 20);
             lbNewPasswordAgain.TabIndex = 6;
@@ -225,7 +225,7 @@
             // 
             lbCode.AutoSize = true;
             lbCode.ForeColor = Color.FromArgb(59, 93, 79);
-            lbCode.Location = new Point(19, 37);
+            lbCode.Location = new Point(25, 37);
             lbCode.Name = "lbCode";
             lbCode.Size = new Size(92, 20);
             lbCode.TabIndex = 12;

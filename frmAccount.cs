@@ -20,7 +20,7 @@ namespace timber_shop_manager
         }
         private void frmAccount_Load(object sender, EventArgs e)
         {
-            gbAccInfo.Enabled = false;
+            gbInfo.Enabled = false;
             loadData();
         }
         #region Support Method
@@ -28,10 +28,10 @@ namespace timber_shop_manager
         {
             string query = "select * from Account";
             DataTable dt = dbHelper.ExecuteQuery(query);
-            dgvAccount.DataSource = dt;
-            for (int i = 0; i < dgvAccount.Columns.Count; i++)
+            dgv.DataSource = dt;
+            for (int i = 0; i < dgv.Columns.Count; i++)
             {
-                dgvAccount.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgv.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
         #endregion
@@ -53,15 +53,15 @@ namespace timber_shop_manager
         }
         private void dgvAccount_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvAccount.Rows.Count > 0)
+            if (dgv.Rows.Count > 0)
             {
                 int rowIndex = e.RowIndex;
-                txtID.Text = dgvAccount.Rows[rowIndex].Cells[0].Value.ToString();
-                txtName.Text = dgvAccount.Rows[rowIndex].Cells[1].Value.ToString();
-                txtAddress.Text = dgvAccount.Rows[rowIndex].Cells[2].Value.ToString();
-                txtUsername.Text = dgvAccount.Rows[rowIndex].Cells[3].Value.ToString();
-                dtpDOB.Value = DateTime.Parse(dgvAccount.Rows[rowIndex].Cells[4].Value.ToString());
-                cbRole.SelectedItem = dgvAccount.Rows[rowIndex].Cells[5].Value.ToString();
+                txtID.Text = dgv.Rows[rowIndex].Cells[0].Value.ToString();
+                txtName.Text = dgv.Rows[rowIndex].Cells[1].Value.ToString();
+                txtAddress.Text = dgv.Rows[rowIndex].Cells[2].Value.ToString();
+                txtUsername.Text = dgv.Rows[rowIndex].Cells[3].Value.ToString();
+                dtpDOB.Value = DateTime.Parse(dgv.Rows[rowIndex].Cells[4].Value.ToString());
+                cbRole.SelectedItem = dgv.Rows[rowIndex].Cells[5].Value.ToString();
             }
         }
         #endregion

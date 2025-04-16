@@ -36,12 +36,12 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnInfoButton = new FlowLayoutPanel();
             btnSave = new Guna.UI2.WinForms.Guna2Button();
             btnCancel = new Guna.UI2.WinForms.Guna2Button();
@@ -77,7 +77,7 @@
             // 
             pnInfoButton.Controls.Add(btnSave);
             pnInfoButton.Controls.Add(btnCancel);
-            pnInfoButton.Location = new Point(856, 286);
+            pnInfoButton.Location = new Point(841, 223);
             pnInfoButton.Name = "pnInfoButton";
             pnInfoButton.Size = new Size(349, 45);
             pnInfoButton.TabIndex = 28;
@@ -219,7 +219,7 @@
             txtAddress.ForeColor = Color.FromArgb(59, 93, 79);
             txtAddress.Location = new Point(629, 63);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(562, 20);
+            txtAddress.Size = new Size(519, 20);
             txtAddress.TabIndex = 9;
             // 
             // txtName
@@ -284,7 +284,9 @@
             // gbInfo
             // 
             gbInfo.Controls.Add(txtPassword);
+            gbInfo.Controls.Add(pnInfoButton);
             gbInfo.Controls.Add(txtName);
+            gbInfo.Controls.Add(pnButton);
             gbInfo.Controls.Add(lbPassword);
             gbInfo.Controls.Add(cbRole);
             gbInfo.Controls.Add(txtGmail);
@@ -303,14 +305,14 @@
             gbInfo.Controls.Add(lbEmployeeDOB);
             gbInfo.Controls.Add(lbEmployeeAddress);
             gbInfo.CustomBorderColor = Color.FromArgb(59, 93, 79);
-            gbInfo.CustomizableEdges = customizableEdges9;
+            gbInfo.CustomizableEdges = customizableEdges13;
             gbInfo.FillColor = SystemColors.Control;
             gbInfo.Font = new Font("Segoe UI", 9F);
             gbInfo.ForeColor = Color.White;
-            gbInfo.Location = new Point(2, 12);
+            gbInfo.Location = new Point(12, 12);
             gbInfo.Name = "gbInfo";
-            gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            gbInfo.Size = new Size(1203, 268);
+            gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            gbInfo.Size = new Size(1193, 268);
             gbInfo.TabIndex = 2;
             gbInfo.Text = "Thông tin";
             // 
@@ -358,7 +360,7 @@
             // 
             pnButton.Controls.Add(btnChangeInfo);
             pnButton.Controls.Add(btnChangePW);
-            pnButton.Location = new Point(856, 286);
+            pnButton.Location = new Point(841, 223);
             pnButton.Name = "pnButton";
             pnButton.Size = new Size(349, 45);
             pnButton.TabIndex = 29;
@@ -366,7 +368,7 @@
             // btnChangeInfo
             // 
             btnChangeInfo.BackColor = Color.FromArgb(59, 93, 79);
-            btnChangeInfo.CustomizableEdges = customizableEdges11;
+            btnChangeInfo.CustomizableEdges = customizableEdges9;
             btnChangeInfo.DisabledState.BorderColor = Color.DarkGray;
             btnChangeInfo.DisabledState.CustomBorderColor = Color.DarkGray;
             btnChangeInfo.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -376,7 +378,7 @@
             btnChangeInfo.ForeColor = Color.White;
             btnChangeInfo.Location = new Point(3, 3);
             btnChangeInfo.Name = "btnChangeInfo";
-            btnChangeInfo.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnChangeInfo.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnChangeInfo.Size = new Size(163, 32);
             btnChangeInfo.TabIndex = 26;
             btnChangeInfo.Text = "Sửa thông tin";
@@ -385,7 +387,7 @@
             // btnChangePW
             // 
             btnChangePW.BackColor = Color.FromArgb(59, 93, 79);
-            btnChangePW.CustomizableEdges = customizableEdges13;
+            btnChangePW.CustomizableEdges = customizableEdges11;
             btnChangePW.DisabledState.BorderColor = Color.DarkGray;
             btnChangePW.DisabledState.CustomBorderColor = Color.DarkGray;
             btnChangePW.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -395,7 +397,7 @@
             btnChangePW.ForeColor = Color.White;
             btnChangePW.Location = new Point(172, 3);
             btnChangePW.Name = "btnChangePW";
-            btnChangePW.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btnChangePW.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnChangePW.Size = new Size(163, 32);
             btnChangePW.TabIndex = 27;
             btnChangePW.Text = "Đổi mật khẩu";
@@ -407,8 +409,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1217, 651);
             Controls.Add(gbInfo);
-            Controls.Add(pnInfoButton);
-            Controls.Add(pnButton);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmUser";
             Text = "frmUser";
