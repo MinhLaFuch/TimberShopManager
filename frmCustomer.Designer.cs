@@ -41,9 +41,9 @@
             label1 = new Label();
             bindingSource1 = new BindingSource(components);
             groupBox2 = new GroupBox();
+            dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             btnClear = new Button();
             button2 = new Button();
-            dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             groupBox2.SuspendLayout();
@@ -138,6 +138,57 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
             // 
+            // dgv
+            // 
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgv.ColumnHeadersHeight = 4;
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgv.DefaultCellStyle = dataGridViewCellStyle3;
+            dgv.GridColor = Color.FromArgb(231, 229, 255);
+            dgv.Location = new Point(320, 77);
+            dgv.Name = "dgv";
+            dgv.RowHeadersVisible = false;
+            dgv.RowHeadersWidth = 51;
+            dgv.Size = new Size(949, 459);
+            dgv.TabIndex = 4;
+            dgv.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            dgv.ThemeStyle.AlternatingRowsStyle.Font = null;
+            dgv.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            dgv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            dgv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            dgv.ThemeStyle.BackColor = Color.White;
+            dgv.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            dgv.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            dgv.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgv.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
+            dgv.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            dgv.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgv.ThemeStyle.HeaderStyle.Height = 4;
+            dgv.ThemeStyle.ReadOnly = false;
+            dgv.ThemeStyle.RowsStyle.BackColor = Color.White;
+            dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgv.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
+            dgv.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            dgv.ThemeStyle.RowsStyle.Height = 29;
+            dgv.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dgv.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            // 
             // btnClear
             // 
             btnClear.Location = new Point(355, 29);
@@ -158,56 +209,6 @@
             button2.TabIndex = 1;
             button2.Text = "Xóa";
             button2.UseVisualStyleBackColor = true;
-            // 
-            // dgv
-            // 
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgv.DefaultCellStyle = dataGridViewCellStyle3;
-            dgv.GridColor = Color.FromArgb(231, 229, 255);
-            dgv.Location = new Point(534, 150);
-            dgv.Name = "dgv";
-            dgv.RowHeadersVisible = false;
-            dgv.RowHeadersWidth = 51;
-            dgv.Size = new Size(300, 188);
-            dgv.TabIndex = 4;
-            dgv.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
-            dgv.ThemeStyle.AlternatingRowsStyle.Font = null;
-            dgv.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
-            dgv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
-            dgv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
-            dgv.ThemeStyle.BackColor = Color.White;
-            dgv.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
-            dgv.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            dgv.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgv.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
-            dgv.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dgv.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv.ThemeStyle.HeaderStyle.Height = 4;
-            dgv.ThemeStyle.ReadOnly = false;
-            dgv.ThemeStyle.RowsStyle.BackColor = Color.White;
-            dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgv.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
-            dgv.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            dgv.ThemeStyle.RowsStyle.Height = 29;
-            dgv.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dgv.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
             // frmCustomer
             // 

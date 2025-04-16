@@ -43,6 +43,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -54,8 +56,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             txtID = new TextBox();
             lbEmployee = new Label();
             lbDate = new Label();
@@ -76,6 +76,7 @@
             btnCancel = new Guna.UI2.WinForms.Guna2Button();
             pnButton = new FlowLayoutPanel();
             gbInvoice = new Guna.UI2.WinForms.Guna2GroupBox();
+            dtpDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             gbCustomer = new Guna.UI2.WinForms.Guna2GroupBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             gbCost = new Guna.UI2.WinForms.Guna2GroupBox();
@@ -84,7 +85,6 @@
             panel1 = new Panel();
             nudQuantity = new Guna.UI2.WinForms.Guna2NumericUpDown();
             cbSearchProduct = new Guna.UI2.WinForms.Guna2ComboBox();
-            dtpDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             pnButton.SuspendLayout();
             gbInvoice.SuspendLayout();
             gbCustomer.SuspendLayout();
@@ -361,6 +361,23 @@
             gbInvoice.TabIndex = 16;
             gbInvoice.Text = "Hóa đơn";
             // 
+            // dtpDate
+            // 
+            dtpDate.Checked = true;
+            dtpDate.CustomizableEdges = customizableEdges13;
+            dtpDate.FillColor = Color.FromArgb(59, 93, 79);
+            dtpDate.Font = new Font("Segoe UI", 9F);
+            dtpDate.ForeColor = Color.White;
+            dtpDate.Format = DateTimePickerFormat.Short;
+            dtpDate.Location = new Point(110, 94);
+            dtpDate.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            dtpDate.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            dtpDate.Name = "dtpDate";
+            dtpDate.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            dtpDate.Size = new Size(145, 45);
+            dtpDate.TabIndex = 23;
+            dtpDate.Value = new DateTime(2025, 4, 15, 22, 31, 0, 592);
+            // 
             // gbCustomer
             // 
             gbCustomer.Controls.Add(flowLayoutPanel1);
@@ -489,6 +506,7 @@
             nudQuantity.ShadowDecoration.CustomizableEdges = customizableEdges22;
             nudQuantity.Size = new Size(78, 36);
             nudQuantity.TabIndex = 22;
+            nudQuantity.UpDownButtonFillColor = Color.FromArgb(59, 93, 79);
             // 
             // cbSearchProduct
             // 
@@ -506,23 +524,6 @@
             cbSearchProduct.ShadowDecoration.CustomizableEdges = customizableEdges24;
             cbSearchProduct.Size = new Size(529, 36);
             cbSearchProduct.TabIndex = 21;
-            // 
-            // dtpDate
-            // 
-            dtpDate.Checked = true;
-            dtpDate.CustomizableEdges = customizableEdges13;
-            dtpDate.FillColor = Color.FromArgb(59, 93, 79);
-            dtpDate.Font = new Font("Segoe UI", 9F);
-            dtpDate.ForeColor = Color.White;
-            dtpDate.Format = DateTimePickerFormat.Short;
-            dtpDate.Location = new Point(110, 94);
-            dtpDate.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
-            dtpDate.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
-            dtpDate.Name = "dtpDate";
-            dtpDate.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            dtpDate.Size = new Size(145, 45);
-            dtpDate.TabIndex = 23;
-            dtpDate.Value = new DateTime(2025, 4, 15, 22, 31, 0, 592);
             // 
             // frmSale
             // 
