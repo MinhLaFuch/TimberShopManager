@@ -204,7 +204,12 @@ namespace timber_shop_manager
                 lbCodeCountdown.Text = $"Mã hết hạn sau: {timeLeft.Minutes:D2}:{timeLeft.Seconds:D2}";
             }
         }
+
+        private void pnNewPassword_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
     #endregion
-    #endregion
+        #endregion
 }

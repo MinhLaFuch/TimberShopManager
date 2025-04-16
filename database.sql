@@ -10,7 +10,7 @@ GO
 
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2017                    */
-/* Created on:     09/04/2025 1:04:26 pm                        */
+/* Created on:     16/04/2025 8:31:38 pm                        */
 /*==============================================================*/
 
 
@@ -37,13 +37,6 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('Applied') and o.name = 'FK_APPLIED_APPLIED_DISCOUNT')
-alter table Applied
-   drop constraint FK_APPLIED_APPLIED_DISCOUNT
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('Applied') and o.name = 'FK_APPLIED_APPLIED_SALEINVO')
 alter table Applied
    drop constraint FK_APPLIED_APPLIED_SALEINVO
@@ -51,9 +44,16 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('Attendance') and o.name = 'FK_ATTENDAN_WORK_EMPLOYEE')
+   where r.fkeyid = object_id('Applied') and o.name = 'FK_APPLIED_APPLIED_VOUCHER')
+alter table Applied
+   drop constraint FK_APPLIED_APPLIED_VOUCHER
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('Attendance') and o.name = 'FK_ATTENDAN_ATTEND_EMPLOYEE')
 alter table Attendance
-   drop constraint FK_ATTENDAN_WORK_EMPLOYEE
+   drop constraint FK_ATTENDAN_ATTEND_EMPLOYEE
 go
 
 if exists (select 1
@@ -86,6 +86,13 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('LockedAcocunt') and o.name = 'FK_LOCKEDAC_HAS_DELETEDE')
+alter table LockedAcocunt
+   drop constraint FK_LOCKEDAC_HAS_DELETEDE
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('Manager') and o.name = 'FK_MANAGER_SPECIALIZ_EMPLOYEE')
 alter table Manager
    drop constraint FK_MANAGER_SPECIALIZ_EMPLOYEE
@@ -93,9 +100,9 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('Product') and o.name = 'FK_PRODUCT_IS_CATAGORY')
+   where r.fkeyid = object_id('Product') and o.name = 'FK_PRODUCT_IS_CATEGORY')
 alter table Product
-   drop constraint FK_PRODUCT_IS_CATAGORY
+   drop constraint FK_PRODUCT_IS_CATEGORY
 go
 
 if exists (select 1
@@ -205,10 +212,10 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('Attendance')
-            and   name  = 'WORK_FK'
+            and   name  = 'ATTEND_FK'
             and   indid > 0
             and   indid < 255)
-   drop index Attendance.WORK_FK
+   drop index Attendance.ATTEND_FK
 go
 
 if exists (select 1
@@ -220,9 +227,9 @@ go
 
 if exists (select 1
             from  sysobjects
-           where  id = object_id('Catagory')
+           where  id = object_id('Category')
             and   type = 'U')
-   drop table Catagory
+   drop table Category
 go
 
 if exists (select 1
@@ -234,9 +241,37 @@ go
 
 if exists (select 1
             from  sysobjects
-           where  id = object_id('Discount')
+           where  id = object_id('DeletedCategory')
             and   type = 'U')
-   drop table Discount
+   drop table DeletedCategory
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('DeletedEmployee')
+            and   type = 'U')
+   drop table DeletedEmployee
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('DeletedProduct')
+            and   type = 'U')
+   drop table DeletedProduct
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('DeletedSupplier')
+            and   type = 'U')
+   drop table DeletedSupplier
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('DeletedVoucher')
+            and   type = 'U')
+   drop table DeletedVoucher
 go
 
 if exists (select 1
@@ -294,6 +329,22 @@ if exists (select 1
            where  id = object_id('ImportInvoice')
             and   type = 'U')
    drop table ImportInvoice
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('LockedAcocunt')
+            and   name  = 'HAS_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index LockedAcocunt.HAS_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('LockedAcocunt')
+            and   type = 'U')
+   drop table LockedAcocunt
 go
 
 if exists (select 1
@@ -415,6 +466,13 @@ if exists (select 1
    drop table Supplier
 go
 
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('Voucher')
+            and   type = 'U')
+   drop table Voucher
+go
+
 /*==============================================================*/
 /* Table: Account                                               */
 /*==============================================================*/
@@ -504,29 +562,30 @@ go
 create table Attendance (
    EmployeeId           char(10)             not null,
    Date                 datetime             not null,
+   Time                 datetime             null,
    Review               char(256)            null,
    constraint PK_ATTENDANCE primary key (EmployeeId, Date)
 )
 go
 
 /*==============================================================*/
-/* Index: WORK_FK                                               */
+/* Index: ATTEND_FK                                             */
 /*==============================================================*/
 
 
 
 
-create nonclustered index WORK_FK on Attendance (EmployeeId ASC)
+create nonclustered index ATTEND_FK on Attendance (EmployeeId ASC)
 go
 
 /*==============================================================*/
-/* Table: Catagory                                              */
+/* Table: Category                                              */
 /*==============================================================*/
-create table Catagory (
-   CatagoryId           char(256)            not null,
+create table Category (
+   CategoryId           char(256)            not null,
    Name                 char(256)            null,
    Description          char(256)            null,
-   constraint PK_CATAGORY primary key (CatagoryId)
+   constraint PK_CATEGORY primary key (CategoryId)
 )
 go
 
@@ -542,9 +601,65 @@ create table Customer (
 go
 
 /*==============================================================*/
-/* Table: Discount                                              */
+/* Table: DeletedCategory                                       */
 /*==============================================================*/
-create table Discount (
+create table DeletedCategory (
+   CategoryId           char(256)            not null,
+   Name                 char(256)            null,
+   Description          char(256)            null,
+   constraint PK_DELETEDCATEGORY primary key (CategoryId)
+)
+go
+
+/*==============================================================*/
+/* Table: DeletedEmployee                                       */
+/*==============================================================*/
+create table DeletedEmployee (
+   EmployeeId           char(10)             not null,
+   Name                 char(256)            null,
+   IdentificationNumber char(12)             null,
+   Address              nvarchar(256)        null,
+   DateOfBirth          datetime             null,
+   Salary               float                null,
+   Role                 nvarchar(20)         null,
+   PhoneNumber          char(10)             null,
+   constraint PK_DELETEDEMPLOYEE primary key (EmployeeId)
+)
+go
+
+/*==============================================================*/
+/* Table: DeletedProduct                                        */
+/*==============================================================*/
+create table DeletedProduct (
+   ProductId            char(10)             not null,
+   Name                 char(256)            null,
+   CalculationUnit      nvarchar(50)         null,
+   PriceQuotation       float                null,
+   CustomerWarranty     int                  null,
+   Description          char(256)            null,
+   Quantity             int                  null,
+   constraint PK_DELETEDPRODUCT primary key (ProductId)
+)
+go
+
+/*==============================================================*/
+/* Table: DeletedSupplier                                       */
+/*==============================================================*/
+create table DeletedSupplier (
+   SupplierId           char(10)             not null,
+   Name                 char(256)            null,
+   Address              nvarchar(256)        null,
+   ContactNumber        char(10)             null,
+   Email                varchar(50)          null,
+   Website              varchar(50)          null,
+   constraint PK_DELETEDSUPPLIER primary key (SupplierId)
+)
+go
+
+/*==============================================================*/
+/* Table: DeletedVoucher                                        */
+/*==============================================================*/
+create table DeletedVoucher (
    DiscountId           char(10)             not null,
    DiscountName         nvarchar(50)         null,
    Type                 nvarchar(50)         null,
@@ -552,7 +667,7 @@ create table Discount (
    EndTime              datetime             null,
    StartDate            datetime             null,
    EndDate              datetime             null,
-   constraint PK_DISCOUNT primary key (DiscountId)
+   constraint PK_DELETEDVOUCHER primary key (DiscountId)
 )
 go
 
@@ -642,6 +757,27 @@ create nonclustered index IMPORT_FK on ImportInvoice (EmployeeId ASC)
 go
 
 /*==============================================================*/
+/* Table: LockedAcocunt                                         */
+/*==============================================================*/
+create table LockedAcocunt (
+   Username             varchar(20)          not null,
+   EmployeeId           char(10)             not null,
+   Password             char(64)             null,
+   constraint PK_LOCKEDACOCUNT primary key (Username)
+)
+go
+
+/*==============================================================*/
+/* Index: HAS_FK                                                */
+/*==============================================================*/
+
+
+
+
+create nonclustered index HAS_FK on LockedAcocunt (EmployeeId ASC)
+go
+
+/*==============================================================*/
 /* Table: Manager                                               */
 /*==============================================================*/
 create table Manager (
@@ -662,7 +798,7 @@ go
 /*==============================================================*/
 create table Product (
    ProductId            char(10)             not null,
-   CatagoryId           char(256)            null,
+   CategoryId           char(256)            null,
    Name                 nvarchar(50)         null,
    CalculationUnit      nvarchar(50)         null,
    PriceQuotation       float                null,
@@ -680,7 +816,7 @@ go
 
 
 
-create nonclustered index IS_FK on Product (CatagoryId ASC)
+create nonclustered index IS_FK on Product (CategoryId ASC)
 go
 
 /*==============================================================*/
@@ -822,6 +958,21 @@ create table Supplier (
 )
 go
 
+/*==============================================================*/
+/* Table: Voucher                                               */
+/*==============================================================*/
+create table Voucher (
+   DiscountId           char(10)             not null,
+   DiscountName         nvarchar(50)         null,
+   Type                 nvarchar(50)         null,
+   StartTime            datetime             null,
+   EndTime              datetime             null,
+   StartDate            datetime             null,
+   EndDate              datetime             null,
+   constraint PK_VOUCHER primary key (DiscountId)
+)
+go
+
 alter table Account
    add constraint FK_ACCOUNT_HAS_EMPLOYEE foreign key (EmployeeId)
       references Employee (EmployeeId)
@@ -838,17 +989,17 @@ alter table Administrator
 go
 
 alter table Applied
-   add constraint FK_APPLIED_APPLIED_DISCOUNT foreign key (DiscountId)
-      references Discount (DiscountId)
-go
-
-alter table Applied
    add constraint FK_APPLIED_APPLIED_SALEINVO foreign key (SaleInvoiceId)
       references SaleInvoice (SaleInvoiceId)
 go
 
+alter table Applied
+   add constraint FK_APPLIED_APPLIED_VOUCHER foreign key (DiscountId)
+      references Voucher (DiscountId)
+go
+
 alter table Attendance
-   add constraint FK_ATTENDAN_WORK_EMPLOYEE foreign key (EmployeeId)
+   add constraint FK_ATTENDAN_ATTEND_EMPLOYEE foreign key (EmployeeId)
       references Employee (EmployeeId)
 go
 
@@ -872,14 +1023,19 @@ alter table ImportInvoice
       references Supplier (SupplierId)
 go
 
+alter table LockedAcocunt
+   add constraint FK_LOCKEDAC_HAS_DELETEDE foreign key (EmployeeId)
+      references DeletedEmployee (EmployeeId)
+go
+
 alter table Manager
    add constraint FK_MANAGER_SPECIALIZ_EMPLOYEE foreign key (EmployeeId)
       references Employee (EmployeeId)
 go
 
 alter table Product
-   add constraint FK_PRODUCT_IS_CATAGORY foreign key (CatagoryId)
-      references Catagory (CatagoryId)
+   add constraint FK_PRODUCT_IS_CATEGORY foreign key (CategoryId)
+      references Category (CategoryId)
 go
 
 alter table ProfitAccounting
@@ -916,6 +1072,8 @@ alter table SaleInvoice
    add constraint FK_SALEINVO_SELL_SALEAGEN foreign key (EmployeeId)
       references SaleAgent (EmployeeId)
 go
+
+
 
 
 go
@@ -1032,7 +1190,7 @@ VALUES
 ('I0019', 'S0008', 'E0001', '2025-05-05', 75000, 'Credit Card'),
 ('I0020', 'S0009', 'E0001', '2025-05-07', 64000, 'Cash');
 GO
-INSERT INTO Catagory (CatagoryId, Name, Description)
+INSERT INTO Category (CategoryId, Name, Description)
 VALUES
 ('CAT001', 'Personal Electronics', 'Products designed for personal or home use.'),
 ('CAT002', 'Business Essentials', 'Items commonly used in small to medium businesses.'),
@@ -1045,7 +1203,7 @@ VALUES
 ('CAT009', 'Stylish Design', 'Modern and aesthetically pleasing product designs.'),
 ('CAT010', 'Heavy Duty Tools', 'Durable items suitable for industrial and intense workloads.');
 
-INSERT INTO Product (ProductId, CatagoryId, Name, CalculationUnit, PriceQuotation, CustomerWarranty, Description, Quantity) VALUES
+INSERT INTO Product (ProductId, CategoryId, Name, CalculationUnit, PriceQuotation, CustomerWarranty, Description, Quantity) VALUES
 ('P0001', 'CAT001', 'EchoWave Speaker', 'Piece', 500, 12, 'High-fidelity Bluetooth speaker designed for home entertainment.', 12),
 ('P0002', 'CAT007', 'AquaClean Mop', 'Piece', 250, 6, 'Durable spin mop with adjustable handle and water-saving bucket.', 6),
 ('P0003', 'CAT003', 'ProSketch Tablet', 'Piece', 400, 18, 'Advanced digital drawing tablet for designers and tech professionals.', 18),

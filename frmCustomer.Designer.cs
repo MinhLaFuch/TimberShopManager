@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             txtPhoneNumber = new TextBox();
             txtName = new TextBox();
             txtAddress = new TextBox();
@@ -57,31 +57,33 @@
             dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(components);
             gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
-            pnInfoButton = new FlowLayoutPanel();
+            pnButton = new FlowLayoutPanel();
             pnFeatureButton = new FlowLayoutPanel();
             btnSearch = new Guna.UI2.WinForms.Guna2Button();
             btnMod = new Guna.UI2.WinForms.Guna2Button();
+            pnInfoButton = new FlowLayoutPanel();
             btnSave = new Guna.UI2.WinForms.Guna2Button();
             btnCancel = new Guna.UI2.WinForms.Guna2Button();
+            pnInfo = new Panel();
             gbPurchaseHistory = new Guna.UI2.WinForms.Guna2GroupBox();
+            guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            panel1 = new Panel();
             txtCreateDate = new TextBox();
             lbCustomerCreateDate = new Label();
             txtCategory = new TextBox();
             lbInvoiceQuantity = new Label();
             lbCategory = new Label();
             txtInvoiceQuantity = new TextBox();
-            guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            pnInfo = new Panel();
-            pnButton = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             gbInfo.SuspendLayout();
-            pnInfoButton.SuspendLayout();
+            pnButton.SuspendLayout();
             pnFeatureButton.SuspendLayout();
+            pnInfoButton.SuspendLayout();
+            pnInfo.SuspendLayout();
             gbPurchaseHistory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
-            pnInfo.SuspendLayout();
-            pnButton.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // txtPhoneNumber
@@ -150,32 +152,32 @@
             // 
             // dgv
             // 
-            dataGridViewCellStyle7.BackColor = Color.White;
-            dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle8.ForeColor = Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgv.ColumnHeadersHeight = 4;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.White;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle9.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            dgv.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgv.DefaultCellStyle = dataGridViewCellStyle3;
             dgv.GridColor = Color.FromArgb(231, 229, 255);
-            dgv.Location = new Point(12, 255);
+            dgv.Location = new Point(12, 259);
             dgv.Name = "dgv";
             dgv.RowHeadersVisible = false;
             dgv.RowHeadersWidth = 51;
-            dgv.Size = new Size(711, 384);
+            dgv.Size = new Size(708, 380);
             dgv.TabIndex = 4;
             dgv.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgv.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -204,38 +206,40 @@
             gbInfo.Controls.Add(pnButton);
             gbInfo.Controls.Add(pnInfo);
             gbInfo.CustomBorderColor = Color.FromArgb(59, 93, 79);
-            gbInfo.CustomizableEdges = customizableEdges13;
+            gbInfo.CustomizableEdges = customizableEdges9;
             gbInfo.FillColor = SystemColors.Control;
             gbInfo.Font = new Font("Segoe UI", 9F);
             gbInfo.ForeColor = Color.White;
             gbInfo.Location = new Point(12, 8);
             gbInfo.Name = "gbInfo";
-            gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges10;
             gbInfo.Size = new Size(711, 241);
             gbInfo.TabIndex = 6;
             gbInfo.Text = "Thông tin";
             // 
-            // pnInfoButton
+            // pnButton
             // 
-            pnInfoButton.Controls.Add(btnSave);
-            pnInfoButton.Controls.Add(btnCancel);
-            pnInfoButton.Location = new Point(3, 62);
-            pnInfoButton.Name = "pnInfoButton";
-            pnInfoButton.Size = new Size(301, 48);
-            pnInfoButton.TabIndex = 12;
+            pnButton.Controls.Add(pnFeatureButton);
+            pnButton.Controls.Add(pnInfoButton);
+            pnButton.FlowDirection = FlowDirection.RightToLeft;
+            pnButton.Location = new Point(387, 189);
+            pnButton.Name = "pnButton";
+            pnButton.Size = new Size(324, 125);
+            pnButton.TabIndex = 14;
             // 
             // pnFeatureButton
             // 
             pnFeatureButton.Controls.Add(btnSearch);
             pnFeatureButton.Controls.Add(btnMod);
-            pnFeatureButton.Location = new Point(3, 3);
+            pnFeatureButton.FlowDirection = FlowDirection.RightToLeft;
+            pnFeatureButton.Location = new Point(28, 3);
             pnFeatureButton.Name = "pnFeatureButton";
             pnFeatureButton.Size = new Size(293, 53);
             pnFeatureButton.TabIndex = 11;
             // 
             // btnSearch
             // 
-            btnSearch.CustomizableEdges = customizableEdges15;
+            btnSearch.CustomizableEdges = customizableEdges1;
             btnSearch.DisabledState.BorderColor = Color.DarkGray;
             btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -243,16 +247,16 @@
             btnSearch.FillColor = Color.FromArgb(59, 93, 79);
             btnSearch.Font = new Font("Segoe UI", 9F);
             btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(3, 3);
+            btnSearch.Location = new Point(152, 3);
             btnSearch.Name = "btnSearch";
-            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnSearch.Size = new Size(138, 38);
             btnSearch.TabIndex = 9;
             btnSearch.Text = "Tìm kiếm";
             // 
             // btnMod
             // 
-            btnMod.CustomizableEdges = customizableEdges17;
+            btnMod.CustomizableEdges = customizableEdges3;
             btnMod.DisabledState.BorderColor = Color.DarkGray;
             btnMod.DisabledState.CustomBorderColor = Color.DarkGray;
             btnMod.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -260,16 +264,26 @@
             btnMod.FillColor = Color.FromArgb(59, 93, 79);
             btnMod.Font = new Font("Segoe UI", 9F);
             btnMod.ForeColor = Color.White;
-            btnMod.Location = new Point(147, 3);
+            btnMod.Location = new Point(8, 3);
             btnMod.Name = "btnMod";
-            btnMod.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btnMod.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnMod.Size = new Size(138, 38);
             btnMod.TabIndex = 10;
             btnMod.Text = "Sửa";
             // 
+            // pnInfoButton
+            // 
+            pnInfoButton.Controls.Add(btnSave);
+            pnInfoButton.Controls.Add(btnCancel);
+            pnInfoButton.FlowDirection = FlowDirection.RightToLeft;
+            pnInfoButton.Location = new Point(28, 62);
+            pnInfoButton.Name = "pnInfoButton";
+            pnInfoButton.Size = new Size(293, 48);
+            pnInfoButton.TabIndex = 12;
+            // 
             // btnSave
             // 
-            btnSave.CustomizableEdges = customizableEdges19;
+            btnSave.CustomizableEdges = customizableEdges5;
             btnSave.DisabledState.BorderColor = Color.DarkGray;
             btnSave.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -277,16 +291,16 @@
             btnSave.FillColor = Color.FromArgb(59, 93, 79);
             btnSave.Font = new Font("Segoe UI", 9F);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(3, 3);
+            btnSave.Location = new Point(152, 3);
             btnSave.Name = "btnSave";
-            btnSave.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            btnSave.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnSave.Size = new Size(138, 38);
             btnSave.TabIndex = 8;
             btnSave.Text = "Lưu";
             // 
             // btnCancel
             // 
-            btnCancel.CustomizableEdges = customizableEdges21;
+            btnCancel.CustomizableEdges = customizableEdges7;
             btnCancel.DisabledState.BorderColor = Color.DarkGray;
             btnCancel.DisabledState.CustomBorderColor = Color.DarkGray;
             btnCancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -294,117 +308,64 @@
             btnCancel.FillColor = Color.FromArgb(59, 93, 79);
             btnCancel.Font = new Font("Segoe UI", 9F);
             btnCancel.ForeColor = Color.White;
-            btnCancel.Location = new Point(147, 3);
+            btnCancel.Location = new Point(8, 3);
             btnCancel.Name = "btnCancel";
-            btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnCancel.Size = new Size(138, 38);
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Hủy";
             // 
+            // pnInfo
+            // 
+            pnInfo.Controls.Add(txtName);
+            pnInfo.Controls.Add(txtAddress);
+            pnInfo.Controls.Add(label3);
+            pnInfo.Controls.Add(label2);
+            pnInfo.Controls.Add(txtPhoneNumber);
+            pnInfo.Controls.Add(lbPhoneNumber);
+            pnInfo.Location = new Point(12, 50);
+            pnInfo.Name = "pnInfo";
+            pnInfo.Size = new Size(634, 124);
+            pnInfo.TabIndex = 13;
+            // 
             // gbPurchaseHistory
             // 
-            gbPurchaseHistory.Controls.Add(txtCreateDate);
-            gbPurchaseHistory.Controls.Add(lbCustomerCreateDate);
-            gbPurchaseHistory.Controls.Add(txtCategory);
-            gbPurchaseHistory.Controls.Add(lbInvoiceQuantity);
-            gbPurchaseHistory.Controls.Add(lbCategory);
-            gbPurchaseHistory.Controls.Add(txtInvoiceQuantity);
+            gbPurchaseHistory.Controls.Add(panel1);
             gbPurchaseHistory.CustomBorderColor = Color.FromArgb(59, 93, 79);
-            gbPurchaseHistory.CustomizableEdges = customizableEdges23;
+            gbPurchaseHistory.CustomizableEdges = customizableEdges11;
             gbPurchaseHistory.Enabled = false;
             gbPurchaseHistory.FillColor = SystemColors.Control;
             gbPurchaseHistory.Font = new Font("Segoe UI", 9F);
             gbPurchaseHistory.ForeColor = Color.White;
             gbPurchaseHistory.Location = new Point(729, 8);
             gbPurchaseHistory.Name = "gbPurchaseHistory";
-            gbPurchaseHistory.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            gbPurchaseHistory.ShadowDecoration.CustomizableEdges = customizableEdges12;
             gbPurchaseHistory.Size = new Size(476, 241);
             gbPurchaseHistory.TabIndex = 7;
             gbPurchaseHistory.Text = "Lịch sử thanh toán";
             // 
-            // txtCreateDate
-            // 
-            txtCreateDate.BorderStyle = BorderStyle.None;
-            txtCreateDate.ForeColor = Color.FromArgb(59, 93, 79);
-            txtCreateDate.Location = new Point(180, 103);
-            txtCreateDate.Margin = new Padding(3, 4, 3, 4);
-            txtCreateDate.Name = "txtCreateDate";
-            txtCreateDate.Size = new Size(169, 20);
-            txtCreateDate.TabIndex = 17;
-            // 
-            // lbCustomerCreateDate
-            // 
-            lbCustomerCreateDate.AutoSize = true;
-            lbCustomerCreateDate.ForeColor = Color.FromArgb(59, 93, 79);
-            lbCustomerCreateDate.Location = new Point(19, 103);
-            lbCustomerCreateDate.Name = "lbCustomerCreateDate";
-            lbCustomerCreateDate.Size = new Size(132, 20);
-            lbCustomerCreateDate.TabIndex = 14;
-            lbCustomerCreateDate.Text = "Ngày bắt đầu mua";
-            // 
-            // txtCategory
-            // 
-            txtCategory.BorderStyle = BorderStyle.None;
-            txtCategory.ForeColor = Color.FromArgb(59, 93, 79);
-            txtCategory.Location = new Point(180, 147);
-            txtCategory.Margin = new Padding(3, 4, 3, 4);
-            txtCategory.Multiline = true;
-            txtCategory.Name = "txtCategory";
-            txtCategory.Size = new Size(169, 82);
-            txtCategory.TabIndex = 16;
-            // 
-            // lbInvoiceQuantity
-            // 
-            lbInvoiceQuantity.AutoSize = true;
-            lbInvoiceQuantity.ForeColor = Color.FromArgb(59, 93, 79);
-            lbInvoiceQuantity.Location = new Point(19, 59);
-            lbInvoiceQuantity.Name = "lbInvoiceQuantity";
-            lbInvoiceQuantity.Size = new Size(85, 20);
-            lbInvoiceQuantity.TabIndex = 13;
-            lbInvoiceQuantity.Text = "Số hóa đơn";
-            // 
-            // lbCategory
-            // 
-            lbCategory.AutoSize = true;
-            lbCategory.ForeColor = Color.FromArgb(59, 93, 79);
-            lbCategory.Location = new Point(19, 147);
-            lbCategory.Name = "lbCategory";
-            lbCategory.Size = new Size(161, 20);
-            lbCategory.TabIndex = 15;
-            lbCategory.Text = "Danh mục thường mua";
-            // 
-            // txtInvoiceQuantity
-            // 
-            txtInvoiceQuantity.BorderStyle = BorderStyle.None;
-            txtInvoiceQuantity.ForeColor = Color.FromArgb(59, 93, 79);
-            txtInvoiceQuantity.Location = new Point(180, 59);
-            txtInvoiceQuantity.Margin = new Padding(3, 4, 3, 4);
-            txtInvoiceQuantity.Name = "txtInvoiceQuantity";
-            txtInvoiceQuantity.Size = new Size(169, 20);
-            txtInvoiceQuantity.TabIndex = 18;
-            // 
             // guna2DataGridView1
             // 
-            dataGridViewCellStyle10.BackColor = Color.White;
-            guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle11.ForeColor = Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             guna2DataGridView1.ColumnHeadersHeight = 4;
             guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.White;
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle12.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle12.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
-            guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             guna2DataGridView1.GridColor = Color.FromArgb(231, 229, 255);
             guna2DataGridView1.Location = new Point(729, 255);
             guna2DataGridView1.Name = "guna2DataGridView1";
@@ -434,27 +395,79 @@
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
-            // pnInfo
+            // panel1
             // 
-            pnInfo.Controls.Add(txtName);
-            pnInfo.Controls.Add(txtAddress);
-            pnInfo.Controls.Add(label3);
-            pnInfo.Controls.Add(label2);
-            pnInfo.Controls.Add(txtPhoneNumber);
-            pnInfo.Controls.Add(lbPhoneNumber);
-            pnInfo.Location = new Point(12, 50);
-            pnInfo.Name = "pnInfo";
-            pnInfo.Size = new Size(634, 124);
-            pnInfo.TabIndex = 13;
+            panel1.Controls.Add(txtCreateDate);
+            panel1.Controls.Add(lbCustomerCreateDate);
+            panel1.Controls.Add(txtCategory);
+            panel1.Controls.Add(lbInvoiceQuantity);
+            panel1.Controls.Add(lbCategory);
+            panel1.Controls.Add(txtInvoiceQuantity);
+            panel1.Location = new Point(16, 50);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(448, 183);
+            panel1.TabIndex = 19;
             // 
-            // pnButton
+            // txtCreateDate
             // 
-            pnButton.Controls.Add(pnFeatureButton);
-            pnButton.Controls.Add(pnInfoButton);
-            pnButton.Location = new Point(409, 180);
-            pnButton.Name = "pnButton";
-            pnButton.Size = new Size(324, 125);
-            pnButton.TabIndex = 14;
+            txtCreateDate.BorderStyle = BorderStyle.None;
+            txtCreateDate.ForeColor = Color.FromArgb(59, 93, 79);
+            txtCreateDate.Location = new Point(177, 51);
+            txtCreateDate.Margin = new Padding(3, 4, 3, 4);
+            txtCreateDate.Name = "txtCreateDate";
+            txtCreateDate.Size = new Size(169, 20);
+            txtCreateDate.TabIndex = 23;
+            // 
+            // lbCustomerCreateDate
+            // 
+            lbCustomerCreateDate.AutoSize = true;
+            lbCustomerCreateDate.ForeColor = Color.FromArgb(59, 93, 79);
+            lbCustomerCreateDate.Location = new Point(16, 51);
+            lbCustomerCreateDate.Name = "lbCustomerCreateDate";
+            lbCustomerCreateDate.Size = new Size(132, 20);
+            lbCustomerCreateDate.TabIndex = 20;
+            lbCustomerCreateDate.Text = "Ngày bắt đầu mua";
+            // 
+            // txtCategory
+            // 
+            txtCategory.BorderStyle = BorderStyle.None;
+            txtCategory.ForeColor = Color.FromArgb(59, 93, 79);
+            txtCategory.Location = new Point(177, 95);
+            txtCategory.Margin = new Padding(3, 4, 3, 4);
+            txtCategory.Multiline = true;
+            txtCategory.Name = "txtCategory";
+            txtCategory.Size = new Size(169, 82);
+            txtCategory.TabIndex = 22;
+            // 
+            // lbInvoiceQuantity
+            // 
+            lbInvoiceQuantity.AutoSize = true;
+            lbInvoiceQuantity.ForeColor = Color.FromArgb(59, 93, 79);
+            lbInvoiceQuantity.Location = new Point(16, 7);
+            lbInvoiceQuantity.Name = "lbInvoiceQuantity";
+            lbInvoiceQuantity.Size = new Size(85, 20);
+            lbInvoiceQuantity.TabIndex = 19;
+            lbInvoiceQuantity.Text = "Số hóa đơn";
+            // 
+            // lbCategory
+            // 
+            lbCategory.AutoSize = true;
+            lbCategory.ForeColor = Color.FromArgb(59, 93, 79);
+            lbCategory.Location = new Point(16, 95);
+            lbCategory.Name = "lbCategory";
+            lbCategory.Size = new Size(161, 20);
+            lbCategory.TabIndex = 21;
+            lbCategory.Text = "Danh mục thường mua";
+            // 
+            // txtInvoiceQuantity
+            // 
+            txtInvoiceQuantity.BorderStyle = BorderStyle.None;
+            txtInvoiceQuantity.ForeColor = Color.FromArgb(59, 93, 79);
+            txtInvoiceQuantity.Location = new Point(177, 7);
+            txtInvoiceQuantity.Margin = new Padding(3, 4, 3, 4);
+            txtInvoiceQuantity.Name = "txtInvoiceQuantity";
+            txtInvoiceQuantity.Size = new Size(169, 20);
+            txtInvoiceQuantity.TabIndex = 24;
             // 
             // frmCustomer
             // 
@@ -474,14 +487,15 @@
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             gbInfo.ResumeLayout(false);
-            pnInfoButton.ResumeLayout(false);
+            pnButton.ResumeLayout(false);
             pnFeatureButton.ResumeLayout(false);
-            gbPurchaseHistory.ResumeLayout(false);
-            gbPurchaseHistory.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
+            pnInfoButton.ResumeLayout(false);
             pnInfo.ResumeLayout(false);
             pnInfo.PerformLayout();
-            pnButton.ResumeLayout(false);
+            gbPurchaseHistory.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -504,13 +518,14 @@
         private FlowLayoutPanel pnFeatureButton;
         private Guna.UI2.WinForms.Guna2GroupBox gbPurchaseHistory;
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
+        private FlowLayoutPanel pnButton;
+        private Panel pnInfo;
+        private Panel panel1;
         private TextBox txtCreateDate;
         private Label lbCustomerCreateDate;
         private TextBox txtCategory;
         private Label lbInvoiceQuantity;
         private Label lbCategory;
         private TextBox txtInvoiceQuantity;
-        private FlowLayoutPanel pnButton;
-        private Panel pnInfo;
     }
 }
