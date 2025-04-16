@@ -107,6 +107,7 @@ namespace timber_shop_manager
             pnCode.Visible = false;
             pnNewPassword.Visible = false;
             btnSave.Visible = false;
+            lbCodeCountdown.Visible = false;
         }
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
@@ -182,6 +183,7 @@ namespace timber_shop_manager
             if (timeLeft.TotalSeconds <= 0)
             {
                 codeExpiration.Stop();
+                lbCodeCountdown.Visible = false;
                 btnSendEmail.Visible = true;
                 btnSendEmail.Text = "Gửi mã xác thực";
             }
