@@ -289,12 +289,12 @@ namespace timber_shop_manager
         }
         private void btnFinancialReport_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmFinancialReport());
+            openChildForm(new frmFinancial());
             HighlightButton((Button)sender);
         }
         private void btnInvoice_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmInvoiceReport());
+            openChildForm(new frmInvoice());
             HighlightButton((Button)sender);
         }
         private void btnAttend_Click(object sender, EventArgs e)

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace timber_shop_manager
 {
-    public partial class frmInvoiceReport : Form
+    public partial class frmInvoice : Form
     {
-        public frmInvoiceReport()
+        public frmInvoice()
         {
             InitializeComponent();
         }

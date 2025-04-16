@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace timber_shop_manager
 {
-    public partial class frmFinancialReport : Form
+    public partial class frmFinancial : Form
     {
-        public frmFinancialReport()
+        public frmFinancial()
         {
             InitializeComponent();
         }

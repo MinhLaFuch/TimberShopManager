@@ -1,6 +1,6 @@
 ﻿namespace timber_shop_manager
 {
-    partial class frmFinancialReport
+    partial class frmInvoice
     {
         /// <summary>
         /// Required designer variable.
@@ -28,30 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
             SuspendLayout();
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(136, 85);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(154, 27);
-            textBox1.TabIndex = 7;
-            textBox1.TextChanged += textBox1_TextChanged;
-            // 
-            // frmFinancialReport
+            // frmInvoiceReport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1217, 651);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "frmFinancialReport";
-            Text = "Báo cáo tài chính";
-            Load += frmFinancialReport_Load;
+            Name = "frmInvoiceReport";
+            Text = "frmInvoiceReport";
             ResumeLayout(false);
         }
 
         #endregion
-        private TextBox textBox1;
     }
 }

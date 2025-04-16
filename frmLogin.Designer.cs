@@ -209,6 +209,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.ForeColor = Color.White;
             label3.Location = new Point(0, 58);
             label3.Name = "label3";
             label3.Size = new Size(294, 20);
@@ -218,6 +219,7 @@
             // lbFooter
             // 
             lbFooter.AutoSize = true;
+            lbFooter.ForeColor = Color.White;
             lbFooter.Location = new Point(0, 38);
             lbFooter.Name = "lbFooter";
             lbFooter.Size = new Size(210, 20);
