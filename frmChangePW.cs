@@ -17,20 +17,26 @@ namespace timber_shop_manager
     public partial class frmChangePW : Form
     {
         #region Properties
+        private frmLogin loginForm;
         private DatabaseHelper dbHelper = new DatabaseHelper();
         private Account account;
         private int verificationCode;
         private DateTime expirationTime;
-        public frmChangePW(Account acc)
+        public frmChangePW()
+        {
+            InitializeComponent();
+        }
+        public frmChangePW(frmLogin loginForm) : this()
+        {
+            this.loginForm = loginForm;
+            InitializeComponent();
+        }
+        public frmChangePW(Account acc) : this()
         {
             this.account = acc;
             InitializeComponent();
             txtGmail.Text = acc.Username;
             txtGmail.Enabled = false;
-        }
-        public frmChangePW()
-        {
-            InitializeComponent();
         }
         #endregion
         #region Support methods
@@ -131,6 +137,9 @@ namespace timber_shop_manager
                 dbHelper.ExecuteNonQuery(query,
                     new SqlParameter("@newPass", txtNewPassword.Text),
                     new SqlParameter("@user", txtGmail.Text));
+                MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                loginForm.Show();
             }
             else
             {

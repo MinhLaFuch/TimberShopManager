@@ -52,7 +52,7 @@ namespace timber_shop_manager
         }
         private void btnEnabler(bool featBtn, bool initBtn)
         {
-            btnDel.Enabled = btnMod.Enabled = btnViewWorkHour.Enabled = featBtn;
+            btnDel.Enabled = btnMod.Enabled = btnViewAttendance.Enabled = featBtn;
             btnAdd.Enabled = btnSearch.Enabled = initBtn;
         }
         private string idGenerator()

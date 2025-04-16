@@ -102,9 +102,9 @@ namespace timber_shop_manager
             FromLoad();
         }
         #endregion
-        #region 
-
-
+        #region Click
+        #endregion
+        #region Text Change
         private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
         {
             SuggestCustomer();
@@ -137,5 +137,7 @@ namespace timber_shop_manager
                 e.Handled = true; // Ngừng sự kiện nếu ký tự không hợp lệ
             }
         }
+        #endregion
+        #endregion
     }
 }

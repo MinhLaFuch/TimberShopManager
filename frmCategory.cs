@@ -24,12 +24,14 @@ namespace timber_shop_manager
         #region Support Methods
         private void loadForm()
         {
+            pnInfo.Enabled = false;
             txtID.ReadOnly = true;
             clearTextBox();
             dgv.DataSource = loadData();
+            pnButtonEnabler(true);
             btnEnabler(false, true);
-            gbInfo.Enabled = false;
             searchEventEnabler(false);
+            btnSave.Visible = true;
         }
         private void clearTextBox()
         {
@@ -47,6 +49,11 @@ namespace timber_shop_manager
         {
             btnMod.Enabled = btnDel.Enabled = btnViewProduct.Enabled = featBtn;
             btnAdd.Enabled = btnSearch.Enabled = initBtn;
+        }
+        private void pnButtonEnabler(bool b)
+        {
+            pnFeatureButton.Visible = b;
+            pnInfo.Visible = !b;
         }
         private string idGenerator()
         {
@@ -92,16 +99,16 @@ namespace timber_shop_manager
         #region Click
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            gbInfo.Enabled = true;
+            pnInfo.Enabled = true;
             clearTextBox();
             txtName.Focus();
-            btnEnabler(false, false);
+            pnButtonEnabler(false);
         }
         private void btnMod_Click(object sender, EventArgs e)
         {
-            gbInfo.Enabled = true;
+            pnInfo.Enabled = true;
             txtName.Focus();
-            btnEnabler(false, false);
+            pnButtonEnabler(false);
         }
         private void btnDel_Click(object sender, EventArgs e)
         {
@@ -126,13 +133,14 @@ namespace timber_shop_manager
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            gbInfo.Enabled = true;
+            pnInfo.Enabled = true;
             txtID.ReadOnly = false;
-            btnSave.Enabled = false;
             txtID.Focus();
-            btnEnabler(false, false);
+            pnButtonEnabler(false);
+            btnSave.Visible = false;
             searchEventEnabler(true);
         }
+        // Incomplete
         private void btnViewProduct_Click(object sender, EventArgs e)
         {
             frmProduct frmProduct = new frmProduct();
@@ -175,6 +183,7 @@ namespace timber_shop_manager
                     new SqlParameter("@Name", txtName.Text),
                     new SqlParameter("@Description", txtDescription.Text));
             }
+            loadForm();
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {

@@ -34,11 +34,14 @@ namespace timber_shop_manager
         {
             InitializeComponent();
         }
+        // Will not work unless change OOP
         public frmAttendance(Account acc)
         {
             this.account = acc;
+            this.employeeId = acc.Username; // Get EmployeeId from Account
+            this.employeeName = acc.Username; // Get EmployeeName from Account
             // Get Employee from Account
-            
+
             InitializeComponent();
         }
         #endregion
@@ -135,6 +138,48 @@ namespace timber_shop_manager
             loadForm();
         }
         #endregion
+        #region Tick
+        #endregion
+        #endregion
+
+        #region Timer and Attendance Logic
+        private void realTimeClock_Tick(object sender, EventArgs e)
+        {
+            DateTime currentTime = DateTime.Now;
+            lbHour.Text = currentTime.ToString("HH:mm:ss"); // Display real-time clock
+
+            // Disable or enable btnAttend based on time
+            if (currentTime.Hour >= 17 || currentTime.Hour < 7)
+            {
+                btnAttend.Enabled = false;
+            }
+            else
+            {
+                btnAttend.Enabled = true;
+            }
+        }
+
+        private void btnAttend_Click(object sender, EventArgs e)
+        {
+            DateTime currentTime = DateTime.Now;
+
+            // Determine attendance status
+            if (currentTime.Hour >= 7 && currentTime.Hour < 9)
+            {
+                lbAttendStatus.Text = "You are on time.";
+            }
+            else if (currentTime.Hour >= 9)
+            {
+                lbAttendStatus.Text = "You are late.";
+            }
+
+            // Update attendance in the database
+            string query = "INSERT INTO Attendance (EmployeeId, Date, Time) VALUES (@employeeId, @date, @time)";
+            dbHelper.ExecuteNonQuery(query,
+                new SqlParameter("@employeeId", employeeId),
+                new SqlParameter("@date", currentTime.Date),
+                new SqlParameter("@time", currentTime.TimeOfDay));
+        }
         #endregion
     }
 }

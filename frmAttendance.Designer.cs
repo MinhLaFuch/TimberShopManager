@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -42,22 +43,23 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             lbTimeStamp = new Label();
-            sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
             dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             cbTimeStamp = new Guna.UI2.WinForms.Guna2ComboBox();
             dtpFrom = new Guna.UI2.WinForms.Guna2DateTimePicker();
             dtpTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
             btnRefresh = new Guna.UI2.WinForms.Guna2Button();
             btnAttend = new Guna.UI2.WinForms.Guna2Button();
-            lbDate = new Label();
+            lbHour = new Label();
             lbAttendStatus = new Label();
+            realTimeClock = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             SuspendLayout();
             // 
             // lbTimeStamp
             // 
             lbTimeStamp.AutoSize = true;
-            lbTimeStamp.Location = new Point(-1, 9);
+            lbTimeStamp.ForeColor = Color.FromArgb(59, 93, 79);
+            lbTimeStamp.Location = new Point(15, 4);
             lbTimeStamp.Name = "lbTimeStamp";
             lbTimeStamp.Size = new Size(101, 20);
             lbTimeStamp.TabIndex = 5;
@@ -123,7 +125,7 @@
             cbTimeStamp.FocusedColor = Color.FromArgb(94, 148, 255);
             cbTimeStamp.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             cbTimeStamp.Font = new Font("Segoe UI", 10F);
-            cbTimeStamp.ForeColor = Color.FromArgb(68, 88, 112);
+            cbTimeStamp.ForeColor = Color.FromArgb(59, 93, 79);
             cbTimeStamp.ItemHeight = 30;
             cbTimeStamp.Location = new Point(15, 34);
             cbTimeStamp.Name = "cbTimeStamp";
@@ -137,6 +139,7 @@
             dtpFrom.CustomizableEdges = customizableEdges3;
             dtpFrom.FillColor = Color.FromArgb(59, 93, 79);
             dtpFrom.Font = new Font("Segoe UI", 9F);
+            dtpFrom.ForeColor = Color.White;
             dtpFrom.Format = DateTimePickerFormat.Short;
             dtpFrom.Location = new Point(12, 91);
             dtpFrom.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
@@ -153,6 +156,7 @@
             dtpTo.CustomizableEdges = customizableEdges5;
             dtpTo.FillColor = Color.FromArgb(59, 93, 79);
             dtpTo.Font = new Font("Segoe UI", 9F);
+            dtpTo.ForeColor = Color.White;
             dtpTo.Format = DateTimePickerFormat.Short;
             dtpTo.Location = new Point(15, 151);
             dtpTo.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
@@ -196,24 +200,25 @@
             btnAttend.Size = new Size(191, 56);
             btnAttend.TabIndex = 12;
             btnAttend.Text = "Chấm công";
+            btnAttend.Click += btnAttend_Click;
             // 
-            // lbDate
+            // lbHour
             // 
-            lbDate.AutoSize = true;
-            lbDate.Location = new Point(12, 358);
-            lbDate.Name = "lbDate";
-            lbDate.Size = new Size(12, 20);
-            lbDate.TabIndex = 13;
-            lbDate.Text = ".";
+            lbHour.AutoSize = true;
+            lbHour.ForeColor = Color.FromArgb(59, 93, 79);
+            lbHour.Location = new Point(12, 358);
+            lbHour.Name = "lbHour";
+            lbHour.Size = new Size(0, 20);
+            lbHour.TabIndex = 13;
             // 
             // lbAttendStatus
             // 
             lbAttendStatus.AutoSize = true;
+            lbAttendStatus.ForeColor = Color.FromArgb(59, 93, 79);
             lbAttendStatus.Location = new Point(15, 468);
             lbAttendStatus.Name = "lbAttendStatus";
-            lbAttendStatus.Size = new Size(12, 20);
+            lbAttendStatus.Size = new Size(0, 20);
             lbAttendStatus.TabIndex = 14;
-            lbAttendStatus.Text = ".";
             // 
             // frmAttendance
             // 
@@ -221,7 +226,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1217, 651);
             Controls.Add(lbAttendStatus);
-            Controls.Add(lbDate);
+            Controls.Add(lbHour);
             Controls.Add(btnAttend);
             Controls.Add(btnRefresh);
             Controls.Add(dtpTo);
@@ -247,7 +252,8 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpTo;
         private Guna.UI2.WinForms.Guna2Button btnRefresh;
         private Guna.UI2.WinForms.Guna2Button btnAttend;
-        private Label lbDate;
+        private Label lbHour;
         private Label lbAttendStatus;
+        private System.Windows.Forms.Timer realTimeClock;
     }
 }

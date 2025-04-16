@@ -42,9 +42,9 @@
             dtpDOB = new Guna.UI2.WinForms.Guna2DateTimePicker();
             txtUsername = new TextBox();
             txtName = new TextBox();
-            lbEmployeeRole = new Label();
-            lbEmployeeDOB = new Label();
-            lbEmployeeAddress = new Label();
+            lbRole = new Label();
+            lbDOB = new Label();
+            lbAddress = new Label();
             lbUsername = new Label();
             lbName = new Label();
             lbID = new Label();
@@ -53,17 +53,19 @@
             btnSearch = new Button();
             dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
-            lbGmail = new Label();
+            pnButton = new Panel();
+            btnCancel = new Button();
             label2 = new Label();
             textBox2 = new TextBox();
-            label1 = new Label();
-            textBox1 = new TextBox();
-            btnCancel = new Button();
+            lbIden = new Label();
+            txtIden = new TextBox();
             txtAddress = new TextBox();
-            pnButton = new Panel();
+            pnInfo = new Panel();
+            lbGmail = new Label();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             gbInfo.SuspendLayout();
             pnButton.SuspendLayout();
+            pnInfo.SuspendLayout();
             SuspendLayout();
             // 
             // cbRole
@@ -79,7 +81,7 @@
             cbRole.ForeColor = Color.FromArgb(68, 88, 112);
             cbRole.ItemHeight = 30;
             cbRole.Items.AddRange(new object[] { "Quản lý cửa hàng", "Quản trị viên", "Nhân viên bán hàng", "Nhân viên kế toán" });
-            cbRole.Location = new Point(678, 196);
+            cbRole.Location = new Point(621, 140);
             cbRole.Name = "cbRole";
             cbRole.ShadowDecoration.CustomizableEdges = customizableEdges8;
             cbRole.Size = new Size(250, 36);
@@ -89,7 +91,7 @@
             // 
             txtID.BorderStyle = BorderStyle.None;
             txtID.ForeColor = Color.FromArgb(59, 93, 79);
-            txtID.Location = new Point(152, 71);
+            txtID.Location = new Point(140, 15);
             txtID.Name = "txtID";
             txtID.Size = new Size(345, 20);
             txtID.TabIndex = 1;
@@ -102,7 +104,7 @@
             dtpDOB.Font = new Font("Segoe UI", 9F);
             dtpDOB.ForeColor = SystemColors.ButtonFace;
             dtpDOB.Format = DateTimePickerFormat.Long;
-            dtpDOB.Location = new Point(678, 153);
+            dtpDOB.Location = new Point(621, 97);
             dtpDOB.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dtpDOB.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dtpDOB.Name = "dtpDOB";
@@ -115,7 +117,7 @@
             // 
             txtUsername.BorderStyle = BorderStyle.None;
             txtUsername.ForeColor = Color.FromArgb(59, 93, 79);
-            txtUsername.Location = new Point(152, 164);
+            txtUsername.Location = new Point(140, 108);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(243, 20);
             txtUsername.TabIndex = 5;
@@ -124,56 +126,56 @@
             // 
             txtName.BorderStyle = BorderStyle.None;
             txtName.ForeColor = Color.FromArgb(59, 93, 79);
-            txtName.Location = new Point(152, 117);
+            txtName.Location = new Point(140, 61);
             txtName.Name = "txtName";
             txtName.Size = new Size(345, 20);
             txtName.TabIndex = 3;
             // 
-            // lbEmployeeRole
+            // lbRole
             // 
-            lbEmployeeRole.AutoSize = true;
-            lbEmployeeRole.ForeColor = Color.FromArgb(59, 93, 79);
-            lbEmployeeRole.Location = new Point(589, 212);
-            lbEmployeeRole.Name = "lbEmployeeRole";
-            lbEmployeeRole.Size = new Size(61, 20);
-            lbEmployeeRole.TabIndex = 10;
-            lbEmployeeRole.Text = "Chức vụ";
+            lbRole.AutoSize = true;
+            lbRole.ForeColor = Color.FromArgb(59, 93, 79);
+            lbRole.Location = new Point(532, 156);
+            lbRole.Name = "lbRole";
+            lbRole.Size = new Size(61, 20);
+            lbRole.TabIndex = 10;
+            lbRole.Text = "Chức vụ";
             // 
-            // lbEmployeeDOB
+            // lbDOB
             // 
-            lbEmployeeDOB.AutoSize = true;
-            lbEmployeeDOB.ForeColor = Color.FromArgb(59, 93, 79);
-            lbEmployeeDOB.Location = new Point(589, 155);
-            lbEmployeeDOB.Name = "lbEmployeeDOB";
-            lbEmployeeDOB.Size = new Size(74, 20);
-            lbEmployeeDOB.TabIndex = 8;
-            lbEmployeeDOB.Text = "Ngày sinh";
+            lbDOB.AutoSize = true;
+            lbDOB.ForeColor = Color.FromArgb(59, 93, 79);
+            lbDOB.Location = new Point(532, 99);
+            lbDOB.Name = "lbDOB";
+            lbDOB.Size = new Size(74, 20);
+            lbDOB.TabIndex = 8;
+            lbDOB.Text = "Ngày sinh";
             // 
-            // lbEmployeeAddress
+            // lbAddress
             // 
-            lbEmployeeAddress.AutoSize = true;
-            lbEmployeeAddress.ForeColor = Color.FromArgb(59, 93, 79);
-            lbEmployeeAddress.Location = new Point(589, 115);
-            lbEmployeeAddress.Name = "lbEmployeeAddress";
-            lbEmployeeAddress.Size = new Size(46, 20);
-            lbEmployeeAddress.TabIndex = 6;
-            lbEmployeeAddress.Text = "Nơi ở";
+            lbAddress.AutoSize = true;
+            lbAddress.ForeColor = Color.FromArgb(59, 93, 79);
+            lbAddress.Location = new Point(532, 59);
+            lbAddress.Name = "lbAddress";
+            lbAddress.Size = new Size(46, 20);
+            lbAddress.TabIndex = 6;
+            lbAddress.Text = "Nơi ở";
             // 
             // lbUsername
             // 
             lbUsername.AutoSize = true;
             lbUsername.ForeColor = Color.FromArgb(59, 93, 79);
-            lbUsername.Location = new Point(25, 164);
+            lbUsername.Location = new Point(13, 108);
             lbUsername.Name = "lbUsername";
-            lbUsername.Size = new Size(68, 20);
+            lbUsername.Size = new Size(97, 20);
             lbUsername.TabIndex = 4;
-            lbUsername.Text = "Số CCCD";
+            lbUsername.Text = "Tên tài khoản";
             // 
             // lbName
             // 
             lbName.AutoSize = true;
             lbName.ForeColor = Color.FromArgb(59, 93, 79);
-            lbName.Location = new Point(25, 117);
+            lbName.Location = new Point(13, 61);
             lbName.Name = "lbName";
             lbName.Size = new Size(121, 20);
             lbName.TabIndex = 2;
@@ -183,7 +185,7 @@
             // 
             lbID.AutoSize = true;
             lbID.ForeColor = Color.FromArgb(59, 93, 79);
-            lbID.Location = new Point(25, 71);
+            lbID.Location = new Point(13, 15);
             lbID.Name = "lbID";
             lbID.Size = new Size(97, 20);
             lbID.TabIndex = 0;
@@ -248,17 +250,17 @@
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = Color.White;
             dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(59, 93, 79);
             dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
             dgv.DefaultCellStyle = dataGridViewCellStyle6;
             dgv.GridColor = Color.FromArgb(231, 229, 255);
-            dgv.Location = new Point(22, 319);
+            dgv.Location = new Point(22, 318);
             dgv.Name = "dgv";
             dgv.RowHeadersVisible = false;
             dgv.RowHeadersWidth = 51;
-            dgv.Size = new Size(1183, 309);
+            dgv.Size = new Size(1183, 458);
             dgv.TabIndex = 10;
             dgv.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgv.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -284,24 +286,8 @@
             // 
             // gbInfo
             // 
+            gbInfo.Controls.Add(pnInfo);
             gbInfo.Controls.Add(pnButton);
-            gbInfo.Controls.Add(lbGmail);
-            gbInfo.Controls.Add(label2);
-            gbInfo.Controls.Add(textBox2);
-            gbInfo.Controls.Add(label1);
-            gbInfo.Controls.Add(textBox1);
-            gbInfo.Controls.Add(cbRole);
-            gbInfo.Controls.Add(lbName);
-            gbInfo.Controls.Add(dtpDOB);
-            gbInfo.Controls.Add(txtAddress);
-            gbInfo.Controls.Add(txtID);
-            gbInfo.Controls.Add(lbEmployeeRole);
-            gbInfo.Controls.Add(lbID);
-            gbInfo.Controls.Add(lbEmployeeDOB);
-            gbInfo.Controls.Add(lbUsername);
-            gbInfo.Controls.Add(lbEmployeeAddress);
-            gbInfo.Controls.Add(txtUsername);
-            gbInfo.Controls.Add(txtName);
             gbInfo.CustomBorderColor = Color.FromArgb(59, 93, 79);
             gbInfo.CustomizableEdges = customizableEdges11;
             gbInfo.FillColor = SystemColors.Control;
@@ -310,57 +296,20 @@
             gbInfo.Location = new Point(22, 12);
             gbInfo.Name = "gbInfo";
             gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            gbInfo.Size = new Size(1183, 301);
+            gbInfo.Size = new Size(1183, 308);
             gbInfo.TabIndex = 11;
             gbInfo.Text = "Thông tin";
             // 
-            // lbGmail
+            // pnButton
             // 
-            lbGmail.AutoSize = true;
-            lbGmail.ForeColor = Color.FromArgb(59, 93, 79);
-            lbGmail.Location = new Point(404, 164);
-            lbGmail.Name = "lbGmail";
-            lbGmail.Size = new Size(93, 20);
-            lbGmail.TabIndex = 15;
-            lbGmail.Text = "@gmail.com";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.FromArgb(59, 93, 79);
-            label2.Location = new Point(25, 212);
-            label2.Name = "label2";
-            label2.Size = new Size(68, 20);
-            label2.TabIndex = 13;
-            label2.Text = "Số CCCD";
-            // 
-            // textBox2
-            // 
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.ForeColor = Color.FromArgb(59, 93, 79);
-            textBox2.Location = new Point(152, 212);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(345, 20);
-            textBox2.TabIndex = 14;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.FromArgb(59, 93, 79);
-            label1.Location = new Point(589, 71);
-            label1.Name = "label1";
-            label1.Size = new Size(68, 20);
-            label1.TabIndex = 11;
-            label1.Text = "Số CCCD";
-            // 
-            // textBox1
-            // 
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.ForeColor = Color.FromArgb(59, 93, 79);
-            textBox1.Location = new Point(678, 71);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(444, 20);
-            textBox1.TabIndex = 12;
+            pnButton.Controls.Add(btnLock);
+            pnButton.Controls.Add(btnAdd);
+            pnButton.Controls.Add(btnSearch);
+            pnButton.Controls.Add(btnCancel);
+            pnButton.Location = new Point(572, 250);
+            pnButton.Name = "pnButton";
+            pnButton.Size = new Size(611, 50);
+            pnButton.TabIndex = 16;
             // 
             // btnCancel
             // 
@@ -376,25 +325,86 @@
             btnCancel.Text = "Hủy";
             btnCancel.UseVisualStyleBackColor = false;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = Color.FromArgb(59, 93, 79);
+            label2.Location = new Point(13, 156);
+            label2.Name = "label2";
+            label2.Size = new Size(70, 20);
+            label2.TabIndex = 13;
+            label2.Text = "Mật khẩu";
+            // 
+            // textBox2
+            // 
+            textBox2.BorderStyle = BorderStyle.None;
+            textBox2.ForeColor = Color.FromArgb(59, 93, 79);
+            textBox2.Location = new Point(140, 156);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(345, 20);
+            textBox2.TabIndex = 14;
+            // 
+            // lbIden
+            // 
+            lbIden.AutoSize = true;
+            lbIden.ForeColor = Color.FromArgb(59, 93, 79);
+            lbIden.Location = new Point(532, 15);
+            lbIden.Name = "lbIden";
+            lbIden.Size = new Size(68, 20);
+            lbIden.TabIndex = 11;
+            lbIden.Text = "Số CCCD";
+            // 
+            // txtIden
+            // 
+            txtIden.BorderStyle = BorderStyle.None;
+            txtIden.ForeColor = Color.FromArgb(59, 93, 79);
+            txtIden.Location = new Point(621, 15);
+            txtIden.Name = "txtIden";
+            txtIden.Size = new Size(444, 20);
+            txtIden.TabIndex = 12;
+            // 
             // txtAddress
             // 
             txtAddress.BorderStyle = BorderStyle.None;
             txtAddress.ForeColor = Color.FromArgb(59, 93, 79);
-            txtAddress.Location = new Point(678, 115);
+            txtAddress.Location = new Point(621, 59);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(444, 20);
             txtAddress.TabIndex = 7;
             // 
-            // pnButton
+            // pnInfo
             // 
-            pnButton.Controls.Add(btnLock);
-            pnButton.Controls.Add(btnAdd);
-            pnButton.Controls.Add(btnSearch);
-            pnButton.Controls.Add(btnCancel);
-            pnButton.Location = new Point(572, 250);
-            pnButton.Name = "pnButton";
-            pnButton.Size = new Size(611, 48);
-            pnButton.TabIndex = 16;
+            pnInfo.Controls.Add(txtUsername);
+            pnInfo.Controls.Add(lbIden);
+            pnInfo.Controls.Add(txtIden);
+            pnInfo.Controls.Add(lbGmail);
+            pnInfo.Controls.Add(cbRole);
+            pnInfo.Controls.Add(txtName);
+            pnInfo.Controls.Add(dtpDOB);
+            pnInfo.Controls.Add(label2);
+            pnInfo.Controls.Add(txtAddress);
+            pnInfo.Controls.Add(lbUsername);
+            pnInfo.Controls.Add(lbRole);
+            pnInfo.Controls.Add(textBox2);
+            pnInfo.Controls.Add(lbDOB);
+            pnInfo.Controls.Add(lbID);
+            pnInfo.Controls.Add(lbAddress);
+            pnInfo.Controls.Add(txtID);
+            pnInfo.Controls.Add(lbName);
+            pnInfo.Location = new Point(14, 43);
+            pnInfo.Name = "pnInfo";
+            pnInfo.Size = new Size(1160, 201);
+            pnInfo.TabIndex = 17;
+            // 
+            // lbGmail
+            // 
+            lbGmail.AutoSize = true;
+            lbGmail.ForeColor = Color.FromArgb(59, 93, 79);
+            lbGmail.Location = new Point(392, 108);
+            lbGmail.Name = "lbGmail";
+            lbGmail.Size = new Size(93, 20);
+            lbGmail.TabIndex = 15;
+            lbGmail.Text = "@gmail.com";
             // 
             // frmAccount
             // 
@@ -410,15 +420,16 @@
             Load += frmAccount_Load;
             ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             gbInfo.ResumeLayout(false);
-            gbInfo.PerformLayout();
             pnButton.ResumeLayout(false);
+            pnInfo.ResumeLayout(false);
+            pnInfo.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-        private Label lbEmployeeRole;
-        private Label lbEmployeeDOB;
-        private Label lbEmployeeAddress;
+        private Label lbRole;
+        private Label lbDOB;
+        private Label lbAddress;
         private Label lbUsername;
         private Label lbName;
         private Label lbID;
@@ -434,11 +445,12 @@
         private Button btnSearch;
         private Label label2;
         private TextBox textBox2;
-        private Label label1;
-        private TextBox textBox1;
-        private Label lbGmail;
+        private Label lbIden;
+        private TextBox txtIden;
         private Button btnCancel;
         private TextBox txtAddress;
         private Panel pnButton;
+        private Panel pnInfo;
+        private Label lbGmail;
     }
 }

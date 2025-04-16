@@ -54,34 +54,36 @@
             pnInfoButton = new FlowLayoutPanel();
             btnSave = new Guna.UI2.WinForms.Guna2Button();
             btnCancel = new Guna.UI2.WinForms.Guna2Button();
-            lbID = new Label();
-            txtID = new TextBox();
-            txtPhoneNumber = new TextBox();
-            lbPhoneNumber = new Label();
-            txtName = new TextBox();
-            lbName = new Label();
-            lbAddress = new Label();
-            txtWebsite = new TextBox();
-            txtAddress = new TextBox();
-            lbEmail = new Label();
-            lbWebsite = new Label();
-            txtEmail = new TextBox();
             pnFeatureButton = new FlowLayoutPanel();
             btnAdd = new Guna.UI2.WinForms.Guna2Button();
             btnMod = new Guna.UI2.WinForms.Guna2Button();
             btnDel = new Guna.UI2.WinForms.Guna2Button();
             dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
+            pnButton = new FlowLayoutPanel();
             dgvInvoice = new Guna.UI2.WinForms.Guna2DataGridView();
             gbPurchaseHistory = new Guna.UI2.WinForms.Guna2GroupBox();
-            pnButton = new FlowLayoutPanel();
+            panel1 = new Panel();
+            lbID = new Label();
+            txtID = new TextBox();
+            txtEmail = new TextBox();
+            txtPhoneNumber = new TextBox();
+            lbPhoneNumber = new Label();
+            txtName = new TextBox();
+            txtAddress = new TextBox();
+            lbName = new Label();
+            txtWebsite = new TextBox();
+            lbAddress = new Label();
+            lbEmail = new Label();
+            lbWebsite = new Label();
             btnSearch = new Guna.UI2.WinForms.Guna2Button();
             pnInfoButton.SuspendLayout();
             pnFeatureButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             gbInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvInvoice).BeginInit();
             pnButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvInvoice).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnSearch
@@ -146,130 +148,6 @@
             btnCancel.Size = new Size(131, 32);
             btnCancel.TabIndex = 27;
             btnCancel.Text = "Hủy";
-            // 
-            // lbID
-            // 
-            lbID.AutoSize = true;
-            lbID.BackColor = Color.Transparent;
-            lbID.ForeColor = Color.FromArgb(59, 93, 79);
-            lbID.Location = new Point(20, 69);
-            lbID.Name = "lbID";
-            lbID.Size = new Size(122, 20);
-            lbID.TabIndex = 6;
-            lbID.Text = "Mã nhà cung cấp";
-            // 
-            // txtID
-            // 
-            txtID.BorderStyle = BorderStyle.None;
-            txtID.Enabled = false;
-            txtID.ForeColor = Color.FromArgb(59, 93, 79);
-            txtID.Location = new Point(148, 69);
-            txtID.Name = "txtID";
-            txtID.ReadOnly = true;
-            txtID.Size = new Size(182, 20);
-            txtID.TabIndex = 7;
-            txtID.TextChanged += txtID_TextChanged;
-            // 
-            // txtPhoneNumber
-            // 
-            txtPhoneNumber.BorderStyle = BorderStyle.None;
-            txtPhoneNumber.ForeColor = Color.FromArgb(59, 93, 79);
-            txtPhoneNumber.Location = new Point(148, 149);
-            txtPhoneNumber.Name = "txtPhoneNumber";
-            txtPhoneNumber.Size = new Size(182, 20);
-            txtPhoneNumber.TabIndex = 19;
-            txtPhoneNumber.KeyPress += txtPhoneNumber_KeyPress;
-            // 
-            // lbPhoneNumber
-            // 
-            lbPhoneNumber.AutoSize = true;
-            lbPhoneNumber.BackColor = Color.Transparent;
-            lbPhoneNumber.ForeColor = Color.FromArgb(59, 93, 79);
-            lbPhoneNumber.Location = new Point(18, 149);
-            lbPhoneNumber.Name = "lbPhoneNumber";
-            lbPhoneNumber.Size = new Size(97, 20);
-            lbPhoneNumber.TabIndex = 18;
-            lbPhoneNumber.Text = "Số điện thoại";
-            // 
-            // txtName
-            // 
-            txtName.BorderStyle = BorderStyle.None;
-            txtName.ForeColor = Color.FromArgb(59, 93, 79);
-            txtName.Location = new Point(148, 108);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(182, 20);
-            txtName.TabIndex = 17;
-            // 
-            // lbName
-            // 
-            lbName.AutoSize = true;
-            lbName.BackColor = Color.Transparent;
-            lbName.ForeColor = Color.FromArgb(59, 93, 79);
-            lbName.Location = new Point(18, 108);
-            lbName.Name = "lbName";
-            lbName.Size = new Size(124, 20);
-            lbName.TabIndex = 16;
-            lbName.Text = "Tên nhà cung cấp";
-            // 
-            // lbAddress
-            // 
-            lbAddress.AutoSize = true;
-            lbAddress.BackColor = Color.Transparent;
-            lbAddress.ForeColor = Color.FromArgb(59, 93, 79);
-            lbAddress.Location = new Point(357, 69);
-            lbAddress.Name = "lbAddress";
-            lbAddress.Size = new Size(55, 20);
-            lbAddress.TabIndex = 10;
-            lbAddress.Text = "Địa chỉ";
-            // 
-            // txtWebsite
-            // 
-            txtWebsite.BorderStyle = BorderStyle.None;
-            txtWebsite.ForeColor = Color.FromArgb(59, 93, 79);
-            txtWebsite.Location = new Point(451, 149);
-            txtWebsite.Name = "txtWebsite";
-            txtWebsite.Size = new Size(241, 20);
-            txtWebsite.TabIndex = 15;
-            // 
-            // txtAddress
-            // 
-            txtAddress.BorderStyle = BorderStyle.None;
-            txtAddress.ForeColor = Color.FromArgb(59, 93, 79);
-            txtAddress.Location = new Point(451, 69);
-            txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(241, 20);
-            txtAddress.TabIndex = 11;
-            // 
-            // lbEmail
-            // 
-            lbEmail.AutoSize = true;
-            lbEmail.BackColor = Color.Transparent;
-            lbEmail.ForeColor = Color.FromArgb(59, 93, 79);
-            lbEmail.Location = new Point(357, 108);
-            lbEmail.Name = "lbEmail";
-            lbEmail.Size = new Size(46, 20);
-            lbEmail.TabIndex = 14;
-            lbEmail.Text = "Email";
-            // 
-            // lbWebsite
-            // 
-            lbWebsite.AutoSize = true;
-            lbWebsite.BackColor = Color.Transparent;
-            lbWebsite.ForeColor = Color.FromArgb(59, 93, 79);
-            lbWebsite.Location = new Point(357, 149);
-            lbWebsite.Name = "lbWebsite";
-            lbWebsite.Size = new Size(62, 20);
-            lbWebsite.TabIndex = 12;
-            lbWebsite.Text = "Website";
-            // 
-            // txtEmail
-            // 
-            txtEmail.BorderStyle = BorderStyle.None;
-            txtEmail.ForeColor = Color.FromArgb(59, 93, 79);
-            txtEmail.Location = new Point(451, 108);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(241, 20);
-            txtEmail.TabIndex = 13;
             // 
             // pnFeatureButton
             // 
@@ -389,19 +267,8 @@
             // 
             // gbInfo
             // 
+            gbInfo.Controls.Add(panel1);
             gbInfo.Controls.Add(pnButton);
-            gbInfo.Controls.Add(lbID);
-            gbInfo.Controls.Add(txtID);
-            gbInfo.Controls.Add(txtEmail);
-            gbInfo.Controls.Add(txtPhoneNumber);
-            gbInfo.Controls.Add(lbPhoneNumber);
-            gbInfo.Controls.Add(txtName);
-            gbInfo.Controls.Add(txtAddress);
-            gbInfo.Controls.Add(lbName);
-            gbInfo.Controls.Add(txtWebsite);
-            gbInfo.Controls.Add(lbAddress);
-            gbInfo.Controls.Add(lbEmail);
-            gbInfo.Controls.Add(lbWebsite);
             gbInfo.CustomBorderColor = Color.FromArgb(59, 93, 79);
             gbInfo.CustomizableEdges = customizableEdges13;
             gbInfo.FillColor = Color.WhiteSmoke;
@@ -413,6 +280,15 @@
             gbInfo.Size = new Size(715, 257);
             gbInfo.TabIndex = 31;
             gbInfo.Text = "Thông tin";
+            // 
+            // pnButton
+            // 
+            pnButton.Controls.Add(pnFeatureButton);
+            pnButton.Controls.Add(pnInfoButton);
+            pnButton.Location = new Point(161, 203);
+            pnButton.Name = "pnButton";
+            pnButton.Size = new Size(572, 48);
+            pnButton.TabIndex = 32;
             // 
             // dgvInvoice
             // 
@@ -469,6 +345,7 @@
             // 
             gbPurchaseHistory.CustomBorderColor = Color.FromArgb(59, 93, 79);
             gbPurchaseHistory.CustomizableEdges = customizableEdges15;
+            gbPurchaseHistory.FillColor = SystemColors.Control;
             gbPurchaseHistory.Font = new Font("Segoe UI", 9F);
             gbPurchaseHistory.ForeColor = Color.White;
             gbPurchaseHistory.Location = new Point(736, 5);
@@ -478,14 +355,146 @@
             gbPurchaseHistory.TabIndex = 32;
             gbPurchaseHistory.Text = "Hóa đơn";
             // 
-            // pnButton
+            // panel1
             // 
-            pnButton.Controls.Add(pnFeatureButton);
-            pnButton.Controls.Add(pnInfoButton);
-            pnButton.Location = new Point(161, 203);
-            pnButton.Name = "pnButton";
-            pnButton.Size = new Size(572, 48);
-            pnButton.TabIndex = 32;
+            panel1.Controls.Add(lbID);
+            panel1.Controls.Add(txtID);
+            panel1.Controls.Add(txtEmail);
+            panel1.Controls.Add(txtPhoneNumber);
+            panel1.Controls.Add(lbPhoneNumber);
+            panel1.Controls.Add(txtName);
+            panel1.Controls.Add(txtAddress);
+            panel1.Controls.Add(lbName);
+            panel1.Controls.Add(txtWebsite);
+            panel1.Controls.Add(lbAddress);
+            panel1.Controls.Add(lbEmail);
+            panel1.Controls.Add(lbWebsite);
+            panel1.Location = new Point(3, 43);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(706, 154);
+            panel1.TabIndex = 33;
+            // 
+            // lbID
+            // 
+            lbID.AutoSize = true;
+            lbID.BackColor = Color.Transparent;
+            lbID.ForeColor = Color.FromArgb(59, 93, 79);
+            lbID.Location = new Point(5, 17);
+            lbID.Name = "lbID";
+            lbID.Size = new Size(122, 20);
+            lbID.TabIndex = 20;
+            lbID.Text = "Mã nhà cung cấp";
+            // 
+            // txtID
+            // 
+            txtID.BorderStyle = BorderStyle.None;
+            txtID.Enabled = false;
+            txtID.ForeColor = Color.FromArgb(59, 93, 79);
+            txtID.Location = new Point(133, 17);
+            txtID.Name = "txtID";
+            txtID.ReadOnly = true;
+            txtID.Size = new Size(182, 20);
+            txtID.TabIndex = 21;
+            // 
+            // txtEmail
+            // 
+            txtEmail.BorderStyle = BorderStyle.None;
+            txtEmail.ForeColor = Color.FromArgb(59, 93, 79);
+            txtEmail.Location = new Point(440, 56);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(241, 20);
+            txtEmail.TabIndex = 25;
+            // 
+            // txtPhoneNumber
+            // 
+            txtPhoneNumber.BorderStyle = BorderStyle.None;
+            txtPhoneNumber.ForeColor = Color.FromArgb(59, 93, 79);
+            txtPhoneNumber.Location = new Point(133, 97);
+            txtPhoneNumber.Name = "txtPhoneNumber";
+            txtPhoneNumber.Size = new Size(182, 20);
+            txtPhoneNumber.TabIndex = 31;
+            // 
+            // lbPhoneNumber
+            // 
+            lbPhoneNumber.AutoSize = true;
+            lbPhoneNumber.BackColor = Color.Transparent;
+            lbPhoneNumber.ForeColor = Color.FromArgb(59, 93, 79);
+            lbPhoneNumber.Location = new Point(3, 97);
+            lbPhoneNumber.Name = "lbPhoneNumber";
+            lbPhoneNumber.Size = new Size(97, 20);
+            lbPhoneNumber.TabIndex = 30;
+            lbPhoneNumber.Text = "Số điện thoại";
+            // 
+            // txtName
+            // 
+            txtName.BorderStyle = BorderStyle.None;
+            txtName.ForeColor = Color.FromArgb(59, 93, 79);
+            txtName.Location = new Point(133, 56);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(182, 20);
+            txtName.TabIndex = 29;
+            // 
+            // txtAddress
+            // 
+            txtAddress.BorderStyle = BorderStyle.None;
+            txtAddress.ForeColor = Color.FromArgb(59, 93, 79);
+            txtAddress.Location = new Point(440, 17);
+            txtAddress.Name = "txtAddress";
+            txtAddress.Size = new Size(241, 20);
+            txtAddress.TabIndex = 23;
+            // 
+            // lbName
+            // 
+            lbName.AutoSize = true;
+            lbName.BackColor = Color.Transparent;
+            lbName.ForeColor = Color.FromArgb(59, 93, 79);
+            lbName.Location = new Point(3, 56);
+            lbName.Name = "lbName";
+            lbName.Size = new Size(124, 20);
+            lbName.TabIndex = 28;
+            lbName.Text = "Tên nhà cung cấp";
+            // 
+            // txtWebsite
+            // 
+            txtWebsite.BorderStyle = BorderStyle.None;
+            txtWebsite.ForeColor = Color.FromArgb(59, 93, 79);
+            txtWebsite.Location = new Point(440, 97);
+            txtWebsite.Name = "txtWebsite";
+            txtWebsite.Size = new Size(241, 20);
+            txtWebsite.TabIndex = 27;
+            // 
+            // lbAddress
+            // 
+            lbAddress.AutoSize = true;
+            lbAddress.BackColor = Color.Transparent;
+            lbAddress.ForeColor = Color.FromArgb(59, 93, 79);
+            lbAddress.Location = new Point(346, 17);
+            lbAddress.Name = "lbAddress";
+            lbAddress.Size = new Size(55, 20);
+            lbAddress.TabIndex = 22;
+            lbAddress.Text = "Địa chỉ";
+            // 
+            // lbEmail
+            // 
+            lbEmail.AutoSize = true;
+            lbEmail.BackColor = Color.Transparent;
+            lbEmail.ForeColor = Color.FromArgb(59, 93, 79);
+            lbEmail.Location = new Point(346, 56);
+            lbEmail.Name = "lbEmail";
+            lbEmail.Size = new Size(46, 20);
+            lbEmail.TabIndex = 26;
+            lbEmail.Text = "Email";
+            // 
+            // lbWebsite
+            // 
+            lbWebsite.AutoSize = true;
+            lbWebsite.BackColor = Color.Transparent;
+            lbWebsite.ForeColor = Color.FromArgb(59, 93, 79);
+            lbWebsite.Location = new Point(346, 97);
+            lbWebsite.Name = "lbWebsite";
+            lbWebsite.Size = new Size(62, 20);
+            lbWebsite.TabIndex = 24;
+            lbWebsite.Text = "Website";
             // 
             // frmSupplier
             // 
@@ -506,25 +515,14 @@
             pnFeatureButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             gbInfo.ResumeLayout(false);
-            gbInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvInvoice).EndInit();
             pnButton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvInvoice).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-        private Label lbID;
-        private TextBox txtID;
-        private TextBox txtAddress;
-        private Label lbAddress;
-        private TextBox txtEmail;
-        private Label lbWebsite;
-        private TextBox txtWebsite;
-        private Label lbEmail;
-        private TextBox txtName;
-        private Label lbName;
-        private TextBox txtPhoneNumber;
-        private Label lbPhoneNumber;
         private FlowLayoutPanel pnFeatureButton;
         private Guna.UI2.WinForms.Guna2Button btnAdd;
         private Guna.UI2.WinForms.Guna2Button btnMod;
@@ -538,5 +536,18 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvInvoice;
         private Guna.UI2.WinForms.Guna2GroupBox gbPurchaseHistory;
         private FlowLayoutPanel pnButton;
+        private Panel panel1;
+        private Label lbID;
+        private TextBox txtID;
+        private TextBox txtEmail;
+        private TextBox txtPhoneNumber;
+        private Label lbPhoneNumber;
+        private TextBox txtName;
+        private TextBox txtAddress;
+        private Label lbName;
+        private TextBox txtWebsite;
+        private Label lbAddress;
+        private Label lbEmail;
+        private Label lbWebsite;
     }
 }
