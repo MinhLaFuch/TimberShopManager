@@ -11,7 +11,7 @@ using Azure.Core;
 
 namespace timber_shop_manager.objects
 {
-    internal class Supplier
+    public class Supplier
     {
         public static readonly string PREFIX = "SI";
         public static readonly int CODE_LENGTH = 6;

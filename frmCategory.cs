@@ -9,16 +9,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using timber_shop_manager.objects;
 
 namespace timber_shop_manager
 {
     public partial class frmCategory : Form
     {
         #region Properties
+        private Category selectedCategory = null;
         private DatabaseHelper dbHelper = new DatabaseHelper();
+        private Employee.Role role = Employee.Role.UNKNOWN;
         public frmCategory()
         {
             InitializeComponent();
+        }
+        public frmCategory(Employee.Role role) : this()
+        {
+            this.role = role;
         }
         #endregion
         #region Support Methods
@@ -148,9 +155,7 @@ namespace timber_shop_manager
         // Incomplete
         private void btnViewProduct_Click(object sender, EventArgs e)
         {
-            frmProduct frmProduct = new frmProduct();
-            frmProduct.categoryID = txtID.Text;
-            frmProduct.categoryName = txtName.Text;
+            frmProduct frmProduct = new frmProduct(role, selectedCategory);
             frmProduct.ShowDialog();
         }
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)

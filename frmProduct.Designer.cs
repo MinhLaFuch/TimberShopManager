@@ -294,6 +294,7 @@
             // pnInfo
             // 
             pnInfo.Controls.Add(txtDescription);
+            pnInfo.Controls.Add(pnButton);
             pnInfo.Controls.Add(lbDescription);
             pnInfo.Controls.Add(cbCategory);
             pnInfo.Controls.Add(txtID);
@@ -516,7 +517,7 @@
             pnButton.Controls.Add(pnFeatureButton);
             pnButton.Controls.Add(pnInfoButton);
             pnButton.FlowDirection = FlowDirection.RightToLeft;
-            pnButton.Location = new Point(514, 343);
+            pnButton.Location = new Point(601, 207);
             pnButton.Name = "pnButton";
             pnButton.Size = new Size(541, 110);
             pnButton.TabIndex = 37;
@@ -527,7 +528,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1217, 651);
             Controls.Add(gbInfo);
-            Controls.Add(pnButton);
             Controls.Add(dgv);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmProduct";

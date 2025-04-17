@@ -7,7 +7,7 @@ using Microsoft.Data.SqlClient;
 
 namespace timber_shop_manager.objects
 {
-    internal class Category
+    public class Category
     {
         public static readonly string PREFIX = "P";
         public static readonly int CODE_LENGTH = 6;

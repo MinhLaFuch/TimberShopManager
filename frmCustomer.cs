@@ -14,8 +14,7 @@ namespace timber_shop_manager
     public partial class frmCustomer : Form
     {
         #region Properties
-        private Employee.Role role = Employee.Role.UNKNOWN;
-
+        private Employee.Role role;
         private DatabaseHelper dbHelper = new DatabaseHelper();
         public frmCustomer()
         {

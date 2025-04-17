@@ -256,12 +256,12 @@ namespace timber_shop_manager
         }
         private void btnSale_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmSale());
+            openChildForm(new frmSale(account));
             HighlightButton((Button)sender);
         }
         private void btnImport_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmImport());
+            openChildForm(new frmImport(account));
             HighlightButton((Button)sender);
         }
         private void pbUser_Click(object sender, EventArgs e)

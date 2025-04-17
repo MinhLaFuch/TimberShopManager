@@ -15,8 +15,9 @@ namespace timber_shop_manager
     public partial class frmProduct : Form
     {
         private Product selectedProduct = null;
+        private Category category = null;
         private static DynamicSearch dynamicSearch = null;
-
+        private Employee.Role role = Employee.Role.UNKNOWN;
         #region Properties
         private DatabaseHelper dbHelper = new DatabaseHelper();
 
@@ -24,7 +25,15 @@ namespace timber_shop_manager
         {
             InitializeComponent();
         }
-
+        public frmProduct(Employee.Role role): this()
+        {
+            this.role = role;
+        }
+        public frmProduct(Employee.Role role, Category cat) : this()
+        {
+            this.role = role;
+            this.category = cat;
+        }
         #endregion
         #region Support Methods
         private void LoadComboBoxCatagory()

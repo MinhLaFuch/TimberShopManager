@@ -10,7 +10,7 @@ using Microsoft.Data.SqlClient;
 
 namespace timber_shop_manager.objects
 {
-    internal class Product
+    public class Product
     {
         public static readonly int SOLD_OUT = 0;
         public static readonly string PREFIX = "P";
