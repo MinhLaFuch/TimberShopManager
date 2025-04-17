@@ -9,7 +9,7 @@ USE TimberShop;
 GO
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2017                    */
-/* Created on:     17/04/2025 6:54:24 am                        */
+/* Created on:     17/04/2025 3:14:56 pm                        */
 /*==============================================================*/
 
 
@@ -476,9 +476,9 @@ go
 /* Table: Account                                               */
 /*==============================================================*/
 create table Account (
-   Username             varchar(20)          not null,
-   EmployeeId           char(10)             not null,
-   Password             char(64)             null,
+   Username             varchar(254)         not null,
+   EmployeeId           varchar(254)         not null,
+   Password             varchar(254)         null,
    constraint PK_ACCOUNT primary key (Username)
 )
 go
@@ -497,14 +497,7 @@ go
 /* Table: Accountant                                            */
 /*==============================================================*/
 create table Accountant (
-   EmployeeId           char(10)             not null,
-   Name                 nvarchar(50)         null,
-   IdentificationNumber char(12)             null,
-   Address              nvarchar(256)        null,
-   DateOfBirth          datetime             null,
-   Salary               float                null,
-   Role                 nvarchar(20)         null,
-   PhoneNumber          char(10)             null,
+   EmployeeId           varchar(254)         not null,
    constraint PK_ACCOUNTANT primary key (EmployeeId)
 )
 go
@@ -513,14 +506,7 @@ go
 /* Table: Administrator                                         */
 /*==============================================================*/
 create table Administrator (
-   EmployeeId           char(10)             not null,
-   Name                 nvarchar(50)         null,
-   IdentificationNumber char(12)             null,
-   Address              nvarchar(256)        null,
-   DateOfBirth          datetime             null,
-   Salary               float                null,
-   Role                 nvarchar(20)         null,
-   PhoneNumber          char(10)             null,
+   EmployeeId           varchar(254)         not null,
    constraint PK_ADMINISTRATOR primary key (EmployeeId)
 )
 go
@@ -529,8 +515,8 @@ go
 /* Table: Applied                                               */
 /*==============================================================*/
 create table Applied (
-   VoucherID            char(10)             not null,
-   SaleInvoiceId        char(10)             not null,
+   VoucherID            varchar(254)         not null,
+   SaleInvoiceId        varchar(254)         not null,
    constraint PK_APPLIED primary key (VoucherID, SaleInvoiceId)
 )
 go
@@ -559,10 +545,10 @@ go
 /* Table: Attendance                                            */
 /*==============================================================*/
 create table Attendance (
-   EmployeeId           char(10)             not null,
-   Date                 datetime             not null,
-   Time                 datetime             null,
-   Review               char(256)            null,
+   EmployeeId           varchar(254)         not null,
+   Date                 Date                 not null,
+   Time                 Time                 null,
+   Review               varchar(254)         null,
    constraint PK_ATTENDANCE primary key (EmployeeId, Date)
 )
 go
@@ -581,9 +567,9 @@ go
 /* Table: Category                                              */
 /*==============================================================*/
 create table Category (
-   CategoryId           char(256)            not null,
-   Name                 char(256)            null,
-   Description          char(256)            null,
+   CategoryId           varchar(254)         not null,
+   Name                 varchar(254)         null,
+   Description          varchar(254)         null,
    constraint PK_CATEGORY primary key (CategoryId)
 )
 go
@@ -592,9 +578,9 @@ go
 /* Table: Customer                                              */
 /*==============================================================*/
 create table Customer (
-   PhoneNumber          char(10)             not null,
-   Name                 nvarchar(50)         null,
-   Address              nvarchar(256)        null,
+   PhoneNumber          varchar(254)         not null,
+   Name                 varchar(254)         null,
+   Address              varchar(254)         null,
    constraint PK_CUSTOMER primary key (PhoneNumber)
 )
 go
@@ -603,9 +589,9 @@ go
 /* Table: DeletedCategory                                       */
 /*==============================================================*/
 create table DeletedCategory (
-   CategoryId           char(256)            not null,
-   Name                 char(256)            null,
-   Description          char(256)            null,
+   CategoryId           varchar(254)         not null,
+   Name                 varchar(254)         null,
+   Description          varchar(254)         null,
    constraint PK_DELETEDCATEGORY primary key (CategoryId)
 )
 go
@@ -614,14 +600,14 @@ go
 /* Table: DeletedEmployee                                       */
 /*==============================================================*/
 create table DeletedEmployee (
-   EmployeeId           char(10)             not null,
-   Name                 char(256)            null,
-   IdentificationNumber char(12)             null,
-   Address              nvarchar(256)        null,
-   DateOfBirth          datetime             null,
+   EmployeeId           varchar(254)         not null,
+   Name                 varchar(254)         null,
+   IdentificationNumber varchar(254)         null,
+   Address              varchar(254)         null,
+   DateOfBirth          timestamp            null,
    Salary               float                null,
-   Role                 nvarchar(20)         null,
-   PhoneNumber          char(10)             null,
+   Role                 varchar(254)         null,
+   PhoneNumber          varchar(254)         null,
    constraint PK_DELETEDEMPLOYEE primary key (EmployeeId)
 )
 go
@@ -630,12 +616,12 @@ go
 /* Table: DeletedProduct                                        */
 /*==============================================================*/
 create table DeletedProduct (
-   ProductId            char(10)             not null,
-   Name                 char(256)            null,
-   CalculationUnit      nvarchar(50)         null,
+   ProductId            varchar(254)         not null,
+   Name                 varchar(254)         null,
+   CalculationUnit      varchar(254)         null,
    PriceQuotation       float                null,
    CustomerWarranty     int                  null,
-   Description          char(256)            null,
+   Description          varchar(254)         null,
    Quantity             int                  null,
    constraint PK_DELETEDPRODUCT primary key (ProductId)
 )
@@ -645,12 +631,12 @@ go
 /* Table: DeletedSupplier                                       */
 /*==============================================================*/
 create table DeletedSupplier (
-   SupplierId           char(10)             not null,
-   Name                 char(256)            null,
-   Address              nvarchar(256)        null,
-   ContactNumber        char(10)             null,
-   Email                varchar(50)          null,
-   Website              varchar(50)          null,
+   SupplierId           varchar(254)         not null,
+   Name                 varchar(254)         null,
+   Address              varchar(254)         null,
+   ContactNumber        varchar(254)         null,
+   Email                varchar(254)         null,
+   Website              varchar(254)         null,
    constraint PK_DELETEDSUPPLIER primary key (SupplierId)
 )
 go
@@ -659,13 +645,11 @@ go
 /* Table: DeletedVoucher                                        */
 /*==============================================================*/
 create table DeletedVoucher (
-   VoucherID            char(10)             not null,
-   Name                 char(256)            null,
-   Type                 nvarchar(50)         null,
+   VoucherID            varchar(254)         not null,
+   Name                 varchar(254)         null,
+   Type                 varchar(254)         null,
    StartTime            datetime             null,
    EndTime              datetime             null,
-   StartDate            datetime             null,
-   EndDate              datetime             null,
    constraint PK_DELETEDVOUCHER primary key (VoucherID)
 )
 go
@@ -674,14 +658,14 @@ go
 /* Table: Employee                                              */
 /*==============================================================*/
 create table Employee (
-   EmployeeId           char(10)             not null,
-   Name                 nvarchar(50)         null,
-   IdentificationNumber char(12)             null,
-   Address              nvarchar(256)        null,
-   DateOfBirth          datetime             null,
+   EmployeeId           varchar(254)         not null,
+   Name                 varchar(254)         null,
+   IdentificationNumber varchar(254)         null,
+   Address              varchar(254)         null,
+   DateOfBirth          timestamp            null,
    Salary               float                null,
-   Role                 nvarchar(20)         null,
-   PhoneNumber          char(10)             null,
+   Role                 varchar(254)         null,
+   PhoneNumber          varchar(254)         null,
    constraint PK_EMPLOYEE primary key (EmployeeId)
 )
 go
@@ -690,14 +674,14 @@ go
 /* Table: ImportDetail                                          */
 /*==============================================================*/
 create table ImportDetail (
-   ProductId            char(10)             not null,
-   ImportInvoiceId      varchar(50)          not null,
+   ImportInvoiceId      varchar(254)         not null,
+   ProductId            varchar(254)         not null,
    Quanitty             int                  null,
    Price                float                null,
-   Tax                  real                 null,
+   Tax                  float                null,
    Total                float                null,
-   WarrantyDateEnd      datetime             null,
-   constraint PK_IMPORTDETAIL primary key (ProductId, ImportInvoiceId)
+   WarrantyDateEnd      timestamp            null,
+   constraint PK_IMPORTDETAIL primary key (ImportInvoiceId, ProductId)
 )
 go
 
@@ -708,7 +692,7 @@ go
 
 
 
-create nonclustered index IMPORTDETAIL_FK on ImportDetail (ProductId ASC)
+create nonclustered index IMPORTDETAIL_FK on ImportDetail (ImportInvoiceId ASC)
 go
 
 /*==============================================================*/
@@ -718,19 +702,19 @@ go
 
 
 
-create nonclustered index IMPORTDETAIL_FK2 on ImportDetail (ImportInvoiceId ASC)
+create nonclustered index IMPORTDETAIL_FK2 on ImportDetail (ProductId ASC)
 go
 
 /*==============================================================*/
 /* Table: ImportInvoice                                         */
 /*==============================================================*/
 create table ImportInvoice (
-   ImportInvoiceId      varchar(50)          not null,
-   SupplierId           char(10)             not null,
-   EmployeeId           char(10)             not null,
-   DateOfPayment        datetime             null,
+   ImportInvoiceId      varchar(254)         not null,
+   SupplierId           varchar(254)         not null,
+   EmployeeId           varchar(254)         not null,
+   DateOfPayment        timestamp            null,
    TotalPrice           float                null,
-   PaymentMethod        nvarchar(50)         null,
+   PaymentMethod        varchar(254)         null,
    constraint PK_IMPORTINVOICE primary key (ImportInvoiceId)
 )
 go
@@ -759,9 +743,9 @@ go
 /* Table: LockedAccount                                         */
 /*==============================================================*/
 create table LockedAccount (
-   Username             varchar(20)          not null,
-   EmployeeId           char(10)             not null,
-   Password             char(64)             null,
+   Username             varchar(254)         not null,
+   EmployeeId           varchar(254)         not null,
+   Password             varchar(254)         null,
    constraint PK_LOCKEDACCOUNT primary key (Username)
 )
 go
@@ -780,14 +764,7 @@ go
 /* Table: Manager                                               */
 /*==============================================================*/
 create table Manager (
-   EmployeeId           char(10)             not null,
-   Name                 nvarchar(50)         null,
-   IdentificationNumber char(12)             null,
-   Address              nvarchar(256)        null,
-   DateOfBirth          datetime             null,
-   Salary               float                null,
-   Role                 nvarchar(20)         null,
-   PhoneNumber          char(10)             null,
+   EmployeeId           varchar(254)         not null,
    constraint PK_MANAGER primary key (EmployeeId)
 )
 go
@@ -796,13 +773,13 @@ go
 /* Table: Product                                               */
 /*==============================================================*/
 create table Product (
-   ProductId            char(10)             not null,
-   CategoryId           char(256)            null,
-   Name                 nvarchar(50)         null,
-   CalculationUnit      nvarchar(50)         null,
+   ProductId            varchar(254)         not null,
+   CategoryId           varchar(254)         null,
+   Name                 varchar(254)         null,
+   CalculationUnit      varchar(254)         null,
    PriceQuotation       float                null,
    CustomerWarranty     int                  null,
-   Description          nvarchar(256)        null,
+   Description          varchar(254)         null,
    Quantity             int                  null,
    constraint PK_PRODUCT primary key (ProductId)
 )
@@ -822,8 +799,8 @@ go
 /* Table: ProfitAccounting                                      */
 /*==============================================================*/
 create table ProfitAccounting (
-   EmployeeId           char(10)             not null,
-   Date                 datetime             null,
+   EmployeeId           varchar(254)         not null,
+   Date                 timestamp            null,
    Total                float                null
 )
 go
@@ -842,8 +819,8 @@ go
 /* Table: SalaryAccounting                                      */
 /*==============================================================*/
 create table SalaryAccounting (
-   EmployeeId           char(10)             not null,
-   Date                 datetime             null,
+   EmployeeId           varchar(254)         not null,
+   Date                 timestamp            null,
    Total                float                null
 )
 go
@@ -862,14 +839,7 @@ go
 /* Table: SaleAgent                                             */
 /*==============================================================*/
 create table SaleAgent (
-   EmployeeId           char(10)             not null,
-   Name                 nvarchar(50)         null,
-   IdentificationNumber char(12)             null,
-   Address              nvarchar(256)        null,
-   DateOfBirth          datetime             null,
-   Salary               float                null,
-   Role                 nvarchar(20)         null,
-   PhoneNumber          char(10)             null,
+   EmployeeId           varchar(254)         not null,
    constraint PK_SALEAGENT primary key (EmployeeId)
 )
 go
@@ -878,14 +848,14 @@ go
 /* Table: SaleDetail                                            */
 /*==============================================================*/
 create table SaleDetail (
-   SaleInvoiceId        char(10)             not null,
-   ProductId            char(10)             not null,
+   ProductId            varchar(254)         not null,
+   SaleInvoiceId        varchar(254)         not null,
    Quantity             int                  null,
    Price                float                null,
    Tax                  int                  null,
    Total                float                null,
-   WarrantyDateEnd      datetime             null,
-   constraint PK_SALEDETAIL primary key (SaleInvoiceId, ProductId)
+   WarrantyDateEnd      timestamp            null,
+   constraint PK_SALEDETAIL primary key (ProductId, SaleInvoiceId)
 )
 go
 
@@ -896,7 +866,7 @@ go
 
 
 
-create nonclustered index SALEDETAIL_FK on SaleDetail (SaleInvoiceId ASC)
+create nonclustered index SALEDETAIL_FK on SaleDetail (ProductId ASC)
 go
 
 /*==============================================================*/
@@ -906,19 +876,19 @@ go
 
 
 
-create nonclustered index SALEDETAIL_FK2 on SaleDetail (ProductId ASC)
+create nonclustered index SALEDETAIL_FK2 on SaleDetail (SaleInvoiceId ASC)
 go
 
 /*==============================================================*/
 /* Table: SaleInvoice                                           */
 /*==============================================================*/
 create table SaleInvoice (
-   SaleInvoiceId        char(10)             not null,
-   PhoneNumber          char(10)             not null,
-   EmployeeId           char(10)             not null,
-   DateOfPayment        datetime             null,
+   SaleInvoiceId        varchar(254)         not null,
+   PhoneNumber          varchar(254)         not null,
+   EmployeeId           varchar(254)         not null,
+   DateOfPayment        timestamp            null,
    TotalCost            float                null,
-   PaymentMethod        nvarchar(50)         null,
+   PaymentMethod        varchar(254)         null,
    constraint PK_SALEINVOICE primary key (SaleInvoiceId)
 )
 go
@@ -947,12 +917,12 @@ go
 /* Table: Supplier                                              */
 /*==============================================================*/
 create table Supplier (
-   SupplierId           char(10)             not null,
-   Name                 nvarchar(50)         null,
-   Address              nvarchar(256)        null,
-   ContactNumber        char(10)             null,
-   Email                varchar(50)          null,
-   Website              varchar(50)          null,
+   SupplierId           varchar(254)         not null,
+   Name                 varchar(254)         null,
+   Address              varchar(254)         null,
+   ContactNumber        varchar(254)         null,
+   Email                varchar(254)         null,
+   Website              varchar(254)         null,
    constraint PK_SUPPLIER primary key (SupplierId)
 )
 go
@@ -961,13 +931,11 @@ go
 /* Table: Voucher                                               */
 /*==============================================================*/
 create table Voucher (
-   VoucherID            char(10)             not null,
-   Name                 nvarchar(50)         null,
-   Type                 nvarchar(50)         null,
+   VoucherID            varchar(254)         not null,
+   Name                 varchar(254)         null,
+   Type                 varchar(254)         null,
    StartTime            datetime             null,
    EndTime              datetime             null,
-   StartDate            datetime             null,
-   EndDate              datetime             null,
    constraint PK_VOUCHER primary key (VoucherID)
 )
 go
@@ -1071,6 +1039,7 @@ alter table SaleInvoice
    add constraint FK_SALEINVO_SELL_SALEAGEN foreign key (EmployeeId)
       references SaleAgent (EmployeeId)
 go
+
 
 
 
