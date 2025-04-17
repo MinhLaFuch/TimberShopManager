@@ -386,8 +386,8 @@
             Controls.Add(dgv);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmCategory";
-            Text = "frmCatagory";
-            Load += frmCatagory_Load;
+            Text = "frmCategory";
+            Load += frmCategory_Load;
             ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             gbInfo.ResumeLayout(false);
             pnButton.ResumeLayout(false);

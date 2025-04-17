@@ -41,7 +41,7 @@ namespace timber_shop_manager
         }
         private DataTable loadData()
         {
-            string query = "SELECT * FROM Catagory";
+            string query = "SELECT * FROM Category";
             DataTable dt = dbHelper.ExecuteQuery(query);
             return dt;
         }
@@ -57,7 +57,7 @@ namespace timber_shop_manager
         }
         private string idGenerator()
         {
-            string query = "SELECT CatagoryID FROM Catagory ORDER BY CatagoryId DESC";
+            string query = "SELECT CategoryID FROM Category ORDER BY CategoryId DESC";
             DataTable dt = dbHelper.ExecuteQuery(query);
             string newId = "001";
             if (dt.Rows.Count > 0)
@@ -91,7 +91,7 @@ namespace timber_shop_manager
         #endregion
         #region Events
         #region Load
-        private void frmCatagory_Load(object sender, EventArgs e)
+        private void frmCategory_Load(object sender, EventArgs e)
         {
             loadForm();
         }
@@ -112,24 +112,24 @@ namespace timber_shop_manager
         }
         private void btnDel_Click(object sender, EventArgs e)
         {
-            string insertDeletedQuery = "INSERT INTO DeletedCatagory (CatagoryID, CatagoryName, Description) SELECT CatagoryID, CatagoryName, Description FROM Catagory WHERE CatagoryID = @ID;";
-            string deleteQuery = "DELETE FROM Catagory WHERE CatagoryID = @ID;";
+            string insertDeletedQuery = "INSERT INTO DeletedCategory (categoryID, categoryName, Description) SELECT categoryID, categoryName, Description FROM category WHERE categoryID = @ID;";
+            string deleteQuery = "DELETE FROM category WHERE categoryID = @ID;";
 
             // Get a confirmation from the user  
             DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn xóa danh mục này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirmation == DialogResult.Yes)
             {
-                DataTable dt = dbHelper.ExecuteQuery("SELECT * FROM Product WHERE CatagoryID = @ID", new SqlParameter("@ID", txtID.Text));
+                DataTable dt = dbHelper.ExecuteQuery("SELECT * FROM Product WHERE categoryID = @ID", new SqlParameter("@ID", txtID.Text));
                 if (dt.Rows.Count > 0)
                 {
                     MessageBox.Show("Không thể xóa danh mục này vì nó đang được sử dụng trong sản phẩm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    // Insert into DeletedCatagory table  
+                    // Insert into Deletedcategory table  
                     dbHelper.ExecuteNonQuery(insertDeletedQuery, new SqlParameter("@ID", txtID.Text));
 
-                    // Delete from Catagory table  
+                    // Delete from category table  
                     dbHelper.ExecuteNonQuery(deleteQuery, new SqlParameter("@ID", txtID.Text));
                 }
             }
@@ -149,8 +149,8 @@ namespace timber_shop_manager
         private void btnViewProduct_Click(object sender, EventArgs e)
         {
             frmProduct frmProduct = new frmProduct();
-            //frmProduct.CatagoryID = txtID.Text;
-            //frmProduct.CatagoryName = txtName.Text;
+            //frmProduct.categoryID = txtID.Text;
+            //frmProduct.categoryName = txtName.Text;
             frmProduct.ShowDialog();
         }
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -161,7 +161,7 @@ namespace timber_shop_manager
                 DataGridViewRow row = dgv.Rows[e.RowIndex];
 
                 // Populate the text boxes with the selected row's data
-                txtID.Text = row.Cells["CatagoryID"].Value.ToString();
+                txtID.Text = row.Cells["CategoryID"].Value.ToString();
                 txtName.Text = row.Cells["Name"].Value.ToString();
                 txtDescription.Text = row.Cells["Description"].Value.ToString();
 
@@ -174,7 +174,7 @@ namespace timber_shop_manager
             bool isAdding = string.IsNullOrEmpty(txtID.Text);
             if (isAdding)
             {
-                string query = "INSERT INTO Catagory (CatagoryID, CatagoryName, Description) VALUES (@ID, @Name, @Description)";
+                string query = "INSERT INTO Category (CategoryID, categoryName, Description) VALUES (@ID, @Name, @Description)";
                 dbHelper.ExecuteNonQuery(query,
                     new SqlParameter("@ID", idGenerator()),
                     new SqlParameter("@Name", txtName.Text),
@@ -182,7 +182,7 @@ namespace timber_shop_manager
             }
             else
             {
-                string query = "UPDATE Catagory SET CatagoryName = @Name, Description = @Description WHERE CatagoryID = @ID";
+                string query = "UPDATE Category SET CategoryName = @Name, Description = @Description WHERE categoryID = @ID";
                 dbHelper.ExecuteNonQuery(query,
                     new SqlParameter("@ID", txtID.Text),
                     new SqlParameter("@Name", txtName.Text),
