@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace timber_shop_manager.objects
 {
-    internal class Attendance
+    public class Attendance
     {
     }
 }

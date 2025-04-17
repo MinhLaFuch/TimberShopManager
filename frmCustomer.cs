@@ -14,21 +14,22 @@ namespace timber_shop_manager
     public partial class frmCustomer : Form
     {
         #region Properties
-        private Employee.Role role;
+        private Account account;
         private DatabaseHelper dbHelper = new DatabaseHelper();
         public frmCustomer()
         {
             InitializeComponent();
         }
 
-        public frmCustomer(Employee.Role role) : this()
+        public frmCustomer(Account acc) : this()
         {
-            this.role = role;
+            this.account = acc;
         }
         #endregion
         #region Support methods
         private void FromLoad()
         {
+            loadFormBasedOnRole();
             clearTextBox();
             pnInfo.Enabled = false;
             gbPurchaseHistory.Enabled = false;
@@ -37,6 +38,11 @@ namespace timber_shop_manager
             pnButtonEnabler(true);
             btnMod.Visible = false;
             searchEventEnabler(false);
+        }
+        private void loadFormBasedOnRole()
+        {
+            bool authority = account.verifyPermission() == Employee.Role.ADMINISTRATOR || account.verifyPermission() == Employee.Role.MANAGER;
+            btnMod.Visible = authority;
         }
         private void clearTextBox()
         {

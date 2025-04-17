@@ -16,15 +16,21 @@ namespace timber_shop_manager
     public partial class frmAccount : Form
     {
         #region Properties
+        private Account account = null;
         private DatabaseHelper dbHelper = new DatabaseHelper();
         public frmAccount()
         {
             InitializeComponent();
         }
+        public frmAccount(Account acc) : this()
+        {
+            this.account = acc;
+        }
         #endregion
         #region Support methods
         private void loadForm()
         {
+            loadFeatureBasedOnRole();
             pnInfo.Enabled = false;
             txtPassword.ReadOnly = true;
             clearTextBox();
@@ -79,6 +85,12 @@ namespace timber_shop_manager
                 txtUsername.TextChanged -= txtUsername_TextChanged;
                 cbRole.SelectedIndexChanged -= cbRole_SelectedValueChanged;
             }
+        }
+        //
+        private void loadFeatureBasedOnRole()
+        {
+            bool isAdmin = account.verifyPermission() == Employee.Role.ADMINISTRATOR;
+            btnAdd.Visible = btnLock.Visible = isAdmin;
         }
         // I need search method
         private void suggest()

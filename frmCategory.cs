@@ -18,19 +18,20 @@ namespace timber_shop_manager
         #region Properties
         private Category selectedCategory = null;
         private DatabaseHelper dbHelper = new DatabaseHelper();
-        private Employee.Role role = Employee.Role.UNKNOWN;
+        private Account account;
         public frmCategory()
         {
             InitializeComponent();
         }
-        public frmCategory(Employee.Role role) : this()
+        public frmCategory(Account acc) : this()
         {
-            this.role = role;
+            this.account = acc;
         }
         #endregion
         #region Support Methods
         private void loadForm()
         {
+            loadFormBasedOnRole();
             pnInfo.Enabled = false;
             txtID.ReadOnly = true;
             clearTextBox();
@@ -39,6 +40,11 @@ namespace timber_shop_manager
             btnEnabler(false, true);
             searchEventEnabler(false);
             btnSave.Visible = true;
+        }
+        private void loadFormBasedOnRole()
+        {
+            bool authority = account.verifyPermission() == Employee.Role.ADMINISTRATOR || account.verifyPermission() == Employee.Role.MANAGER;
+            btnAdd.Visible = btnMod.Visible = btnDel.Visible = authority;
         }
         private void clearTextBox()
         {
@@ -155,7 +161,7 @@ namespace timber_shop_manager
         // Incomplete
         private void btnViewProduct_Click(object sender, EventArgs e)
         {
-            frmProduct frmProduct = new frmProduct(role, selectedCategory);
+            frmProduct frmProduct = new frmProduct(account, selectedCategory);
             frmProduct.ShowDialog();
         }
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)

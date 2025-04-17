@@ -48,6 +48,7 @@
             btnCustomer = new Button();
             btnProduct = new Button();
             btnCategory = new Button();
+            btnVoucher = new Button();
             pnReport = new FlowLayoutPanel();
             btnReport = new Button();
             btnFinancialReport = new Button();
@@ -61,7 +62,6 @@
             manageTransistion = new System.Windows.Forms.Timer(components);
             reportTransistion = new System.Windows.Forms.Timer(components);
             pnMDI = new Panel();
-            btnVoucher = new Button();
             pnMenu.SuspendLayout();
             pnManage.SuspendLayout();
             pnReport.SuspendLayout();
@@ -155,7 +155,7 @@
             pnManage.Controls.Add(btnVoucher);
             pnManage.Location = new Point(3, 201);
             pnManage.Name = "pnManage";
-            pnManage.Size = new Size(138, 533);
+            pnManage.Size = new Size(138, 528);
             pnManage.TabIndex = 25;
             // 
             // btnManage
@@ -288,13 +288,29 @@
             btnCategory.Click += btnCategory_Click;
             btnCategory.MouseHover += btnCategory_MouseHover;
             // 
+            // btnVoucher
+            // 
+            btnVoucher.BackColor = Color.FromArgb(59, 93, 60);
+            btnVoucher.FlatAppearance.BorderColor = Color.White;
+            btnVoucher.FlatAppearance.BorderSize = 0;
+            btnVoucher.FlatStyle = FlatStyle.Flat;
+            btnVoucher.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnVoucher.ForeColor = SystemColors.ButtonFace;
+            btnVoucher.Image = (Image)resources.GetObject("btnVoucher.Image");
+            btnVoucher.Location = new Point(0, 462);
+            btnVoucher.Margin = new Padding(0);
+            btnVoucher.Name = "btnVoucher";
+            btnVoucher.Size = new Size(138, 66);
+            btnVoucher.TabIndex = 31;
+            btnVoucher.UseVisualStyleBackColor = false;
+            // 
             // pnReport
             // 
             pnReport.Controls.Add(btnReport);
             pnReport.Controls.Add(btnFinancialReport);
             pnReport.Controls.Add(btnSalary);
             pnReport.Controls.Add(btnInvoice);
-            pnReport.Location = new Point(3, 740);
+            pnReport.Location = new Point(3, 735);
             pnReport.Name = "pnReport";
             pnReport.Size = new Size(156, 258);
             pnReport.TabIndex = 32;
@@ -445,6 +461,7 @@
             btnUser.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnUser.Size = new Size(52, 59);
             btnUser.TabIndex = 0;
+            btnUser.Click += btnUser_Click;
             // 
             // lbUsername
             // 
@@ -476,22 +493,6 @@
             pnMDI.Name = "pnMDI";
             pnMDI.Size = new Size(1217, 651);
             pnMDI.TabIndex = 27;
-            // 
-            // btnVoucher
-            // 
-            btnVoucher.BackColor = Color.FromArgb(59, 93, 60);
-            btnVoucher.FlatAppearance.BorderColor = Color.White;
-            btnVoucher.FlatAppearance.BorderSize = 0;
-            btnVoucher.FlatStyle = FlatStyle.Flat;
-            btnVoucher.Font = new Font("Constantia", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnVoucher.ForeColor = SystemColors.ButtonFace;
-            btnVoucher.Image = (Image)resources.GetObject("btnVoucher.Image");
-            btnVoucher.Location = new Point(0, 462);
-            btnVoucher.Margin = new Padding(0);
-            btnVoucher.Name = "btnVoucher";
-            btnVoucher.Size = new Size(138, 66);
-            btnVoucher.TabIndex = 31;
-            btnVoucher.UseVisualStyleBackColor = false;
             // 
             // frmMain
             // 

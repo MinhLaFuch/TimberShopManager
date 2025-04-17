@@ -17,20 +17,32 @@ namespace timber_shop_manager
     {
         #region Properties
         private static DatabaseHelper dbHelper = new DatabaseHelper();
+        private Account account;
         public frmEmployee()
         {
             InitializeComponent();
+        }
+
+        public frmEmployee(Account account) : this()
+        {
+            this.account = account;
         }
         #endregion
         #region Support Method
         private void loadForm()
         {
+            loadFormBasedOnRole();
             txtID.ReadOnly = true;
             clearTextBox();
             dgv.DataSource = loadData();
             btnEnabler(false, true);
             gbInfo.Enabled = false;
             searchEventEnabler(false);
+        }
+        private void loadFormBasedOnRole()
+        {
+            bool authority = account.verifyPermission() == Employee.Role.MANAGER;
+            btnAdd.Visible = btnDel.Visible = btnMod.Visible = btnViewAttendance.Visible = authority;
         }
         private DataTable loadData()
         {

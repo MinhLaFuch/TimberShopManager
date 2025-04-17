@@ -17,7 +17,7 @@ namespace timber_shop_manager
         private Product selectedProduct = null;
         private Category category = null;
         private static DynamicSearch dynamicSearch = null;
-        private Employee.Role role = Employee.Role.UNKNOWN;
+        private Account account;
         #region Properties
         private DatabaseHelper dbHelper = new DatabaseHelper();
 
@@ -25,13 +25,13 @@ namespace timber_shop_manager
         {
             InitializeComponent();
         }
-        public frmProduct(Employee.Role role): this()
+        public frmProduct(Account acc): this()
         {
-            this.role = role;
+            this.account = acc;
         }
-        public frmProduct(Employee.Role role, Category cat) : this()
+        public frmProduct(Account acc, Category cat) : this()
         {
-            this.role = role;
+            this.account = acc;
             this.category = cat;
         }
         #endregion
@@ -52,21 +52,18 @@ namespace timber_shop_manager
         }
         private void loadForm()
         {
-            txtID.Enabled = false;
-            nudQuantity.Enabled = false;
+            txtID.ReadOnly = true;
+            pnInfo.Enabled = false;
             dgv.DataSource = loadData();
 
             btnEnabler(false, true);
+            pnButtonEnabler(true);
 
             LoadComboBoxCatagory();
             LoadComboBoxUnit();
 
             clearTextBox();
-            gbEnabler(false);
-        }
-        private void gbEnabler(bool b)
-        {
-            gbInfo.Enabled = b;
+
         }
         private void clearTextBox()
         {
@@ -85,10 +82,15 @@ namespace timber_shop_manager
             DataTable dt = dbHelper.ExecuteQuery(query);
             return dt;
         }
-        private void btnEnabler(bool featBtn, bool initBtn)
+        private void btnEnabler(bool cellBtn, bool initBtn)
         {
-            btnDel.Enabled = btnMod.Enabled = featBtn;
-            btnAdd.Enabled = btnSearch.Enabled = initBtn;
+            btnDel.Visible = btnMod.Visible = cellBtn;
+            btnAdd.Visible = btnSearch.Visible = initBtn;
+        }
+        private void pnButtonEnabler(bool b)
+        {
+            pnFeatureButton.Visible = b;
+            pnInfoButton.Visible = !b;
         }
 
         #endregion
@@ -102,11 +104,13 @@ namespace timber_shop_manager
         #region Click
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            txtID.Enabled = true;
-            gbEnabler(true);
-            btnSave.Enabled = false;
+            pnInfo.Enabled = true;
+            txtID.ReadOnly = false;
+            nudQuantity.Enabled = false;
+            btnSave.Visible = false;
             txtID.Focus();
-            btnEnabler(false, false);
+            pnButtonEnabler(false);
+            clearTextBox();
 
             if (dynamicSearch == null)
             {
@@ -125,26 +129,24 @@ namespace timber_shop_manager
         private void btnDel_Click(object sender, EventArgs e)
         {
             Product.delete(selectedProduct);
-
             // Reload form
             loadForm();
         }
         private void btnMod_Click(object sender, EventArgs e)
         {
-            gbEnabler(true);
+            pnInfo.Enabled = true;
             txtName.Focus();
-            btnEnabler(false, false);
+            pnButtonEnabler(false);
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            gbEnabler(true);
+            pnInfo.Enabled = true;
+            txtName.Focus();
             clearTextBox();
+            pnButtonEnabler(false);
 
             string lastCode = Convert.ToString(dbHelper.ExecuteScalar("SELECT TOP 1 ProductId FROM Product ORDER BY ProductId DESC"));
             txtID.Text = Program.GenerateNextCode(lastCode, Product.PREFIX, Product.CODE_LENGTH);
-            txtName.Focus();
-            nudQuantity.Enabled = true;
-            btnEnabler(false, false);
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -157,18 +159,8 @@ namespace timber_shop_manager
         {
             dynamicSearch?.Disable();
             loadForm();
+            nudQuantity.Enabled = true;
         }
-
-        #endregion
-
-
-        #region Key Press
-        private void txtPriceQuotation_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Program.CheckInputIsDigit(e);
-        }
-        #endregion
-        #endregion
 
         private void dgvProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -194,5 +186,16 @@ namespace timber_shop_manager
                 btnEnabler(true, true);
             }
         }
+        #endregion
+
+
+        #region Key Press
+        private void txtPriceQuotation_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Program.CheckInputIsDigit(e);
+        }
+        #endregion
+        #endregion
+
     }
 }

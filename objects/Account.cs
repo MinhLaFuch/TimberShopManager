@@ -15,18 +15,19 @@ namespace timber_shop_manager.objects
     public class Account
     {
         private static DatabaseHelper dbHelper = new DatabaseHelper();
-        private string username;
-        private string password;
-
+        private string username = string.Empty;
+        private string password = string.Empty;
+        private Employee.Role role = Employee.Role.UNKNOWN;
         public string Username { get;}
         public string Password { get; }
+        public Employee Employee { get; }
 
-        public Account(string username, string password)
+        public Account(string username, string password, Employee employee)
         {
             this.username = username;
             this.password = password;
         }
-
+        
         public bool verifyUsername()
         {
             string query = "SELECT 1 FROM Account WHERE Username = @user";

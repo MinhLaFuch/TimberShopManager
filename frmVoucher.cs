@@ -7,22 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using timber_shop_manager.objects;
 
-namespace timber_shop_manager
+namespace timber_shop_manager.objects
 {
-    public partial class frmInvoice : Form
+    public partial class frmVoucher : Form
     {
-        public frmInvoice()
+        public frmVoucher()
         {
             InitializeComponent();
         }
-
-        public frmInvoice(Account account)
-        {
-            Account = account;
-        }
-
-        public Account Account { get; }
     }
 }

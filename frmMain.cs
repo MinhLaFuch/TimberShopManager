@@ -100,7 +100,8 @@ namespace timber_shop_manager
                 btnCustomer.Visible = true;
                 btnProduct.Visible = true;
                 btnCategory.Visible = true;
-                pnManageQuantity = 5;
+                btnVoucher.Visible = true;
+                pnManageQuantity = 6;
                 // Sale
                 btnSale.Visible = true;
                 // Import
@@ -122,7 +123,8 @@ namespace timber_shop_manager
                 btnCustomer.Visible = true;
                 btnProduct.Visible = true;
                 btnCategory.Visible = true;
-                pnManageQuantity = 5;
+                btnVoucher.Visible = true;
+                pnManageQuantity = 6;
                 // Sale
                 btnSale.Visible = true;
                 // Import
@@ -142,7 +144,8 @@ namespace timber_shop_manager
                 btnCustomer.Visible = true;
                 btnProduct.Visible = true;
                 btnCategory.Visible = true;
-                pnManageQuantity = 3;
+                btnVoucher.Visible = true;
+                pnManageQuantity = 4;
                 // Sale
                 btnSale.Visible = true;
                 // Import
@@ -162,7 +165,8 @@ namespace timber_shop_manager
                 btnCustomer.Visible = true;
                 btnProduct.Visible = true;
                 btnCategory.Visible = true;
-                pnManageQuantity = 3;
+                btnVoucher.Visible = true;
+                pnManageQuantity = 4;
                 // Sale
                 btnSale.Visible = false;
                 // Import
@@ -195,7 +199,7 @@ namespace timber_shop_manager
                     }
                 }
             }
-            foreach(Control control in pnTop.Controls)
+            foreach (Control control in pnTop.Controls)
             {
                 if (control is Button button)
                 {
@@ -226,32 +230,32 @@ namespace timber_shop_manager
         #region Click
         private void btnAccount_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmAccount());
+            openChildForm(new frmAccount(account));
             HighlightButton((Button)sender);
         }
         private void btnEmployee_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmEmployee());
+            openChildForm(new frmEmployee(account));
             HighlightButton((Button)sender);
         }
         private void btnSupplier_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmSupplier());
+            openChildForm(new frmSupplier(account));
             HighlightButton((Button)sender);
         }
         private void btnCustomer_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmCustomer());
+            openChildForm(new frmCustomer(account));
             HighlightButton((Button)sender);
         }
         private void btnProduct_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmProduct());
+            openChildForm(new frmProduct(account));
             HighlightButton((Button)sender);
         }
         private void btnCategory_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmCategory());
+            openChildForm(new frmCategory(account));
             HighlightButton((Button)sender);
         }
         private void btnSale_Click(object sender, EventArgs e)
@@ -264,7 +268,7 @@ namespace timber_shop_manager
             openChildForm(new frmImport(account));
             HighlightButton((Button)sender);
         }
-        private void pbUser_Click(object sender, EventArgs e)
+        private void btnUser_Click(object sender, EventArgs e)
         {
             openChildForm(new frmUser(account));
         }
@@ -278,17 +282,17 @@ namespace timber_shop_manager
         }
         private void btnSalary_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmSalaryReport());
+            openChildForm(new frmSalaryReport(account));
             HighlightButton((Button)sender);
         }
         private void btnFinancialReport_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmFinancial());
+            openChildForm(new frmFinancial(account));
             HighlightButton((Button)sender);
         }
         private void btnInvoice_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmInvoice());
+            openChildForm(new frmInvoice(account));
             HighlightButton((Button)sender);
         }
         private void btnAttend_Click(object sender, EventArgs e)

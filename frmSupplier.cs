@@ -20,9 +20,17 @@ namespace timber_shop_manager
 
         #region Properties
         private DatabaseHelper dbHelper = new DatabaseHelper();
+
+        public Account Account { get; }
+
         public frmSupplier()
         {
             InitializeComponent();
+        }
+
+        public frmSupplier(Account account)
+        {
+            Account = account;
         }
         #endregion
 

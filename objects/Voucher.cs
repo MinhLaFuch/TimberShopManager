@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace timber_shop_manager.objects
 {
-    public class ImportInvoice
+    public class Voucher
     {
+
     }
 }
