@@ -102,33 +102,29 @@ namespace timber_shop_manager
         // Have not done the lock in database
         private void btnLock_Click(object sender, EventArgs e)
         {
-            string query = @"
-                INSERT INTO LockedAccount (EmployeeId, Username, Password)
-                SELECT acc.EmployeeId, acc.Username, acc.Password
-                FROM Account acc
-                WHERE acc.EmployeeId IN (SELECT EmployeeId FROM DeletedEmployee);
+            string insertDeletedQuery = "INSERT INTO LockedAccount (EmployeeId, Username, Password) SELECT CatagoryID, CatagoryName, Description FROM Catagory WHERE CatagoryID = @ID;";
+            string deleteQuery = "DELETE FROM Account WHERE EmployeeId = @ID;";
 
-                DELETE FROM Account
-                WHERE EmployeeId IN (SELECT EmployeeId FROM DeletedEmployee);
-            ";
-
-            try
+            // Get a confirmation from the user  
+            DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn xóa danh mục này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirmation == DialogResult.Yes)
             {
-                int rowsAffected = dbHelper.ExecuteNonQuery(query);
-                if (rowsAffected > 0)
+                DataTable dt = dbHelper.ExecuteQuery("SELECT * FROM Product WHERE CatagoryID = @ID", new SqlParameter("@ID", txtID.Text));
+                if (dt.Rows.Count > 0)
                 {
-                    MessageBox.Show("Tài khoản đã khóa thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dgv.DataSource = loadData(); // Refresh the data grid view
+                    MessageBox.Show("Không thể xóa danh mục này vì nó đang được sử dụng trong sản phẩm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show("Nhân viên hiện vẫn còn trong hệ thống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Insert into DeletedCatagory table  
+                    dbHelper.ExecuteNonQuery(insertDeletedQuery, new SqlParameter("@ID", txtID.Text));
+
+                    // Delete from Catagory table  
+                    dbHelper.ExecuteNonQuery(deleteQuery, new SqlParameter("@ID", txtID.Text));
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            // Reload form  
+            loadForm();
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {

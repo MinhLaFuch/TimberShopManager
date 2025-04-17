@@ -112,8 +112,8 @@ namespace timber_shop_manager
         }
         private void btnDel_Click(object sender, EventArgs e)
         {
-            string deleteQuery = "DELETE FROM Catagory WHERE CatagoryID = @ID;";
             string insertDeletedQuery = "INSERT INTO DeletedCatagory (CatagoryID, CatagoryName, Description) SELECT CatagoryID, CatagoryName, Description FROM Catagory WHERE CatagoryID = @ID;";
+            string deleteQuery = "DELETE FROM Catagory WHERE CatagoryID = @ID;";
 
             // Get a confirmation from the user  
             DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn xóa danh mục này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
