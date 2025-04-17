@@ -40,7 +40,8 @@ namespace timber_shop_manager
                           "acc.Username AS 'Tên tài khoản', acc.Password AS 'Mật khẩu', " +
                           "emp.Role AS 'Chức vụ' FROM Account acc " +
                           "JOIN Employee emp ON acc.EmployeeId = emp.EmployeeId " +
-                          "WHERE emp.EmployeeId NOT IN (SELECT EmployeeId FROM LockedAccount)";
+                          "WHERE emp.EmployeeId NOT IN (SELECT EmployeeId FROM LockedAccount)" +
+                          "ORDER BY emp.EmployeeId ASC";
             DataTable dt = dbHelper.ExecuteQuery(query);
             return dt;
         }
