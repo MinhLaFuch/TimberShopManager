@@ -119,6 +119,7 @@
             btnSearchCustomer.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnSearchCustomer.Size = new Size(107, 33);
             btnSearchCustomer.TabIndex = 11;
+            btnSearchCustomer.Click += btnSearchCustomer_Click;
             // 
             // btnClear
             // 
@@ -137,6 +138,7 @@
             btnClear.Size = new Size(107, 33);
             btnClear.TabIndex = 12;
             btnClear.Text = "Làm mới";
+            btnClear.Click += btnClear_Click;
             // 
             // btnAddProduct
             // 
@@ -154,6 +156,7 @@
             btnAddProduct.Size = new Size(232, 53);
             btnAddProduct.TabIndex = 10;
             btnAddProduct.Text = "Thêm sản phẩm";
+            btnAddProduct.Click += btnAddProduct_Click;
             // 
             // lbSearchProduct
             // 
@@ -181,6 +184,7 @@
             btnCreate.Size = new Size(130, 32);
             btnCreate.TabIndex = 0;
             btnCreate.Text = "Tạo phiếu";
+            btnCreate.Click += btnCreate_Click;
             // 
             // btnConfirm
             // 
@@ -216,6 +220,7 @@
             btnCancel.Size = new Size(130, 32);
             btnCancel.TabIndex = 14;
             btnCancel.Text = "Hủy phiếu";
+            btnCancel.Click += btnCancel_Click;
             // 
             // pnButton
             // 

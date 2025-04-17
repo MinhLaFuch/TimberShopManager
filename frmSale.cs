@@ -14,51 +14,16 @@ namespace timber_shop_manager
 {
     public partial class frmSale : Form
     {
+        #region Properties
         private DatabaseHelper dbHelper = new DatabaseHelper();
-        public frmSale()
+        private Account account;
+        public frmSale(Account account)
         {
             InitializeComponent();
+            this.account = account;
         }
-
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            FormLoad();
-
-            gbCustomer.Enabled = true;
-            pnlSearch.Enabled = true;
-
-            string query = "SELECT TOP 1 SaleInvoiceId FROM SaleInvoice ORDER BY SaleInvoiceId DESC";
-
-            string currentInvoiceId = Convert.ToString(dbHelper.ExecuteScalar(query));
-            string invoiceId = Program.GenerateNextCode(currentInvoiceId, Product.PREFIX, Product.CODE_LENGTH);
-            txtID.Text = invoiceId;
-        }
-
-        private void cbbSearch_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (cbSearchProduct.SelectedIndex != -1)
-            {
-                btnAddProduct.Enabled = true;
-                string id = GetIdFromString(cbSearchProduct.Text);
-
-                string queryQuantity = "SELECT Quantity FROM Product WHERE ProductId = @id";
-                string queryUnit = "SELECT CalculationUnit FROM Product WHERE ProductId = @id";
-
-                int quantity = Convert.ToInt32(dbHelper.ExecuteScalar(queryQuantity, new SqlParameter("@id", id)));
-                string unit = Convert.ToString(dbHelper.ExecuteScalar(queryUnit, new SqlParameter("@id", id)));
-                lblUnit.Text = unit;
-
-
-                nudQuantity.Maximum = quantity;
-
-                if (nudQuantity.Maximum == Product.SOLD_OUT)
-                {
-                    btnAddProduct.Enabled = false;
-
-                    MessageBox.Show("Mặt hàng này đã hết!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
+        #endregion
+        #region Support methods
         public string GetIdFromString(string input)
         {
             string[] parts = input.Split(" - ");
@@ -70,12 +35,6 @@ namespace timber_shop_manager
 
             return parts[0].Trim();
         }
-
-        private void frmSale_Load(object sender, EventArgs e)
-        {
-            FormLoad();
-        }
-
         private void FormLoad()
         {
             LoadComboboxSearch();
@@ -106,7 +65,34 @@ namespace timber_shop_manager
             cbSearchProduct.DataSource = data;
             cbSearchProduct.SelectedIndex = -1;
         }
+        private void ClearGroupBoxCustomer()
+        {
+            txtPhoneNumber.Clear();
+            txtCustomerName.Clear();
+            txtAddress.Clear();
+        }
+        #endregion
+        #region Events
+        #region Load
+        private void frmSale_Load(object sender, EventArgs e)
+        {
+            FormLoad();
+        }
+        #endregion
+        #region Click
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            FormLoad();
 
+            gbCustomer.Enabled = true;
+            pnlSearch.Enabled = true;
+
+            string query = "SELECT TOP 1 SaleInvoiceId FROM SaleInvoice ORDER BY SaleInvoiceId DESC";
+
+            string currentInvoiceId = Convert.ToString(dbHelper.ExecuteScalar(query));
+            string invoiceId = Program.GenerateNextCode(currentInvoiceId, Product.PREFIX, Product.CODE_LENGTH);
+            txtID.Text = invoiceId;
+        }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             FormLoad();
@@ -127,17 +113,42 @@ namespace timber_shop_manager
         {
             ClearGroupBoxCustomer();
         }
-
-        private void ClearGroupBoxCustomer()
-        {
-            txtPhoneNumber.Clear();
-            txtCustomerName.Clear();
-            txtAddress.Clear();
-        }
-
         private void btnConfirm_Click(object sender, EventArgs e)
         {
 
         }
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+        #region TextChanged
+        private void cbbSearch_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cbSearchProduct.SelectedIndex != -1)
+            {
+                btnAddProduct.Enabled = true;
+                string id = GetIdFromString(cbSearchProduct.Text);
+
+                string queryQuantity = "SELECT Quantity FROM Product WHERE ProductId = @id";
+                string queryUnit = "SELECT CalculationUnit FROM Product WHERE ProductId = @id";
+
+                int quantity = Convert.ToInt32(dbHelper.ExecuteScalar(queryQuantity, new SqlParameter("@id", id)));
+                string unit = Convert.ToString(dbHelper.ExecuteScalar(queryUnit, new SqlParameter("@id", id)));
+                lblUnit.Text = unit;
+
+
+                nudQuantity.Maximum = quantity;
+
+                if (nudQuantity.Maximum == Product.SOLD_OUT)
+                {
+                    btnAddProduct.Enabled = false;
+
+                    MessageBox.Show("Mặt hàng này đã hết!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        #endregion
+        #endregion
     }
 }

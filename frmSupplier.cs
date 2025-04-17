@@ -32,7 +32,7 @@ namespace timber_shop_manager
             dynamicSearch?.Disable();
 
             clearTextBox();
-            dgv.DataSource = loadData();
+            dgvSupplier.DataSource = loadData();
 
             gbInfo.Enabled = false;
             txtID.Enabled = false;
@@ -121,7 +121,7 @@ namespace timber_shop_manager
                     { "txtWebsite", "Website" }
                 };
 
-                dynamicSearch = new DynamicSearch(searchControls, columnMappings, loadData, dgv);
+                dynamicSearch = new DynamicSearch(searchControls, columnMappings, loadData, dgvSupplier);
             }
 
             dynamicSearch.Enable();
@@ -138,24 +138,13 @@ namespace timber_shop_manager
         {
             loadForm();
         }
-
-        #endregion
-        #region Key Press
-        // Need to do input validation for email and website?
-        private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Program.CheckInputIsDigit(e);
-        }
-        #endregion
-        #endregion
-
-        private void dgvSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvSupplier_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dynamicSearch?.Disable();
-            if (e.RowIndex >= 0 && dgv.Rows.Count > 0)
+            if (e.RowIndex >= 0 && dgvSupplier.Rows.Count > 0)
             {
                 // Get the selected row
-                DataGridViewRow row = dgv.Rows[e.RowIndex];
+                DataGridViewRow row = dgvSupplier.Rows[e.RowIndex];
 
                 // Fill all info to groupbox
                 txtID.Text = row.Cells["SupplierID"].Value?.ToString();
@@ -171,10 +160,20 @@ namespace timber_shop_manager
                 btnEnabler(true, true);
             }
         }
-
+        #endregion
+        #region Key Press
+        // Need to do input validation for email and website?
+        private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Program.CheckInputIsDigit(e);
+        }
+        #endregion
+        #region Text Changed
         private void txtID_TextChanged(object sender, EventArgs e)
         {
 
         }
+        #endregion
+        #endregion
     }
 }

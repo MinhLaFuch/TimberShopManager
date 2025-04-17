@@ -48,12 +48,12 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnInfoButton = new FlowLayoutPanel();
             btnSave = new Guna.UI2.WinForms.Guna2Button();
             btnCancel = new Guna.UI2.WinForms.Guna2Button();
@@ -68,6 +68,7 @@
             gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
+            dtpDOBTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
             lbName = new Label();
             txtName = new TextBox();
             txtIden = new TextBox();
@@ -85,7 +86,6 @@
             txtAddress = new TextBox();
             lbDOB = new Label();
             lbRole = new Label();
-            dtpDOBTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
             lbFromTo = new Label();
             pnInfoButton.SuspendLayout();
             pnFeatureButton.SuspendLayout();
@@ -362,6 +362,25 @@
             panel1.Size = new Size(1150, 162);
             panel1.TabIndex = 30;
             // 
+            // dtpDOBTo
+            // 
+            dtpDOBTo.BackColor = SystemColors.ControlDark;
+            dtpDOBTo.Checked = true;
+            dtpDOBTo.CustomizableEdges = customizableEdges15;
+            dtpDOBTo.FillColor = Color.FromArgb(59, 93, 79);
+            dtpDOBTo.Font = new Font("Segoe UI", 9F);
+            dtpDOBTo.ForeColor = Color.White;
+            dtpDOBTo.Format = DateTimePickerFormat.Short;
+            dtpDOBTo.Location = new Point(846, 42);
+            dtpDOBTo.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            dtpDOBTo.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            dtpDOBTo.Name = "dtpDOBTo";
+            dtpDOBTo.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            dtpDOBTo.Size = new Size(225, 32);
+            dtpDOBTo.TabIndex = 38;
+            dtpDOBTo.Value = new DateTime(2025, 4, 14, 10, 47, 29, 149);
+            dtpDOBTo.ValueChanged += dtpDOBTo_ValueChanged;
+            // 
             // lbName
             // 
             lbName.AutoSize = true;
@@ -380,7 +399,7 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(231, 20);
             txtName.TabIndex = 24;
-            txtName.TextChanged += txtName_TextChanged_1;
+            txtName.TextChanged += txtName_TextChanged;
             // 
             // txtIden
             // 
@@ -390,7 +409,7 @@
             txtIden.Name = "txtIden";
             txtIden.Size = new Size(231, 20);
             txtIden.TabIndex = 26;
-            txtIden.TextChanged += txtIden_TextChanged_1;
+            txtIden.TextChanged += txtIden_TextChanged;
             // 
             // txtID
             // 
@@ -419,6 +438,7 @@
             cbRole.ShadowDecoration.CustomizableEdges = customizableEdges18;
             cbRole.Size = new Size(160, 36);
             cbRole.TabIndex = 37;
+            cbRole.SelectedValueChanged += cbRole_SelectedValueChanged;
             // 
             // lbPhoneNumber
             // 
@@ -447,6 +467,7 @@
             dtpDOBFrom.Size = new Size(225, 32);
             dtpDOBFrom.TabIndex = 36;
             dtpDOBFrom.Value = new DateTime(2025, 4, 14, 10, 47, 29, 149);
+            dtpDOBFrom.ValueChanged += dtpDOBFrom_ValueChanged;
             // 
             // lbCurrency
             // 
@@ -466,7 +487,7 @@
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(231, 20);
             txtPhoneNumber.TabIndex = 28;
-            txtPhoneNumber.TextChanged += txtPhoneNumber_TextChanged_1;
+            txtPhoneNumber.TextChanged += txtPhoneNumber_TextChanged;
             // 
             // txtSalary
             // 
@@ -525,7 +546,7 @@
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(374, 20);
             txtAddress.TabIndex = 30;
-            txtAddress.TextChanged += txtAddress_TextChanged_1;
+            txtAddress.TextChanged += txtAddress_TextChanged;
             // 
             // lbDOB
             // 
@@ -547,32 +568,14 @@
             lbRole.TabIndex = 32;
             lbRole.Text = "Chức vụ";
             // 
-            // dtpDOBTo
-            // 
-            dtpDOBTo.BackColor = SystemColors.ControlDark;
-            dtpDOBTo.Checked = true;
-            dtpDOBTo.CustomizableEdges = customizableEdges15;
-            dtpDOBTo.FillColor = Color.FromArgb(59, 93, 79);
-            dtpDOBTo.Font = new Font("Segoe UI", 9F);
-            dtpDOBTo.ForeColor = Color.White;
-            dtpDOBTo.Format = DateTimePickerFormat.Short;
-            dtpDOBTo.Location = new Point(846, 42);
-            dtpDOBTo.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
-            dtpDOBTo.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
-            dtpDOBTo.Name = "dtpDOBTo";
-            dtpDOBTo.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            dtpDOBTo.Size = new Size(225, 32);
-            dtpDOBTo.TabIndex = 38;
-            dtpDOBTo.Value = new DateTime(2025, 4, 14, 10, 47, 29, 149);
-            // 
             // lbFromTo
             // 
             lbFromTo.AutoSize = true;
-            lbFromTo.Font = new Font("Segoe UI", 50F);
+            lbFromTo.Font = new Font("Segoe UI", 35F);
             lbFromTo.ForeColor = Color.FromArgb(59, 93, 79);
-            lbFromTo.Location = new Point(759, -5);
+            lbFromTo.Location = new Point(769, 11);
             lbFromTo.Name = "lbFromTo";
-            lbFromTo.Size = new Size(81, 112);
+            lbFromTo.Size = new Size(57, 78);
             lbFromTo.TabIndex = 39;
             lbFromTo.Text = "-";
             // 

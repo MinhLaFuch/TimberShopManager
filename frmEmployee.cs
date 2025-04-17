@@ -49,6 +49,7 @@ namespace timber_shop_manager
             txtSalary.Clear();
             cbRole.SelectedIndex = -1;
             dtpDOBFrom.Value = DateTime.Now;
+            dtpDOBTo.Value = DateTime.Now;
         }
         private void btnEnabler(bool featBtn, bool initBtn)
         {
@@ -80,10 +81,11 @@ namespace timber_shop_manager
                 txtPhoneNumber.TextChanged += txtPhoneNumber_TextChanged;
                 txtAddress.TextChanged += txtAddress_TextChanged;
                 dtpDOBFrom.ValueChanged += dtpDOB_ValueChanged;
-                cbRole.SelectedIndexChanged += cbRole_SelectedIndexChanged;
+                cbRole.SelectedValueChanged += cbRole_SelectedValueChanged;
                 txtSalary.TextChanged += txtSalary_TextChanged;
                 lbFromTo.Visible = true;
                 dtpDOBTo.Visible = true;
+                txtSalary.ReadOnly = true;
             }
             else
             {
@@ -93,10 +95,11 @@ namespace timber_shop_manager
                 txtPhoneNumber.TextChanged -= txtPhoneNumber_TextChanged;
                 txtAddress.TextChanged -= txtAddress_TextChanged;
                 dtpDOBFrom.ValueChanged -= dtpDOB_ValueChanged;
-                cbRole.SelectedIndexChanged -= cbRole_SelectedIndexChanged;
+                cbRole.SelectedIndexChanged -= cbRole_SelectedValueChanged;
                 txtSalary.TextChanged -= txtSalary_TextChanged;
                 lbFromTo.Visible = false;
                 dtpDOBTo.Visible = false;
+                txtSalary.ReadOnly = false;
             }
         }
         // Search incomplete
@@ -322,35 +325,24 @@ namespace timber_shop_manager
         {
             suggest();
         }
-        private void cbRole_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
         private void txtSalary_TextChanged(object sender, EventArgs e)
         {
             suggest();
         }
+        private void dtpDOBFrom_ValueChanged(object sender, EventArgs e)
+        {
+            suggest();
+        }
+
+        private void dtpDOBTo_ValueChanged(object sender, EventArgs e)
+        {
+            suggest();
+        }
+        private void cbRole_SelectedValueChanged(object sender, EventArgs e)
+        {
+            suggest();
+        }
         #endregion
         #endregion
-
-        private void txtName_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtIden_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPhoneNumber_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtAddress_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }
