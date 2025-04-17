@@ -106,13 +106,13 @@ namespace timber_shop_manager
             string deleteQuery = "DELETE FROM Account WHERE EmployeeId = @ID;";
 
             // Get a confirmation from the user  
-            DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn xóa danh mục này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn khoá tài khoản này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirmation == DialogResult.Yes)
             {
-                DataTable dt = dbHelper.ExecuteQuery("SELECT * FROM Product WHERE CatagoryID = @ID", new SqlParameter("@ID", txtID.Text));
+                DataTable dt = dbHelper.ExecuteQuery("SELECT * FROM Employee WHERE EmployeeId = @ID", new SqlParameter("@ID", txtID.Text));
                 if (dt.Rows.Count > 0)
                 {
-                    MessageBox.Show("Không thể xóa danh mục này vì nó đang được sử dụng trong sản phẩm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Không thể khóa tài khoản này vì nhân viên vẫn còn trong hệ thống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
