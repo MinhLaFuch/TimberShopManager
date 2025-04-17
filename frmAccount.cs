@@ -100,7 +100,6 @@ namespace timber_shop_manager
             this.Hide();
             frmChangePW.ShowDialog();
         }
-        // Have not done the lock in database
         private void btnLock_Click(object sender, EventArgs e)
         {
             string insertDeletedQuery = "INSERT INTO LockedAccount (EmployeeId, Username, Password) SELECT CatagoryID, CatagoryName, Description FROM Catagory WHERE CatagoryID = @ID;";

@@ -111,6 +111,7 @@
             btnAdd.Size = new Size(108, 25);
             btnAdd.TabIndex = 28;
             btnAdd.Text = "Thêm";
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnDel
             // 
@@ -128,6 +129,7 @@
             btnDel.Size = new Size(108, 25);
             btnDel.TabIndex = 29;
             btnDel.Text = "Xóa";
+            btnDel.Click += btnDel_Click;
             // 
             // btnMod
             // 
@@ -145,6 +147,7 @@
             btnMod.Size = new Size(108, 25);
             btnMod.TabIndex = 30;
             btnMod.Text = "Sửa";
+            btnMod.Click += btnMod_Click;
             // 
             // btnSearch
             // 
@@ -162,6 +165,7 @@
             btnSearch.Size = new Size(108, 25);
             btnSearch.TabIndex = 32;
             btnSearch.Text = "Tìm kiếm";
+            btnSearch.Click += btnSearch_Click;
             // 
             // dgv
             // 
@@ -242,6 +246,7 @@
             btnCancel.Size = new Size(108, 25);
             btnCancel.TabIndex = 33;
             btnCancel.Text = "Hủy";
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnSave
             // 
@@ -259,6 +264,7 @@
             btnSave.Size = new Size(108, 25);
             btnSave.TabIndex = 31;
             btnSave.Text = "Lưu";
+            btnSave.Click += btnSave_Click;
             // 
             // pnInfoButton
             // 
@@ -273,7 +279,6 @@
             // gbInfo
             // 
             gbInfo.Controls.Add(pnInfo);
-            gbInfo.Controls.Add(pnButton);
             gbInfo.CustomBorderColor = Color.FromArgb(59, 93, 79);
             gbInfo.CustomizableEdges = customizableEdges23;
             gbInfo.FillColor = SystemColors.Control;
@@ -511,7 +516,7 @@
             pnButton.Controls.Add(pnFeatureButton);
             pnButton.Controls.Add(pnInfoButton);
             pnButton.FlowDirection = FlowDirection.RightToLeft;
-            pnButton.Location = new Point(646, 286);
+            pnButton.Location = new Point(514, 343);
             pnButton.Name = "pnButton";
             pnButton.Size = new Size(541, 110);
             pnButton.TabIndex = 37;
@@ -522,6 +527,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1217, 651);
             Controls.Add(gbInfo);
+            Controls.Add(pnButton);
             Controls.Add(dgv);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmProduct";

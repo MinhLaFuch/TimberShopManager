@@ -149,8 +149,8 @@ namespace timber_shop_manager
         private void btnViewProduct_Click(object sender, EventArgs e)
         {
             frmProduct frmProduct = new frmProduct();
-            //frmProduct.categoryID = txtID.Text;
-            //frmProduct.categoryName = txtName.Text;
+            frmProduct.categoryID = txtID.Text;
+            frmProduct.categoryName = txtName.Text;
             frmProduct.ShowDialog();
         }
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)

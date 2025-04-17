@@ -31,9 +31,13 @@ namespace timber_shop_manager
         private void FromLoad()
         {
             clearTextBox();
-            gbInfo.Enabled = false;
+            pnInfo.Enabled = false;
             gbPurchaseHistory.Enabled = false;
-            LoadDataGridView();
+            dgvCustomer.DataSource = loadCustomerData();
+            clearPurchaseHistory();
+            pnButtonEnabler(true);
+            btnMod.Visible = false;
+            searchEventEnabler(false);
         }
         private void clearTextBox()
         {
@@ -41,17 +45,64 @@ namespace timber_shop_manager
             txtName.Clear();
             txtAddress.Clear();
         }
-
-        private DataTable LoadDataGridView()
+        private void clearPurchaseHistory()
+        {
+            dgvPurchase.DataSource = null;
+            txtInvoiceQuantity.Clear();
+            txtCreateDate.Clear();
+            txtCategory.Clear();
+        }
+        private void pnButtonEnabler(bool b)
+        {
+            pnFeatureButton.Visible = b;
+            pnInfoButton.Visible = !b;
+        }
+        private DataTable loadCustomerData()
         {
             string query = "SELECT * FROM Customer";
-
             DataTable dt = dbHelper.ExecuteQuery(query);
-            dgv.DataSource = dt;
             return dt;
         }
+        private DataTable loadPurchaseHistory(string customerId)
+        {
+            string query = $"SELECT * FROM Invoice WHERE CustomerId = '{customerId}'";
+            DataTable dt = dbHelper.ExecuteQuery(query);
+            return dt;
+        }
+        private void searchEventEnabler(bool b)
+        {
+            if(b)
+            {
+                txtPhoneNumber.TextChanged += TxtPhoneNumber_TextChanged;
+                txtName.TextChanged += TxtName_TextChanged;
+                txtAddress.TextChanged += TxtAddress_TextChanged;
+                btnSave.Visible = false;
+            }
+            else
+            {
+                txtPhoneNumber.TextChanged -= TxtPhoneNumber_TextChanged;
+                txtName.TextChanged -= TxtName_TextChanged;
+                txtAddress.TextChanged -= TxtAddress_TextChanged;
+                btnSave.Visible = true;
+            }
+        }
 
-        private void SuggestCustomer()
+        private void TxtAddress_TextChanged(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void TxtName_TextChanged(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void TxtPhoneNumber_TextChanged(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void suggest()
         {
             // Kiểm tra xem có TextBox nào trống không
             bool isTextBoxesEmpty = string.IsNullOrEmpty(txtPhoneNumber.Text)
@@ -61,7 +112,7 @@ namespace timber_shop_manager
             if (!isTextBoxesEmpty)
             {
                 // Tạo DataView để lọc dữ liệu từ DataGridView
-                DataView dv = new DataView(LoadDataGridView());
+                DataView dv = new DataView(loadCustomerData());
 
                 // Tạo một danh sách điều kiện lọc dựa trên các TextBox có dữ liệu
                 List<string> filters = new List<string>();
@@ -86,12 +137,12 @@ namespace timber_shop_manager
                 }
 
                 // Gán DataSource cho DataGridView
-                dgv.DataSource = dv;
+                dgvCustomer.DataSource = dv;
             }
             else
             {
                 // Nếu tất cả các TextBox trống, hiển thị dữ liệu gốc
-                dgv.DataSource = LoadDataGridView();
+                dgvCustomer.DataSource = loadCustomerData();
             }
         }
         #endregion
@@ -103,39 +154,73 @@ namespace timber_shop_manager
         }
         #endregion
         #region Click
-        #endregion
-        #region Text Change
-        private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
+        private void btnMod_Click(object sender, EventArgs e)
         {
-            SuggestCustomer();
+            pnInfo.Enabled = true;
+            clearTextBox();
+            txtPhoneNumber.Focus();
+            pnButtonEnabler(false);
         }
 
-        private void txtName_TextChanged(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            SuggestCustomer();
+            pnInfo.Enabled = true;
+            clearTextBox();
+            txtPhoneNumber.Focus();
+            pnButtonEnabler(false);
+            searchEventEnabler(true);
         }
-
-        private void txtAddress_TextChanged(object sender, EventArgs e)
-        {
-            SuggestCustomer();
-        }
-
         private void btnClear_Click(object sender, EventArgs e)
         {
             FromLoad();
         }
-
-        private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            CheckInputIsDigit(e);
+
+        }
+        private void dgvCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Check if the clicked cell is not a header cell
+            if (e.RowIndex >= 0)
+            {
+                // Get the selected row
+                DataGridViewRow selectedRow = dgvCustomer.Rows[e.RowIndex];
+
+                // Extract customer details from the selected row
+                txtPhoneNumber.Text = selectedRow.Cells["PhoneNumber"].Value?.ToString();
+                txtName.Text = selectedRow.Cells["Name"].Value?.ToString();
+                txtAddress.Text = selectedRow.Cells["Address"].Value?.ToString();
+
+                // Load the purchase history for the selected customer
+                if (!string.IsNullOrEmpty(txtPhoneNumber.Text))
+                {
+                    dgvPurchase.DataSource = loadPurchaseHistory(txtPhoneNumber.Text);
+                }
+
+                //
+            }
+        }
+        #endregion
+        #region Text Change
+        private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
+        {
+            suggest();
         }
 
-        public static void CheckInputIsDigit(KeyPressEventArgs e)
+        private void txtName_TextChanged(object sender, EventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true; // Ngừng sự kiện nếu ký tự không hợp lệ
-            }
+            suggest();
+        }
+
+        private void txtAddress_TextChanged(object sender, EventArgs e)
+        {
+            suggest();
+        }
+        #endregion
+        #region Key Press
+        private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Program.CheckInputIsDigit(e);
         }
         #endregion
         #endregion

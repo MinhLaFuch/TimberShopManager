@@ -81,7 +81,7 @@ namespace timber_shop_manager
             btnDel.Enabled = btnMod.Enabled = featBtn;
             btnAdd.Enabled = btnSearch.Enabled = initBtn;
         }
-        
+
         #endregion
         #region Events
         #region Load
@@ -101,7 +101,7 @@ namespace timber_shop_manager
 
             if (dynamicSearch == null)
             {
-                List<Control> searchControls = new List<Control>() {txtID, txtName, cbCalUnit, txtDescription};
+                List<Control> searchControls = new List<Control>() { txtID, txtName, cbCalUnit, txtDescription };
                 Dictionary<string, string> columnMappings = new Dictionary<string, string>()
                 {
                     {"txtID", "ProductId" },
@@ -139,7 +139,7 @@ namespace timber_shop_manager
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Product product = new Product(txtID.Text, Catagory.getId(cbCategory.Text), txtName.Text, cbCalUnit.Text, Convert.ToDouble(nudPrice.Value), Convert.ToInt32(nudWarranty.Value), txtDescription.Text, Convert.ToInt32(nudWarranty.Value));
+            Product product = new Product(txtID.Text, Category.getId(cbCategory.Text), txtName.Text, cbCalUnit.Text, Convert.ToDouble(nudPrice.Value), Convert.ToInt32(nudWarranty.Value), txtDescription.Text, Convert.ToInt32(nudWarranty.Value));
             Product.add(product);
             // Reload form
             loadForm();
@@ -149,9 +149,9 @@ namespace timber_shop_manager
             dynamicSearch?.Disable();
             loadForm();
         }
-        
+
         #endregion
-        
+
 
         #region Key Press
         private void txtPriceQuotation_KeyPress(object sender, KeyPressEventArgs e)
@@ -175,7 +175,7 @@ namespace timber_shop_manager
                 txtName.Text = selectedRow.Cells["Name"].Value?.ToString();
                 cbCalUnit.Text = selectedRow.Cells["CalculationUnit"].Value?.ToString();
                 nudPrice.Value = Convert.ToInt32(selectedRow.Cells["PriceQuotation"].Value);
-                cbCategory.Text = Catagory.getName(selectedRow.Cells["CatagoryId"].Value?.ToString());
+                cbCategory.Text = Category.getName(selectedRow.Cells["CatagoryId"].Value?.ToString());
                 nudWarranty.Value = Convert.ToDecimal(selectedRow.Cells["CustomerWarranty"].Value);
                 nudQuantity.Text = selectedRow.Cells["Quantity"].Value?.ToString();
                 txtDescription.Text = selectedRow.Cells["Description"].Value?.ToString();
