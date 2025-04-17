@@ -48,7 +48,7 @@ namespace timber_shop_manager
             txtPhoneNumber.Clear();
             txtSalary.Clear();
             cbRole.SelectedIndex = -1;
-            dtpDOB.Value = DateTime.Now;
+            dtpDOBFrom.Value = DateTime.Now;
         }
         private void btnEnabler(bool featBtn, bool initBtn)
         {
@@ -79,23 +79,28 @@ namespace timber_shop_manager
                 txtIden.TextChanged += txtIden_TextChanged;
                 txtPhoneNumber.TextChanged += txtPhoneNumber_TextChanged;
                 txtAddress.TextChanged += txtAddress_TextChanged;
-                dtpDOB.ValueChanged += dtpDOB_ValueChanged;
+                dtpDOBFrom.ValueChanged += dtpDOB_ValueChanged;
                 cbRole.SelectedIndexChanged += cbRole_SelectedIndexChanged;
                 txtSalary.TextChanged += txtSalary_TextChanged;
-            } else
+                lbFromTo.Visible = true;
+                dtpDOBTo.Visible = true;
+            }
+            else
             {
                 txtID.TextChanged -= txtID_TextChanged;
                 txtName.TextChanged -= txtName_TextChanged;
                 txtIden.TextChanged -= txtIden_TextChanged;
                 txtPhoneNumber.TextChanged -= txtPhoneNumber_TextChanged;
                 txtAddress.TextChanged -= txtAddress_TextChanged;
-                dtpDOB.ValueChanged -= dtpDOB_ValueChanged;
+                dtpDOBFrom.ValueChanged -= dtpDOB_ValueChanged;
                 cbRole.SelectedIndexChanged -= cbRole_SelectedIndexChanged;
                 txtSalary.TextChanged -= txtSalary_TextChanged;
+                lbFromTo.Visible = false;
+                dtpDOBTo.Visible = false;
             }
         }
         // Search incomplete
-        private void suggestEmployee()
+        private void suggest()
         {
             // Kiểm tra xem có TextBox nào trống không
             bool isTextBoxesEmpty = string.IsNullOrEmpty(txtID.Text)
@@ -152,13 +157,13 @@ namespace timber_shop_manager
         }
         #endregion
         #region Event
-        #region Form Load
+        #region Load
         private void frmEmployee_Load(object sender, EventArgs e)
         {
             loadForm();
         }
         #endregion
-        #region Click Events
+        #region Click
         private void btnAdd_Click(object sender, EventArgs e)
         {
             gbInfo.Enabled = true;
@@ -168,18 +173,31 @@ namespace timber_shop_manager
         }
         private void btnDel_Click(object sender, EventArgs e)
         {
-            string query = "DELETE FROM Employee WHERE EmployeeId = @ID";
-            // Get a confirmation from the user
-            DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn xóa nhân viên này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            string insertDeletedQuery = "INSERT INTO DeletedEmployee (categoryID, categoryName, Description) SELECT categoryID, categoryName, Description FROM category WHERE categoryID = @ID;";
+            string deleteQuery = "DELETE FROM category WHERE categoryID = @ID;";
+
+            // Get a confirmation from the user  
+            DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn xóa danh mục này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirmation == DialogResult.Yes)
             {
-                dbHelper.ExecuteNonQuery(query, new SqlParameter("@ID", txtID.Text));
-            }
+                DataTable dt = dbHelper.ExecuteQuery("SELECT * FROM Product WHERE categoryID = @ID", new SqlParameter("@ID", txtID.Text));
+                if (dt.Rows.Count > 0)
+                {
+                    MessageBox.Show("Không thể xóa danh mục này vì nó đang được sử dụng trong sản phẩm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    // Insert into Deletedcategory table  
+                    dbHelper.ExecuteNonQuery(insertDeletedQuery, new SqlParameter("@ID", txtID.Text));
 
-            // Reload form
+                    // Delete from category table  
+                    dbHelper.ExecuteNonQuery(deleteQuery, new SqlParameter("@ID", txtID.Text));
+                }
+            }
+            // Reload form  
             loadForm();
         }
-        private void btnViewWorkHour_Click(object sender, EventArgs e)
+        private void btnViewAttendance_Click(object sender, EventArgs e)
         {
             frmAttendance frmAttendance = new frmAttendance();
             frmAttendance.EmployeeId = txtID.Text;
@@ -198,7 +216,7 @@ namespace timber_shop_manager
                     new SqlParameter("@name", txtName.Text),
                     new SqlParameter("@iden", txtIden.Text),
                     new SqlParameter("@address", txtAddress.Text),
-                    new SqlParameter("@dob", dtpDOB.Value),
+                    new SqlParameter("@dob", dtpDOBFrom.Value),
                     new SqlParameter("@salary", txtSalary.Text),
                     new SqlParameter("@role", cbRole.SelectedItem.ToString()),
                     new SqlParameter("@phoneNumber", txtPhoneNumber.Text));
@@ -226,7 +244,7 @@ namespace timber_shop_manager
             txtIden.Enabled = false;
             txtAddress.Enabled = false;
             txtPhoneNumber.Enabled = false;
-            dtpDOB.Enabled = false;
+            dtpDOBFrom.Enabled = false;
             cbRole.Focus();
             btnEnabler(false, false);
         }
@@ -242,7 +260,7 @@ namespace timber_shop_manager
                 txtIden.Text = dgv.Rows[rowIndex].Cells["IdentificationNumber"].Value.ToString();
                 txtAddress.Text = dgv.Rows[rowIndex].Cells["Address"].Value.ToString();
                 cbRole.SelectedItem = dgv.Rows[rowIndex].Cells["Role"].Value.ToString();
-                dtpDOB.Value = Convert.ToDateTime(dgv.Rows[rowIndex].Cells["DateOfBirth"].Value);
+                dtpDOBFrom.Value = Convert.ToDateTime(dgv.Rows[rowIndex].Cells["DateOfBirth"].Value);
                 txtSalary.Text = dgv.Rows[rowIndex].Cells["Salary"].Value.ToString();
                 txtPhoneNumber.Text = dgv.Rows[rowIndex].Cells["PhoneNumber"].Value.ToString();
 
@@ -282,37 +300,57 @@ namespace timber_shop_manager
         #region Text Changed
         private void txtID_TextChanged(object sender, EventArgs e)
         {
-            suggestEmployee();
+            suggest();
         }
         private void txtName_TextChanged(object sender, EventArgs e)
         {
-            suggestEmployee();
+            suggest();
         }
         private void txtIden_TextChanged(object sender, EventArgs e)
         {
-            suggestEmployee();
+            suggest();
         }
         private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
         {
-            suggestEmployee();
+            suggest();
         }
         private void txtAddress_TextChanged(object sender, EventArgs e)
         {
-            suggestEmployee();
+            suggest();
         }
         private void dtpDOB_ValueChanged(object sender, EventArgs e)
         {
-            suggestEmployee();
+            suggest();
         }
         private void cbRole_SelectedIndexChanged(object sender, EventArgs e)
         {
-            suggestEmployee();
+            suggest();
         }
         private void txtSalary_TextChanged(object sender, EventArgs e)
         {
-            suggestEmployee();
+            suggest();
         }
         #endregion
         #endregion
+
+        private void txtName_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtIden_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPhoneNumber_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAddress_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

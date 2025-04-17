@@ -53,7 +53,7 @@ namespace timber_shop_manager
         private void pnButtonEnabler(bool b)
         {
             pnFeatureButton.Visible = b;
-            pnInfo.Visible = !b;
+            pnInfoButton.Visible = !b;
         }
         private string idGenerator()
         {

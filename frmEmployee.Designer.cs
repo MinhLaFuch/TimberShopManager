@@ -38,20 +38,22 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnInfoButton = new FlowLayoutPanel();
             btnSave = new Guna.UI2.WinForms.Guna2Button();
             btnCancel = new Guna.UI2.WinForms.Guna2Button();
@@ -59,19 +61,20 @@
             btnDel = new Guna.UI2.WinForms.Guna2Button();
             btnSearch = new Guna.UI2.WinForms.Guna2Button();
             pnFeatureButton = new FlowLayoutPanel();
+            btnViewAttendance = new Guna.UI2.WinForms.Guna2Button();
             btnAdd = new Guna.UI2.WinForms.Guna2Button();
             dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
-            panel1 = new Panel();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            panel1 = new Panel();
             lbName = new Label();
             txtName = new TextBox();
             txtIden = new TextBox();
             txtID = new TextBox();
             cbRole = new Guna.UI2.WinForms.Guna2ComboBox();
             lbPhoneNumber = new Label();
-            dtpDOB = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            dtpDOBFrom = new Guna.UI2.WinForms.Guna2DateTimePicker();
             lbCurrency = new Label();
             txtPhoneNumber = new TextBox();
             txtSalary = new TextBox();
@@ -82,13 +85,14 @@
             txtAddress = new TextBox();
             lbDOB = new Label();
             lbRole = new Label();
-            btnViewAttendance = new Guna.UI2.WinForms.Guna2Button();
+            dtpDOBTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            lbFromTo = new Label();
             pnInfoButton.SuspendLayout();
             pnFeatureButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             gbInfo.SuspendLayout();
-            panel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // pnInfoButton
@@ -118,6 +122,7 @@
             btnSave.Size = new Size(100, 54);
             btnSave.TabIndex = 26;
             btnSave.Text = "Lưu";
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
@@ -136,6 +141,7 @@
             btnCancel.Size = new Size(100, 54);
             btnCancel.TabIndex = 27;
             btnCancel.Text = "Hủy";
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnMod
             // 
@@ -154,6 +160,7 @@
             btnMod.Size = new Size(100, 54);
             btnMod.TabIndex = 21;
             btnMod.Text = "Sửa";
+            btnMod.Click += btnMod_Click;
             // 
             // btnDel
             // 
@@ -172,6 +179,7 @@
             btnDel.Size = new Size(100, 54);
             btnDel.TabIndex = 22;
             btnDel.Text = "Xóa";
+            btnDel.Click += btnDel_Click;
             // 
             // btnSearch
             // 
@@ -190,6 +198,7 @@
             btnSearch.Size = new Size(100, 54);
             btnSearch.TabIndex = 25;
             btnSearch.Text = "Tìm kiếm";
+            btnSearch.Click += btnSearch_Click;
             // 
             // pnFeatureButton
             // 
@@ -203,6 +212,25 @@
             pnFeatureButton.Name = "pnFeatureButton";
             pnFeatureButton.Size = new Size(549, 59);
             pnFeatureButton.TabIndex = 28;
+            // 
+            // btnViewAttendance
+            // 
+            btnViewAttendance.BackColor = Color.FromArgb(59, 93, 79);
+            btnViewAttendance.CustomizableEdges = customizableEdges11;
+            btnViewAttendance.DisabledState.BorderColor = Color.DarkGray;
+            btnViewAttendance.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnViewAttendance.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnViewAttendance.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnViewAttendance.FillColor = Color.FromArgb(59, 93, 79);
+            btnViewAttendance.Font = new Font("Segoe UI", 9F);
+            btnViewAttendance.ForeColor = Color.White;
+            btnViewAttendance.Location = new Point(446, 3);
+            btnViewAttendance.Name = "btnViewAttendance";
+            btnViewAttendance.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnViewAttendance.Size = new Size(100, 54);
+            btnViewAttendance.TabIndex = 26;
+            btnViewAttendance.Text = "Xem chấm công";
+            btnViewAttendance.Click += btnViewAttendance_Click;
             // 
             // btnAdd
             // 
@@ -221,6 +249,7 @@
             btnAdd.Size = new Size(100, 54);
             btnAdd.TabIndex = 24;
             btnAdd.Text = "Thêm";
+            btnAdd.Click += btnAdd_Click;
             // 
             // dgv
             // 
@@ -286,40 +315,16 @@
             gbInfo.Controls.Add(flowLayoutPanel1);
             gbInfo.Controls.Add(panel1);
             gbInfo.CustomBorderColor = Color.FromArgb(59, 93, 79);
-            gbInfo.CustomizableEdges = customizableEdges19;
+            gbInfo.CustomizableEdges = customizableEdges21;
             gbInfo.FillColor = SystemColors.Control;
             gbInfo.Font = new Font("Segoe UI", 9F);
             gbInfo.ForeColor = Color.White;
             gbInfo.Location = new Point(12, -3);
             gbInfo.Name = "gbInfo";
-            gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges22;
             gbInfo.Size = new Size(1182, 285);
             gbInfo.TabIndex = 29;
             gbInfo.Text = "Thông tin";
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(lbName);
-            panel1.Controls.Add(txtName);
-            panel1.Controls.Add(txtIden);
-            panel1.Controls.Add(txtID);
-            panel1.Controls.Add(cbRole);
-            panel1.Controls.Add(lbPhoneNumber);
-            panel1.Controls.Add(dtpDOB);
-            panel1.Controls.Add(lbCurrency);
-            panel1.Controls.Add(txtPhoneNumber);
-            panel1.Controls.Add(txtSalary);
-            panel1.Controls.Add(lbIden);
-            panel1.Controls.Add(lbSalary);
-            panel1.Controls.Add(lbID);
-            panel1.Controls.Add(lbAdress);
-            panel1.Controls.Add(txtAddress);
-            panel1.Controls.Add(lbDOB);
-            panel1.Controls.Add(lbRole);
-            panel1.Location = new Point(20, 53);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1150, 162);
-            panel1.TabIndex = 30;
             // 
             // flowLayoutPanel1
             // 
@@ -330,6 +335,32 @@
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(565, 125);
             flowLayoutPanel1.TabIndex = 31;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(dtpDOBTo);
+            panel1.Controls.Add(lbName);
+            panel1.Controls.Add(txtName);
+            panel1.Controls.Add(txtIden);
+            panel1.Controls.Add(txtID);
+            panel1.Controls.Add(cbRole);
+            panel1.Controls.Add(lbPhoneNumber);
+            panel1.Controls.Add(dtpDOBFrom);
+            panel1.Controls.Add(lbCurrency);
+            panel1.Controls.Add(txtPhoneNumber);
+            panel1.Controls.Add(txtSalary);
+            panel1.Controls.Add(lbIden);
+            panel1.Controls.Add(lbSalary);
+            panel1.Controls.Add(lbID);
+            panel1.Controls.Add(lbAdress);
+            panel1.Controls.Add(txtAddress);
+            panel1.Controls.Add(lbDOB);
+            panel1.Controls.Add(lbRole);
+            panel1.Controls.Add(lbFromTo);
+            panel1.Location = new Point(20, 53);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1150, 162);
+            panel1.TabIndex = 30;
             // 
             // lbName
             // 
@@ -349,6 +380,7 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(231, 20);
             txtName.TabIndex = 24;
+            txtName.TextChanged += txtName_TextChanged_1;
             // 
             // txtIden
             // 
@@ -358,6 +390,7 @@
             txtIden.Name = "txtIden";
             txtIden.Size = new Size(231, 20);
             txtIden.TabIndex = 26;
+            txtIden.TextChanged += txtIden_TextChanged_1;
             // 
             // txtID
             // 
@@ -372,7 +405,7 @@
             // cbRole
             // 
             cbRole.BackColor = Color.Transparent;
-            cbRole.CustomizableEdges = customizableEdges15;
+            cbRole.CustomizableEdges = customizableEdges17;
             cbRole.DrawMode = DrawMode.OwnerDrawFixed;
             cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
             cbRole.FocusedColor = Color.FromArgb(94, 148, 255);
@@ -383,7 +416,7 @@
             cbRole.Items.AddRange(new object[] { "Quản lý cửa hàng", "Quản trị viên", "Nhân viên bán hàng", "Nhân viên kế toán" });
             cbRole.Location = new Point(515, 80);
             cbRole.Name = "cbRole";
-            cbRole.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            cbRole.ShadowDecoration.CustomizableEdges = customizableEdges18;
             cbRole.Size = new Size(160, 36);
             cbRole.TabIndex = 37;
             // 
@@ -397,23 +430,23 @@
             lbPhoneNumber.TabIndex = 27;
             lbPhoneNumber.Text = "Số điện thoại";
             // 
-            // dtpDOB
+            // dtpDOBFrom
             // 
-            dtpDOB.BackColor = SystemColors.ControlDark;
-            dtpDOB.Checked = true;
-            dtpDOB.CustomizableEdges = customizableEdges17;
-            dtpDOB.FillColor = Color.FromArgb(59, 93, 79);
-            dtpDOB.Font = new Font("Segoe UI", 9F);
-            dtpDOB.ForeColor = Color.White;
-            dtpDOB.Format = DateTimePickerFormat.Short;
-            dtpDOB.Location = new Point(515, 42);
-            dtpDOB.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
-            dtpDOB.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
-            dtpDOB.Name = "dtpDOB";
-            dtpDOB.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            dtpDOB.Size = new Size(225, 32);
-            dtpDOB.TabIndex = 36;
-            dtpDOB.Value = new DateTime(2025, 4, 14, 10, 47, 29, 149);
+            dtpDOBFrom.BackColor = SystemColors.ControlDark;
+            dtpDOBFrom.Checked = true;
+            dtpDOBFrom.CustomizableEdges = customizableEdges19;
+            dtpDOBFrom.FillColor = Color.FromArgb(59, 93, 79);
+            dtpDOBFrom.Font = new Font("Segoe UI", 9F);
+            dtpDOBFrom.ForeColor = Color.White;
+            dtpDOBFrom.Format = DateTimePickerFormat.Short;
+            dtpDOBFrom.Location = new Point(515, 42);
+            dtpDOBFrom.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            dtpDOBFrom.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            dtpDOBFrom.Name = "dtpDOBFrom";
+            dtpDOBFrom.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            dtpDOBFrom.Size = new Size(225, 32);
+            dtpDOBFrom.TabIndex = 36;
+            dtpDOBFrom.Value = new DateTime(2025, 4, 14, 10, 47, 29, 149);
             // 
             // lbCurrency
             // 
@@ -433,6 +466,7 @@
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(231, 20);
             txtPhoneNumber.TabIndex = 28;
+            txtPhoneNumber.TextChanged += txtPhoneNumber_TextChanged_1;
             // 
             // txtSalary
             // 
@@ -491,6 +525,7 @@
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(374, 20);
             txtAddress.TabIndex = 30;
+            txtAddress.TextChanged += txtAddress_TextChanged_1;
             // 
             // lbDOB
             // 
@@ -512,23 +547,34 @@
             lbRole.TabIndex = 32;
             lbRole.Text = "Chức vụ";
             // 
-            // btnViewAttendance
+            // dtpDOBTo
             // 
-            btnViewAttendance.BackColor = Color.FromArgb(59, 93, 79);
-            btnViewAttendance.CustomizableEdges = customizableEdges11;
-            btnViewAttendance.DisabledState.BorderColor = Color.DarkGray;
-            btnViewAttendance.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnViewAttendance.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnViewAttendance.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnViewAttendance.FillColor = Color.FromArgb(59, 93, 79);
-            btnViewAttendance.Font = new Font("Segoe UI", 9F);
-            btnViewAttendance.ForeColor = Color.White;
-            btnViewAttendance.Location = new Point(446, 3);
-            btnViewAttendance.Name = "btnViewAttendance";
-            btnViewAttendance.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnViewAttendance.Size = new Size(100, 54);
-            btnViewAttendance.TabIndex = 26;
-            btnViewAttendance.Text = "Xem chấm công";
+            dtpDOBTo.BackColor = SystemColors.ControlDark;
+            dtpDOBTo.Checked = true;
+            dtpDOBTo.CustomizableEdges = customizableEdges15;
+            dtpDOBTo.FillColor = Color.FromArgb(59, 93, 79);
+            dtpDOBTo.Font = new Font("Segoe UI", 9F);
+            dtpDOBTo.ForeColor = Color.White;
+            dtpDOBTo.Format = DateTimePickerFormat.Short;
+            dtpDOBTo.Location = new Point(846, 42);
+            dtpDOBTo.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            dtpDOBTo.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            dtpDOBTo.Name = "dtpDOBTo";
+            dtpDOBTo.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            dtpDOBTo.Size = new Size(225, 32);
+            dtpDOBTo.TabIndex = 38;
+            dtpDOBTo.Value = new DateTime(2025, 4, 14, 10, 47, 29, 149);
+            // 
+            // lbFromTo
+            // 
+            lbFromTo.AutoSize = true;
+            lbFromTo.Font = new Font("Segoe UI", 50F);
+            lbFromTo.ForeColor = Color.FromArgb(59, 93, 79);
+            lbFromTo.Location = new Point(759, -5);
+            lbFromTo.Name = "lbFromTo";
+            lbFromTo.Size = new Size(81, 112);
+            lbFromTo.TabIndex = 39;
+            lbFromTo.Text = "-";
             // 
             // frmEmployee
             // 
@@ -546,9 +592,9 @@
             pnFeatureButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             gbInfo.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -572,7 +618,7 @@
         private TextBox txtID;
         private Guna.UI2.WinForms.Guna2ComboBox cbRole;
         private Label lbPhoneNumber;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpDOB;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpDOBFrom;
         private Label lbCurrency;
         private TextBox txtPhoneNumber;
         private TextBox txtSalary;
@@ -584,5 +630,7 @@
         private Label lbDOB;
         private Label lbRole;
         private Guna.UI2.WinForms.Guna2Button btnViewAttendance;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpDOBTo;
+        private Label lbFromTo;
     }
 }
