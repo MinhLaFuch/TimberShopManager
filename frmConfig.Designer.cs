@@ -230,6 +230,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(302, 16);
             txtPassword.TabIndex = 3;
+            txtPassword.UseSystemPasswordChar = true;
             // 
             // lbUsername
             // 

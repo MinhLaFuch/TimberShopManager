@@ -33,14 +33,21 @@ namespace timber_shop_manager
         private void frmConfig_Load(object sender, EventArgs e)
         {
             chkWindowAuthetication.Checked = Properties.Settings.Default.isWindowAuthentication;
-            pnlSQLAuthentication.Enabled = !chkWindowAuthetication.Checked;
 
             txtServer.Text = Properties.Settings.Default.DBServer;
-            txtUsername.Text = Properties.Settings.Default.DBUsername;
-            txtPassword.Text = Properties.Settings.Default.DBPassword;
             txtDatbaseName.Text = Properties.Settings.Default.DBName;
 
-            chkRememberPassword.Checked = Properties.Settings.Default.isRemenberPassword;
+            pnlSQLAuthentication.Enabled = !chkWindowAuthetication.Checked;
+            if (pnlSQLAuthentication.Enabled)
+            {
+                txtUsername.Text = Properties.Settings.Default.DBUsername;
+                chkRememberPassword.Checked = Properties.Settings.Default.isRemenberPassword;
+                if (chkRememberPassword.Checked)
+                {
+                    txtPassword.Text = Properties.Settings.Default.DBPassword;
+                }
+            }
+
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
