@@ -23,15 +23,13 @@ namespace timber_shop_manager
 
         public DatabaseHelper()
         {
+            connectionString = "Data Source=DESKTOP-M3PPH9A\\SQLEXPRESS;Initial Catalog=TimberShop;Integrated Security=True;Trust Server Certificate=True";
             if (isWindowAuthentication)
             {
-                connectionString = $"Data Source={server};Initial Catalog={name};Integrated Security=True;Trust Server Certificate=True";
-                //connectionString = "Data Source=DESKTOP-M3PPH9A\\SQLEXPRESS;Initial Catalog=TimberShop;Integrated Security=True;Trust Server Certificate=True";
-                //connectionString = "Data Source=FUCHS_LAPTOP;Initial Catalog=TimberShop;Integrated Security=True;Trust Server Certificate=True";
+                //connectionString = $"Data Source={server};Initial Catalog={name};Integrated Security=True;Trust Server Certificate=True";
             } else
             {
-                //connectionString = "Data Source=DESKTOP-M3PPH9A\\SQLEXPRESS;Initial Catalog=TimberShop;User ID=TimberUser;Password=***********;Encrypt=True;Trust Server Certificate=True";
-                connectionString = $"Data Source={server};Initial Catalog={name};User ID={username};Password={password};Encrypt=True;Trust Server Certificate=True";
+                //connectionString = $"Data Source={server};Initial Catalog={name};User ID={username};Password={password};Encrypt=True;Trust Server Certificate=True";
             }
         }
 

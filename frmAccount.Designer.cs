@@ -30,11 +30,11 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             cbRole = new Guna.UI2.WinForms.Guna2ComboBox();
             txtID = new TextBox();
             txtUsername = new TextBox();
@@ -46,22 +46,20 @@
             btnAdd = new Button();
             btnLock = new Button();
             btnSearch = new Button();
-            dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
             pnButton = new FlowLayoutPanel();
             pnFeatureButton = new FlowLayoutPanel();
             pnInfoButton = new FlowLayoutPanel();
             btnCancel = new Button();
             pnInfo = new Panel();
-            lbGmail = new Label();
-            label2 = new Label();
-            txtPassword = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
+            dgv = new Guna.UI2.WinForms.Guna2DataGridView();
+            btnRefresh = new Button();
             gbInfo.SuspendLayout();
             pnButton.SuspendLayout();
             pnFeatureButton.SuspendLayout();
             pnInfoButton.SuspendLayout();
             pnInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             SuspendLayout();
             // 
             // cbRole
@@ -76,52 +74,54 @@
             cbRole.Font = new Font("Segoe UI", 10F);
             cbRole.ForeColor = Color.FromArgb(68, 88, 112);
             cbRole.ItemHeight = 30;
-            cbRole.Items.AddRange(new object[] { "Quản lý cửa hàng", "Quản trị viên", "Nhân viên bán hàng", "Nhân viên kế toán" });
-            cbRole.Location = new Point(670, 92);
+            cbRole.Location = new Point(585, 35);
+            cbRole.Margin = new Padding(3, 2, 3, 2);
             cbRole.Name = "cbRole";
             cbRole.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            cbRole.Size = new Size(250, 36);
+            cbRole.Size = new Size(302, 36);
             cbRole.TabIndex = 9;
-            cbRole.SelectedValueChanged += cbRole_SelectedValueChanged;
             // 
             // txtID
             // 
+            txtID.BackColor = SystemColors.InactiveCaption;
             txtID.BorderStyle = BorderStyle.None;
             txtID.ForeColor = Color.FromArgb(59, 93, 79);
-            txtID.Location = new Point(140, 15);
+            txtID.Location = new Point(122, 11);
+            txtID.Margin = new Padding(3, 2, 3, 2);
             txtID.Name = "txtID";
-            txtID.Size = new Size(345, 20);
+            txtID.Size = new Size(302, 16);
             txtID.TabIndex = 1;
-            txtID.TextChanged += txtID_TextChanged;
             // 
             // txtUsername
             // 
+            txtUsername.BackColor = SystemColors.InactiveCaption;
             txtUsername.BorderStyle = BorderStyle.None;
             txtUsername.ForeColor = Color.FromArgb(59, 93, 79);
-            txtUsername.Location = new Point(670, 15);
+            txtUsername.Location = new Point(586, 11);
+            txtUsername.Margin = new Padding(3, 2, 3, 2);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(243, 20);
+            txtUsername.Size = new Size(302, 16);
             txtUsername.TabIndex = 5;
-            txtUsername.TextChanged += txtUsername_TextChanged;
             // 
             // txtName
             // 
+            txtName.BackColor = SystemColors.InactiveCaption;
             txtName.BorderStyle = BorderStyle.None;
             txtName.ForeColor = Color.FromArgb(59, 93, 79);
-            txtName.Location = new Point(140, 61);
+            txtName.Location = new Point(122, 45);
+            txtName.Margin = new Padding(3, 2, 3, 2);
             txtName.Name = "txtName";
-            txtName.Size = new Size(345, 20);
+            txtName.Size = new Size(302, 16);
             txtName.TabIndex = 3;
-            txtName.TextChanged += txtName_TextChanged;
             txtName.KeyPress += txtName_KeyPress;
             // 
             // lbRole
             // 
             lbRole.AutoSize = true;
             lbRole.ForeColor = Color.FromArgb(59, 93, 79);
-            lbRole.Location = new Point(561, 108);
+            lbRole.Location = new Point(471, 46);
             lbRole.Name = "lbRole";
-            lbRole.Size = new Size(61, 20);
+            lbRole.Size = new Size(51, 15);
             lbRole.TabIndex = 10;
             lbRole.Text = "Chức vụ";
             // 
@@ -129,9 +129,9 @@
             // 
             lbUsername.AutoSize = true;
             lbUsername.ForeColor = Color.FromArgb(59, 93, 79);
-            lbUsername.Location = new Point(541, 15);
+            lbUsername.Location = new Point(473, 11);
             lbUsername.Name = "lbUsername";
-            lbUsername.Size = new Size(97, 20);
+            lbUsername.Size = new Size(77, 15);
             lbUsername.TabIndex = 4;
             lbUsername.Text = "Tên tài khoản";
             // 
@@ -139,9 +139,9 @@
             // 
             lbName.AutoSize = true;
             lbName.ForeColor = Color.FromArgb(59, 93, 79);
-            lbName.Location = new Point(13, 61);
+            lbName.Location = new Point(11, 46);
             lbName.Name = "lbName";
-            lbName.Size = new Size(121, 20);
+            lbName.Size = new Size(98, 15);
             lbName.TabIndex = 2;
             lbName.Text = "Họ tên nhân viên";
             // 
@@ -149,9 +149,9 @@
             // 
             lbID.AutoSize = true;
             lbID.ForeColor = Color.FromArgb(59, 93, 79);
-            lbID.Location = new Point(13, 15);
+            lbID.Location = new Point(11, 11);
             lbID.Name = "lbID";
-            lbID.Size = new Size(97, 20);
+            lbID.Size = new Size(79, 15);
             lbID.TabIndex = 0;
             lbID.Text = "Mã nhân viên";
             // 
@@ -161,10 +161,9 @@
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.Font = new Font("Segoe UI", 9F);
             btnAdd.ForeColor = SystemColors.ButtonFace;
-            btnAdd.Location = new Point(33, 4);
-            btnAdd.Margin = new Padding(3, 4, 3, 4);
+            btnAdd.Location = new Point(134, 3);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(132, 40);
+            btnAdd.Size = new Size(116, 30);
             btnAdd.TabIndex = 6;
             btnAdd.Text = "Tạo tài khoản";
             btnAdd.UseVisualStyleBackColor = false;
@@ -176,10 +175,9 @@
             btnLock.FlatStyle = FlatStyle.Flat;
             btnLock.Font = new Font("Segoe UI", 9F);
             btnLock.ForeColor = SystemColors.ButtonFace;
-            btnLock.Location = new Point(171, 4);
-            btnLock.Margin = new Padding(3, 4, 3, 4);
+            btnLock.Location = new Point(256, 3);
             btnLock.Name = "btnLock";
-            btnLock.Size = new Size(132, 40);
+            btnLock.Size = new Size(116, 30);
             btnLock.TabIndex = 7;
             btnLock.Text = "Khóa tài khoản";
             btnLock.UseVisualStyleBackColor = false;
@@ -191,19 +189,103 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 9F);
             btnSearch.ForeColor = SystemColors.ButtonFace;
-            btnSearch.Location = new Point(309, 4);
-            btnSearch.Margin = new Padding(3, 4, 3, 4);
+            btnSearch.Location = new Point(378, 3);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(132, 40);
+            btnSearch.Size = new Size(116, 30);
             btnSearch.TabIndex = 8;
             btnSearch.Text = "Tìm kiếm";
             btnSearch.UseVisualStyleBackColor = false;
             btnSearch.Click += btnSearch_Click;
             // 
+            // gbInfo
+            // 
+            gbInfo.Controls.Add(pnButton);
+            gbInfo.Controls.Add(pnInfo);
+            gbInfo.CustomBorderColor = Color.FromArgb(59, 93, 79);
+            gbInfo.CustomizableEdges = customizableEdges3;
+            gbInfo.Dock = DockStyle.Top;
+            gbInfo.FillColor = SystemColors.Control;
+            gbInfo.Font = new Font("Segoe UI", 9F);
+            gbInfo.ForeColor = Color.White;
+            gbInfo.Location = new Point(0, 0);
+            gbInfo.Margin = new Padding(3, 2, 3, 2);
+            gbInfo.Name = "gbInfo";
+            gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            gbInfo.Size = new Size(925, 165);
+            gbInfo.TabIndex = 11;
+            gbInfo.Text = "Thông tin";
+            // 
+            // pnButton
+            // 
+            pnButton.Controls.Add(pnFeatureButton);
+            pnButton.Controls.Add(pnInfoButton);
+            pnButton.FlowDirection = FlowDirection.RightToLeft;
+            pnButton.Location = new Point(400, 119);
+            pnButton.Margin = new Padding(3, 2, 3, 2);
+            pnButton.Name = "pnButton";
+            pnButton.Size = new Size(512, 52);
+            pnButton.TabIndex = 12;
+            // 
+            // pnFeatureButton
+            // 
+            pnFeatureButton.Controls.Add(btnSearch);
+            pnFeatureButton.Controls.Add(btnLock);
+            pnFeatureButton.Controls.Add(btnAdd);
+            pnFeatureButton.Controls.Add(btnRefresh);
+            pnFeatureButton.FlowDirection = FlowDirection.RightToLeft;
+            pnFeatureButton.Location = new Point(12, 2);
+            pnFeatureButton.Margin = new Padding(3, 2, 3, 2);
+            pnFeatureButton.Name = "pnFeatureButton";
+            pnFeatureButton.Size = new Size(497, 45);
+            pnFeatureButton.TabIndex = 18;
+            // 
+            // pnInfoButton
+            // 
+            pnInfoButton.Controls.Add(btnCancel);
+            pnInfoButton.FlowDirection = FlowDirection.RightToLeft;
+            pnInfoButton.Location = new Point(382, 51);
+            pnInfoButton.Margin = new Padding(3, 2, 3, 2);
+            pnInfoButton.Name = "pnInfoButton";
+            pnInfoButton.Size = new Size(127, 41);
+            pnInfoButton.TabIndex = 16;
+            // 
+            // btnCancel
+            // 
+            btnCancel.BackColor = Color.FromArgb(59, 93, 79);
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.Font = new Font("Segoe UI", 9F);
+            btnCancel.ForeColor = SystemColors.ButtonFace;
+            btnCancel.Location = new Point(8, 3);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(116, 30);
+            btnCancel.TabIndex = 9;
+            btnCancel.Text = "Hủy";
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // pnInfo
+            // 
+            pnInfo.Controls.Add(txtUsername);
+            pnInfo.Controls.Add(cbRole);
+            pnInfo.Controls.Add(txtName);
+            pnInfo.Controls.Add(lbUsername);
+            pnInfo.Controls.Add(lbRole);
+            pnInfo.Controls.Add(lbID);
+            pnInfo.Controls.Add(txtID);
+            pnInfo.Controls.Add(lbName);
+            pnInfo.Location = new Point(12, 32);
+            pnInfo.Margin = new Padding(3, 2, 3, 2);
+            pnInfo.Name = "pnInfo";
+            pnInfo.Size = new Size(900, 83);
+            pnInfo.TabIndex = 17;
+            // 
             // dgv
             // 
+            dgv.AllowUserToAddRows = false;
+            dgv.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgv.BackgroundColor = Color.Gainsboro;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -212,7 +294,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgv.ColumnHeadersHeight = 4;
+            dgv.ColumnHeadersHeight = 50;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
@@ -222,163 +304,71 @@
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgv.DefaultCellStyle = dataGridViewCellStyle3;
+            dgv.Dock = DockStyle.Fill;
             dgv.GridColor = Color.FromArgb(231, 229, 255);
-            dgv.Location = new Point(25, 278);
+            dgv.Location = new Point(0, 165);
             dgv.Name = "dgv";
+            dgv.ReadOnly = true;
             dgv.RowHeadersVisible = false;
-            dgv.RowHeadersWidth = 51;
-            dgv.Size = new Size(1180, 341);
-            dgv.TabIndex = 10;
+            dgv.Size = new Size(925, 441);
+            dgv.TabIndex = 12;
             dgv.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgv.ThemeStyle.AlternatingRowsStyle.Font = null;
             dgv.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
             dgv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
             dgv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
-            dgv.ThemeStyle.BackColor = Color.White;
+            dgv.ThemeStyle.BackColor = Color.Gainsboro;
             dgv.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
             dgv.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
             dgv.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             dgv.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             dgv.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             dgv.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dgv.ThemeStyle.HeaderStyle.Height = 4;
-            dgv.ThemeStyle.ReadOnly = false;
+            dgv.ThemeStyle.HeaderStyle.Height = 50;
+            dgv.ThemeStyle.ReadOnly = true;
             dgv.ThemeStyle.RowsStyle.BackColor = Color.White;
             dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgv.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
-            dgv.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            dgv.ThemeStyle.RowsStyle.Height = 29;
+            dgv.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(59, 93, 79);
+            dgv.ThemeStyle.RowsStyle.Height = 25;
             dgv.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgv.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dgv.CellContentClick += dgv_CellContentClick;
+            dgv.CellClick += dgv_CellClick;
             // 
-            // gbInfo
+            // btnRefresh
             // 
-            gbInfo.Controls.Add(pnButton);
-            gbInfo.Controls.Add(pnInfo);
-            gbInfo.CustomBorderColor = Color.FromArgb(59, 93, 79);
-            gbInfo.CustomizableEdges = customizableEdges3;
-            gbInfo.FillColor = SystemColors.Control;
-            gbInfo.Font = new Font("Segoe UI", 9F);
-            gbInfo.ForeColor = Color.White;
-            gbInfo.Location = new Point(25, 12);
-            gbInfo.Name = "gbInfo";
-            gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            gbInfo.Size = new Size(1180, 256);
-            gbInfo.TabIndex = 11;
-            gbInfo.Text = "Thông tin";
-            // 
-            // pnButton
-            // 
-            pnButton.Controls.Add(pnFeatureButton);
-            pnButton.Controls.Add(pnInfoButton);
-            pnButton.FlowDirection = FlowDirection.RightToLeft;
-            pnButton.Location = new Point(672, 197);
-            pnButton.Name = "pnButton";
-            pnButton.Size = new Size(502, 165);
-            pnButton.TabIndex = 12;
-            // 
-            // pnFeatureButton
-            // 
-            pnFeatureButton.Controls.Add(btnSearch);
-            pnFeatureButton.Controls.Add(btnLock);
-            pnFeatureButton.Controls.Add(btnAdd);
-            pnFeatureButton.FlowDirection = FlowDirection.RightToLeft;
-            pnFeatureButton.Location = new Point(55, 3);
-            pnFeatureButton.Name = "pnFeatureButton";
-            pnFeatureButton.Size = new Size(444, 60);
-            pnFeatureButton.TabIndex = 18;
-            // 
-            // pnInfoButton
-            // 
-            pnInfoButton.Controls.Add(btnCancel);
-            pnInfoButton.FlowDirection = FlowDirection.RightToLeft;
-            pnInfoButton.Location = new Point(354, 69);
-            pnInfoButton.Name = "pnInfoButton";
-            pnInfoButton.Size = new Size(145, 55);
-            pnInfoButton.TabIndex = 16;
-            // 
-            // btnCancel
-            // 
-            btnCancel.BackColor = Color.FromArgb(59, 93, 79);
-            btnCancel.FlatStyle = FlatStyle.Flat;
-            btnCancel.Font = new Font("Segoe UI", 9F);
-            btnCancel.ForeColor = SystemColors.ButtonFace;
-            btnCancel.Location = new Point(10, 4);
-            btnCancel.Margin = new Padding(3, 4, 3, 4);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(132, 40);
-            btnCancel.TabIndex = 9;
-            btnCancel.Text = "Hủy";
-            btnCancel.UseVisualStyleBackColor = false;
-            btnCancel.Click += btnCancel_Click;
-            // 
-            // pnInfo
-            // 
-            pnInfo.Controls.Add(txtUsername);
-            pnInfo.Controls.Add(lbGmail);
-            pnInfo.Controls.Add(cbRole);
-            pnInfo.Controls.Add(txtName);
-            pnInfo.Controls.Add(label2);
-            pnInfo.Controls.Add(lbUsername);
-            pnInfo.Controls.Add(lbRole);
-            pnInfo.Controls.Add(txtPassword);
-            pnInfo.Controls.Add(lbID);
-            pnInfo.Controls.Add(txtID);
-            pnInfo.Controls.Add(lbName);
-            pnInfo.Location = new Point(14, 43);
-            pnInfo.Name = "pnInfo";
-            pnInfo.Size = new Size(1160, 148);
-            pnInfo.TabIndex = 17;
-            // 
-            // lbGmail
-            // 
-            lbGmail.AutoSize = true;
-            lbGmail.ForeColor = Color.FromArgb(59, 93, 79);
-            lbGmail.Location = new Point(950, 15);
-            lbGmail.Name = "lbGmail";
-            lbGmail.Size = new Size(93, 20);
-            lbGmail.TabIndex = 15;
-            lbGmail.Text = "@gmail.com";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.FromArgb(59, 93, 79);
-            label2.Location = new Point(552, 61);
-            label2.Name = "label2";
-            label2.Size = new Size(70, 20);
-            label2.TabIndex = 13;
-            label2.Text = "Mật khẩu";
-            // 
-            // txtPassword
-            // 
-            txtPassword.BorderStyle = BorderStyle.None;
-            txtPassword.ForeColor = Color.FromArgb(59, 93, 79);
-            txtPassword.Location = new Point(670, 61);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(345, 20);
-            txtPassword.TabIndex = 14;
+            btnRefresh.BackColor = Color.FromArgb(59, 93, 79);
+            btnRefresh.FlatStyle = FlatStyle.Flat;
+            btnRefresh.Font = new Font("Segoe UI", 9F);
+            btnRefresh.ForeColor = SystemColors.ButtonFace;
+            btnRefresh.Location = new Point(12, 3);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(116, 30);
+            btnRefresh.TabIndex = 9;
+            btnRefresh.Text = "Làm mới";
+            btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // frmAccount
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1217, 651);
-            Controls.Add(gbInfo);
+            ClientSize = new Size(925, 606);
             Controls.Add(dgv);
+            Controls.Add(gbInfo);
             ForeColor = Color.FromArgb(59, 93, 79);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmAccount";
             Text = "frmAccount";
             Load += frmAccount_Load;
-            ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             gbInfo.ResumeLayout(false);
             pnButton.ResumeLayout(false);
             pnFeatureButton.ResumeLayout(false);
             pnInfoButton.ResumeLayout(false);
             pnInfo.ResumeLayout(false);
             pnInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             ResumeLayout(false);
         }
 
@@ -391,18 +381,16 @@
         private TextBox txtUsername;
         private TextBox txtName;
         private Guna.UI2.WinForms.Guna2ComboBox cbRole;
-        private Guna.UI2.WinForms.Guna2DataGridView dgv;
         private Guna.UI2.WinForms.Guna2GroupBox gbInfo;
         private Button btnAdd;
         private Button btnLock;
         private Button btnSearch;
-        private Label label2;
-        private TextBox txtPassword;
         private Button btnCancel;
         private Panel pnInfo;
-        private Label lbGmail;
         private FlowLayoutPanel pnFeatureButton;
         private FlowLayoutPanel pnInfoButton;
         private FlowLayoutPanel pnButton;
+        private Guna.UI2.WinForms.Guna2DataGridView dgv;
+        private Button btnRefresh;
     }
 }

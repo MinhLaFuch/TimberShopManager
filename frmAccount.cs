@@ -15,9 +15,12 @@ namespace timber_shop_manager
 {
     public partial class frmAccount : Form
     {
-        #region Properties
+        private bool searchMode = false;
+        DynamicSearch dynamicSearch = null;
+
         private Account account = null;
         private DatabaseHelper dbHelper = new DatabaseHelper();
+
         public frmAccount()
         {
             InitializeComponent();
@@ -26,38 +29,53 @@ namespace timber_shop_manager
         {
             this.account = acc;
         }
-        #endregion
-        #region Support methods
-        private void loadForm()
+
+        private void LoadForm()
         {
-            loadFeatureBasedOnRole();
+            //loadFeatureBasedOnRole();
             pnInfo.Enabled = false;
-            txtPassword.ReadOnly = true;
-            clearTextBox();
-            pnButtonEnabler(true, false);
-            featureButtonEnabler(true, false);
-            dgv.DataSource = loadData();
-            searchEventEnabler(false);
+            btnLock.Enabled = false;
+            btnAdd.Enabled = false;
+            ClearTextBox();
+            //pnButtonEnabler(true, false);
+            //featureButtonEnabler(true, false);
+            LoadData();
         }
-        private DataTable loadData()
+
+        private void LoadData()
+        {
+            dgv.DataSource = LoadDataGridView();
+            cbRole.DataSource = LoadComboBox();
+            cbRole.SelectedIndex = -1;
+        }
+
+        private List<string> LoadComboBox()
+        {
+            string query = "SELECT DISTINCT Role FROM Employee ORDER BY Role";
+            return dbHelper.GetDataForComboBox(query, "Role");
+        }
+        private DataTable LoadDataGridView()
         {
             // Load data from database
-            string query = "SELECT emp.EmployeeId AS 'Mã nhân viên', emp.Name AS 'Tên', " +
-                          "acc.Username AS 'Tên tài khoản', acc.Password AS 'Mật khẩu', " +
-                          "emp.Role AS 'Chức vụ' FROM Account acc " +
-                          "JOIN Employee emp ON acc.EmployeeId = emp.EmployeeId " +
-                          "WHERE emp.EmployeeId NOT IN (SELECT EmployeeId FROM LockedAccount)" +
-                          "ORDER BY emp.EmployeeId ASC";
+            string query =
+                "SELECT " +
+                    "emp.EmployeeId AS 'Mã nhân viên', " +
+                    "emp.Name AS 'Tên', " +
+                    "acc.Username AS 'Tên tài khoản', " +
+                    "emp.Role AS 'Chức vụ' " +
+                "FROM " +
+                    "Account acc " +
+                    "JOIN Employee emp ON acc.EmployeeId = emp.EmployeeId " +
+                "WHERE emp.EmployeeId NOT IN (SELECT EmployeeId FROM LockedAccount)" +
+                "ORDER BY emp.EmployeeId ASC";
             DataTable dt = dbHelper.ExecuteQuery(query);
             return dt;
         }
-        private void clearTextBox()
+        private void ClearTextBox()
         {
             txtID.Clear();
             txtName.Clear();
             txtUsername.Clear();
-            txtPassword.Clear();
-            cbRole.SelectedIndex = -1;
         }
         private void pnButtonEnabler(bool featBtn, bool infoBtn)
         {
@@ -69,47 +87,14 @@ namespace timber_shop_manager
             btnAdd.Visible = btnSearch.Visible = nonCellBtn;
             btnLock.Visible = cellBtn;
         }
-        private void searchEventEnabler(bool b)
-        {
-            if (b)
-            {
-                txtID.TextChanged += txtID_TextChanged;
-                txtName.TextChanged += txtName_TextChanged;
-                txtUsername.TextChanged += txtUsername_TextChanged;
-                cbRole.SelectedIndexChanged += cbRole_SelectedValueChanged;
-            }
-            else
-            {
-                txtID.TextChanged -= txtID_TextChanged;
-                txtName.TextChanged -= txtName_TextChanged;
-                txtUsername.TextChanged -= txtUsername_TextChanged;
-                cbRole.SelectedIndexChanged -= cbRole_SelectedValueChanged;
-            }
-        }
-        //
-        private void loadFeatureBasedOnRole()
-        {
-            bool isAdmin = account.verifyPermission() == Employee.Role.ADMINISTRATOR;
-            btnAdd.Visible = btnLock.Visible = isAdmin;
-        }
-        // I need search method
-        private void suggest()
-        {
 
-        }
-        #endregion
-        #region Events
-        #region Load
         private void frmAccount_Load(object sender, EventArgs e)
         {
-            loadForm();
+            LoadForm();
         }
-        #endregion
-        #region Click
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmChangePW frmChangePW = new frmChangePW();
-            this.Hide();
             frmChangePW.ShowDialog();
         }
         private void btnLock_Click(object sender, EventArgs e)
@@ -136,21 +121,62 @@ namespace timber_shop_manager
                 }
             }
             // Reload form  
-            loadForm();
+            LoadForm();
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            loadForm();
+            LoadForm();
         }
         // Not done yet
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            pnInfo.Enabled = true;
-            clearTextBox();
-            txtID.Focus();
-            searchEventEnabler(true);
+
+            if (!searchMode)
+            {
+                pnInfo.Enabled = true;
+                ClearTextBox();
+                txtID.Focus();
+
+                btnAdd.Enabled = false;
+
+                btnSearch.Text = "Huỷ tìm";
+
+                if (dynamicSearch == null)
+                {
+                    List<Control> searchControls = new List<Control>() { txtID, txtName, txtUsername, cbRole };
+                    Dictionary<string, string> columnMappings = new Dictionary<string, string>()
+                {
+                    {"txtID", "Mã nhân viên" },
+                    {"txtName", "Tên" },
+                    {"txtUsername", "Tên tài khoản" },
+                    {"cbRole", "Chức vụ" }
+                };
+                    dynamicSearch = new DynamicSearch(searchControls, columnMappings, LoadDataGridView, dgv);
+                }
+                dynamicSearch?.Enable();
+
+
+                searchMode = true;
+            }
+            else
+            {
+                btnSearch.Text = "Tìm kiếm";
+                btnAdd.Enabled = true;
+
+                dgv.DataSource = LoadDataGridView();
+
+                dynamicSearch?.Disable();
+                searchMode = false;
+            }
         }
-        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Program.CheckInputIsLetter(e);
+        }
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgv.Rows.Count > 0)
             {
@@ -158,39 +184,15 @@ namespace timber_shop_manager
                 txtID.Text = dgv.Rows[rowIndex].Cells["Mã nhân viên"].Value.ToString();
                 txtName.Text = dgv.Rows[rowIndex].Cells["Tên"].Value.ToString();
                 txtUsername.Text = dgv.Rows[rowIndex].Cells["Tên tài khoản"].Value.ToString();
-                txtPassword.Text = dgv.Rows[rowIndex].Cells["Mật khẩu"].Value.ToString();
                 cbRole.Text = dgv.Rows[rowIndex].Cells["Chức vụ"].Value.ToString();
 
-                featureButtonEnabler(true, true);
-                // Need to paint the row in green if the employee is deleted to remind the user to lock the account
             }
         }
-        #endregion
-        #region Text Change
-        private void txtID_TextChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
-        private void txtName_TextChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
 
-        private void txtUsername_TextChanged(object sender, EventArgs e)
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
-            suggest();
+            ClearTextBox();
+            LoadData();
         }
-        private void cbRole_SelectedValueChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
-        #endregion
-        #region Key Press
-        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Program.CheckInputIsLetter(e);
-        }
-        #endregion
-        #endregion
     }
 }

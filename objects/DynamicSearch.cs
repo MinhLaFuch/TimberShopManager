@@ -75,7 +75,11 @@ namespace timber_shop_manager.objects
                 if (control is TextBox textBox)
                     textBox.TextChanged += Control_TextChanged;
                 else if (control is ComboBox comboBox)
+                {
                     comboBox.TextChanged += Control_TextChanged;
+                    comboBox.SelectedIndexChanged += Control_TextChanged;
+                }
+
             }
 
             _isEnabled = true;
@@ -90,7 +94,10 @@ namespace timber_shop_manager.objects
                 if (control is TextBox textBox)
                     textBox.TextChanged -= Control_TextChanged;
                 else if (control is ComboBox comboBox)
+                {
                     comboBox.TextChanged -= Control_TextChanged;
+                    comboBox.SelectedIndexChanged -= Control_TextChanged;
+                }
             }
 
             _isEnabled = false;
@@ -116,7 +123,7 @@ namespace timber_shop_manager.objects
 
                 if (!string.IsNullOrEmpty(value) && _columnMappings.TryGetValue(control.Name, out string columnName))
                 {
-                    filters.Add($"{columnName} LIKE '%{value.Replace("'", "''")}%'");
+                    filters.Add($"[{columnName}] LIKE '%{value.Replace("'", "''")}%'");
                 }
             }
 
