@@ -22,10 +22,10 @@ namespace timber_shop_manager.objects
         public string Password { get; }
         public Employee Employee { get; }
 
-        public Account(string username, string password, Employee employee)
+        public Account(string username, string password)
         {
-            this.username = username;
-            this.password = password;
+            this.username = username.Trim();
+            this.password = password.Trim();
         }
         
         public bool verifyUsername()

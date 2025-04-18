@@ -38,7 +38,6 @@
             lblPassError = new Label();
             controlBox = new ReaLTaiizor.Controls.NightControlBox();
             lbLogin_1 = new ReaLTaiizor.Controls.BigLabel();
-            lbLogin_2 = new ReaLTaiizor.Controls.BigLabel();
             pnLogin = new Panel();
             panel1 = new Panel();
             label3 = new Label();
@@ -46,7 +45,7 @@
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             btnForgotPassword = new Button();
-            lbGmail = new Label();
+            btnConfig = new Button();
             pnLogin.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -58,9 +57,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(59, 93, 79);
-            label1.Location = new Point(385, 217);
+            label1.Location = new Point(340, 141);
             label1.Name = "label1";
-            label1.Size = new Size(145, 25);
+            label1.Size = new Size(116, 20);
             label1.TabIndex = 1;
             label1.Text = "Tên đăng nhập";
             // 
@@ -69,44 +68,41 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(59, 93, 79);
-            label2.Location = new Point(385, 297);
+            label2.Location = new Point(340, 201);
             label2.Name = "label2";
-            label2.Size = new Size(93, 25);
+            label2.Size = new Size(75, 20);
             label2.TabIndex = 2;
             label2.Text = "Mật khẩu";
             // 
             // txtUsername
             // 
-            txtUsername.BackColor = SystemColors.MenuBar;
+            txtUsername.BackColor = SystemColors.GradientInactiveCaption;
             txtUsername.BorderStyle = BorderStyle.None;
             txtUsername.ForeColor = Color.FromArgb(59, 93, 79);
-            txtUsername.Location = new Point(388, 246);
-            txtUsername.Margin = new Padding(3, 4, 3, 4);
+            txtUsername.Location = new Point(340, 162);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(266, 20);
+            txtUsername.Size = new Size(233, 16);
             txtUsername.TabIndex = 3;
             // 
             // txtPassword
             // 
-            txtPassword.BackColor = SystemColors.MenuBar;
+            txtPassword.BackColor = SystemColors.GradientInactiveCaption;
             txtPassword.BorderStyle = BorderStyle.None;
             txtPassword.ForeColor = Color.FromArgb(59, 93, 79);
-            txtPassword.Location = new Point(388, 326);
-            txtPassword.Margin = new Padding(3, 4, 3, 4);
+            txtPassword.Location = new Point(340, 222);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(266, 20);
+            txtPassword.Size = new Size(233, 16);
             txtPassword.TabIndex = 4;
             txtPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
             btnLogin.BackColor = Color.FromArgb(59, 93, 79);
-            btnLogin.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogin.Font = new Font("Microsoft Sans Serif", 12F);
             btnLogin.ForeColor = SystemColors.ButtonFace;
-            btnLogin.Location = new Point(490, 405);
-            btnLogin.Margin = new Padding(3, 4, 3, 4);
+            btnLogin.Location = new Point(370, 263);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(164, 40);
+            btnLogin.Size = new Size(168, 30);
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Đăng nhập";
             btnLogin.UseVisualStyleBackColor = false;
@@ -117,10 +113,10 @@
             lblUserError.AutoSize = true;
             lblUserError.Font = new Font("Microsoft Sans Serif", 10.2F);
             lblUserError.ForeColor = Color.Red;
-            lblUserError.Location = new Point(385, 270);
+            lblUserError.Location = new Point(340, 180);
             lblUserError.Name = "lblUserError";
             lblUserError.RightToLeft = RightToLeft.No;
-            lblUserError.Size = new Size(83, 20);
+            lblUserError.Size = new Size(71, 17);
             lblUserError.TabIndex = 6;
             lblUserError.Text = "user error";
             // 
@@ -129,10 +125,10 @@
             lblPassError.AutoSize = true;
             lblPassError.Font = new Font("Microsoft Sans Serif", 10.2F);
             lblPassError.ForeColor = Color.Red;
-            lblPassError.Location = new Point(388, 350);
+            lblPassError.Location = new Point(340, 240);
             lblPassError.Name = "lblPassError";
             lblPassError.RightToLeft = RightToLeft.No;
-            lblPassError.Size = new Size(86, 20);
+            lblPassError.Size = new Size(73, 17);
             lblPassError.TabIndex = 7;
             lblPassError.Text = "pass error";
             // 
@@ -150,7 +146,7 @@
             controlBox.EnableMaximizeColor = Color.FromArgb(160, 160, 160);
             controlBox.EnableMinimizeButton = true;
             controlBox.EnableMinimizeColor = Color.FromArgb(160, 160, 160);
-            controlBox.Location = new Point(661, 0);
+            controlBox.Location = new Point(462, 0);
             controlBox.MaximizeHoverColor = Color.FromArgb(15, 255, 255, 255);
             controlBox.MaximizeHoverForeColor = Color.White;
             controlBox.MinimizeHoverColor = Color.FromArgb(15, 255, 255, 255);
@@ -161,39 +157,26 @@
             // 
             // lbLogin_1
             // 
-            lbLogin_1.AutoSize = true;
             lbLogin_1.BackColor = Color.Transparent;
             lbLogin_1.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Bold);
             lbLogin_1.ForeColor = Color.White;
-            lbLogin_1.Location = new Point(0, 9);
+            lbLogin_1.Location = new Point(24, 9);
             lbLogin_1.Name = "lbLogin_1";
-            lbLogin_1.Size = new Size(353, 69);
+            lbLogin_1.Size = new Size(291, 116);
             lbLogin_1.TabIndex = 11;
-            lbLogin_1.Text = "CỬA HÀNG";
-            // 
-            // lbLogin_2
-            // 
-            lbLogin_2.AutoSize = true;
-            lbLogin_2.BackColor = Color.Transparent;
-            lbLogin_2.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Bold);
-            lbLogin_2.ForeColor = Color.White;
-            lbLogin_2.Location = new Point(0, 81);
-            lbLogin_2.Name = "lbLogin_2";
-            lbLogin_2.Size = new Size(235, 69);
-            lbLogin_2.TabIndex = 12;
-            lbLogin_2.Text = "ĐỒ GỖ";
+            lbLogin_1.Text = "CỬA HÀNG ĐỒ GỖ";
             // 
             // pnLogin
             // 
             pnLogin.BackColor = Color.FromArgb(59, 93, 79);
             pnLogin.Controls.Add(panel1);
             pnLogin.Controls.Add(pictureBox1);
-            pnLogin.Controls.Add(lbLogin_2);
             pnLogin.Controls.Add(lbLogin_1);
             pnLogin.Dock = DockStyle.Left;
             pnLogin.Location = new Point(0, 0);
+            pnLogin.Margin = new Padding(3, 2, 3, 2);
             pnLogin.Name = "pnLogin";
-            pnLogin.Size = new Size(379, 503);
+            pnLogin.Size = new Size(332, 387);
             pnLogin.TabIndex = 13;
             // 
             // panel1
@@ -201,18 +184,19 @@
             panel1.Controls.Add(label3);
             panel1.Controls.Add(lbFooter);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 425);
+            panel1.Location = new Point(0, 329);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(379, 78);
+            panel1.Size = new Size(332, 58);
             panel1.TabIndex = 15;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.White;
-            label3.Location = new Point(0, 58);
+            label3.Location = new Point(6, 39);
             label3.Name = "label3";
-            label3.Size = new Size(294, 20);
+            label3.Size = new Size(237, 15);
             label3.TabIndex = 1;
             label3.Text = "All rights reserved. | Privacy Policy | Contact";
             // 
@@ -220,27 +204,29 @@
             // 
             lbFooter.AutoSize = true;
             lbFooter.ForeColor = Color.White;
-            lbFooter.Location = new Point(0, 38);
+            lbFooter.Location = new Point(6, 23);
             lbFooter.Name = "lbFooter";
-            lbFooter.Size = new Size(210, 20);
+            lbFooter.Size = new Size(165, 15);
             lbFooter.TabIndex = 0;
             lbFooter.Text = "© 2025 Timber Shop Manager";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 153);
+            pictureBox1.Location = new Point(24, 125);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(322, 266);
+            pictureBox1.Size = new Size(282, 200);
             pictureBox1.TabIndex = 13;
             pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(379, 37);
+            pictureBox2.Location = new Point(332, 25);
+            pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(421, 147);
+            pictureBox2.Size = new Size(255, 110);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 14;
             pictureBox2.TabStop = false;
@@ -248,36 +234,39 @@
             // btnForgotPassword
             // 
             btnForgotPassword.BackColor = Color.FromArgb(59, 93, 79);
-            btnForgotPassword.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnForgotPassword.Font = new Font("Microsoft Sans Serif", 12F);
             btnForgotPassword.ForeColor = SystemColors.ButtonFace;
-            btnForgotPassword.Location = new Point(660, 317);
-            btnForgotPassword.Margin = new Padding(3, 4, 3, 4);
+            btnForgotPassword.Location = new Point(370, 299);
             btnForgotPassword.Name = "btnForgotPassword";
-            btnForgotPassword.Size = new Size(139, 41);
+            btnForgotPassword.Size = new Size(168, 30);
             btnForgotPassword.TabIndex = 15;
             btnForgotPassword.Text = "Quên mật khẩu?";
             btnForgotPassword.UseVisualStyleBackColor = false;
             btnForgotPassword.Click += btnForgotPassword_Click;
             // 
-            // lbGmail
+            // btnConfig
             // 
-            lbGmail.AutoSize = true;
-            lbGmail.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbGmail.ForeColor = Color.FromArgb(59, 93, 79);
-            lbGmail.Location = new Point(661, 241);
-            lbGmail.Name = "lbGmail";
-            lbGmail.Size = new Size(102, 20);
-            lbGmail.TabIndex = 16;
-            lbGmail.Text = "@gmail.com";
+            btnConfig.AutoSize = true;
+            btnConfig.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnConfig.BackColor = Color.FromArgb(59, 93, 79);
+            btnConfig.Font = new Font("Microsoft Sans Serif", 12F);
+            btnConfig.ForeColor = SystemColors.ButtonFace;
+            btnConfig.Location = new Point(508, 352);
+            btnConfig.Name = "btnConfig";
+            btnConfig.Size = new Size(65, 30);
+            btnConfig.TabIndex = 16;
+            btnConfig.Text = "Config";
+            btnConfig.UseVisualStyleBackColor = false;
+            btnConfig.Click += btnConfig_Click;
             // 
             // frmLogin
             // 
             AcceptButton = btnLogin;
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(801, 503);
-            Controls.Add(lbGmail);
+            ClientSize = new Size(585, 387);
+            Controls.Add(btnConfig);
             Controls.Add(btnForgotPassword);
             Controls.Add(pictureBox2);
             Controls.Add(pnLogin);
@@ -291,13 +280,11 @@
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng nhập";
             Load += frmLogin_Load;
             pnLogin.ResumeLayout(false);
-            pnLogin.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -316,7 +303,6 @@
         private Label lblPassError;
         private ReaLTaiizor.Controls.NightControlBox controlBox;
         private ReaLTaiizor.Controls.BigLabel lbLogin_1;
-        private ReaLTaiizor.Controls.BigLabel lbLogin_2;
         private Panel pnLogin;
         private PictureBox pictureBox1;
         private Panel panel1;
@@ -324,6 +310,6 @@
         private Label label3;
         private PictureBox pictureBox2;
         private Button btnForgotPassword;
-        private Label lbGmail;
+        private Button btnConfig;
     }
 }

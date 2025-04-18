@@ -86,7 +86,7 @@ namespace timber_shop_manager
                     smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
 
                     mailMessage.From = new MailAddress(email);
-                    mailMessage.To.Add(txtGmail.Text + "@gmail.com"); // Validate user input more carefully
+                    mailMessage.To.Add(txtGmail.Text); // Validate user input more carefully
                     mailMessage.Subject = subject;
                     mailMessage.Body = body;
 
