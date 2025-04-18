@@ -30,72 +30,108 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            chbWindowAuthetication = new Guna.UI2.WinForms.Guna2CheckBox();
+            chkWindowAuthetication = new Guna.UI2.WinForms.Guna2CheckBox();
             gbServer = new Guna.UI2.WinForms.Guna2GroupBox();
+            lbConnectStatus = new Label();
+            label1 = new Label();
+            txtServer = new TextBox();
             pnInfoButton = new FlowLayoutPanel();
             btnCancel = new Button();
-            pnInfo = new Panel();
+            btnConnect = new Button();
+            pnlSQLAuthentication = new Panel();
+            chkRememberPassword = new Guna.UI2.WinForms.Guna2CheckBox();
             txtPassword = new TextBox();
             lbUsername = new Label();
             txtUsername = new TextBox();
             lbPassword = new Label();
-            btnConnect = new Button();
-            label1 = new Label();
-            textBox1 = new TextBox();
-            lbConnectStatus = new Label();
-            chbRememberMe = new Guna.UI2.WinForms.Guna2CheckBox();
             gbServer.SuspendLayout();
             pnInfoButton.SuspendLayout();
-            pnInfo.SuspendLayout();
+            pnlSQLAuthentication.SuspendLayout();
             SuspendLayout();
             // 
-            // chbWindowAuthetication
+            // chkWindowAuthetication
             // 
-            chbWindowAuthetication.AutoSize = true;
-            chbWindowAuthetication.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
-            chbWindowAuthetication.CheckedState.BorderRadius = 0;
-            chbWindowAuthetication.CheckedState.BorderThickness = 0;
-            chbWindowAuthetication.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
-            chbWindowAuthetication.ForeColor = Color.FromArgb(59, 93, 79);
-            chbWindowAuthetication.Location = new Point(181, 103);
-            chbWindowAuthetication.Name = "chbWindowAuthetication";
-            chbWindowAuthetication.Size = new Size(179, 24);
-            chbWindowAuthetication.TabIndex = 2;
-            chbWindowAuthetication.Text = "Window Authetication";
-            chbWindowAuthetication.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
-            chbWindowAuthetication.UncheckedState.BorderRadius = 0;
-            chbWindowAuthetication.UncheckedState.BorderThickness = 0;
-            chbWindowAuthetication.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
-            chbWindowAuthetication.CheckedChanged += chbWindowAuthetication_CheckedChanged;
+            chkWindowAuthetication.AutoSize = true;
+            chkWindowAuthetication.Checked = true;
+            chkWindowAuthetication.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            chkWindowAuthetication.CheckedState.BorderRadius = 0;
+            chkWindowAuthetication.CheckedState.BorderThickness = 0;
+            chkWindowAuthetication.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            chkWindowAuthetication.CheckState = CheckState.Checked;
+            chkWindowAuthetication.ForeColor = Color.FromArgb(59, 93, 79);
+            chkWindowAuthetication.Location = new Point(134, 83);
+            chkWindowAuthetication.Margin = new Padding(3, 2, 3, 2);
+            chkWindowAuthetication.Name = "chkWindowAuthetication";
+            chkWindowAuthetication.Size = new Size(145, 19);
+            chkWindowAuthetication.TabIndex = 2;
+            chkWindowAuthetication.Text = "Window Authetication";
+            chkWindowAuthetication.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            chkWindowAuthetication.UncheckedState.BorderRadius = 0;
+            chkWindowAuthetication.UncheckedState.BorderThickness = 0;
+            chkWindowAuthetication.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            chkWindowAuthetication.CheckedChanged += chbWindowAuthetication_CheckedChanged;
             // 
             // gbServer
             // 
             gbServer.Controls.Add(lbConnectStatus);
             gbServer.Controls.Add(label1);
-            gbServer.Controls.Add(chbWindowAuthetication);
-            gbServer.Controls.Add(textBox1);
+            gbServer.Controls.Add(chkWindowAuthetication);
+            gbServer.Controls.Add(txtServer);
             gbServer.Controls.Add(pnInfoButton);
-            gbServer.Controls.Add(pnInfo);
+            gbServer.Controls.Add(pnlSQLAuthentication);
             gbServer.CustomBorderColor = Color.FromArgb(59, 93, 79);
             gbServer.CustomizableEdges = customizableEdges1;
             gbServer.FillColor = SystemColors.Control;
             gbServer.Font = new Font("Segoe UI", 9F);
             gbServer.ForeColor = Color.White;
-            gbServer.Location = new Point(12, 12);
+            gbServer.Location = new Point(12, 9);
+            gbServer.Margin = new Padding(3, 2, 3, 2);
             gbServer.Name = "gbServer";
             gbServer.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            gbServer.Size = new Size(1193, 429);
+            gbServer.Size = new Size(463, 278);
             gbServer.TabIndex = 12;
             gbServer.Text = "Thông tin máy chủ";
+            // 
+            // lbConnectStatus
+            // 
+            lbConnectStatus.AutoSize = true;
+            lbConnectStatus.ForeColor = Color.Red;
+            lbConnectStatus.Location = new Point(12, 242);
+            lbConnectStatus.Name = "lbConnectStatus";
+            lbConnectStatus.Size = new Size(118, 15);
+            lbConnectStatus.TabIndex = 18;
+            lbConnectStatus.Text = "Kết nối không tồn tại";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = Color.FromArgb(59, 93, 79);
+            label1.Location = new Point(23, 54);
+            label1.Name = "label1";
+            label1.Size = new Size(74, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Tên máy chủ";
+            // 
+            // txtServer
+            // 
+            txtServer.BackColor = SystemColors.InactiveCaption;
+            txtServer.BorderStyle = BorderStyle.None;
+            txtServer.ForeColor = Color.FromArgb(59, 93, 79);
+            txtServer.Location = new Point(135, 53);
+            txtServer.Margin = new Padding(3, 2, 3, 2);
+            txtServer.Name = "txtServer";
+            txtServer.Size = new Size(302, 16);
+            txtServer.TabIndex = 5;
             // 
             // pnInfoButton
             // 
             pnInfoButton.Controls.Add(btnCancel);
             pnInfoButton.Controls.Add(btnConnect);
             pnInfoButton.FlowDirection = FlowDirection.RightToLeft;
-            pnInfoButton.Location = new Point(574, 342);
+            pnInfoButton.Location = new Point(207, 224);
+            pnInfoButton.Margin = new Padding(3, 2, 3, 2);
             pnInfoButton.Name = "pnInfoButton";
-            pnInfoButton.Size = new Size(388, 55);
+            pnInfoButton.Size = new Size(244, 41);
             pnInfoButton.TabIndex = 16;
             // 
             // btnCancel
@@ -104,63 +140,13 @@
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Segoe UI", 9F);
             btnCancel.ForeColor = SystemColors.ButtonFace;
-            btnCancel.Location = new Point(253, 4);
-            btnCancel.Margin = new Padding(3, 4, 3, 4);
+            btnCancel.Location = new Point(125, 3);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(132, 40);
+            btnCancel.Size = new Size(116, 30);
             btnCancel.TabIndex = 9;
             btnCancel.Text = "Hủy";
             btnCancel.UseVisualStyleBackColor = false;
-            // 
-            // pnInfo
-            // 
-            pnInfo.Controls.Add(chbRememberMe);
-            pnInfo.Controls.Add(txtPassword);
-            pnInfo.Controls.Add(lbUsername);
-            pnInfo.Controls.Add(txtUsername);
-            pnInfo.Controls.Add(lbPassword);
-            pnInfo.Location = new Point(181, 155);
-            pnInfo.Name = "pnInfo";
-            pnInfo.Size = new Size(781, 126);
-            pnInfo.TabIndex = 17;
-            // 
-            // txtPassword
-            // 
-            txtPassword.BorderStyle = BorderStyle.None;
-            txtPassword.ForeColor = Color.FromArgb(59, 93, 79);
-            txtPassword.Location = new Point(140, 61);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(345, 20);
-            txtPassword.TabIndex = 3;
-            // 
-            // lbUsername
-            // 
-            lbUsername.AutoSize = true;
-            lbUsername.ForeColor = Color.FromArgb(59, 93, 79);
-            lbUsername.Location = new Point(13, 15);
-            lbUsername.Name = "lbUsername";
-            lbUsername.Size = new Size(97, 20);
-            lbUsername.TabIndex = 0;
-            lbUsername.Text = "Tên tài khoản";
-            // 
-            // txtUsername
-            // 
-            txtUsername.BorderStyle = BorderStyle.None;
-            txtUsername.ForeColor = Color.FromArgb(59, 93, 79);
-            txtUsername.Location = new Point(140, 15);
-            txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(345, 20);
-            txtUsername.TabIndex = 1;
-            // 
-            // lbPassword
-            // 
-            lbPassword.AutoSize = true;
-            lbPassword.ForeColor = Color.FromArgb(59, 93, 79);
-            lbPassword.Location = new Point(13, 61);
-            lbPassword.Name = "lbPassword";
-            lbPassword.Size = new Size(70, 20);
-            lbPassword.TabIndex = 2;
-            lbPassword.Text = "Mật khẩu";
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnConnect
             // 
@@ -168,93 +154,123 @@
             btnConnect.FlatStyle = FlatStyle.Flat;
             btnConnect.Font = new Font("Segoe UI", 9F);
             btnConnect.ForeColor = SystemColors.ButtonFace;
-            btnConnect.Location = new Point(115, 4);
-            btnConnect.Margin = new Padding(3, 4, 3, 4);
+            btnConnect.Location = new Point(3, 3);
             btnConnect.Name = "btnConnect";
-            btnConnect.Size = new Size(132, 40);
+            btnConnect.Size = new Size(116, 30);
             btnConnect.TabIndex = 10;
             btnConnect.Text = "Kết nối";
             btnConnect.UseVisualStyleBackColor = false;
+            btnConnect.Click += btnConnect_Click;
             // 
-            // label1
+            // pnlSQLAuthentication
             // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.FromArgb(59, 93, 79);
-            label1.Location = new Point(181, 57);
-            label1.Name = "label1";
-            label1.Size = new Size(91, 20);
-            label1.TabIndex = 4;
-            label1.Text = "Tên máy chủ";
+            pnlSQLAuthentication.Controls.Add(chkRememberPassword);
+            pnlSQLAuthentication.Controls.Add(txtPassword);
+            pnlSQLAuthentication.Controls.Add(lbUsername);
+            pnlSQLAuthentication.Controls.Add(txtUsername);
+            pnlSQLAuthentication.Controls.Add(lbPassword);
+            pnlSQLAuthentication.Location = new Point(38, 106);
+            pnlSQLAuthentication.Margin = new Padding(3, 2, 3, 2);
+            pnlSQLAuthentication.Name = "pnlSQLAuthentication";
+            pnlSQLAuthentication.Size = new Size(413, 94);
+            pnlSQLAuthentication.TabIndex = 17;
             // 
-            // textBox1
+            // chkRememberPassword
             // 
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.ForeColor = Color.FromArgb(59, 93, 79);
-            textBox1.Location = new Point(321, 57);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(345, 20);
-            textBox1.TabIndex = 5;
+            chkRememberPassword.AutoSize = true;
+            chkRememberPassword.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            chkRememberPassword.CheckedState.BorderRadius = 0;
+            chkRememberPassword.CheckedState.BorderThickness = 0;
+            chkRememberPassword.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            chkRememberPassword.ForeColor = Color.FromArgb(59, 93, 79);
+            chkRememberPassword.Location = new Point(98, 73);
+            chkRememberPassword.Margin = new Padding(3, 2, 3, 2);
+            chkRememberPassword.Name = "chkRememberPassword";
+            chkRememberPassword.Size = new Size(99, 19);
+            chkRememberPassword.TabIndex = 19;
+            chkRememberPassword.Text = "Lưu mật khẩu";
+            chkRememberPassword.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            chkRememberPassword.UncheckedState.BorderRadius = 0;
+            chkRememberPassword.UncheckedState.BorderThickness = 0;
+            chkRememberPassword.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
             // 
-            // lbConnectStatus
+            // txtPassword
             // 
-            lbConnectStatus.AutoSize = true;
-            lbConnectStatus.ForeColor = Color.FromArgb(59, 93, 79);
-            lbConnectStatus.Location = new Point(181, 367);
-            lbConnectStatus.Name = "lbConnectStatus";
-            lbConnectStatus.Size = new Size(148, 20);
-            lbConnectStatus.TabIndex = 18;
-            lbConnectStatus.Text = "Kết nối không tồn tại";
+            txtPassword.BackColor = SystemColors.ActiveCaption;
+            txtPassword.BorderStyle = BorderStyle.None;
+            txtPassword.ForeColor = Color.FromArgb(59, 93, 79);
+            txtPassword.Location = new Point(98, 46);
+            txtPassword.Margin = new Padding(3, 2, 3, 2);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(302, 16);
+            txtPassword.TabIndex = 3;
             // 
-            // chbRememberMe
+            // lbUsername
             // 
-            chbRememberMe.AutoSize = true;
-            chbRememberMe.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
-            chbRememberMe.CheckedState.BorderRadius = 0;
-            chbRememberMe.CheckedState.BorderThickness = 0;
-            chbRememberMe.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
-            chbRememberMe.ForeColor = Color.FromArgb(59, 93, 79);
-            chbRememberMe.Location = new Point(13, 99);
-            chbRememberMe.Name = "chbRememberMe";
-            chbRememberMe.Size = new Size(120, 24);
-            chbRememberMe.TabIndex = 19;
-            chbRememberMe.Text = "Lưu tài khoản";
-            chbRememberMe.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
-            chbRememberMe.UncheckedState.BorderRadius = 0;
-            chbRememberMe.UncheckedState.BorderThickness = 0;
-            chbRememberMe.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            lbUsername.AutoSize = true;
+            lbUsername.ForeColor = Color.FromArgb(59, 93, 79);
+            lbUsername.Location = new Point(9, 11);
+            lbUsername.Name = "lbUsername";
+            lbUsername.Size = new Size(77, 15);
+            lbUsername.TabIndex = 0;
+            lbUsername.Text = "Tên tài khoản";
+            // 
+            // txtUsername
+            // 
+            txtUsername.BackColor = SystemColors.ActiveCaption;
+            txtUsername.BorderStyle = BorderStyle.None;
+            txtUsername.ForeColor = Color.FromArgb(59, 93, 79);
+            txtUsername.Location = new Point(98, 11);
+            txtUsername.Margin = new Padding(3, 2, 3, 2);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(302, 16);
+            txtUsername.TabIndex = 1;
+            // 
+            // lbPassword
+            // 
+            lbPassword.AutoSize = true;
+            lbPassword.ForeColor = Color.FromArgb(59, 93, 79);
+            lbPassword.Location = new Point(9, 46);
+            lbPassword.Name = "lbPassword";
+            lbPassword.Size = new Size(57, 15);
+            lbPassword.TabIndex = 2;
+            lbPassword.Text = "Mật khẩu";
             // 
             // frmConfig
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1217, 651);
+            ClientSize = new Size(490, 301);
             Controls.Add(gbServer);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmConfig";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmConfig";
+            Load += frmConfig_Load;
             gbServer.ResumeLayout(false);
             gbServer.PerformLayout();
             pnInfoButton.ResumeLayout(false);
-            pnInfo.ResumeLayout(false);
-            pnInfo.PerformLayout();
+            pnlSQLAuthentication.ResumeLayout(false);
+            pnlSQLAuthentication.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2CheckBox chbWindowAuthetication;
+        private Guna.UI2.WinForms.Guna2CheckBox chkWindowAuthetication;
         private Guna.UI2.WinForms.Guna2GroupBox gbServer;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txtServer;
         private FlowLayoutPanel pnInfoButton;
         private Button btnCancel;
         private Button btnConnect;
-        private Panel pnInfo;
+        private Panel pnlSQLAuthentication;
         private TextBox txtPassword;
         private Label lbUsername;
         private TextBox txtUsername;
         private Label lbPassword;
         private Label lbConnectStatus;
-        private Guna.UI2.WinForms.Guna2CheckBox chbRememberMe;
+        private Guna.UI2.WinForms.Guna2CheckBox chkRememberPassword;
     }
 }

@@ -100,8 +100,8 @@ namespace timber_shop_manager
 
         private void btnSearchCustomer_Click(object sender, EventArgs e)
         {
-            frmCustomer frmCustomer = new frmCustomer(Employee.Role.SALE_AGENT);
-            frmCustomer.ShowDialog();
+            //frmCustomer frmCustomer = new frmCustomer(Employee.Role.SALE_AGENT);
+            //frmCustomer.ShowDialog();
         }
 
         private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)

@@ -59,7 +59,8 @@ namespace timber_shop_manager
         #region Click
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Account account = new Account(txtUsername.Text.Trim(), txtPassword.Text.Trim());
+            //Account account = new Account(txtUsername.Text.Trim(), txtPassword.Text.Trim());
+            Account account = null;
 
             if (!account.verifyUsername())
             {
