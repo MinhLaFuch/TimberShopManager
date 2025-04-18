@@ -32,7 +32,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             chkWindowAuthetication = new Guna.UI2.WinForms.Guna2CheckBox();
             gbServer = new Guna.UI2.WinForms.Guna2GroupBox();
-            lbConnectStatus = new Label();
+            txtDatbaseName = new TextBox();
+            label2 = new Label();
+            lblConnectStatus = new Label();
             label1 = new Label();
             txtServer = new TextBox();
             pnInfoButton = new FlowLayoutPanel();
@@ -59,7 +61,7 @@
             chkWindowAuthetication.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
             chkWindowAuthetication.CheckState = CheckState.Checked;
             chkWindowAuthetication.ForeColor = Color.FromArgb(59, 93, 79);
-            chkWindowAuthetication.Location = new Point(134, 83);
+            chkWindowAuthetication.Location = new Point(133, 102);
             chkWindowAuthetication.Margin = new Padding(3, 2, 3, 2);
             chkWindowAuthetication.Name = "chkWindowAuthetication";
             chkWindowAuthetication.Size = new Size(145, 19);
@@ -73,7 +75,9 @@
             // 
             // gbServer
             // 
-            gbServer.Controls.Add(lbConnectStatus);
+            gbServer.Controls.Add(txtDatbaseName);
+            gbServer.Controls.Add(label2);
+            gbServer.Controls.Add(lblConnectStatus);
             gbServer.Controls.Add(label1);
             gbServer.Controls.Add(chkWindowAuthetication);
             gbServer.Controls.Add(txtServer);
@@ -88,25 +92,47 @@
             gbServer.Margin = new Padding(3, 2, 3, 2);
             gbServer.Name = "gbServer";
             gbServer.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            gbServer.Size = new Size(463, 278);
+            gbServer.Size = new Size(463, 293);
             gbServer.TabIndex = 12;
             gbServer.Text = "Thông tin máy chủ";
             // 
-            // lbConnectStatus
+            // txtDatbaseName
             // 
-            lbConnectStatus.AutoSize = true;
-            lbConnectStatus.ForeColor = Color.Red;
-            lbConnectStatus.Location = new Point(12, 242);
-            lbConnectStatus.Name = "lbConnectStatus";
-            lbConnectStatus.Size = new Size(118, 15);
-            lbConnectStatus.TabIndex = 18;
-            lbConnectStatus.Text = "Kết nối không tồn tại";
+            txtDatbaseName.BackColor = SystemColors.InactiveCaption;
+            txtDatbaseName.BorderStyle = BorderStyle.None;
+            txtDatbaseName.ForeColor = Color.FromArgb(59, 93, 79);
+            txtDatbaseName.Location = new Point(135, 79);
+            txtDatbaseName.Margin = new Padding(3, 2, 3, 2);
+            txtDatbaseName.Name = "txtDatbaseName";
+            txtDatbaseName.Size = new Size(302, 16);
+            txtDatbaseName.TabIndex = 20;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = Color.FromArgb(59, 93, 79);
+            label2.Location = new Point(35, 80);
+            label2.Name = "label2";
+            label2.Size = new Size(76, 15);
+            label2.TabIndex = 19;
+            label2.Text = "Tên Database";
+            // 
+            // lblConnectStatus
+            // 
+            lblConnectStatus.AutoSize = true;
+            lblConnectStatus.ForeColor = Color.Red;
+            lblConnectStatus.Location = new Point(35, 249);
+            lblConnectStatus.Name = "lblConnectStatus";
+            lblConnectStatus.Size = new Size(118, 15);
+            lblConnectStatus.TabIndex = 18;
+            lblConnectStatus.Text = "Kết nối không tồn tại";
+            lblConnectStatus.Visible = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.FromArgb(59, 93, 79);
-            label1.Location = new Point(23, 54);
+            label1.Location = new Point(35, 54);
             label1.Name = "label1";
             label1.Size = new Size(74, 15);
             label1.TabIndex = 4;
@@ -128,7 +154,7 @@
             pnInfoButton.Controls.Add(btnCancel);
             pnInfoButton.Controls.Add(btnConnect);
             pnInfoButton.FlowDirection = FlowDirection.RightToLeft;
-            pnInfoButton.Location = new Point(207, 224);
+            pnInfoButton.Location = new Point(207, 238);
             pnInfoButton.Margin = new Padding(3, 2, 3, 2);
             pnInfoButton.Name = "pnInfoButton";
             pnInfoButton.Size = new Size(244, 41);
@@ -144,7 +170,7 @@
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(116, 30);
             btnCancel.TabIndex = 9;
-            btnCancel.Text = "Hủy";
+            btnCancel.Text = "Thoát";
             btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
             // 
@@ -169,7 +195,7 @@
             pnlSQLAuthentication.Controls.Add(lbUsername);
             pnlSQLAuthentication.Controls.Add(txtUsername);
             pnlSQLAuthentication.Controls.Add(lbPassword);
-            pnlSQLAuthentication.Location = new Point(38, 106);
+            pnlSQLAuthentication.Location = new Point(35, 125);
             pnlSQLAuthentication.Margin = new Padding(3, 2, 3, 2);
             pnlSQLAuthentication.Name = "pnlSQLAuthentication";
             pnlSQLAuthentication.Size = new Size(413, 94);
@@ -240,7 +266,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(490, 301);
+            ClientSize = new Size(490, 316);
             Controls.Add(gbServer);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 2, 3, 2);
@@ -270,7 +296,9 @@
         private Label lbUsername;
         private TextBox txtUsername;
         private Label lbPassword;
-        private Label lbConnectStatus;
+        private Label lblConnectStatus;
         private Guna.UI2.WinForms.Guna2CheckBox chkRememberPassword;
+        private TextBox txtDatbaseName;
+        private Label label2;
     }
 }

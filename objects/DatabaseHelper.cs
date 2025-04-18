@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace timber_shop_manager
 {
@@ -12,13 +13,30 @@ namespace timber_shop_manager
     {
         private string connectionString;
 
+        private string 
+            server = Properties.Settings.Default.DBServer, 
+            name = Properties.Settings.Default.DBName, 
+            username = Properties.Settings.Default.DBUsername, 
+            password = Properties.Settings.Default.DBPassword;
+
+        private bool isWindowAuthentication = Properties.Settings.Default.isWindowAuthentication;
+
         public DatabaseHelper()
         {
-            connectionString = "Data Source=FUCHS_LAPTOP;Initial Catalog=TimberShop;Integrated Security=True;Trust Server Certificate=True";
+            if (isWindowAuthentication)
+            {
+                connectionString = $"Data Source={server};Initial Catalog={name};Integrated Security=True;Trust Server Certificate=True";
+                //connectionString = "Data Source=DESKTOP-M3PPH9A\\SQLEXPRESS;Initial Catalog=TimberShop;Integrated Security=True;Trust Server Certificate=True";
+                //connectionString = "Data Source=FUCHS_LAPTOP;Initial Catalog=TimberShop;Integrated Security=True;Trust Server Certificate=True";
+            } else
+            {
+                //connectionString = "Data Source=DESKTOP-M3PPH9A\\SQLEXPRESS;Initial Catalog=TimberShop;User ID=TimberUser;Password=***********;Encrypt=True;Trust Server Certificate=True";
+                connectionString = $"Data Source={server};Initial Catalog={name};User ID={username};Password={password};Encrypt=True;Trust Server Certificate=True";
+            }
         }
 
         // Kiểm tra kết nối
-        public bool TestConnection()
+        public bool isConnected()
         {
             try
             {
