@@ -157,7 +157,7 @@ namespace timber_shop_manager
         #region Key Press
         private void txtCode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Program.CheckInputIsDigit(e);
+            //Program.CheckInputIsDigit(e);
         }
         #endregion
         #region Text Change
@@ -179,7 +179,7 @@ namespace timber_shop_manager
             {
                 lbNewPasswordWarning.Text = "Mật khẩu ít nhất phải có 1 kí tự in hoa";
             }
-            else if (!Program.ContainsSpecialCharacter(txtNewPassword.Text))
+            else if (true)
             {
                 lbNewPasswordWarning.Text = "Mật khẩu ít nhất phải có 1 kí tự đặc biệt";
             }

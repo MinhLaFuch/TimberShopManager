@@ -13,6 +13,7 @@ namespace timber_shop_manager.objects
 
         public static readonly string PREFIX = "E";
         public static readonly int CODE_LENGTH = 4;
+        public static readonly int MIN_WORKING_AGE = 18;
         public enum Role
         {
             MANAGER,
@@ -32,7 +33,7 @@ namespace timber_shop_manager.objects
         public Employee(string id, string name, string identificationNumber, string address, DateTime birthday, string salary, string phoneNumber, string role)
         {
             this.id = id.Trim();
-            this.name = Program.CapitalizeName(name.Trim());
+            this.name = InputValidator.CapitalizeName(name.Trim());
             this.identificationNumber = identificationNumber.Trim();
             this.address = address.Trim();
             this.birthday = birthday;
@@ -114,6 +115,19 @@ namespace timber_shop_manager.objects
         {
             string query = "UPDATE Employee SET IsDeleted = 1 WHERE Id = @id";
             dbHelper.ExecuteNonQuery(query, new SqlParameter("@id", e.id));
+        }
+
+        public static bool IsLegalWorkingAge(DateTime birthday)
+        {
+            DateTime today = DateTime.Today;
+            int age = today.Year - birthday.Year;
+
+            if (birthday.Date > today.AddYears(-age))
+            {
+                age--;
+            }
+
+            return age >= MIN_WORKING_AGE;
         }
     }
 }

@@ -106,7 +106,7 @@ namespace timber_shop_manager
 
         private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Program.CheckInputIsDigit(e);
+            //Program.CheckInputIsDigit(e);
         }
 
         private void btnClear_Click(object sender, EventArgs e)

@@ -21,9 +21,8 @@ namespace timber_shop_manager
         private bool searchMode = false;
         private Employee employeeSelected = null;
 
-        #region Properties
         private static DatabaseHelper dbHelper = new DatabaseHelper();
-        private Account account;
+        private Account account = null;
         public frmEmployee()
         {
             InitializeComponent();
@@ -33,22 +32,21 @@ namespace timber_shop_manager
         {
             this.account = account;
         }
-        #endregion
-        #region Support Method
         private void LoadForm()
         {
+            btnAdd.Enabled = true;
+            btnSearch.Enabled = true;
             pnInfor.Enabled = false;
-            btnDel.Enabled = btnMod.Enabled = btnSave.Enabled = false;
+            btnViewAttendance.Enabled = btnDel.Enabled = btnMod.Enabled = btnSave.Enabled = false;
             ClearTextBox();
             LoadData();
             txtId.Enabled = false;
+
             dynamicSearch?.Disable();
+            searchMode = false;
+            btnSearch.Text = "Tìm kiếm";
+
             txtId.Enabled = searchMode;
-        }
-        private void loadFormBasedOnRole()
-        {
-            bool authority = account.verifyPermission() == Employee.Role.MANAGER;
-            btnAdd.Visible = btnDel.Visible = btnMod.Visible = btnViewAttendance.Visible = authority;
         }
 
         private void LoadData()
@@ -89,21 +87,12 @@ namespace timber_shop_manager
             cbRole.SelectedIndex = -1;
             dtpBirthDay.Value = DateTime.Now;
         }
-        private void btnEnabler(bool featBtn, bool initBtn)
-        {
-            btnDel.Enabled = btnMod.Enabled = btnViewAttendance.Enabled = featBtn;
-            btnAdd.Enabled = btnSearch.Enabled = initBtn;
-        }
 
-        #endregion
-        #region Event
-        #region Load
         private void frmEmployee_Load(object sender, EventArgs e)
         {
             LoadForm();
         }
-        #endregion
-        #region Click
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             pnInfor.Enabled = true;
@@ -138,9 +127,24 @@ namespace timber_shop_manager
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Employee emp = new Employee(txtId.Text, txtName.Text, txtIden.Text, txtAddress.Text, dtpBirthDay.Value, txtSalary.Text, txtPhoneNumber.Text, cbRole.Text);
-            Employee.add(emp);
-            LoadForm();
+            Dictionary<Control, Label> inputMap = new Dictionary<Control, Label> {
+                {txtId, lbId },
+                {txtName, lbName },
+                {txtIden, lbIden },
+                {txtPhoneNumber, lbPhoneNumber },
+                {txtAddress, lbAdress },
+                {cbRole, lbRole },
+                {txtSalary, lbSalary }
+            };
+            bool isValid = InputValidator.ValidateNotEmpty(inputMap);
+            bool isLegalAge = Employee.IsLegalWorkingAge(dtpBirthDay.Value);
+            if (isValid && isLegalAge)
+            {
+                Employee emp = new Employee(txtId.Text, txtName.Text, txtIden.Text, txtAddress.Text, dtpBirthDay.Value, txtSalary.Text, txtPhoneNumber.Text, cbRole.Text);
+                Employee.add(emp);
+                LoadForm();
+            }
+
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -148,15 +152,12 @@ namespace timber_shop_manager
         }
         private void btnMod_Click(object sender, EventArgs e)
         {
-            // Can only access salary and role info
-            gbInfo.Enabled = true;
-            txtName.Enabled = false;
-            txtIden.Enabled = false;
-            txtAddress.Enabled = false;
-            txtPhoneNumber.Enabled = false;
-            dtpBirthDay.Enabled = false;
-            cbRole.Focus();
-            btnEnabler(false, false);
+            pnInfor.Enabled = true;
+            txtId.Enabled = false;
+            btnDel.Enabled = false;
+            btnSearch.Enabled = false;
+            btnViewAttendance.Enabled = false;
+            dtpBirthDay.Enabled = true;
         }
         
         private void btnSearch_Click(object sender, EventArgs e)
@@ -211,33 +212,32 @@ namespace timber_shop_manager
             btnSave.Enabled = !searchMode;
         }
 
-        #endregion
-        #region Key Press
         private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Program.CheckInputIsDigit(e);
+            InputValidator.CheckInputIsDigit(e);
         }
         private void txtSalary_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Program.CheckInputIsDigit(e);
+            InputValidator.CheckInputIsDigit(e);
         }
         private void txtName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Program.CheckInputIsLetter(e);
+            InputValidator.CheckInputIsLetter(e);
         }
         private void txtIden_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Program.CheckInputIsDigit(e);
+            InputValidator.CheckInputIsDigit(e);
         }
-        #endregion
-
-        #endregion
 
         private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            dynamicSearch?.Disable();
+            searchMode = false;
+            btnSearch.Text = "Tìm kiếm";
+
             ClearTextBox();
-            btnDel.Enabled = btnMod.Enabled = btnSave.Enabled = true;
-            txtId.Enabled = txtName.Enabled = txtIden.Enabled = txtPhoneNumber.Enabled = txtAddress.Enabled = dtpBirthDay.Enabled = cbRole.Enabled = txtSalary.Enabled = false;
+            btnDel.Enabled = btnMod.Enabled = btnViewAttendance.Enabled = true;
+            pnInfor.Enabled = btnSave.Enabled = false;
             if (dgv.Rows.Count > 0)
             {
                 int rowIndex = e.RowIndex;

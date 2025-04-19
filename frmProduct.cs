@@ -192,7 +192,7 @@ namespace timber_shop_manager
         #region Key Press
         private void txtPriceQuotation_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Program.CheckInputIsDigit(e);
+            //Program.CheckInputIsDigit(e);
         }
         #endregion
         #endregion

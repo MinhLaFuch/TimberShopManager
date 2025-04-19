@@ -173,7 +173,7 @@ namespace timber_shop_manager
         // Need to do input validation for email and website?
         private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Program.CheckInputIsDigit(e);
+            //Program.CheckInputIsDigit(e);
         }
         #endregion
         #region Text Changed

@@ -225,7 +225,7 @@ namespace timber_shop_manager
         #region Key Press
         private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Program.CheckInputIsDigit(e);
+            //Program.CheckInputIsDigit(e);
         }
         #endregion
         #endregion

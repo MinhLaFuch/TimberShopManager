@@ -75,16 +75,6 @@ namespace timber_shop_manager
             txtName.Clear();
             txtUsername.Clear();
         }
-        private void pnButtonEnabler(bool featBtn, bool infoBtn)
-        {
-            pnFeatureButton.Visible = featBtn;
-            pnInfoButton.Visible = infoBtn;
-        }
-        private void featureButtonEnabler(bool nonCellBtn, bool cellBtn)
-        {
-            btnAdd.Visible = btnSearch.Visible = nonCellBtn;
-            btnLock.Visible = cellBtn;
-        }
 
         private void frmAccount_Load(object sender, EventArgs e)
         {
@@ -171,7 +161,7 @@ namespace timber_shop_manager
 
         private void txtName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Program.CheckInputIsLetter(e);
+            //Program.CheckInputIsLetter(e);
         }
 
         private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
