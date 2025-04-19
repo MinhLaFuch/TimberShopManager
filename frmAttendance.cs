@@ -38,8 +38,8 @@ namespace timber_shop_manager
         public frmAttendance(Account acc)
         {
             this.account = acc;
-            this.employeeId = acc.Username; // Get EmployeeId from Account
-            this.employeeName = acc.Username; // Get EmployeeName from Account
+            //this.employeeId = acc.Username; // Get EmployeeId from Account
+            //this.employeeName = acc.Username; // Get EmployeeName from Account
             // Get Employee from Account
 
             InitializeComponent();

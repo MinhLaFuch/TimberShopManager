@@ -9,47 +9,77 @@ using System.Text;
 using System.Threading.Tasks;
 using Azure.Identity;
 using Microsoft.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace timber_shop_manager.objects
 {
     public class Account
     {
         private static DatabaseHelper dbHelper = new DatabaseHelper();
-        private string username = string.Empty;
-        private string password = string.Empty;
-        private Employee.Role role = Employee.Role.UNKNOWN;
-        public string Username { get;}
-        public string Password { get; }
-        public Employee Employee { get; }
 
-        public Account(string username, string password)
+        private string email;
+        private string employeeId;
+
+        public string Email => email;
+
+        public Account(string email, string employeeId)
         {
-            this.username = username.Trim();
-            this.password = password.Trim();
+            this.email = email.Trim();
+            this.employeeId = employeeId.Trim();
+        }
+
+        public static void create(Account acc)
+        {
+            string query = "INSERT INTO Account (Email, Password, Id) VALUES (@email, @password, @employeeId)";
+            dbHelper.ExecuteNonQuery(query,
+                new SqlParameter("@email", acc.email),
+                new SqlParameter("@password", HashPassword(acc.employeeId)),
+                new SqlParameter("@employeeId", acc.employeeId));
+        }
+
+        public static void block(Account acc)
+        {
+            string query = "UPDATE Account SET IsActivate = 0 WHERE Email = @email";
+            dbHelper.ExecuteNonQuery(query, new SqlParameter("@email", acc.email));
+        }
+
+        public bool exists()
+        {
+            string query = "SELECT 1 FROM Account WHERE Email = @email";
+            
+            return dbHelper.ExecuteScalar(query, new SqlParameter("@email", this.email)) != null;
+        }
+
+        public bool verify(string password)
+        {
+            string query = "SELECT 1 FROM Account WHERE Email = @email AND Password = @password";
+            return dbHelper.ExecuteScalar(query,
+                new SqlParameter("@email", email),
+                new SqlParameter("@password", HashPassword(password.Trim()))) != null;
+        }
+
+        public Employee.Role getRole()
+        {
+            return Employee.GetPermission(this);
+        }
+
+        private static string HashPassword(string plainTextPassword)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(plainTextPassword);
+                byte[] hashBytes = sha256.ComputeHash(bytes);
+
+                // Convert sang chuỗi hex
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in hashBytes)
+                    sb.Append(b.ToString("x2"));
+
+                return sb.ToString();
+            }
         }
         
-        public bool verifyUsername()
-        {
-            string query = "SELECT 1 FROM Account WHERE Username = @user";
-            
-            return dbHelper.ExecuteScalar(query, new SqlParameter("@user", username)) != null;
-        }
 
-        public bool verifyPassword()
-        {
-            if (verifyUsername())
-            {
-                string query = "SELECT 1 FROM Account WHERE Username = @user AND Password = @pass";
-                return dbHelper.ExecuteScalar(query,
-                    new SqlParameter("@user", username),
-                    new SqlParameter("@pass", password)) != null;
-            }
-            return false;
-        }
-
-        public Employee.Role verifyPermission()
-        {
-            return Employee.GetPermission(this.username);
-        }
-    }
+}
 }

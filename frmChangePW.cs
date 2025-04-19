@@ -37,7 +37,7 @@ namespace timber_shop_manager
         {
             this.account = acc;
             InitializeComponent();
-            txtGmail.Text = acc.Username;
+            //txtGmail.Text = acc.Username;
             txtGmail.Enabled = false;
         }
         #endregion

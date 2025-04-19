@@ -49,22 +49,22 @@ namespace timber_shop_manager
             Account account = new Account(txtUsername.Text, txtPassword.Text);
             SaveUsername(txtUsername.Text);
 
-            if (!account.verifyUsername())
-            {
-                lblUserError.Text = "Tên đăng nhập không đúng!";
-            }
-            else if (!account.verifyPassword())
-            {
-                lblPassError.Text = "Mật khẩu không đúng";
-                lblUserError.Text = string.Empty;
-                txtPassword.Text = string.Empty;
-            }
-            else
-            {
-                frmMain frmMain = new frmMain(account);
-                this.Hide();
-                frmMain.ShowDialog();
-            }
+            //if (!account.verifyUsername())
+            //{
+            //    lblUserError.Text = "Tên đăng nhập không đúng!";
+            //}
+            //else if (!account.verifyPassword())
+            //{
+            //    lblPassError.Text = "Mật khẩu không đúng";
+            //    lblUserError.Text = string.Empty;
+            //    txtPassword.Text = string.Empty;
+            //}
+            //else
+            //{
+            //    frmMain frmMain = new frmMain(account);
+            //    this.Hide();
+            //    frmMain.ShowDialog();
+            //}
             // Add a case for locked account
         }
 

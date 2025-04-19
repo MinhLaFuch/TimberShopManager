@@ -41,8 +41,8 @@ namespace timber_shop_manager
         }
         private void loadFormBasedOnRole()
         {
-            bool authority = account.verifyPermission() == Employee.Role.ADMINISTRATOR || account.verifyPermission() == Employee.Role.MANAGER;
-            btnMod.Visible = authority;
+            //bool authority = account.verifyPermission() == Employee.Role.ADMINISTRATOR || account.verifyPermission() == Employee.Role.MANAGER;
+            //btnMod.Visible = authority;
         }
         private void clearTextBox()
         {

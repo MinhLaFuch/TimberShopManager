@@ -89,95 +89,95 @@ namespace timber_shop_manager
                 }
             }
         }
-        private void loadFormBasedOnRole()
-        {
-            if (account.verifyPermission() == Employee.Role.ADMINISTRATOR)
-            {
-                // Manage
-                btnAccount.Visible = true;
-                btnEmployee.Visible = false;
-                btnSupplier.Visible = true;
-                btnCustomer.Visible = true;
-                btnProduct.Visible = true;
-                btnCategory.Visible = true;
-                btnVoucher.Visible = true;
-                pnManageQuantity = 6;
-                // Sale
-                btnSale.Visible = true;
-                // Import
-                btnImport.Visible = true;
-                // Attend
-                btnAttend.Visible = false;
-                // Report
-                btnSalary.Visible = false;
-                btnFinancialReport.Visible = false;
-                btnInvoice.Visible = true;
-                pnReportQuantity = 1;
-            }
-            else if (account.verifyPermission() == Employee.Role.MANAGER)
-            {
-                // Manage
-                btnAccount.Visible = false;
-                btnEmployee.Visible = true;
-                btnSupplier.Visible = true;
-                btnCustomer.Visible = true;
-                btnProduct.Visible = true;
-                btnCategory.Visible = true;
-                btnVoucher.Visible = true;
-                pnManageQuantity = 6;
-                // Sale
-                btnSale.Visible = true;
-                // Import
-                btnImport.Visible = false;
-                // Report
-                btnSalary.Visible = false;
-                btnFinancialReport.Visible = false;
-                btnInvoice.Visible = true;
-                pnReportQuantity = 1;
-            }
-            else if (account.verifyPermission() == Employee.Role.SALE_AGENT)
-            {
-                // Manage
-                btnAccount.Visible = false;
-                btnEmployee.Visible = false;
-                btnSupplier.Visible = false;
-                btnCustomer.Visible = true;
-                btnProduct.Visible = true;
-                btnCategory.Visible = true;
-                btnVoucher.Visible = true;
-                pnManageQuantity = 4;
-                // Sale
-                btnSale.Visible = true;
-                // Import
-                btnImport.Visible = false;
-                // Report
-                btnSalary.Visible = false;
-                btnFinancialReport.Visible = false;
-                btnInvoice.Visible = true;
-                pnReportQuantity = 1;
-            }
-            else if (account.verifyPermission() == Employee.Role.ACCOUNTANT)
-            {
-                // Manage
-                btnAccount.Visible = false;
-                btnEmployee.Visible = false;
-                btnSupplier.Visible = false;
-                btnCustomer.Visible = true;
-                btnProduct.Visible = true;
-                btnCategory.Visible = true;
-                btnVoucher.Visible = true;
-                pnManageQuantity = 4;
-                // Sale
-                btnSale.Visible = false;
-                // Import
-                btnImport.Visible = false;
-                // Report
-                btnSalary.Visible = true;
-                btnFinancialReport.Visible = true;
-                btnInvoice.Visible = true;
-                pnReportQuantity = 3;
-            }
-        }
+        //private void loadFormBasedOnRole()
+        //{
+        //    if (account.verifyPermission() == Employee.Role.ADMINISTRATOR)
+        //    {
+        //        // Manage
+        //        btnAccount.Visible = true;
+        //        btnEmployee.Visible = false;
+        //        btnSupplier.Visible = true;
+        //        btnCustomer.Visible = true;
+        //        btnProduct.Visible = true;
+        //        btnCategory.Visible = true;
+        //        btnVoucher.Visible = true;
+        //        pnManageQuantity = 6;
+        //        // Sale
+        //        btnSale.Visible = true;
+        //        // Import
+        //        btnImport.Visible = true;
+        //        // Attend
+        //        btnAttend.Visible = false;
+        //        // Report
+        //        btnSalary.Visible = false;
+        //        btnFinancialReport.Visible = false;
+        //        btnInvoice.Visible = true;
+        //        pnReportQuantity = 1;
+        //    }
+        //    else if (account.verifyPermission() == Employee.Role.MANAGER)
+        //    {
+        //        // Manage
+        //        btnAccount.Visible = false;
+        //        btnEmployee.Visible = true;
+        //        btnSupplier.Visible = true;
+        //        btnCustomer.Visible = true;
+        //        btnProduct.Visible = true;
+        //        btnCategory.Visible = true;
+        //        btnVoucher.Visible = true;
+        //        pnManageQuantity = 6;
+        //        // Sale
+        //        btnSale.Visible = true;
+        //        // Import
+        //        btnImport.Visible = false;
+        //        // Report
+        //        btnSalary.Visible = false;
+        //        btnFinancialReport.Visible = false;
+        //        btnInvoice.Visible = true;
+        //        pnReportQuantity = 1;
+        //    }
+        //    else if (account.verifyPermission() == Employee.Role.SALE_AGENT)
+        //    {
+        //        // Manage
+        //        btnAccount.Visible = false;
+        //        btnEmployee.Visible = false;
+        //        btnSupplier.Visible = false;
+        //        btnCustomer.Visible = true;
+        //        btnProduct.Visible = true;
+        //        btnCategory.Visible = true;
+        //        btnVoucher.Visible = true;
+        //        pnManageQuantity = 4;
+        //        // Sale
+        //        btnSale.Visible = true;
+        //        // Import
+        //        btnImport.Visible = false;
+        //        // Report
+        //        btnSalary.Visible = false;
+        //        btnFinancialReport.Visible = false;
+        //        btnInvoice.Visible = true;
+        //        pnReportQuantity = 1;
+        //    }
+        //    else if (account.verifyPermission() == Employee.Role.ACCOUNTANT)
+        //    {
+        //        // Manage
+        //        btnAccount.Visible = false;
+        //        btnEmployee.Visible = false;
+        //        btnSupplier.Visible = false;
+        //        btnCustomer.Visible = true;
+        //        btnProduct.Visible = true;
+        //        btnCategory.Visible = true;
+        //        btnVoucher.Visible = true;
+        //        pnManageQuantity = 4;
+        //        // Sale
+        //        btnSale.Visible = false;
+        //        // Import
+        //        btnImport.Visible = false;
+        //        // Report
+        //        btnSalary.Visible = true;
+        //        btnFinancialReport.Visible = true;
+        //        btnInvoice.Visible = true;
+        //        pnReportQuantity = 3;
+        //    }
+        //}
         private void ResetButtonColors()
         {
             foreach (Control control in pnMenu.Controls)
@@ -223,14 +223,14 @@ namespace timber_shop_manager
             pnMenu.HorizontalScroll.Visible = false;
             pnManage.Height = 66;
             pnReport.Height = 66;
-            lbUsername.Text = account.Username;
-            loadFormBasedOnRole();
+            //lbUsername.Text = account.Username;
+            //loadFormBasedOnRole();
         }
         #endregion
         #region Click
         private void btnAccount_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmAccount(account));
+            //openChildForm(new frmAccount(account));
             HighlightButton((Button)sender);
         }
         private void btnEmployee_Click(object sender, EventArgs e)

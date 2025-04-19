@@ -36,8 +36,8 @@ namespace timber_shop_manager
         }
         private void loadInfo()
         {
-            txtGmail.Text = account.Username + "@gmail.com";
-            txtPassword.Text = account.Password;
+            //txtGmail.Text = account.Username + "@gmail.com";
+            //txtPassword.Text = account.Password;
             
         }
         #endregion

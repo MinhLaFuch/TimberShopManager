@@ -76,10 +76,10 @@ namespace timber_shop_manager.objects
             }
         }
 
-        public static Role GetPermission(string username)
+        public static Role GetPermission(Account acc)
         {
-            string query = "SELECT e.Role FROM Employee e JOIN Account a ON a.EmployeeId = e.EmployeeId WHERE a.Username = @username";
-            string role = Convert.ToString(dbHelper.ExecuteScalar(query, new SqlParameter("@username", username)));
+            string query = "SELECT e.Role FROM Employee e JOIN Account a ON a.Id = e.Id WHERE a.Email = @email";
+            string role = Convert.ToString(dbHelper.ExecuteScalar(query, new SqlParameter("@email", acc.Email)));
 
             return ConvertRole(role);
         }
