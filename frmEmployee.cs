@@ -216,7 +216,6 @@ namespace timber_shop_manager
             if (!searchMode)
             {
                 EnterSearchMode();
-                searchMode = true;
             }
             else
                 LoadForm();
