@@ -16,6 +16,7 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.4" />
     <PackageReference Include="ReaLTaiizor" Version="3.8.1.2" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
   </ItemGroup>
 
   <ItemGroup>

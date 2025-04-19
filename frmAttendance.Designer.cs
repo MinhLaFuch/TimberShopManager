@@ -65,9 +65,9 @@
             // 
             lbTimeStamp.AutoSize = true;
             lbTimeStamp.ForeColor = Color.FromArgb(59, 93, 79);
-            lbTimeStamp.Location = new Point(15, 4);
+            lbTimeStamp.Location = new Point(13, 3);
             lbTimeStamp.Name = "lbTimeStamp";
-            lbTimeStamp.Size = new Size(101, 20);
+            lbTimeStamp.Size = new Size(81, 15);
             lbTimeStamp.TabIndex = 5;
             lbTimeStamp.Text = "Mốc thời gian";
             // 
@@ -75,6 +75,7 @@
             // 
             dataGridViewCellStyle1.BackColor = Color.White;
             dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgv.BackgroundColor = Color.Gainsboro;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -94,18 +95,20 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgv.DefaultCellStyle = dataGridViewCellStyle3;
             dgv.GridColor = Color.FromArgb(231, 229, 255);
-            dgv.Location = new Point(229, 4);
+            dgv.Location = new Point(200, 3);
+            dgv.Margin = new Padding(3, 2, 3, 2);
             dgv.Name = "dgv";
             dgv.RowHeadersVisible = false;
             dgv.RowHeadersWidth = 51;
-            dgv.Size = new Size(953, 635);
+            dgv.RowTemplate.Height = 29;
+            dgv.Size = new Size(834, 476);
             dgv.TabIndex = 7;
             dgv.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgv.ThemeStyle.AlternatingRowsStyle.Font = null;
             dgv.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
             dgv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
             dgv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
-            dgv.ThemeStyle.BackColor = Color.White;
+            dgv.ThemeStyle.BackColor = Color.Gainsboro;
             dgv.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
             dgv.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
             dgv.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -133,10 +136,11 @@
             cbTimeStamp.Font = new Font("Segoe UI", 10F);
             cbTimeStamp.ForeColor = Color.FromArgb(59, 93, 79);
             cbTimeStamp.ItemHeight = 30;
-            cbTimeStamp.Location = new Point(15, 34);
+            cbTimeStamp.Location = new Point(13, 26);
+            cbTimeStamp.Margin = new Padding(3, 2, 3, 2);
             cbTimeStamp.Name = "cbTimeStamp";
             cbTimeStamp.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            cbTimeStamp.Size = new Size(191, 36);
+            cbTimeStamp.Size = new Size(168, 36);
             cbTimeStamp.TabIndex = 8;
             // 
             // dtpFrom
@@ -147,12 +151,13 @@
             dtpFrom.Font = new Font("Segoe UI", 9F);
             dtpFrom.ForeColor = Color.White;
             dtpFrom.Format = DateTimePickerFormat.Short;
-            dtpFrom.Location = new Point(3, 23);
+            dtpFrom.Location = new Point(3, 17);
+            dtpFrom.Margin = new Padding(3, 2, 3, 2);
             dtpFrom.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dtpFrom.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dtpFrom.Name = "dtpFrom";
             dtpFrom.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            dtpFrom.Size = new Size(194, 45);
+            dtpFrom.Size = new Size(170, 34);
             dtpFrom.TabIndex = 9;
             dtpFrom.Value = new DateTime(2025, 4, 14, 10, 42, 36, 85);
             // 
@@ -164,12 +169,13 @@
             dtpTo.Font = new Font("Segoe UI", 9F);
             dtpTo.ForeColor = Color.White;
             dtpTo.Format = DateTimePickerFormat.Short;
-            dtpTo.Location = new Point(3, 94);
+            dtpTo.Location = new Point(3, 70);
+            dtpTo.Margin = new Padding(3, 2, 3, 2);
             dtpTo.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dtpTo.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dtpTo.Name = "dtpTo";
             dtpTo.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            dtpTo.Size = new Size(194, 45);
+            dtpTo.Size = new Size(170, 34);
             dtpTo.TabIndex = 10;
             dtpTo.Value = new DateTime(2025, 4, 14, 10, 42, 5, 478);
             // 
@@ -183,10 +189,11 @@
             btnRefresh.FillColor = Color.FromArgb(59, 93, 79);
             btnRefresh.Font = new Font("Segoe UI", 9F);
             btnRefresh.ForeColor = Color.White;
-            btnRefresh.Location = new Point(12, 254);
+            btnRefresh.Location = new Point(10, 190);
+            btnRefresh.Margin = new Padding(3, 2, 3, 2);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnRefresh.Size = new Size(201, 56);
+            btnRefresh.Size = new Size(176, 42);
             btnRefresh.TabIndex = 11;
             btnRefresh.Text = "Làm mới";
             // 
@@ -200,10 +207,11 @@
             btnAttend.FillColor = Color.FromArgb(59, 93, 79);
             btnAttend.Font = new Font("Segoe UI", 9F);
             btnAttend.ForeColor = Color.White;
-            btnAttend.Location = new Point(3, 23);
+            btnAttend.Location = new Point(3, 17);
+            btnAttend.Margin = new Padding(3, 2, 3, 2);
             btnAttend.Name = "btnAttend";
             btnAttend.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btnAttend.Size = new Size(200, 56);
+            btnAttend.Size = new Size(175, 42);
             btnAttend.TabIndex = 12;
             btnAttend.Text = "Chấm công";
             btnAttend.Click += btnAttend_Click;
@@ -214,16 +222,16 @@
             lbHour.ForeColor = Color.FromArgb(59, 93, 79);
             lbHour.Location = new Point(3, 0);
             lbHour.Name = "lbHour";
-            lbHour.Size = new Size(0, 20);
+            lbHour.Size = new Size(0, 15);
             lbHour.TabIndex = 13;
             // 
             // lbAttendStatus
             // 
             lbAttendStatus.AutoSize = true;
             lbAttendStatus.ForeColor = Color.FromArgb(59, 93, 79);
-            lbAttendStatus.Location = new Point(3, 82);
+            lbAttendStatus.Location = new Point(3, 61);
             lbAttendStatus.Name = "lbAttendStatus";
-            lbAttendStatus.Size = new Size(0, 20);
+            lbAttendStatus.Size = new Size(0, 15);
             lbAttendStatus.TabIndex = 14;
             // 
             // pnFromTo
@@ -232,9 +240,10 @@
             pnFromTo.Controls.Add(dtpFrom);
             pnFromTo.Controls.Add(lbTo);
             pnFromTo.Controls.Add(dtpTo);
-            pnFromTo.Location = new Point(12, 76);
+            pnFromTo.Location = new Point(10, 57);
+            pnFromTo.Margin = new Padding(3, 2, 3, 2);
             pnFromTo.Name = "pnFromTo";
-            pnFromTo.Size = new Size(203, 155);
+            pnFromTo.Size = new Size(178, 116);
             pnFromTo.TabIndex = 15;
             // 
             // lbFrom
@@ -243,16 +252,16 @@
             lbFrom.BackColor = SystemColors.Control;
             lbFrom.Location = new Point(3, 0);
             lbFrom.Name = "lbFrom";
-            lbFrom.Size = new Size(26, 20);
+            lbFrom.Size = new Size(20, 15);
             lbFrom.TabIndex = 16;
             lbFrom.Text = "Từ";
             // 
             // lbTo
             // 
             lbTo.AutoSize = true;
-            lbTo.Location = new Point(3, 71);
+            lbTo.Location = new Point(3, 53);
             lbTo.Name = "lbTo";
-            lbTo.Size = new Size(36, 20);
+            lbTo.Size = new Size(28, 15);
             lbTo.TabIndex = 17;
             lbTo.Text = "Đến";
             // 
@@ -261,16 +270,17 @@
             pnAttend.Controls.Add(lbHour);
             pnAttend.Controls.Add(btnAttend);
             pnAttend.Controls.Add(lbAttendStatus);
-            pnAttend.Location = new Point(12, 388);
+            pnAttend.Location = new Point(10, 247);
+            pnAttend.Margin = new Padding(3, 2, 3, 2);
             pnAttend.Name = "pnAttend";
-            pnAttend.Size = new Size(201, 125);
+            pnAttend.Size = new Size(176, 69);
             pnAttend.TabIndex = 16;
             // 
             // frmAttendance
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1217, 651);
+            ClientSize = new Size(1065, 488);
             Controls.Add(pnAttend);
             Controls.Add(pnFromTo);
             Controls.Add(btnRefresh);
@@ -278,6 +288,7 @@
             Controls.Add(dgv);
             Controls.Add(lbTimeStamp);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmAttendance";
             Text = "Báo cáo chấm công của ";
             Load += frmAttendance_Load;
