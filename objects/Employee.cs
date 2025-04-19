@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
+using static timber_shop_manager.objects.Employee;
 
 namespace timber_shop_manager.objects
 {
     public class Employee 
     {
+
+        public static readonly string PREFIX = "E";
+        public static readonly int CODE_LENGTH = 4;
         public enum Role
         {
             MANAGER,
@@ -20,27 +24,21 @@ namespace timber_shop_manager.objects
 
         private static DatabaseHelper dbHelper = new DatabaseHelper();
 
-        protected string id;
-        protected string name;
-        protected string identificationNumber;
-        protected string address;
-        protected DateTime dateOfBirth;
-        protected float salary;
+        protected string id, name, identificationNumber, address, phoneNumber;
+        protected DateTime birthday;
+        protected double salary;
         protected Role role;
 
-        public Employee(string id, string name, string identificationNumber, string address, DateTime dateOfBirth, float salary, string role) 
-            : this(id, name,  identificationNumber, address, dateOfBirth, salary, ConvertRole(role)) { }
-        
-
-        public Employee(string id, string name, string identificationNumber, string address, DateTime dateOfBirth, float salary, Role role)
+        public Employee(string id, string name, string identificationNumber, string address, DateTime birthday, string salary, string phoneNumber, string role)
         {
-            this.id = id;
-            this.name = name;
-            this.identificationNumber = identificationNumber;
-            this.address = address;
-            this.dateOfBirth = dateOfBirth;
-            this.salary = salary;
-            this.role = role;
+            this.id = id.Trim();
+            this.name = Program.CapitalizeName(name.Trim());
+            this.identificationNumber = identificationNumber.Trim();
+            this.address = address.Trim();
+            this.birthday = birthday;
+            this.salary = Convert.ToDouble(salary.Trim());
+            this.phoneNumber = phoneNumber.Trim();
+            this.role = ConvertRole(role.Trim());
         }
 
         private static Role ConvertRole(string role)
@@ -83,6 +81,39 @@ namespace timber_shop_manager.objects
             string role = Convert.ToString(dbHelper.ExecuteScalar(query, new SqlParameter("@username", username)));
 
             return ConvertRole(role);
+        }
+
+        public static void add(Employee e)
+        {
+            string query = "SELECT COUNT(Id) FROM Employee WHERE Id = @id";
+            int count = Convert.ToInt32(dbHelper.ExecuteScalar(query, new SqlParameter("@id", e.id)));
+            if (count != 0)
+            {
+                query = "UPDATE Employee SET " +
+                    "Name = @name, IdentificationNumber = @iden, Address = @address, Birthday = @birth, Salary = @salary, PhoneNumber = @phone, Role = @role " +
+                    "WHERE Id = @id";
+            } 
+            else
+            {
+                query = "INSERT INTO Employee (Id, Name, IdentificationNumber, Address, Birthday, Salary, PhoneNumber, Role) VALUES " +
+                    "(@id, @name, @iden, @address, @birth, @salary, @phone, @role)";
+                //(@id, @name, @iden, @address, @birhday, @salary, @phoneNumber, @role)
+            }
+            dbHelper.ExecuteNonQuery(query, 
+                new SqlParameter("@id", e.id),
+                new SqlParameter("@name", e.name),
+                new SqlParameter("@iden", e.identificationNumber),
+                new SqlParameter("@address", e.address),
+                new SqlParameter("@birth", e.birthday),
+                new SqlParameter("@salary", e.salary),
+                new SqlParameter("@phone", e.phoneNumber),
+                new SqlParameter("@role", ConverRole(e.role)));
+        }
+
+        public static void delete(Employee e) 
+        {
+            string query = "UPDATE Employee SET IsDeleted = 1 WHERE Id = @id";
+            dbHelper.ExecuteNonQuery(query, new SqlParameter("@id", e.id));
         }
     }
 }

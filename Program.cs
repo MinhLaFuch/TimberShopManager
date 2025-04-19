@@ -21,42 +21,55 @@ namespace timber_shop_manager
         {
             char c = e.KeyChar;
 
-            if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) && c != (char)8)
+            if (!char.IsLetter(c) && c != (char)8 && c != ' ')
             {
                 e.Handled = true;
             }
         }
+
         public static string GenerateNextCode(string previousCode, string prefix, int codeLength)
         {
-            // Nếu mã trước là null, tạo mã đầu tiên bắt đầu từ 1
             if (string.IsNullOrEmpty(previousCode))
             {
-                // Tạo mã đầu tiên với định dạng "prefix0001" nếu codeLength là 4
                 return prefix + (new string('0', codeLength - prefix.Length) + "1").Substring(codeLength - prefix.Length);
             }
-
-            // Tách số từ mã trước (giả sử mã có dạng prefixXXXX)
             string numberPart = previousCode.Substring(prefix.Length);
-
-            // Chuyển phần số sang int và cộng thêm 1
             int nextNumber = int.Parse(numberPart) + 1;
-
-            // Sinh mã tiếp theo, đảm bảo chiều dài của mã bằng codeLength
             string nextCode = prefix + nextNumber.ToString().PadLeft(codeLength - prefix.Length, '0');
-
             return nextCode;
         }
 
-            /// <summary>
-            ///  The main entry point for the application.
-            /// </summary>
-            [STAThread]
+        public static string CapitalizeName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return string.Empty;
+
+            name = name.Trim().ToLower();
+            var words = name.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                string word = words[i];
+                if (word.Length > 0)
+                {
+                    words[i] = char.ToUpper(word[0]) + word.Substring(1);
+                }
+            }
+
+            return string.Join(" ", words);
+        }
+
+
+        /// <summary>
+        ///  The main entry point for the application.
+        /// </summary>
+        [STAThread]
         static void Main()
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmAccount());
+            Application.Run(new frmEmployee());
             //Application.Run(new frmLogin());
         }
     }

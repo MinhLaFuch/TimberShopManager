@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -10,11 +11,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using timber_shop_manager.objects;
+using static iTextSharp.text.pdf.PdfDocument;
 
 namespace timber_shop_manager
 {
     public partial class frmEmployee : Form
     {
+        private DynamicSearch dynamicSearch = null;
+        private bool searchMode = false;
+        private Employee employeeSelected = null;
+
         #region Properties
         private static DatabaseHelper dbHelper = new DatabaseHelper();
         private Account account;
@@ -29,227 +35,116 @@ namespace timber_shop_manager
         }
         #endregion
         #region Support Method
-        private void loadForm()
+        private void LoadForm()
         {
-            loadFormBasedOnRole();
-            txtID.ReadOnly = true;
-            clearTextBox();
-            dgv.DataSource = loadData();
-            btnEnabler(false, true);
-            gbInfo.Enabled = false;
-            searchEventEnabler(false);
+            pnInfor.Enabled = false;
+            btnDel.Enabled = btnMod.Enabled = btnSave.Enabled = false;
+            ClearTextBox();
+            LoadData();
+            txtId.Enabled = false;
+            dynamicSearch?.Disable();
+            txtId.Enabled = searchMode;
         }
         private void loadFormBasedOnRole()
         {
             bool authority = account.verifyPermission() == Employee.Role.MANAGER;
             btnAdd.Visible = btnDel.Visible = btnMod.Visible = btnViewAttendance.Visible = authority;
         }
-        private DataTable loadData()
+
+        private void LoadData()
         {
-            // Load data from database to DataGridView
-            string query = "SELECT EmployeeID, Name, IdentificationNumber, PhoneNumber, Address, Role, DateOfBirth, Salary FROM Employee";
-            DataTable dt = dbHelper.ExecuteQuery(query);
-            return dt;
+            dgv.DataSource = LoadDataGridView();
+            cbRole.DataSource = LoadComboBox();
+            cbRole.SelectedIndex = -1;
         }
-        private void clearTextBox()
+
+        private List<string> LoadComboBox()
         {
-            txtID.Clear();
+            string query = "SELECT DISTINCT Role FROM Employee ORDER BY Role";
+            return dbHelper.GetDataForComboBox(query, "Role");
+        }
+        private DataTable LoadDataGridView()
+        {
+            string query =
+                "SELECT " +
+                    "Id AS 'Mã', " +
+                    "Name AS 'Tên', " +
+                    "IdentificationNumber AS 'Số CCCD', " +
+                    "PhoneNumber AS 'Số điện thoại', " +
+                    "Address AS 'Nơi ở', " +
+                    "Role AS 'Chức danh', " +
+                    "CONVERT(varchar, Birthday, 103) AS 'Ngày sinh', " +
+                    "Salary AS 'Lương'" +
+                "FROM Employee WHERE IsDeleted = 0 ORDER BY Id";
+            return dbHelper.ExecuteQuery(query);
+        }
+        private void ClearTextBox()
+        {
+            txtId.Clear();
             txtName.Clear();
             txtIden.Clear();
             txtAddress.Clear();
             txtPhoneNumber.Clear();
             txtSalary.Clear();
             cbRole.SelectedIndex = -1;
-            dtpDOBFrom.Value = DateTime.Now;
-            dtpDOBTo.Value = DateTime.Now;
+            dtpBirthDay.Value = DateTime.Now;
         }
         private void btnEnabler(bool featBtn, bool initBtn)
         {
             btnDel.Enabled = btnMod.Enabled = btnViewAttendance.Enabled = featBtn;
             btnAdd.Enabled = btnSearch.Enabled = initBtn;
         }
-        private string idGenerator()
-        {
-            string query = "SELECT EmployeeID FROM Employee ORDER BY EmployeeId DESC";
-            DataTable dt = dbHelper.ExecuteQuery(query);
-            string newId = "0001";
-            if (dt.Rows.Count > 0)
-            {
-                // Extracting maxID
-                string maxId = dt.Rows[0]["EmployeeId"].ToString();
-                int id = int.Parse(maxId.Substring(1, maxId.Length - 1)) + 1;
-                newId = "0000" + id.ToString();
-                newId = newId.Substring(newId.Length - 4, 4);
-            }
-            return "E" + newId;
-        }
-        private void searchEventEnabler(bool b)
-        {
-            if (b)
-            {
-                txtID.TextChanged += txtID_TextChanged;
-                txtName.TextChanged += txtName_TextChanged;
-                txtIden.TextChanged += txtIden_TextChanged;
-                txtPhoneNumber.TextChanged += txtPhoneNumber_TextChanged;
-                txtAddress.TextChanged += txtAddress_TextChanged;
-                dtpDOBFrom.ValueChanged += dtpDOB_ValueChanged;
-                cbRole.SelectedValueChanged += cbRole_SelectedValueChanged;
-                txtSalary.TextChanged += txtSalary_TextChanged;
-                lbFromTo.Visible = true;
-                dtpDOBTo.Visible = true;
-                txtSalary.ReadOnly = true;
-            }
-            else
-            {
-                txtID.TextChanged -= txtID_TextChanged;
-                txtName.TextChanged -= txtName_TextChanged;
-                txtIden.TextChanged -= txtIden_TextChanged;
-                txtPhoneNumber.TextChanged -= txtPhoneNumber_TextChanged;
-                txtAddress.TextChanged -= txtAddress_TextChanged;
-                dtpDOBFrom.ValueChanged -= dtpDOB_ValueChanged;
-                cbRole.SelectedIndexChanged -= cbRole_SelectedValueChanged;
-                txtSalary.TextChanged -= txtSalary_TextChanged;
-                lbFromTo.Visible = false;
-                dtpDOBTo.Visible = false;
-                txtSalary.ReadOnly = false;
-            }
-        }
-        // Search incomplete
-        private void suggest()
-        {
-            // Kiểm tra xem có TextBox nào trống không
-            bool isTextBoxesEmpty = string.IsNullOrEmpty(txtID.Text)
-                                    && string.IsNullOrEmpty(txtName.Text)
-                                    && string.IsNullOrEmpty(txtIden.Text)
-                                    && string.IsNullOrEmpty(txtPhoneNumber.Text)
-                                    && string.IsNullOrEmpty(txtAddress.Text)
-                                    && string.IsNullOrEmpty(cbRole.Text)
-                                    && string.IsNullOrEmpty(txtSalary.Text);
 
-            // Chỉ search khi có ít nhất một TextBox có dữ liệu
-            if (!isTextBoxesEmpty)
-            {
-                // Tạo DataView để lọc dữ liệu từ DataGridView
-                DataView dv = new DataView();
-
-                // Tạo một danh sách điều kiện lọc dựa trên các TextBox có dữ liệu
-                List<string> filters = new List<string>();
-
-                if (!string.IsNullOrEmpty(txtID.Text))
-                {
-                    filters.Add($"EmployeeID LIKE '%{txtID.Text}%'");
-                }
-                if (!string.IsNullOrEmpty(txtName.Text))
-                {
-                    filters.Add($"Name LIKE '%{txtName.Text}%'");
-                }
-                if (!string.IsNullOrEmpty(txtIden.Text))
-                {
-                    filters.Add($"IdentificationNumber LIKE '%{txtIden.Text}%'");
-                }
-                if (!string.IsNullOrEmpty(txtPhoneNumber.Text))
-                {
-                    filters.Add($"Name LIKE '%{txtPhoneNumber.Text}%'");
-                }
-                if (!string.IsNullOrEmpty(txtAddress.Text))
-                {
-                    filters.Add($"Address LIKE '%{txtAddress.Text}%'");
-                }
-                if (!string.IsNullOrEmpty(cbRole.Text))
-                {
-                    filters.Add($"Role LIKE '%{cbRole.Text}%'");
-                }
-
-                // Nếu có điều kiện lọc, kết nối chúng bằng OR
-                if (filters.Count > 0)
-                {
-                    dv.RowFilter = string.Join(" OR ", filters);
-                }
-
-                // Gán DataSource cho DataGridView
-                dgv.DataSource = dv;
-            }
-        }
         #endregion
         #region Event
         #region Load
         private void frmEmployee_Load(object sender, EventArgs e)
         {
-            loadForm();
+            LoadForm();
         }
         #endregion
         #region Click
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            gbInfo.Enabled = true;
-            clearTextBox();
+            pnInfor.Enabled = true;
+            ClearTextBox();
             txtName.Focus();
-            btnEnabler(false, false);
+            btnSave.Enabled = true;
+
+            btnDel.Enabled = btnMod.Enabled = btnViewAttendance.Enabled = false;
+            txtName.Enabled = txtIden.Enabled = txtPhoneNumber.Enabled = txtAddress.Enabled = dtpBirthDay.Enabled = cbRole.Enabled = txtSalary.Enabled = true;
+
+            txtId.Enabled = false;
+            string query = "SELECT MAX(Id) FROM Employee";
+            string currentCode = Convert.ToString(dbHelper.ExecuteScalar(query));
+
+            txtId.Text = Program.GenerateNextCode(currentCode, Employee.PREFIX, Employee.CODE_LENGTH);
         }
         private void btnDel_Click(object sender, EventArgs e)
         {
-            string insertDeletedQuery = "INSERT INTO DeletedEmployee (categoryID, categoryName, Description) SELECT categoryID, categoryName, Description FROM category WHERE categoryID = @ID;";
-            string deleteQuery = "DELETE FROM category WHERE categoryID = @ID;";
-
-            // Get a confirmation from the user  
-            DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn xóa danh mục này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult confirmation = MessageBox.Show("Hành động này sẽ không thể khôi phục\nBạn có chắc chắn xóa nhân viên này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirmation == DialogResult.Yes)
             {
-                DataTable dt = dbHelper.ExecuteQuery("SELECT * FROM Product WHERE categoryID = @ID", new SqlParameter("@ID", txtID.Text));
-                if (dt.Rows.Count > 0)
-                {
-                    MessageBox.Show("Không thể xóa danh mục này vì nó đang được sử dụng trong sản phẩm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    // Insert into Deletedcategory table  
-                    dbHelper.ExecuteNonQuery(insertDeletedQuery, new SqlParameter("@ID", txtID.Text));
-
-                    // Delete from category table  
-                    dbHelper.ExecuteNonQuery(deleteQuery, new SqlParameter("@ID", txtID.Text));
-                }
+                Employee.delete(employeeSelected);
+                LoadForm();
             }
-            // Reload form  
-            loadForm();
         }
         private void btnViewAttendance_Click(object sender, EventArgs e)
         {
             frmAttendance frmAttendance = new frmAttendance();
-            frmAttendance.EmployeeId = txtID.Text;
+            frmAttendance.EmployeeId = txtId.Text;
             frmAttendance.EmployeeName = txtName.Text;
             frmAttendance.ShowDialog();
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            bool isAdding = string.IsNullOrEmpty(txtID.Text);
-            string query = "";
-            if (isAdding)
-            {
-                query = "INSERT INTO Employee (EmployeeId, Name, IdentificationNumber, Address, DateOfBirth, Salary, Role, PhoneNumber)" +
-                    "VALUES (@id, @name, @iden, @address, @dob, @salary, @role, @phoneNumber)";
-                dbHelper.ExecuteNonQuery(query, new SqlParameter("@id", idGenerator()),
-                    new SqlParameter("@name", txtName.Text),
-                    new SqlParameter("@iden", txtIden.Text),
-                    new SqlParameter("@address", txtAddress.Text),
-                    new SqlParameter("@dob", dtpDOBFrom.Value),
-                    new SqlParameter("@salary", txtSalary.Text),
-                    new SqlParameter("@role", cbRole.SelectedItem.ToString()),
-                    new SqlParameter("@phoneNumber", txtPhoneNumber.Text));
-            }
-            else
-            {
-                query = "UPDATE Employee SET Salary = @salary, Role = @role WHERE EmployeeId = @id";
-                dbHelper.ExecuteNonQuery(query,
-                    new SqlParameter("@id", txtID.Text),
-                    new SqlParameter("@salary", txtSalary.Text),
-                    new SqlParameter("@role", cbRole.SelectedItem.ToString()));
-            }
-            // Reload form
-            loadForm();
+            Employee emp = new Employee(txtId.Text, txtName.Text, txtIden.Text, txtAddress.Text, dtpBirthDay.Value, txtSalary.Text, txtPhoneNumber.Text, cbRole.Text);
+            Employee.add(emp);
+            LoadForm();
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            loadForm();
+            LoadForm();
         }
         private void btnMod_Click(object sender, EventArgs e)
         {
@@ -259,38 +154,61 @@ namespace timber_shop_manager
             txtIden.Enabled = false;
             txtAddress.Enabled = false;
             txtPhoneNumber.Enabled = false;
-            dtpDOBFrom.Enabled = false;
+            dtpBirthDay.Enabled = false;
             cbRole.Focus();
             btnEnabler(false, false);
         }
-        private void dgvEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgv.Rows.Count > 0)
-            {
-                int rowIndex = e.RowIndex;
-
-                // Fill all info to groupbox
-                txtID.Text = dgv.Rows[rowIndex].Cells["EmployeeId"].Value.ToString();
-                txtName.Text = dgv.Rows[rowIndex].Cells["Name"].Value.ToString();
-                txtIden.Text = dgv.Rows[rowIndex].Cells["IdentificationNumber"].Value.ToString();
-                txtAddress.Text = dgv.Rows[rowIndex].Cells["Address"].Value.ToString();
-                cbRole.SelectedItem = dgv.Rows[rowIndex].Cells["Role"].Value.ToString();
-                dtpDOBFrom.Value = Convert.ToDateTime(dgv.Rows[rowIndex].Cells["DateOfBirth"].Value);
-                txtSalary.Text = dgv.Rows[rowIndex].Cells["Salary"].Value.ToString();
-                txtPhoneNumber.Text = dgv.Rows[rowIndex].Cells["PhoneNumber"].Value.ToString();
-
-                // Enable button
-                btnEnabler(true, true);
-            }
-        }
+        
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            gbInfo.Enabled = true;
-            txtID.ReadOnly = false;
-            btnSave.Enabled = false;
-            txtID.Focus();
-            btnEnabler(false, false);
-            searchEventEnabler(true);
+            ClearTextBox();
+            if (!searchMode)
+            {
+                pnInfor.Enabled = true;
+                txtId.Focus();
+
+                btnAdd.Enabled = false;
+                btnDel.Enabled = false;
+                btnMod.Enabled = false;
+                btnViewAttendance.Enabled = false;
+                dtpBirthDay.Enabled = false;
+
+                btnSearch.Text = "Huỷ tìm";
+
+                if (dynamicSearch == null)
+                {
+                    List<Control> searchControls = new List<Control>() { txtId, txtName, txtIden, txtPhoneNumber, txtAddress, cbRole };
+                    Dictionary<string, string> columnMappings = new Dictionary<string, string>()
+                        {
+                            {"txtId", "Mã" },
+                            {"txtName", "Tên" },
+                            {"txtIden", "Số CCCD" },
+                            {"txtPhoneNumber", "Số điện thoại" },
+                            {"txtAddress", "Nơi ở" },
+                            {"cbRole", "Chức danh" },
+                        };
+                    dynamicSearch = new DynamicSearch(searchControls, columnMappings, LoadDataGridView, dgv);
+                }
+                dynamicSearch?.Enable();
+
+                searchMode = true;
+            }
+            else
+            {
+                btnSearch.Text = "Tìm kiếm";
+                btnAdd.Enabled = true;
+                btnDel.Enabled = true;
+                btnMod.Enabled = true;
+                btnViewAttendance.Enabled = true;
+                dtpBirthDay.Enabled = true;
+
+                dgv.DataSource = LoadDataGridView();
+
+                dynamicSearch?.Disable();
+                searchMode = false;
+            }
+            txtId.Enabled = searchMode;
+            btnSave.Enabled = !searchMode;
         }
 
         #endregion
@@ -312,49 +230,29 @@ namespace timber_shop_manager
             Program.CheckInputIsDigit(e);
         }
         #endregion
-        #region Text Changed
-        private void txtID_TextChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
-        private void txtName_TextChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
-        private void txtIden_TextChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
-        private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
-        private void txtAddress_TextChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
-        private void dtpDOB_ValueChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
-        private void txtSalary_TextChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
-        private void dtpDOBFrom_ValueChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
 
-        private void dtpDOBTo_ValueChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
-        private void cbRole_SelectedValueChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
         #endregion
-        #endregion
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ClearTextBox();
+            btnDel.Enabled = btnMod.Enabled = btnSave.Enabled = true;
+            txtId.Enabled = txtName.Enabled = txtIden.Enabled = txtPhoneNumber.Enabled = txtAddress.Enabled = dtpBirthDay.Enabled = cbRole.Enabled = txtSalary.Enabled = false;
+            if (dgv.Rows.Count > 0)
+            {
+                int rowIndex = e.RowIndex;
+                txtId.Text = dgv.Rows[rowIndex].Cells["Mã"].Value.ToString();
+                txtName.Text = dgv.Rows[rowIndex].Cells["Tên"].Value.ToString();
+                txtIden.Text = dgv.Rows[rowIndex].Cells["Số CCCD"].Value.ToString();
+                txtPhoneNumber.Text = dgv.Rows[rowIndex].Cells["Số điện thoại"].Value.ToString(); 
+                cbRole.Text = dgv.Rows[rowIndex].Cells["Chức danh"].Value.ToString();
+                txtAddress.Text = dgv.Rows[rowIndex].Cells["Nơi ở"].Value.ToString();
+                dtpBirthDay.Value = DateTime.ParseExact(dgv.Rows[rowIndex].Cells["Ngày sinh"].Value.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                cbRole.Text = dgv.Rows[rowIndex].Cells["Chức danh"].Value.ToString();
+                txtSalary.Text = dgv.Rows[rowIndex].Cells["Lương"].Value.ToString();
+
+                employeeSelected = new Employee(txtId.Text, txtName.Text, txtIden.Text, txtAddress.Text, dtpBirthDay.Value, txtSalary.Text, txtPhoneNumber.Text, cbRole.Text);
+            }
+        }
     }
 }

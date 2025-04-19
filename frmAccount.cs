@@ -32,14 +32,12 @@ namespace timber_shop_manager
 
         private void LoadForm()
         {
-            //loadFeatureBasedOnRole();
             pnInfo.Enabled = false;
             btnLock.Enabled = false;
             btnAdd.Enabled = false;
             ClearTextBox();
-            //pnButtonEnabler(true, false);
-            //featureButtonEnabler(true, false);
             LoadData();
+            dynamicSearch?.Disable();
         }
 
         private void LoadData()
@@ -191,8 +189,7 @@ namespace timber_shop_manager
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            ClearTextBox();
-            LoadData();
+            LoadForm();
         }
     }
 }
