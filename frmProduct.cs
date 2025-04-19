@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using Org.BouncyCastle.Asn1.Ocsp;
 using timber_shop_manager.objects;
 using static timber_shop_manager.objects.Employee;
 namespace timber_shop_manager
@@ -15,11 +16,11 @@ namespace timber_shop_manager
     public partial class frmProduct : Form
     {
         private Product selectedProduct = null;
-        private Category category = null;
+        private Account account = null;
         private static DynamicSearch dynamicSearch = null;
-        private Account account;
-        #region Properties
-        private DatabaseHelper dbHelper = new DatabaseHelper();
+        private readonly DatabaseHelper dbHelper = new();
+
+        private bool searchMode = false;
 
         public frmProduct()
         {
@@ -31,171 +32,258 @@ namespace timber_shop_manager
         }
         public frmProduct(Account acc, Category cat) : this()
         {
-            this.account = acc;
-            this.category = cat;
+            //this.account = acc;
+            //this.category = cat;
         }
-        #endregion
-        #region Support Methods
-        private void LoadComboBoxCatagory()
+
+
+        private void LoadForm()
         {
-            string query = "SELECT DISTINCT Name FROM Catagory";
-            List<string> ls = dbHelper.GetDataForComboBox(query, "Name");
-            cbCategory.DataSource = ls;
+            ExitSearchMode();
+            ClearInput();
+            LoadData();
+            EnterDefaultMode();
+        }
+
+        private void LoadData()
+        {
+            dgv.DataSource = LoadDataGridView();
+            cbCategory.DataSource = dbHelper.GetDataForComboBox("SELECT DISTINCT Name FROM Category", "Name");
+            cbCalUnit.DataSource = dbHelper.GetDataForComboBox("SELECT DISTINCT CalculationUnit FROM Product", "CalculationUnit");
             cbCategory.SelectedIndex = -1;
-        }
-        private void LoadComboBoxUnit()
-        {
-            string query = "SELECT DISTINCT CalculationUnit FROM Product";
-            List<string> ls = dbHelper.GetDataForComboBox(query, "CalculationUnit");
-            cbCalUnit.DataSource = ls;
             cbCalUnit.SelectedIndex = -1;
         }
-        private void loadForm()
+
+        private DataTable LoadDataGridView()
         {
-            txtID.ReadOnly = true;
-            pnInfo.Enabled = false;
-            dgv.DataSource = loadData();
+            string query = @"
+                SELECT 
+                    p.Id AS [Mã sản phẩm],
+                    c.Name AS [Loại],
+                    p.Name AS [Tên sản phẩm],
+                    p.CalculationUnit AS [Đơn vị tính],
+                    p.PriceQuotation AS [Đơn giá],
+                    p.Quantity AS [Số lượng],
+                    p.CustomerWarranty AS [Bảo hành (tháng)],
+                    p.Description AS [Mô tả]
+                FROM Product p
+                JOIN Category c ON p.CatId = c.Id
+                WHERE p.IsDeleted = 0
+                ORDER BY p.Id";
 
-            btnEnabler(false, true);
-            pnButtonEnabler(true);
-
-            LoadComboBoxCatagory();
-            LoadComboBoxUnit();
-
-            clearTextBox();
-
+            return dbHelper.ExecuteQuery(query);
         }
-        private void clearTextBox()
+
+        private void ClearInput()
         {
-            txtID.Clear();
+            txtId.Clear();
             txtName.Clear();
-            nudPrice.Value = 0;
-            nudQuantity.Value = 0;
+            nudPriceQuotation.Value = 0;
             nudWarranty.Value = nudWarranty.Minimum;
-            txtDescription.Clear();
-            cbCalUnit.SelectedIndex = -1;
+            nudQuantity.Value = 0;
             cbCategory.SelectedIndex = -1;
-        }
-        private DataTable loadData()
-        {
-            string query = "SELECT * FROM Product";
-            DataTable dt = dbHelper.ExecuteQuery(query);
-            return dt;
-        }
-        private void btnEnabler(bool cellBtn, bool initBtn)
-        {
-            btnDel.Visible = btnMod.Visible = cellBtn;
-            btnAdd.Visible = btnSearch.Visible = initBtn;
-        }
-        private void pnButtonEnabler(bool b)
-        {
-            pnFeatureButton.Visible = b;
-            pnInfoButton.Visible = !b;
+            cbCalUnit.SelectedIndex = -1;
+            txtDescription.Clear();
         }
 
-        #endregion
-        #region Events
-        #region Load
-        private void frmProduct_Load(object sender, EventArgs e)
+        private void EnterDefaultMode()
         {
-            loadForm();
+            EnableInputFields(false);
+            EnableButtons(add: true, search: true, save: false, mod: false, del: false);
         }
-        #endregion
-        #region Click
-        private void btnSearch_Click(object sender, EventArgs e)
+
+        private void EnterEditMode()
+        {
+            EnableInputFields(true);
+            txtId.Enabled = false;
+            EnableButtons(add: false, search: false, save: true, mod: false, del: false);
+        }
+
+        private void EnterSearchMode()
+        {
+            searchMode = true;
+            ClearInput();
+            EnableSearchControlsOnly();
+            EnableButtons(add: false, search: true, save: false, mod: false, del: false);
+            txtId.Enabled = true;
+            btnSearch.Text = "Huỷ tìm"; 
+            SetupDynamicSearch();
+        }
+
+        private void EnableSearchControlsOnly()
         {
             pnInfo.Enabled = true;
-            txtID.ReadOnly = false;
-            nudQuantity.Enabled = false;
-            btnSave.Visible = false;
-            txtID.Focus();
-            pnButtonEnabler(false);
-            clearTextBox();
 
+            txtId.Enabled = true;
+            txtName.Enabled = true;
+            cbCalUnit.Enabled = true;
+            txtDescription.Enabled = true;
+            cbCategory.Enabled = true;
+
+            nudPriceQuotation.Enabled = false;
+            nudQuantity.Enabled = false;
+            nudWarranty.Enabled = false;
+        }
+
+
+        private void ExitSearchMode()
+        {
+            if (!searchMode) return;
+
+            searchMode = false;
+            dynamicSearch?.Disable();
+            dgv.DataSource = LoadDataGridView();
+            txtId.Enabled = false;
+            btnSearch.Text = "Tìm kiếm";
+        }
+
+        private void EnableInputFields(bool enable)
+        {
+            pnInfo.Enabled = enable;
+            txtId.Enabled = enable;
+            txtName.Enabled = enable;
+            cbCategory.Enabled = enable;
+            cbCalUnit.Enabled = enable;
+            nudPriceQuotation.Enabled = enable;
+            nudWarranty.Enabled = enable;
+            nudQuantity.Enabled = enable;
+            txtDescription.Enabled = enable;
+        }
+
+        private void EnableButtons(bool add, bool search, bool save, bool mod, bool del)
+        {
+            btnAdd.Enabled = add;
+            btnSearch.Enabled = search;
+            btnSave.Enabled = save;
+            btnMod.Enabled = mod;
+            btnDel.Enabled = del;
+        }
+
+        private void SetupDynamicSearch()
+        {
             if (dynamicSearch == null)
             {
-                List<Control> searchControls = new List<Control>() { txtID, txtName, cbCalUnit, txtDescription };
-                Dictionary<string, string> columnMappings = new Dictionary<string, string>()
-                {
-                    {"txtID", "ProductId" },
-                    {"txtName", "Name" },
-                    {"cbCalUnit", "CalculationUnit" },
-                    {"txtDescription", "Description" }
-                };
-                dynamicSearch = new DynamicSearch(searchControls, columnMappings, loadData, dgv);
+                List<Control> searchControls = new() { txtId, txtName, cbCalUnit, txtDescription, cbCategory };
+                Dictionary<string, string> columnMappings = new()
+                    {
+                        { "txtId", "Mã sản phẩm" },
+                        { "txtName", "Tên sản phẩm" },
+                        { "cbCalUnit", "Đơn vị tính" },
+                        { "txtDescription", "Mô tả" },
+                        { "cbCategory", "Loại" }
+                    };
+
+                dynamicSearch = new DynamicSearch(searchControls, columnMappings, LoadDataGridView, dgv);
             }
-            dynamicSearch?.Enable();
+            dynamicSearch.Enable();
+        }
+
+
+        private void frmProduct_Load(object sender, EventArgs e)
+        {
+            nudPriceQuotation.Maximum = 1_000_000_000; 
+            nudQuantity.Maximum = 10_000_000;         
+            nudWarranty.Maximum = 120;
+            LoadForm();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (!searchMode)
+                EnterSearchMode();
+            else
+                LoadForm();
         }
         private void btnDel_Click(object sender, EventArgs e)
         {
-            Product.delete(selectedProduct);
-            // Reload form
-            loadForm();
+            if (selectedProduct == null) return;
+
+            var confirm = MessageBox.Show("Bạn có chắc chắn xoá sản phẩm này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirm == DialogResult.Yes)
+            {
+                Product.delete(selectedProduct);
+                LoadForm();
+            }
         }
         private void btnMod_Click(object sender, EventArgs e)
         {
-            pnInfo.Enabled = true;
-            txtName.Focus();
-            pnButtonEnabler(false);
+            if (selectedProduct != null)
+                EnterEditMode();
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            pnInfo.Enabled = true;
-            txtName.Focus();
-            clearTextBox();
-            pnButtonEnabler(false);
+            ExitSearchMode();
+            ClearInput();
+            EnterEditMode();
 
-            string lastCode = Convert.ToString(dbHelper.ExecuteScalar("SELECT TOP 1 ProductId FROM Product ORDER BY ProductId DESC"));
-            txtID.Text = Program.GenerateNextCode(lastCode, Product.PREFIX, Product.CODE_LENGTH);
+            string lastId = Convert.ToString(dbHelper.ExecuteScalar("SELECT MAX(Id) FROM Product"));
+            txtId.Text = Program.GenerateNextCode(lastId, Product.PREFIX, Product.CODE_LENGTH);
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Product product = new Product(txtID.Text, Category.getId(cbCategory.Text), txtName.Text, cbCalUnit.Text, Convert.ToDouble(nudPrice.Value), Convert.ToInt32(nudWarranty.Value), txtDescription.Text, Convert.ToInt32(nudWarranty.Value));
+            Dictionary<Control, Label> controlLabelPairs = new()
+            {
+                { txtId, lbId },
+                { txtName, lbName },
+                { cbCategory, lbCategory },
+                { cbCalUnit, new Label { Text = "Đơn vị tính" } }
+            };
+
+            if (!InputValidator.ValidateNotEmpty(controlLabelPairs))
+                return;
+
+            if (nudPriceQuotation.Value <= 0)
+            {
+                MessageBox.Show("Đơn giá phải lớn hơn 0.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                nudPriceQuotation.Focus();
+                return;
+            }
+
+            Product product = new Product(
+                txtId.Text,
+                Category.getId(cbCategory.Text),
+                txtName.Text,
+                cbCalUnit.Text,
+                nudPriceQuotation.Value.ToString(),
+                nudQuantity.Value.ToString(),
+                nudWarranty.Value.ToString(),
+                txtDescription.Text);
+
             Product.add(product);
-            // Reload form
-            loadForm();
+            LoadForm();
         }
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            dynamicSearch?.Disable();
-            loadForm();
-            nudQuantity.Enabled = true;
-        }
+        private void btnCancel_Click(object sender, EventArgs e) => LoadForm();
 
         private void dgvProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dynamicSearch?.Disable();
-            // Ensure the click is not on the header row or an invalid row
-            if (e.RowIndex >= 0)
+            if (e.RowIndex < 0 || dgv.Rows[e.RowIndex].Cells["Mã sản phẩm"].Value == null)
             {
-                // Get the selected row
-                DataGridViewRow selectedRow = dgv.Rows[e.RowIndex];
-
-                // Populate the form fields with the selected row's data
-                txtID.Text = selectedRow.Cells["ProductId"].Value?.ToString().Trim();
-                txtName.Text = selectedRow.Cells["Name"].Value?.ToString();
-                cbCalUnit.Text = selectedRow.Cells["CalculationUnit"].Value?.ToString();
-                nudPrice.Value = Convert.ToInt32(selectedRow.Cells["PriceQuotation"].Value);
-                cbCategory.Text = Category.getName(selectedRow.Cells["CatagoryId"].Value?.ToString());
-                nudWarranty.Value = Convert.ToDecimal(selectedRow.Cells["CustomerWarranty"].Value);
-                nudQuantity.Text = selectedRow.Cells["Quantity"].Value?.ToString();
-                txtDescription.Text = selectedRow.Cells["Description"].Value?.ToString();
-
-                selectedProduct = new Product(txtID.Text, cbCategory.Text, txtName.Text, cbCalUnit.Text, Convert.ToDouble(nudPrice.Value), Convert.ToInt32(nudWarranty.Value), txtDescription.Text, Convert.ToInt32(nudQuantity.Value));
-
-                btnEnabler(true, true);
+                EnterDefaultMode();
+                return;
             }
+
+            var row = dgv.Rows[e.RowIndex];
+            txtId.Text = row.Cells["Mã sản phẩm"].Value?.ToString();
+            txtName.Text = row.Cells["Tên sản phẩm"].Value?.ToString();
+            cbCalUnit.Text = row.Cells["Đơn vị tính"].Value?.ToString();
+            nudPriceQuotation.Value = Convert.ToDecimal(row.Cells["Đơn giá"].Value);
+            nudQuantity.Value = Convert.ToDecimal(row.Cells["Số lượng"].Value);
+            nudWarranty.Value = Convert.ToDecimal(row.Cells["Bảo hành (tháng)"].Value);
+            txtDescription.Text = row.Cells["Mô tả"].Value?.ToString();
+            cbCategory.Text = row.Cells["Loại"].Value?.ToString();
+
+            selectedProduct = new Product(
+                txtId.Text,
+                Category.getId(cbCategory.Text),
+                txtName.Text,
+                cbCalUnit.Text,
+                nudPriceQuotation.Value.ToString(),
+                nudQuantity.Value.ToString(),
+                nudWarranty.Value.ToString(),
+                txtDescription.Text);
+
+            EnableButtons(add: true, search: true, save: false, mod: true, del: true);
         }
-        #endregion
-
-
-        #region Key Press
-        private void txtPriceQuotation_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //Program.CheckInputIsDigit(e);
-        }
-        #endregion
-        #endregion
-
+        
     }
 }

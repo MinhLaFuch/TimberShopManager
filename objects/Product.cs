@@ -12,81 +12,62 @@ namespace timber_shop_manager.objects
 {
     public class Product
     {
-        public static readonly int SOLD_OUT = 0;
         public static readonly string PREFIX = "P";
-        public static readonly int CODE_LENGTH = 5;
+        public static readonly int CODE_LENGTH = 4;
 
         private static DatabaseHelper dbHelper = new DatabaseHelper();
 
-        private string id, categoryId, name, unit, description;
-        private double price;
-        private int warranty, quantity;
+        protected string id, catId, name, calculationUnit, description;
+        protected double priceQuotation;
+        protected int quantity, customerWarranty;
 
-        public Product(string id, string categoryId, string name, string unit, double price, int warranty, string description, int quantity)
+        public Product(string id, string catId, string name, string calculationUnit, string priceQuotation,
+                       string quantity, string customerWarranty, string description)
         {
-            this.id = id;
-            this.categoryId = categoryId;
-            this.name = name;
-            this.unit = unit;
-            this.price = price;
-            this.warranty = warranty;
-            this.description = description;
-            this.quantity = quantity;
+            this.id = id.Trim();
+            this.catId = catId.Trim();
+            this.name = InputValidator.CapitalizeName(name.Trim());
+            this.calculationUnit = calculationUnit.Trim();
+            this.priceQuotation = Convert.ToDouble(priceQuotation.Trim());
+            this.quantity = Convert.ToInt32(quantity.Trim());
+            this.customerWarranty = Convert.ToInt32(customerWarranty.Trim());
+            this.description = description.Trim();
         }
 
-        public override string? ToString()
+        public static void add(Product p)
         {
-            return $"{id.ToString().Trim().ToLower()} - {name} - {quantity} {unit}";
-        }
+            string query = "SELECT COUNT(Id) FROM Product WHERE Id = @id";
+            int count = Convert.ToInt32(dbHelper.ExecuteScalar(query, new SqlParameter("@id", p.id)));
 
-        public static void add(Product product) 
-        {
-            string queryInsert = "INSERT INTO Product (ProductID, CatagoryID, Name, CalculationUnit, PriceQuotation, CustomerWarranty, Description, Quantity) " +
-                        "VALUES (@ID, @CatagoryID, @Name, @CalUnit, @PriceQuo, @Warranty, @Description, @Quantity)";
-            string queryUpdate = "UPDATE Product " +
-                "SET CatagoryID = @CatagoryID, " +
-                    "Name = @Name, " +
-                    "CalculationUnit = @CalUnit, " +
-                    "PriceQuotation = @PriceQuo, " +
-                    "CustomerWarranty = @Warranty, " +
-                    "Description = @Description, " +
-                    "Quantity = @Quantity " +
-                "WHERE ProductID = @ID";
-
-            string query = "SELECT COUNT(*) FROM Product WHERE ProductId = @id";
-            bool isExists = Convert.ToInt32(dbHelper.ExecuteScalar(query, new SqlParameter("@id", product.id))) != 0;
-
-            if (!isExists) 
+            if (count != 0)
             {
-                dbHelper.ExecuteNonQuery(queryInsert,
-                    new SqlParameter("@ID", product.id),
-                    new SqlParameter("@CatagoryID", product.categoryId),
-                    new SqlParameter("@Name", product.name),
-                    new SqlParameter("@CalUnit", product.unit),
-                    new SqlParameter("@PriceQuo", product.price),
-                    new SqlParameter("@Warranty", product.warranty),
-                    new SqlParameter("@Description", product.description),
-                    new SqlParameter("@Quantity", product.quantity));
-            } 
+                query = @"UPDATE Product SET 
+                            CatId = @catId, Name = @name, CalculationUnit = @unit,
+                            PriceQuotation = @price, Quantity = @quantity,
+                            CustomerWarranty = @warranty, Description = @desc
+                          WHERE Id = @id";
+            }
             else
             {
-                dbHelper.ExecuteNonQuery(queryUpdate,
-                    new SqlParameter("@ID", product.id),
-                    new SqlParameter("@CatagoryID", product.categoryId),
-                    new SqlParameter("@Name", product.name),
-                    new SqlParameter("@CalUnit", product.unit),
-                    new SqlParameter("@PriceQuo", product.price),
-                    new SqlParameter("@Warranty", product.warranty),
-                    new SqlParameter("@Description", product.description),
-                    new SqlParameter("@Quantity", product.quantity));
+                query = @"INSERT INTO Product (Id, CatId, Name, CalculationUnit, PriceQuotation, Quantity, CustomerWarranty, Description)
+                          VALUES (@id, @catId, @name, @unit, @price, @quantity, @warranty, @desc)";
             }
+
+            dbHelper.ExecuteNonQuery(query,
+                new SqlParameter("@id", p.id),
+                new SqlParameter("@catId", p.catId),
+                new SqlParameter("@name", p.name),
+                new SqlParameter("@unit", p.calculationUnit),
+                new SqlParameter("@price", p.priceQuotation),
+                new SqlParameter("@quantity", p.quantity),
+                new SqlParameter("@warranty", p.customerWarranty),
+                new SqlParameter("@desc", p.description));
         }
 
-        public static void delete(Product product)
+        public static void delete(Product p)
         {
-            string query = "DELETE FROM Product WHERE ProductId = @id";
-
-            dbHelper.ExecuteNonQuery(query, new SqlParameter("@id", product.id));
+            string query = "UPDATE Product SET IsDeleted = 1 WHERE Id = @id";
+            dbHelper.ExecuteNonQuery(query, new SqlParameter("@id", p.id));
         }
     }
 }

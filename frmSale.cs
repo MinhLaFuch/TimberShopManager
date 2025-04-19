@@ -51,18 +51,18 @@ namespace timber_shop_manager
         {
             string query = "SELECT ProductId, CatagoryId, Name, CalculationUnit, PriceQuotation, CustomerWarranty, Description, Quantity FROM Product";
 
-            List<string> data = dbHelper.GetDataForList(query, reader => new Product(
-                reader.GetString(reader.GetOrdinal("ProductId")),
-                reader.GetString(reader.GetOrdinal("CatagoryId")),
-                reader.GetString(reader.GetOrdinal("Name")),
-                reader.GetString(reader.GetOrdinal("CalculationUnit")),
-                reader.GetDouble(reader.GetOrdinal("PriceQuotation")),
-                reader.GetInt32(reader.GetOrdinal("CustomerWarranty")),
-                reader.GetString(reader.GetOrdinal("Description")),
-                reader.GetInt32(reader.GetOrdinal("Quantity"))
-                ).ToString());
+            //List<string> data = dbHelper.GetDataForList(query, reader => new Product(
+            //    reader.GetString(reader.GetOrdinal("ProductId")),
+            //    reader.GetString(reader.GetOrdinal("CatagoryId")),
+            //    reader.GetString(reader.GetOrdinal("Name")),
+            //    reader.GetString(reader.GetOrdinal("CalculationUnit")),
+            //    reader.GetDouble(reader.GetOrdinal("PriceQuotation")),
+            //    reader.GetInt32(reader.GetOrdinal("CustomerWarranty")),
+            //    reader.GetString(reader.GetOrdinal("Description")),
+            //    reader.GetInt32(reader.GetOrdinal("Quantity"))
+            //    ).ToString());
 
-            cbSearchProduct.DataSource = data;
+            //cbSearchProduct.DataSource = data;
             cbSearchProduct.SelectedIndex = -1;
         }
         private void ClearGroupBoxCustomer()
@@ -140,12 +140,12 @@ namespace timber_shop_manager
 
                 nudQuantity.Maximum = quantity;
 
-                if (nudQuantity.Maximum == Product.SOLD_OUT)
-                {
-                    btnAddProduct.Enabled = false;
+                //if (nudQuantity.Maximum == Product.SOLD_OUT)
+                //{
+                //    btnAddProduct.Enabled = false;
 
-                    MessageBox.Show("Mặt hàng này đã hết!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                //    MessageBox.Show("Mặt hàng này đã hết!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
             }
         }
         #endregion

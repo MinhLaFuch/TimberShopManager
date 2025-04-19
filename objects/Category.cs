@@ -9,25 +9,30 @@ namespace timber_shop_manager.objects
 {
     public class Category
     {
-        public static readonly string PREFIX = "P";
+        public static readonly string PREFIX = "C";
         public static readonly int CODE_LENGTH = 6;
 
-        private static DatabaseHelper dbHelper = new DatabaseHelper();
+        private static readonly DatabaseHelper dbHelper = new();
+
         public static string getName(string id)
         {
-            if (id != null)
+            if (!string.IsNullOrWhiteSpace(id))
             {
-                string query = "SELECT Name FROM Catagory WHERE CatagoryID = @id";
+                string query = "SELECT Name FROM Category WHERE Id = @id";
                 string categoryName = Convert.ToString(dbHelper.ExecuteScalar(query, new SqlParameter("@id", id)));
-                return (categoryName != null) ? categoryName : string.Empty;
+                return categoryName ?? string.Empty;
             }
             return string.Empty;
         }
 
         public static string getId(string name)
         {
-            string query = "SELECT CatagoryId FROM Catagory WHERE Name = @name";
-            return Convert.ToString(dbHelper.ExecuteScalar(query, new SqlParameter("@name", name)));
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                string query = "SELECT Id FROM Category WHERE Name = @name";
+                return Convert.ToString(dbHelper.ExecuteScalar(query, new SqlParameter("@name", name)));
+            }
+            return string.Empty;
         }
     }
 }
