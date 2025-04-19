@@ -89,7 +89,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgv.ColumnHeadersHeight = 4;
+            dgv.ColumnHeadersHeight = 50;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
@@ -121,7 +121,7 @@
             dgv.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             dgv.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             dgv.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dgv.ThemeStyle.HeaderStyle.Height = 4;
+            dgv.ThemeStyle.HeaderStyle.Height = 50;
             dgv.ThemeStyle.ReadOnly = true;
             dgv.ThemeStyle.RowsStyle.BackColor = Color.White;
             dgv.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
@@ -130,7 +130,7 @@
             dgv.ThemeStyle.RowsStyle.Height = 29;
             dgv.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgv.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dgv.CellContentClick += dgv_CellContentClick;
+            dgv.CellClick += dgv_CellClick;
             // 
             // gbInfo
             // 
@@ -357,7 +357,6 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(206, 16);
             txtName.TabIndex = 10;
-            txtName.TextChanged += txtName_TextChanged;
             // 
             // lbName
             // 
@@ -378,7 +377,6 @@
             txtId.Name = "txtId";
             txtId.Size = new Size(206, 16);
             txtId.TabIndex = 1;
-            txtId.TextChanged += txtID_TextChanged;
             // 
             // lbId
             // 

@@ -15,10 +15,13 @@ namespace timber_shop_manager
 {
     public partial class frmCategory : Form
     {
-        #region Properties
+
         private Category selectedCategory = null;
-        private DatabaseHelper dbHelper = new DatabaseHelper();
-        private Account account;
+        private static readonly DatabaseHelper dbHelper = new();
+        private Account account = null;
+        private bool searchMode = false;
+        private DynamicSearch dynamicSearch = null;
+
         public frmCategory()
         {
             InitializeComponent();
@@ -27,136 +30,127 @@ namespace timber_shop_manager
         {
             this.account = acc;
         }
-        #endregion
-        #region Support Methods
-        private void loadForm()
+
+        private void LoadForm()
         {
-            loadFormBasedOnRole();
+            ExitSearchMode();
+            ClearTextBox();
+            LoadData();
+            EnterDefaultMode();
+        }
+
+        private void EnterDefaultMode()
+        {
             pnInfo.Enabled = false;
-            txtId.ReadOnly = true;
-            clearTextBox();
-            dgv.DataSource = loadData();
-            pnButtonEnabler(true);
-            btnEnabler(false, true);
-            searchEventEnabler(false);
-            btnSave.Visible = true;
+            txtId.Enabled = true;
+
+            btnAdd.Enabled = true;
+            btnSearch.Enabled = true;
+            btnSave.Enabled = false;
+            btnDel.Enabled = false;
+            btnMod.Enabled = false;
+            btnViewProduct.Enabled = false;
+
+            PrepareSearchState(false);
         }
-        private void loadFormBasedOnRole()
+
+        private void EnterEditMode()
         {
-            bool authority = account.verifyPermission() == Employee.Role.ADMINISTRATOR || account.verifyPermission() == Employee.Role.MANAGER;
-            btnAdd.Visible = btnMod.Visible = btnDel.Visible = authority;
+            pnInfo.Enabled = true;
+            txtId.Enabled = false;
+
+            btnSave.Enabled = true;
+            btnAdd.Enabled = false;
+            btnSearch.Enabled = false;
+            btnDel.Enabled = false;
+            btnMod.Enabled = false;
+            btnViewProduct.Enabled = false;
         }
-        private void clearTextBox()
+
+
+        private void EnterSearchMode()
+        {
+            searchMode = true;
+            pnInfo.Enabled = true;
+            ClearTextBox();
+            txtId.Enabled = true;
+            txtId.Focus();
+
+            btnSave.Enabled = false;
+            btnAdd.Enabled = false;
+            btnDel.Enabled = false;
+            btnMod.Enabled = false;
+            btnViewProduct.Enabled = false;
+            btnSearch.Text = "Huỷ tìm";
+
+            SetupDynamicSearch();
+        }
+
+        private void PrepareSearchState(bool isSearch)
+        {
+            searchMode = isSearch;
+            btnSearch.Text = isSearch ? "Huỷ tìm" : "Tìm kiếm";
+            txtId.ReadOnly = !isSearch;
+        }
+
+        private void ClearTextBox()
         {
             txtId.Clear();
             txtName.Clear();
             txtDescription.Clear();
         }
-        private DataTable loadData()
-        {
-            string query = "SELECT * FROM Category";
-            DataTable dt = dbHelper.ExecuteQuery(query);
-            return dt;
-        }
-        private void btnEnabler(bool featBtn, bool initBtn)
-        {
-            btnMod.Visible = btnDel.Visible = btnViewProduct.Visible = featBtn;
-            btnAdd.Visible = btnSearch.Visible = initBtn;
-        }
-        private void pnButtonEnabler(bool b)
-        {
-            pnFeatureButton.Visible = b;
-            pnInfoButton.Visible = !b;
-        }
-        private string idGenerator()
-        {
-            string query = "SELECT CategoryID FROM Category ORDER BY CategoryId DESC";
-            DataTable dt = dbHelper.ExecuteQuery(query);
-            string newId = "001";
-            if (dt.Rows.Count > 0)
-            {
-                // Extracting maxID
-                string maxId = dt.Rows[0]["EmployeeId"].ToString();
-                int id = int.Parse(maxId.Substring(1, maxId.Length - 1)) + 1;
-                newId = "000" + id.ToString();
-                newId = newId.Substring(newId.Length - 3, 3);
-            }
-            return "CAT" + newId;
-        }
-        private void searchEventEnabler(bool b)
-        {
-            if (b)
-            {
-                txtId.TextChanged += txtID_TextChanged;
-                txtName.TextChanged += txtName_TextChanged;
-            }
-            else
-            {
-                txtId.TextChanged -= txtID_TextChanged;
-                txtName.TextChanged -= txtName_TextChanged;
-            }
-        }
-        // Incomplete
-        private void suggest()
-        {
 
-        }
-        #endregion
-        #region Events
-        #region Load
-        private void frmCategory_Load(object sender, EventArgs e)
+        private void LoadData()
         {
-            loadForm();
+            dgv.DataSource = dbHelper.ExecuteQuery("SELECT Id AS 'Mã danh mục', Name AS 'Tên', Description AS 'Mô tả' FROM Category WHERE IsShow = 1 ORDER BY Id");
         }
-        #endregion
-        #region Click
+
+        private void frmCategory_Load(object sender, EventArgs e) => LoadForm();
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            pnInfo.Enabled = true;
-            clearTextBox();
+            ExitSearchMode();
+            ClearTextBox();
+            EnterEditMode();
+            LoadData();
+
+            txtId.Enabled = false;
+            string query = "SELECT MAX(Id) FROM Category";
+            string currentCode = Convert.ToString(dbHelper.ExecuteScalar(query));
+            txtId.Text = Program.GenerateNextCode(currentCode, Category.PREFIX, Category.CODE_LENGTH);
+
             txtName.Focus();
-            pnButtonEnabler(false);
         }
         private void btnMod_Click(object sender, EventArgs e)
         {
-            pnInfo.Enabled = true;
-            txtName.Focus();
-            pnButtonEnabler(false);
+            if (selectedCategory != null)
+            {
+                EnterEditMode();
+                txtId.Enabled = false;
+                txtName.Focus();
+            }
         }
         private void btnDel_Click(object sender, EventArgs e)
         {
-            string insertDeletedQuery = "INSERT INTO DeletedCategory (categoryID, categoryName, Description) SELECT categoryID, categoryName, Description FROM category WHERE categoryID = @ID;";
-            string deleteQuery = "DELETE FROM category WHERE categoryID = @ID;";
-
-            // Get a confirmation from the user  
-            DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn xóa danh mục này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (confirmation == DialogResult.Yes)
+            if (selectedCategory != null)
             {
-                DataTable dt = dbHelper.ExecuteQuery("SELECT * FROM Product WHERE categoryID = @ID", new SqlParameter("@ID", txtId.Text));
-                if (dt.Rows.Count > 0)
+                var confirm = MessageBox.Show("Bạn có chắc chắn muốn xoá danh mục này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (confirm == DialogResult.Yes)
                 {
-                    MessageBox.Show("Không thể xóa danh mục này vì nó đang được sử dụng trong sản phẩm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    // Insert into Deletedcategory table  
-                    dbHelper.ExecuteNonQuery(insertDeletedQuery, new SqlParameter("@ID", txtId.Text));
-
-                    // Delete from category table  
-                    dbHelper.ExecuteNonQuery(deleteQuery, new SqlParameter("@ID", txtId.Text));
+                    Category.delete(selectedCategory);
+                    LoadForm();
                 }
             }
-            // Reload form  
-            loadForm();
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            pnInfo.Enabled = true;
-            txtId.ReadOnly = false;
-            txtId.Focus();
-            pnButtonEnabler(false);
-            btnSave.Visible = false;
-            searchEventEnabler(true);
+            if (!searchMode)
+            {
+                EnterSearchMode();
+            }
+            else
+            {
+                LoadForm();
+            }
         }
         // Incomplete
         private void btnViewProduct_Click(object sender, EventArgs e)
@@ -164,59 +158,73 @@ namespace timber_shop_manager
             frmProduct frmProduct = new frmProduct(account, selectedCategory);
             frmProduct.ShowDialog();
         }
-        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                // Retrieve the selected row
-                DataGridViewRow row = dgv.Rows[e.RowIndex];
 
-                // Populate the text boxes with the selected row's data
-                txtId.Text = row.Cells["CategoryID"].Value.ToString();
-                txtName.Text = row.Cells["Name"].Value.ToString();
-                txtDescription.Text = row.Cells["Description"].Value.ToString();
-
-                // Enable/disable buttons as needed
-                btnEnabler(true, true);
-            }
-        }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            bool isAdding = string.IsNullOrEmpty(txtId.Text);
-            if (isAdding)
+            if (string.IsNullOrWhiteSpace(txtId.Text) || string.IsNullOrWhiteSpace(txtName.Text))
             {
-                string query = "INSERT INTO Category (CategoryID, categoryName, Description) VALUES (@ID, @Name, @Description)";
-                dbHelper.ExecuteNonQuery(query,
-                    new SqlParameter("@ID", idGenerator()),
-                    new SqlParameter("@Name", txtName.Text),
-                    new SqlParameter("@Description", txtDescription.Text));
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thiếu dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
-            {
-                string query = "UPDATE Category SET CategoryName = @Name, Description = @Description WHERE categoryID = @ID";
-                dbHelper.ExecuteNonQuery(query,
-                    new SqlParameter("@ID", txtId.Text),
-                    new SqlParameter("@Name", txtName.Text),
-                    new SqlParameter("@Description", txtDescription.Text));
-            }
-            loadForm();
-        }
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            loadForm();
-        }
-        #endregion
-        #region Text Changed
-        private void txtID_TextChanged(object sender, EventArgs e)
-        {
-            suggest();
-        }
-        private void txtName_TextChanged(object sender, EventArgs e)
-        {
-            suggest();
 
+            var category = new Category(txtId.Text, txtName.Text, txtDescription.Text);
+            Category.add(category);
+            LoadForm();
         }
-        #endregion
-        #endregion
+        private void btnCancel_Click(object sender, EventArgs e) => LoadForm();
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || dgv.Rows[e.RowIndex].Cells["Mã danh mục"].Value == null)
+                return;
+
+            var row = dgv.Rows[e.RowIndex];
+            txtId.Text = row.Cells["Mã danh mục"].Value?.ToString();
+            txtName.Text = row.Cells["Tên"].Value?.ToString();
+            txtDescription.Text = row.Cells["Mô tả"].Value?.ToString();
+
+            selectedCategory = new Category(txtId.Text, txtName.Text, txtDescription.Text);
+            EnableSelectionButtons();
+        }
+
+        private void EnableSelectionButtons()
+        {
+            EnterDefaultMode();
+            btnDel.Enabled = true;
+            btnMod.Enabled = true;
+            btnViewProduct.Enabled = true;
+        }
+
+        private void SetupDynamicSearch()
+        {
+            if (dynamicSearch != null)
+            {
+                dynamicSearch.Enable();
+                return;
+            }
+
+            List<Control> controls = new() { txtId, txtName };
+            Dictionary<string, string> mappings = new()
+            {
+                { "txtId", "Mã danh mục" },
+                { "txtName", "Tên" }
+            };
+
+            dynamicSearch = new DynamicSearch(controls, mappings, () =>
+                dbHelper.ExecuteQuery("SELECT Id AS 'Mã danh mục', Name AS 'Tên', Description AS 'Mô tả' FROM Category WHERE IsShow = 1 ORDER BY Id"),
+                dgv);
+            dynamicSearch.Enable();
+        }
+
+        private void ExitSearchMode()
+        {
+            if (!searchMode) return;
+            searchMode = false;
+            btnSearch.Text = "Tìm kiếm";
+
+            dynamicSearch?.Disable();
+            LoadData();
+            txtId.ReadOnly = true;
+        }
     }
 }

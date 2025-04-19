@@ -49,11 +49,12 @@
             gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
             pnButton = new FlowLayoutPanel();
             pnFeatureButton = new FlowLayoutPanel();
+            btnRefresh = new Button();
             pnInfoButton = new FlowLayoutPanel();
             btnCancel = new Button();
             pnInfo = new Panel();
             dgv = new Guna.UI2.WinForms.Guna2DataGridView();
-            btnRefresh = new Button();
+            btnSave = new Button();
             gbInfo.SuspendLayout();
             pnButton.SuspendLayout();
             pnFeatureButton.SuspendLayout();
@@ -161,7 +162,7 @@
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.Font = new Font("Segoe UI", 9F);
             btnAdd.ForeColor = SystemColors.ButtonFace;
-            btnAdd.Location = new Point(134, 3);
+            btnAdd.Location = new Point(126, 3);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(116, 30);
             btnAdd.TabIndex = 6;
@@ -175,7 +176,7 @@
             btnLock.FlatStyle = FlatStyle.Flat;
             btnLock.Font = new Font("Segoe UI", 9F);
             btnLock.ForeColor = SystemColors.ButtonFace;
-            btnLock.Location = new Point(256, 3);
+            btnLock.Location = new Point(248, 3);
             btnLock.Name = "btnLock";
             btnLock.Size = new Size(116, 30);
             btnLock.TabIndex = 7;
@@ -189,7 +190,7 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 9F);
             btnSearch.ForeColor = SystemColors.ButtonFace;
-            btnSearch.Location = new Point(378, 3);
+            btnSearch.Location = new Point(370, 3);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(116, 30);
             btnSearch.TabIndex = 8;
@@ -220,10 +221,10 @@
             pnButton.Controls.Add(pnFeatureButton);
             pnButton.Controls.Add(pnInfoButton);
             pnButton.FlowDirection = FlowDirection.RightToLeft;
-            pnButton.Location = new Point(400, 119);
+            pnButton.Location = new Point(159, 119);
             pnButton.Margin = new Padding(3, 2, 3, 2);
             pnButton.Name = "pnButton";
-            pnButton.Size = new Size(512, 52);
+            pnButton.Size = new Size(753, 41);
             pnButton.TabIndex = 12;
             // 
             // pnFeatureButton
@@ -233,20 +234,35 @@
             pnFeatureButton.Controls.Add(btnAdd);
             pnFeatureButton.Controls.Add(btnRefresh);
             pnFeatureButton.FlowDirection = FlowDirection.RightToLeft;
-            pnFeatureButton.Location = new Point(12, 2);
+            pnFeatureButton.Location = new Point(261, 2);
             pnFeatureButton.Margin = new Padding(3, 2, 3, 2);
             pnFeatureButton.Name = "pnFeatureButton";
-            pnFeatureButton.Size = new Size(497, 45);
+            pnFeatureButton.Size = new Size(489, 39);
             pnFeatureButton.TabIndex = 18;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.BackColor = Color.FromArgb(59, 93, 79);
+            btnRefresh.FlatStyle = FlatStyle.Flat;
+            btnRefresh.Font = new Font("Segoe UI", 9F);
+            btnRefresh.ForeColor = SystemColors.ButtonFace;
+            btnRefresh.Location = new Point(4, 3);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(116, 30);
+            btnRefresh.TabIndex = 9;
+            btnRefresh.Text = "Làm mới";
+            btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // pnInfoButton
             // 
             pnInfoButton.Controls.Add(btnCancel);
+            pnInfoButton.Controls.Add(btnSave);
             pnInfoButton.FlowDirection = FlowDirection.RightToLeft;
-            pnInfoButton.Location = new Point(382, 51);
+            pnInfoButton.Location = new Point(8, 2);
             pnInfoButton.Margin = new Padding(3, 2, 3, 2);
             pnInfoButton.Name = "pnInfoButton";
-            pnInfoButton.Size = new Size(127, 41);
+            pnInfoButton.Size = new Size(247, 39);
             pnInfoButton.TabIndex = 16;
             // 
             // btnCancel
@@ -255,7 +271,7 @@
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Segoe UI", 9F);
             btnCancel.ForeColor = SystemColors.ButtonFace;
-            btnCancel.Location = new Point(8, 3);
+            btnCancel.Location = new Point(128, 3);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(116, 30);
             btnCancel.TabIndex = 9;
@@ -335,19 +351,18 @@
             dgv.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dgv.CellClick += dgv_CellClick;
             // 
-            // btnRefresh
+            // btnSave
             // 
-            btnRefresh.BackColor = Color.FromArgb(59, 93, 79);
-            btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Segoe UI", 9F);
-            btnRefresh.ForeColor = SystemColors.ButtonFace;
-            btnRefresh.Location = new Point(12, 3);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(116, 30);
-            btnRefresh.TabIndex = 9;
-            btnRefresh.Text = "Làm mới";
-            btnRefresh.UseVisualStyleBackColor = false;
-            btnRefresh.Click += btnRefresh_Click;
+            btnSave.BackColor = Color.FromArgb(59, 93, 79);
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Segoe UI", 9F);
+            btnSave.ForeColor = SystemColors.ButtonFace;
+            btnSave.Location = new Point(6, 3);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(116, 30);
+            btnSave.TabIndex = 10;
+            btnSave.Text = " Lưu";
+            btnSave.UseVisualStyleBackColor = false;
             // 
             // frmAccount
             // 
@@ -392,5 +407,6 @@
         private FlowLayoutPanel pnButton;
         private Guna.UI2.WinForms.Guna2DataGridView dgv;
         private Button btnRefresh;
+        private Button btnSave;
     }
 }
