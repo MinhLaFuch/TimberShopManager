@@ -33,7 +33,7 @@ namespace timber_shop_manager
         {
             loadFormBasedOnRole();
             pnInfo.Enabled = false;
-            txtID.ReadOnly = true;
+            txtId.ReadOnly = true;
             clearTextBox();
             dgv.DataSource = loadData();
             pnButtonEnabler(true);
@@ -48,7 +48,7 @@ namespace timber_shop_manager
         }
         private void clearTextBox()
         {
-            txtID.Clear();
+            txtId.Clear();
             txtName.Clear();
             txtDescription.Clear();
         }
@@ -87,12 +87,12 @@ namespace timber_shop_manager
         {
             if (b)
             {
-                txtID.TextChanged += txtID_TextChanged;
+                txtId.TextChanged += txtID_TextChanged;
                 txtName.TextChanged += txtName_TextChanged;
             }
             else
             {
-                txtID.TextChanged -= txtID_TextChanged;
+                txtId.TextChanged -= txtID_TextChanged;
                 txtName.TextChanged -= txtName_TextChanged;
             }
         }
@@ -132,7 +132,7 @@ namespace timber_shop_manager
             DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn xóa danh mục này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirmation == DialogResult.Yes)
             {
-                DataTable dt = dbHelper.ExecuteQuery("SELECT * FROM Product WHERE categoryID = @ID", new SqlParameter("@ID", txtID.Text));
+                DataTable dt = dbHelper.ExecuteQuery("SELECT * FROM Product WHERE categoryID = @ID", new SqlParameter("@ID", txtId.Text));
                 if (dt.Rows.Count > 0)
                 {
                     MessageBox.Show("Không thể xóa danh mục này vì nó đang được sử dụng trong sản phẩm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -140,10 +140,10 @@ namespace timber_shop_manager
                 else
                 {
                     // Insert into Deletedcategory table  
-                    dbHelper.ExecuteNonQuery(insertDeletedQuery, new SqlParameter("@ID", txtID.Text));
+                    dbHelper.ExecuteNonQuery(insertDeletedQuery, new SqlParameter("@ID", txtId.Text));
 
                     // Delete from category table  
-                    dbHelper.ExecuteNonQuery(deleteQuery, new SqlParameter("@ID", txtID.Text));
+                    dbHelper.ExecuteNonQuery(deleteQuery, new SqlParameter("@ID", txtId.Text));
                 }
             }
             // Reload form  
@@ -152,8 +152,8 @@ namespace timber_shop_manager
         private void btnSearch_Click(object sender, EventArgs e)
         {
             pnInfo.Enabled = true;
-            txtID.ReadOnly = false;
-            txtID.Focus();
+            txtId.ReadOnly = false;
+            txtId.Focus();
             pnButtonEnabler(false);
             btnSave.Visible = false;
             searchEventEnabler(true);
@@ -172,7 +172,7 @@ namespace timber_shop_manager
                 DataGridViewRow row = dgv.Rows[e.RowIndex];
 
                 // Populate the text boxes with the selected row's data
-                txtID.Text = row.Cells["CategoryID"].Value.ToString();
+                txtId.Text = row.Cells["CategoryID"].Value.ToString();
                 txtName.Text = row.Cells["Name"].Value.ToString();
                 txtDescription.Text = row.Cells["Description"].Value.ToString();
 
@@ -182,7 +182,7 @@ namespace timber_shop_manager
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            bool isAdding = string.IsNullOrEmpty(txtID.Text);
+            bool isAdding = string.IsNullOrEmpty(txtId.Text);
             if (isAdding)
             {
                 string query = "INSERT INTO Category (CategoryID, categoryName, Description) VALUES (@ID, @Name, @Description)";
@@ -195,7 +195,7 @@ namespace timber_shop_manager
             {
                 string query = "UPDATE Category SET CategoryName = @Name, Description = @Description WHERE categoryID = @ID";
                 dbHelper.ExecuteNonQuery(query,
-                    new SqlParameter("@ID", txtID.Text),
+                    new SqlParameter("@ID", txtId.Text),
                     new SqlParameter("@Name", txtName.Text),
                     new SqlParameter("@Description", txtDescription.Text));
             }
