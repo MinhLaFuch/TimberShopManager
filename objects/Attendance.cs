@@ -23,7 +23,9 @@ namespace timber_shop_manager.objects
                 CHECK_IN_LATE = "Đi muộn",
                 CHECK_IN_EARLY = "Đến sớm",
                 CHECK_OUT_ON_TIME = "Về đúng giờ",
-                CHECK_OUT_EARLY = "Về sớm";
+                CHECK_OUT_EARLY = "Về sớm",
+                CHECK_IN = "Check-in",
+                CHECK_OUT = "Check-out";
         }
 
         private static DatabaseHelper dbHelper = new();
@@ -44,75 +46,94 @@ namespace timber_shop_manager.objects
                 new SqlParameter("@id", this.id),
                 new SqlParameter("@date", this.date.Date)));
 
-            if (count == 0)
+            // Kiểm tra nếu đã đủ 2 lần chấm công trong ngày
+            if (count >= 2)
             {
-                InsertAttendance();
+                MessageBox.Show("Đã đủ 2 lần chấm công trong ngày.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Không ghi thêm vào database nếu đã đủ 2 lần
             }
-            else
+
+            query = "SELECT Date FROM Attendance WHERE Id = @id AND CAST(Date AS DATE) = @date ORDER BY Date ASC";
+            var dt = dbHelper.ExecuteQuery(query,
+                new SqlParameter("@id", this.id),
+                new SqlParameter("@date", this.date.Date));
+
+            bool canInsert = true;
+
+            foreach (DataRow row in dt.Rows)
             {
-                query = "SELECT Date FROM Attendance WHERE Id = @id AND CAST(Date AS DATE) = @date ORDER BY Date ASC";
+                DateTime existingClockIn = Convert.ToDateTime(row["Date"]);
 
-                var dt = dbHelper.ExecuteQuery(query,
-                    new SqlParameter("@id", this.id),
-                    new SqlParameter("@date", this.date.Date));
-
-                DateTime firstClockIn = DateTime.MinValue;
-                bool canInsert = true;
-
-                foreach (DataRow row in dt.Rows)
+                // Kiểm tra thời gian giữa lần chấm công hiện tại và lần trước đó
+                if ((this.date - existingClockIn).TotalMinutes < MINUTES_BETWEEN_CLOCKINS)
                 {
-                    DateTime existingClockIn = Convert.ToDateTime(row["Date"]);
-
-                    if (firstClockIn == DateTime.MinValue)
-                    {
-                        firstClockIn = existingClockIn;
-                    }
-                    else if ((this.date - firstClockIn).TotalMinutes < MINUTES_BETWEEN_CLOCKINS)
-                    {
-                        canInsert = false;
-                        break;
-                    }
+                    MessageBox.Show($"Không thể chấm công.\nChưa đủ {MINUTES_BETWEEN_CLOCKINS} phút từ lần chấm công trước.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    canInsert = false;
+                    break;
                 }
+            }
 
-                if (canInsert)
+            // Nếu không gặp lỗi, tiếp tục chấm công
+            if (canInsert)
+            {
+                // Kiểm tra xem có phải là Check-in hay Check-out
+                if (dt.Rows.Count == 0)
                 {
-                    string review = GetReviewStatus(this.date);
-                    InsertAttendance();
-                    MessageBox.Show($"Chấm công thành công!\nTrạng thái: {review}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    InsertAttendance(STATUS.CHECK_IN); // Nếu chưa có lần chấm công, thì là Check-in
                 }
                 else
                 {
-                    MessageBox.Show("Không thể chấm công. Đã đủ 2 lần trong ngày hoặc chưa đủ 2 tiếng từ lần chấm công trước.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    InsertAttendance(STATUS.CHECK_OUT); // Nếu đã có lần chấm công, thì là Check-out
                 }
             }
         }
 
-        private void InsertAttendance()
+        private void InsertAttendance(string check)
         {
-            string review = GetReviewStatus(this.date);
+            string msg = GetReviewStatus(this.date, check);
+            string review = $"{check}: {msg}";
 
             string query = "INSERT INTO Attendance (Id, Date, Review) VALUES (@id, @date, @review)";
             dbHelper.ExecuteNonQuery(query,
                 new SqlParameter("@id", this.id),
                 new SqlParameter("@date", this.date),
                 new SqlParameter("@review", review ?? (object)DBNull.Value));
+
+            MessageBox.Show($"Chấm công thành công!\nTrạng thái: {msg}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private string GetReviewStatus(DateTime clockInTime)
+
+        private string GetReviewStatus(DateTime clockInTime, string actionType)
         {
-            if (clockInTime.TimeOfDay <= WORKING_HOURS)
+            if (actionType == STATUS.CHECK_IN)
             {
-                return STATUS.CHECK_IN_ON_TIME; 
+                if (clockInTime.TimeOfDay <= WORKING_HOURS)
+                {
+                    return STATUS.CHECK_IN_ON_TIME; // Đến đúng giờ
+                }
+                else if (clockInTime.TimeOfDay > WORKING_HOURS && clockInTime.TimeOfDay < FINISHING_TIME)
+                {
+                    return STATUS.CHECK_IN_LATE; // Đi muộn
+                }
+                else if (clockInTime.TimeOfDay < WORKING_HOURS)
+                {
+                    return STATUS.CHECK_IN_EARLY; // Đến sớm
+                }
             }
-            else if (clockInTime.TimeOfDay > WORKING_HOURS && clockInTime.TimeOfDay < FINISHING_TIME)
+            // Nếu là Check-out
+            else if (actionType == STATUS.CHECK_OUT)
             {
-                return STATUS.CHECK_IN_LATE; 
+                if (clockInTime.TimeOfDay < FINISHING_TIME)
+                {
+                    return STATUS.CHECK_OUT_EARLY; // Về sớm
+                }
+                else
+                {
+                    return STATUS.CHECK_OUT_ON_TIME; // Về đúng giờ
+                }
             }
-            else if (clockInTime.TimeOfDay < WORKING_HOURS)
-            {
-                return STATUS.CHECK_IN_EARLY; 
-            }
-            return STATUS.CHECK_IN_ON_TIME; 
+
+            return STATUS.CHECK_IN_ON_TIME; // Mặc định nếu không thỏa các điều kiện trên
         }
     }
 }
