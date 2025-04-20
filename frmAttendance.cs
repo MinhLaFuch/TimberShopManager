@@ -17,35 +17,18 @@ namespace timber_shop_manager
     {
         #region Properties
         private DatabaseHelper dbHelper = new DatabaseHelper();
-        private Account account;
-        private string employeeId = "";
-        private string employeeName = "";
-        public string EmployeeId
-        {
-            get { return employeeId; }
-            set { employeeId = value; }
-        }
-        public string EmployeeName
-        {
-            get { return employeeName; }
-            set { employeeName = value; }
-        }
+        private Account account = null;
+
         public frmAttendance()
         {
             InitializeComponent();
         }
         // Will not work unless change OOP
-        public frmAttendance(Account acc)
+        public frmAttendance(Account acc) : this()
         {
             this.account = acc;
-            //this.employeeId = acc.Username; // Get EmployeeId from Account
-            //this.employeeName = acc.Username; // Get EmployeeName from Account
-            // Get Employee from Account
-
-            InitializeComponent();
         }
-        #endregion
-        #region Support Method
+
         private void loadForm()
         {
             cbTimeStamp.SelectedIndex = 0;
@@ -98,15 +81,12 @@ namespace timber_shop_manager
             }
             return dt;
         }
-        #endregion
-        #region Event
-        #region Load
+
         private void frmAttendance_Load(object sender, EventArgs e)
         {
             loadForm();
         }
-        #endregion
-        #region Click
+
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             loadForm();
@@ -136,33 +116,7 @@ namespace timber_shop_manager
                 new SqlParameter("@time", currentTime.TimeOfDay),
                 new SqlParameter("@review", review));
         }
-        #endregion
-        #region Change Value
-        private void cbTimeStamp_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (cbTimeStamp.SelectedItem.ToString() == "Ngày -> Ngày")
-            {
-                dtpFrom.Visible = dtpTo.Visible = true;
-                dtpFrom.Value = DateTime.Now;
-                dtpTo.Value = DateTime.Now;
-            }
-            else
-            {
-                dtpFrom.Visible = dtpTo.Visible = false;
-            }
-            dgv.DataSource = loadData();
-        }
-        private void dtpFrom_ValueChanged(object sender, EventArgs e)
-        {
-            dgv.DataSource = loadData();
-        }
 
-        private void dtpTo_ValueChanged(object sender, EventArgs e)
-        {
-            dgv.DataSource = loadData();
-        }
-        #endregion
-        #region Tick
         private void realTimeClock_Tick(object sender, EventArgs e)
         {
             DateTime currentTime = DateTime.Now;
@@ -178,7 +132,6 @@ namespace timber_shop_manager
                 btnAttend.Enabled = true;
             }
         }
-        #endregion
-        #endregion
+
     }
 }
