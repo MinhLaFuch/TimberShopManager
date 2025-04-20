@@ -14,72 +14,106 @@ namespace timber_shop_manager
 {
     public partial class frmSale : Form
     {
-        #region Properties
+
         private DatabaseHelper dbHelper = new DatabaseHelper();
-        private Account account;
-        public frmSale(Account account)
+        private Account acc;
+        private Product selectedProduct = null;
+        private DynamicSearch dynamicSearch = null;
+        private int selectedRowIndex = -1;
+
+        private string
+            name = "Bui Ngoc Quy",
+            id = "E001";
+
+        public frmSale()
         {
             InitializeComponent();
-            this.account = account;
         }
-        #endregion
-        #region Support methods
-        public string GetIdFromString(string input)
+
+        public frmSale(Account acc) : this()
         {
-            string[] parts = input.Split(" - ");
-
-            if (parts.Length < 3)
-            {
-                return null;
-            }
-
-            return parts[0].Trim();
+            this.acc = acc;
         }
+
         private void FormLoad()
         {
-            LoadComboboxSearch();
-            ClearGroupBoxCustomer();
+            txtPhoneNumber.AutoCompleteCustomSource = LoadAutoCompleteDataForCustomer();
+            txtPhoneNumber.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtPhoneNumber.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
-            pnlSearch.Enabled = false;
-            gbCustomer.Enabled = false;
+            dgvProduct.DataSource = LoadProduct();
 
+            txtProductName.AutoCompleteCustomSource = LoadAutoCompleteDataForProduct();
+            txtProductName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtProductName.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
-            txtID.Clear();
+            if (dgvSale.Columns.Count == 0)
+            {
+                dgvSale.Columns.Add("ProductId", "Mã Sản Phẩm");
+                dgvSale.Columns.Add("ProductName", "Tên Sản Phẩm");
+                dgvSale.Columns.Add("Quantity", "Số Lượng");
+                dgvSale.Columns.Add("PriceQuotation", "Giá Niêm Yết");
+                dgvSale.Columns.Add("Tax", "Thuế");
+                dgvSale.Columns.Add("Total", "Tổng Tiền");
+                dgvSale.Columns.Add("WarrantyEnd", "Thời Gian Bảo Hành");
+            }
         }
 
-        private void LoadComboboxSearch()
+        private AutoCompleteStringCollection LoadAutoCompleteDataForProduct()
         {
-            string query = "SELECT ProductId, CatagoryId, Name, CalculationUnit, PriceQuotation, CustomerWarranty, Description, Quantity FROM Product";
+            var autoCompleteCollection = new AutoCompleteStringCollection();
 
-            //List<string> data = dbHelper.GetDataForList(query, reader => new Product(
-            //    reader.GetString(reader.GetOrdinal("ProductId")),
-            //    reader.GetString(reader.GetOrdinal("CatagoryId")),
-            //    reader.GetString(reader.GetOrdinal("Name")),
-            //    reader.GetString(reader.GetOrdinal("CalculationUnit")),
-            //    reader.GetDouble(reader.GetOrdinal("PriceQuotation")),
-            //    reader.GetInt32(reader.GetOrdinal("CustomerWarranty")),
-            //    reader.GetString(reader.GetOrdinal("Description")),
-            //    reader.GetInt32(reader.GetOrdinal("Quantity"))
-            //    ).ToString());
+            string query = "SELECT Name FROM Product";
+            List<string> items = dbHelper.GetDataForComboBox(query, "Name");
 
-            //cbSearchProduct.DataSource = data;
-            cbSearchProduct.SelectedIndex = -1;
+            foreach (var item in items)
+            {
+                autoCompleteCollection.Add(item);
+            }
+            return autoCompleteCollection;
         }
+
+        public DataTable LoadProduct()
+        {
+            string query = @"SELECT 
+                        Id AS 'Mã Sản Phẩm',
+                        Name AS 'Tên Sản Phẩm',
+                        CalculationUnit AS 'Đơn Vị Tính',
+                        PriceQuotation AS 'Giá Niêm Yết',
+                        Quantity AS 'Số Lượng',
+                        CustomerWarranty AS 'Bảo Hành Khách Hàng',
+                        Description AS 'Mô Tả'
+                     FROM Product";
+            return dbHelper.ExecuteQuery(query);
+        }
+
+        private AutoCompleteStringCollection LoadAutoCompleteDataForCustomer()
+        {
+            var autoCompleteCollection = new AutoCompleteStringCollection();
+
+            string query = "SELECT PhoneNumber FROM Customer";
+            List<string> items = dbHelper.GetDataForComboBox(query, "PhoneNumber");
+
+            foreach (var item in items)
+            {
+                autoCompleteCollection.Add(item);
+            }
+            return autoCompleteCollection;
+        }
+
         private void ClearGroupBoxCustomer()
         {
             txtPhoneNumber.Clear();
             txtCustomerName.Clear();
             txtAddress.Clear();
         }
-        #endregion
-        #region Events
-        #region Load
+
         private void frmSale_Load(object sender, EventArgs e)
         {
+            txtEmployeeName.Text = name;
             FormLoad();
         }
-        #endregion
-        #region Click
+
         private void btnCreate_Click(object sender, EventArgs e)
         {
             FormLoad();
@@ -91,22 +125,11 @@ namespace timber_shop_manager
 
             string currentInvoiceId = Convert.ToString(dbHelper.ExecuteScalar(query));
             string invoiceId = Program.GenerateNextCode(currentInvoiceId, Product.PREFIX, Product.CODE_LENGTH);
-            txtID.Text = invoiceId;
+            txtId.Text = invoiceId;
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             FormLoad();
-        }
-
-        private void btnSearchCustomer_Click(object sender, EventArgs e)
-        {
-            //frmCustomer frmCustomer = new frmCustomer(Employee.Role.SALE_AGENT);
-            //frmCustomer.ShowDialog();
-        }
-
-        private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //Program.CheckInputIsDigit(e);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -119,36 +142,137 @@ namespace timber_shop_manager
         }
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-
-        }
-        #endregion
-        #region TextChanged
-        private void cbbSearch_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (cbSearchProduct.SelectedIndex != -1)
+            // Kiểm tra xem sản phẩm đã được chọn chưa và số lượng có hợp lệ không
+            if (selectedProduct == null)
             {
-                btnAddProduct.Enabled = true;
-                string id = GetIdFromString(cbSearchProduct.Text);
+                MessageBox.Show("Vui lòng chọn sản phẩm!");
+                return;
+            }
 
-                string queryQuantity = "SELECT Quantity FROM Product WHERE ProductId = @id";
-                string queryUnit = "SELECT CalculationUnit FROM Product WHERE ProductId = @id";
+            if (nudQuantity.Value <= 0)
+            {
+                MessageBox.Show("Vui lòng nhập số lượng hợp lệ!");
+                return;
+            }
 
-                int quantity = Convert.ToInt32(dbHelper.ExecuteScalar(queryQuantity, new SqlParameter("@id", id)));
-                string unit = Convert.ToString(dbHelper.ExecuteScalar(queryUnit, new SqlParameter("@id", id)));
-                lblUnit.Text = unit;
+            // Lấy giá trị từ các ô
+            string productId = selectedProduct.Id;
+            string productName = selectedProduct.Name;
+            string unit = selectedProduct.CalculationUnit;
+            decimal priceQuotation = Convert.ToDecimal(selectedProduct.PriceQuotation);
+            decimal quantity = nudQuantity.Value;
+            decimal tax = 0.1m; // Ví dụ: thuế 10%
+            decimal total = priceQuotation * quantity * (1 + tax); // Tính tổng tiền (bao gồm thuế)
+            DateTime warrantyEnd = DateTime.Now.AddMonths((int)selectedProduct.CustomerWarranty); // Thời gian bảo hành
 
+            // Thêm vào dgvSale
+            dgvSale.Rows.Add(productId, productName, quantity, priceQuotation, tax, total, warrantyEnd.ToString("dd/MM/yyyy"));
 
-                nudQuantity.Maximum = quantity;
+            // Cập nhật tổng tiền trong hóa đơn
+            UpdateTotalAmount();
+        }
 
-                //if (nudQuantity.Maximum == Product.SOLD_OUT)
-                //{
-                //    btnAddProduct.Enabled = false;
+        private void UpdateTotalAmount()
+        {
+            decimal totalAmount = 0;
 
-                //    MessageBox.Show("Mặt hàng này đã hết!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
+            foreach (DataGridViewRow row in dgvSale.Rows)
+            {
+                totalAmount += Convert.ToDecimal(row.Cells["Total"].Value); // Cộng tổng tiền từ tất cả các dòng
+            }
+
+            txtTotal.Text = totalAmount.ToString("N0"); // Hiển thị tổng tiền vào TextBox
+        }
+
+        private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
+        {
+            Customer cus = null;
+            if ((cus = Customer.GetCustomer(txtPhoneNumber.Text)) != null)
+            {
+                txtCustomerName.Text = cus.Name;
+                txtAddress.Text = cus.Address;
             }
         }
-        #endregion
-        #endregion
+
+        private void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+            bool isValid = InputValidator.ValidateNotEmpty(new Dictionary<Control, Label>
+            {
+                {txtPhoneNumber, lbPhoneNumber },
+                {txtCustomerName, lbCustomerName },
+                {txtAddress, lbAddress }
+            });
+
+            if (isValid)
+            {
+                Customer newCustomer = new Customer("0987654321", "Nguyen Thi B", "456 Another St");
+                Customer.add(newCustomer);
+            }
+        }
+
+        private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e) => InputValidator.CheckInputIsDigit(e);
+        private void txtCustomerName_KeyPress(object sender, KeyPressEventArgs e) => InputValidator.CheckInputIsLetter(e);
+
+        private void dgvProduct_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dynamicSearch?.Disable();
+            if (e.RowIndex >= 0) // e.RowIndex sẽ là -1 nếu nhấp vào tiêu đề cột
+            {
+                DataGridViewRow selectedRow = dgvProduct.Rows[e.RowIndex];
+
+                string id = selectedRow.Cells["Mã Sản Phẩm"].Value.ToString();
+                string name = txtProductName.Text = selectedRow.Cells["Tên Sản Phẩm"].Value.ToString();
+                string calculationUnit = lbUnit.Text = selectedRow.Cells["Đơn Vị Tính"].Value.ToString();
+                string priceQuotation = selectedRow.Cells["Giá Niêm Yết"].Value.ToString();
+                string quantity = selectedRow.Cells["Số Lượng"].Value.ToString();
+                string customerWarranty = selectedRow.Cells["Bảo Hành Khách Hàng"].Value.ToString();
+                string description = selectedRow.Cells["Mô Tả"].Value.ToString();
+
+                selectedProduct = new Product(id, "", name, calculationUnit, priceQuotation, quantity, customerWarranty, description);
+                nudQuantity.Maximum = Convert.ToDecimal(quantity);
+                nudQuantity.Value = (nudQuantity.Maximum > 0) ? 1 : 0;
+            }
+        }
+
+        private void txtProductName_Click(object sender, EventArgs e)
+        {
+            if (dynamicSearch == null)
+            {
+                dynamicSearch = new DynamicSearch(
+                    new List<Control> { txtProductName },  // Các điều khiển tìm kiếm, ở đây chỉ có ComboBox
+                    new Dictionary<string, string>
+                    {
+                        { "txtProductName", "Tên Sản Phẩm" }  // Ánh xạ tên điều khiển với tên cột trong DataTable
+                    },
+                    LoadProduct,
+                    dgvProduct
+                );
+            }
+            dynamicSearch?.Enable();
+        }
+
+        private void dgvSale_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                selectedRowIndex = e.RowIndex;
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (selectedRowIndex >= 0)
+            {
+                dgvSale.Rows.RemoveAt(selectedRowIndex);
+
+                selectedRowIndex = -1;
+
+                UpdateTotalAmount();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một sản phẩm để xóa.");
+            }
+        }
     }
 }

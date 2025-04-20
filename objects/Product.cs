@@ -17,9 +17,23 @@ namespace timber_shop_manager.objects
 
         private static DatabaseHelper dbHelper = new DatabaseHelper();
 
-        protected string id, catId, name, calculationUnit, description;
-        protected double priceQuotation;
-        protected int quantity, customerWarranty;
+        private string description;
+        private double priceQuotation;
+        private int customerWarranty;
+        private string id;
+        private string catId;
+        private string name;
+        private string calculationUnit;
+        private int quantity;
+
+        public string Id { get => id; set => id = value; }
+        public string CatId { get => catId; set => catId = value; }
+        public string Name { get => name; set => name = value; }
+        public string CalculationUnit { get => calculationUnit; set => calculationUnit = value; }
+        public string Description { get => description; set => description = value; }
+        public double PriceQuotation { get => priceQuotation; set => priceQuotation = value; }
+        public int Quantity { get => quantity; set => quantity = value; }
+        public int CustomerWarranty { get => customerWarranty; set => customerWarranty = value; }
 
         public Product(string id, string catId, string name, string calculationUnit, string priceQuotation,
                        string quantity, string customerWarranty, string description)
