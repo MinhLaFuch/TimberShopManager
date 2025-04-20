@@ -18,7 +18,7 @@ namespace timber_shop_manager
         private DatabaseHelper dbHelper = new DatabaseHelper();
         private Account account = null;
 
-        private string id = "E009";
+        private string id = string.Empty;
 
         public frmAttendance()
         {
@@ -29,6 +29,11 @@ namespace timber_shop_manager
         public frmAttendance(Account acc) : this()
         {
             this.account = acc;
+        }
+
+        public frmAttendance(string id) : this()
+        {
+            this.id = id;
         }
 
         private void frmAttendance_Load(object sender, EventArgs e)
