@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 using Microsoft.Data.SqlClient;
 using timber_shop_manager.objects;
 
@@ -138,7 +140,7 @@ namespace timber_shop_manager
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-
+            PrintInvoice(txtId.Text, "", txtEmployeeName.Text, txtPhoneNumber.Text, txtCustomerName.Text, txtAddress.Text, dgvSale);
         }
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
@@ -272,6 +274,126 @@ namespace timber_shop_manager
             else
             {
                 MessageBox.Show("Vui lòng chọn một sản phẩm để xóa.");
+            }
+        }
+
+        private void PrintInvoice(string invoiceId, string saleId, string saleName, string customerPhone, string customerName, string customerAddress, DataGridView dgvSale)
+        {
+            if (dgvSale.Rows.Count > 0)
+            {
+                SaveFileDialog save = new SaveFileDialog();
+                save.Filter = "PDF (*.pdf)|*.pdf";
+                save.FileName = $"Invoice_{DateTime.Now.ToString("yyyyMMddHHmmss")}";
+                bool errorMessage = false;
+
+                if (save.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(save.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(save.FileName);
+                        }
+                        catch (Exception ex)
+                        {
+                            errorMessage = true;
+                            MessageBox.Show("Không thể ghi dữ liệu vào đĩa: " + ex.Message);
+                        }
+                    }
+
+                    if (!errorMessage)
+                    {
+                        try
+                        {
+                            PdfPTable pTable = new PdfPTable(dgvSale.Columns.Count);
+                            pTable.DefaultCell.Padding = 5;
+                            pTable.WidthPercentage = 100;
+                            pTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                            // Sử dụng font hỗ trợ tiếng Việt (Ví dụ: VnTime)
+                            string fontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arial.ttf");
+                            BaseFont bf = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+
+                            iTextSharp.text.Font titleFont = new iTextSharp.text.Font(bf, 14, 1);
+                            iTextSharp.text.Font headerFont = new iTextSharp.text.Font(bf, 11, 1);
+                            iTextSharp.text.Font textFont = new iTextSharp.text.Font(bf, 11, 0);
+
+                            // Tiêu đề hóa đơn với màu sắc và font chữ đẹp hơn
+                            pTable.AddCell(new PdfPCell(new Phrase("CÔNG TY ABC", titleFont)) { Colspan = dgvSale.Columns.Count, HorizontalAlignment = Element.ALIGN_CENTER, Border = 0 });
+                            pTable.AddCell(new PdfPCell(new Phrase("HÓA ĐƠN BÁN HÀNG", titleFont)) { Colspan = dgvSale.Columns.Count, HorizontalAlignment = Element.ALIGN_CENTER, Border = 0 });
+                            pTable.AddCell(new PdfPCell(new Phrase(" ")) { Colspan = dgvSale.Columns.Count, Border = 0 });
+
+                            pTable.AddCell(new PdfPCell(new Phrase("Mã hoá đơn: " + invoiceId, textFont)) { Colspan = dgvSale.Columns.Count, HorizontalAlignment = Element.ALIGN_LEFT, Border = 0 });
+                            pTable.AddCell(new PdfPCell(new Phrase("Ngày lập hóa đơn: " + DateTime.Now.ToString("dd/MM/yyyy"), textFont)) { Colspan = dgvSale.Columns.Count, HorizontalAlignment = Element.ALIGN_LEFT, Border = 0 });
+                            pTable.AddCell(new PdfPCell(new Phrase(" ")) { Colspan = dgvSale.Columns.Count, Border = 0 });
+
+                            pTable.AddCell(new PdfPCell(new Phrase("Mã nhân viên bán hàng: " + saleId, textFont)) { Colspan = dgvSale.Columns.Count, HorizontalAlignment = Element.ALIGN_LEFT, Border = 0 });
+                            pTable.AddCell(new PdfPCell(new Phrase("Tên nhân viên bán hàng: " + saleName, textFont)) { Colspan = dgvSale.Columns.Count, HorizontalAlignment = Element.ALIGN_LEFT, Border = 0 });
+                            pTable.AddCell(new PdfPCell(new Phrase(" ")) { Colspan = dgvSale.Columns.Count, Border = 0 });
+
+                            pTable.AddCell(new PdfPCell(new Phrase("Số điện thoại khách hàng: " + customerPhone, textFont)) { Colspan = dgvSale.Columns.Count, HorizontalAlignment = Element.ALIGN_LEFT, Border = 0 });
+                            pTable.AddCell(new PdfPCell(new Phrase("Tên khách hàng: " + customerName, textFont)) { Colspan = dgvSale.Columns.Count, HorizontalAlignment = Element.ALIGN_LEFT, Border = 0 });
+                            pTable.AddCell(new PdfPCell(new Phrase("Địa chỉ khách hàng: " + customerAddress, textFont)) { Colspan = dgvSale.Columns.Count, HorizontalAlignment = Element.ALIGN_LEFT, Border = 0 });
+
+                            // Thêm một dòng khoảng cách
+                            pTable.AddCell(new PdfPCell(new Phrase(" ")) { Colspan = dgvSale.Columns.Count, Border = 0 });
+
+                            // Thêm tiêu đề cột từ DataGridView
+                            foreach (DataGridViewColumn col in dgvSale.Columns)
+                            {
+                                PdfPCell pCell = new PdfPCell(new Phrase(col.HeaderText, headerFont));
+                                pTable.AddCell(pCell);
+                            }
+
+                            // Thêm dữ liệu từ DataGridView vào bảng PDF
+                            foreach (DataGridViewRow row in dgvSale.Rows)
+                            {
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    pTable.AddCell(new Phrase(cell.Value.ToString(), textFont));
+                                }
+                            }
+
+                            // Tính tổng tiền
+                            decimal totalAmount = 0;
+                            foreach (DataGridViewRow row in dgvSale.Rows)
+                            {
+                                totalAmount += Convert.ToDecimal(row.Cells["Total"].Value); // Tổng tiền từ cột Total
+                            }
+
+                            // Thêm tổng tiền vào cuối bảng
+                            pTable.AddCell(new PdfPCell(new Phrase(" ")) { Colspan = dgvSale.Columns.Count, Border = 0 });
+
+                            //pTable.AddCell(new PdfPCell(new Phrase("Tổng tiền", textFont)) { Colspan = dgvSale.Columns.Count - 1, Border = 0 });
+                            pTable.AddCell(new PdfPCell(new Phrase("Tổng tiền: " + totalAmount.ToString(), textFont)) { Colspan = dgvSale.Columns.Count, Border = 0, HorizontalAlignment = Element.ALIGN_RIGHT });
+
+                            // Thêm khu vực ký tên nhân viên bán hàng
+                            pTable.AddCell(new PdfPCell(new Phrase(" ")) { Colspan = dgvSale.Columns.Count, Border = 0 });
+                            pTable.AddCell(new PdfPCell(new Phrase("Ký tên nhân viên bán hàng", textFont)) { Colspan = dgvSale.Columns.Count, HorizontalAlignment = Element.ALIGN_RIGHT, Border = 0 });
+
+                            // Tạo tệp PDF và lưu vào file
+                            using (FileStream fileStream = new FileStream(save.FileName, FileMode.Create))
+                            {
+                                Document document = new Document(PageSize.A5, 8f, 16f, 16f, 8f);
+                                PdfWriter.GetInstance(document, fileStream);
+                                document.Open();
+                                document.Add(pTable);
+                                document.Close();
+                                fileStream.Close();
+                            }
+
+                            MessageBox.Show("Hóa đơn đã được in thành công", "Thông báo");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi khi xuất hóa đơn: " + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không có dữ liệu để in hóa đơn", "Thông báo");
             }
         }
     }
