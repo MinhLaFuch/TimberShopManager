@@ -11,6 +11,7 @@ using iTextSharp.text.pdf;
 using iTextSharp.text;
 using Microsoft.Data.SqlClient;
 using timber_shop_manager.objects;
+using System.Runtime.CompilerServices;
 
 namespace timber_shop_manager
 {
@@ -39,6 +40,11 @@ namespace timber_shop_manager
 
         private void FormLoad()
         {
+            txtId.Clear();
+
+            DisableAllControls(true);
+            txtEmployeeName.Text = name;
+
             txtPhoneNumber.AutoCompleteCustomSource = LoadAutoCompleteDataForCustomer();
             txtPhoneNumber.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txtPhoneNumber.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -112,21 +118,36 @@ namespace timber_shop_manager
 
         private void frmSale_Load(object sender, EventArgs e)
         {
-            txtEmployeeName.Text = name;
             FormLoad();
+        }
+
+        private void DisableAllControls(bool enable)
+        {
+            btnCancel.Enabled = !enable;
+            btnDelete.Enabled = !enable;
+            btnCreate.Enabled = !enable;
+            btnConfirm.Enabled = !enable;
+
+            pnPurchase.Enabled = pnCustomer.Enabled = !enable;
+            btnAddCustomer.Enabled = fpnBtnCustomer.Enabled = pnFindProduct.Enabled = !enable;
+
+            dgvSale.Enabled = !enable;
+            dgvProduct.Enabled = !enable;
+
+            btnCreate.Enabled = enable;
+
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
             FormLoad();
 
-            gbCustomer.Enabled = true;
-            pnlSearch.Enabled = true;
+            DisableAllControls(false);
 
-            string query = "SELECT TOP 1 SaleInvoiceId FROM SaleInvoice ORDER BY SaleInvoiceId DESC";
+            string query = "SELECT MAX(Id) FROM SaleInvoice";
 
             string currentInvoiceId = Convert.ToString(dbHelper.ExecuteScalar(query));
-            string invoiceId = Program.GenerateNextCode(currentInvoiceId, Product.PREFIX, Product.CODE_LENGTH);
+            string invoiceId = Program.GenerateNextCode(currentInvoiceId, SaleInvoice.PREFIX, SaleInvoice.CODE_LENGTH);
             txtId.Text = invoiceId;
         }
         private void btnCancel_Click(object sender, EventArgs e)
@@ -169,7 +190,7 @@ namespace timber_shop_manager
             string unit = selectedProduct.CalculationUnit;
             decimal priceQuotation = Convert.ToDecimal(selectedProduct.PriceQuotation);
             decimal quantity = nudQuantity.Value;
-            decimal tax = 0.1m; // Ví dụ: thuế 10%
+            decimal tax = Convert.ToDecimal(SaleInvoice.VAT_TAX); // Ví dụ: thuế 10%
             decimal total = priceQuotation * quantity * (1 + tax); // Tính tổng tiền (bao gồm thuế)
             DateTime warrantyEnd = DateTime.Now.AddMonths((int)selectedProduct.CustomerWarranty); // Thời gian bảo hành
 

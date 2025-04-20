@@ -80,14 +80,14 @@
             lbEmployee = new Label();
             txtId = new TextBox();
             gbCustomer = new Guna.UI2.WinForms.Guna2GroupBox();
-            panel1 = new Panel();
+            pnCustomer = new Panel();
             txtPhoneNumber = new TextBox();
             txtCustomerName = new TextBox();
             lbCustomerName = new Label();
             lbPhoneNumber = new Label();
             lbAddress = new Label();
             txtAddress = new TextBox();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            fpnBtnCustomer = new FlowLayoutPanel();
             btnAddCustomer = new Guna.UI2.WinForms.Guna2Button();
             dgvProduct = new Guna.UI2.WinForms.Guna2DataGridView();
             pnInfo = new FlowLayoutPanel();
@@ -103,8 +103,8 @@
             pnPurchase.SuspendLayout();
             pnInvoiceInfo.SuspendLayout();
             gbCustomer.SuspendLayout();
-            panel1.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
+            pnCustomer.SuspendLayout();
+            fpnBtnCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProduct).BeginInit();
             pnInfo.SuspendLayout();
             pnFindProduct.SuspendLayout();
@@ -123,7 +123,7 @@
             btnClear.FillColor = Color.FromArgb(59, 93, 79);
             btnClear.Font = new Font("Segoe UI", 9F);
             btnClear.ForeColor = Color.White;
-            btnClear.Location = new Point(171, 2);
+            btnClear.Location = new Point(109, 2);
             btnClear.Margin = new Padding(3, 2, 3, 2);
             btnClear.Name = "btnClear";
             btnClear.ShadowDecoration.CustomizableEdges = customizableEdges2;
@@ -345,6 +345,7 @@
             pnInvoiceInfo.Controls.Add(lbDate);
             pnInvoiceInfo.Controls.Add(lbEmployee);
             pnInvoiceInfo.Controls.Add(txtId);
+            pnInvoiceInfo.Enabled = false;
             pnInvoiceInfo.Location = new Point(3, 32);
             pnInvoiceInfo.Margin = new Padding(3, 2, 3, 2);
             pnInvoiceInfo.Name = "pnInvoiceInfo";
@@ -428,8 +429,8 @@
             // 
             // gbCustomer
             // 
-            gbCustomer.Controls.Add(panel1);
-            gbCustomer.Controls.Add(flowLayoutPanel1);
+            gbCustomer.Controls.Add(pnCustomer);
+            gbCustomer.Controls.Add(fpnBtnCustomer);
             gbCustomer.CustomBorderColor = Color.FromArgb(59, 93, 79);
             gbCustomer.CustomizableEdges = customizableEdges17;
             gbCustomer.FillColor = SystemColors.Control;
@@ -443,19 +444,19 @@
             gbCustomer.TabIndex = 17;
             gbCustomer.Text = "Khách hàng";
             // 
-            // panel1
+            // pnCustomer
             // 
-            panel1.Controls.Add(txtPhoneNumber);
-            panel1.Controls.Add(txtCustomerName);
-            panel1.Controls.Add(lbCustomerName);
-            panel1.Controls.Add(lbPhoneNumber);
-            panel1.Controls.Add(lbAddress);
-            panel1.Controls.Add(txtAddress);
-            panel1.Location = new Point(7, 32);
-            panel1.Margin = new Padding(3, 2, 3, 2);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(318, 116);
-            panel1.TabIndex = 21;
+            pnCustomer.Controls.Add(txtPhoneNumber);
+            pnCustomer.Controls.Add(txtCustomerName);
+            pnCustomer.Controls.Add(lbCustomerName);
+            pnCustomer.Controls.Add(lbPhoneNumber);
+            pnCustomer.Controls.Add(lbAddress);
+            pnCustomer.Controls.Add(txtAddress);
+            pnCustomer.Location = new Point(7, 32);
+            pnCustomer.Margin = new Padding(3, 2, 3, 2);
+            pnCustomer.Name = "pnCustomer";
+            pnCustomer.Size = new Size(318, 116);
+            pnCustomer.TabIndex = 21;
             // 
             // txtPhoneNumber
             // 
@@ -525,16 +526,16 @@
             txtAddress.Size = new Size(249, 41);
             txtAddress.TabIndex = 13;
             // 
-            // flowLayoutPanel1
+            // fpnBtnCustomer
             // 
-            flowLayoutPanel1.Controls.Add(btnClear);
-            flowLayoutPanel1.Controls.Add(btnAddCustomer);
-            flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanel1.Location = new Point(57, 158);
-            flowLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(268, 32);
-            flowLayoutPanel1.TabIndex = 20;
+            fpnBtnCustomer.Controls.Add(btnClear);
+            fpnBtnCustomer.Controls.Add(btnAddCustomer);
+            fpnBtnCustomer.FlowDirection = FlowDirection.RightToLeft;
+            fpnBtnCustomer.Location = new Point(119, 158);
+            fpnBtnCustomer.Margin = new Padding(3, 2, 3, 2);
+            fpnBtnCustomer.Name = "fpnBtnCustomer";
+            fpnBtnCustomer.Size = new Size(206, 32);
+            fpnBtnCustomer.TabIndex = 20;
             // 
             // btnAddCustomer
             // 
@@ -547,7 +548,7 @@
             btnAddCustomer.FillColor = Color.FromArgb(59, 93, 79);
             btnAddCustomer.Font = new Font("Segoe UI", 9F);
             btnAddCustomer.ForeColor = Color.White;
-            btnAddCustomer.Location = new Point(71, 2);
+            btnAddCustomer.Location = new Point(9, 2);
             btnAddCustomer.Margin = new Padding(3, 2, 3, 2);
             btnAddCustomer.Name = "btnAddCustomer";
             btnAddCustomer.ShadowDecoration.CustomizableEdges = customizableEdges16;
@@ -776,9 +777,9 @@
             pnInvoiceInfo.ResumeLayout(false);
             pnInvoiceInfo.PerformLayout();
             gbCustomer.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
+            pnCustomer.ResumeLayout(false);
+            pnCustomer.PerformLayout();
+            fpnBtnCustomer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvProduct).EndInit();
             pnInfo.ResumeLayout(false);
             pnFindProduct.ResumeLayout(false);
@@ -805,7 +806,7 @@
         private Guna.UI2.WinForms.Guna2GroupBox gbCustomer;
         private Guna.UI2.WinForms.Guna2DataGridView dgvProduct;
         private FlowLayoutPanel pnInfo;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel fpnBtnCustomer;
         private Panel pnFindProduct;
         private Guna.UI2.WinForms.Guna2NumericUpDown nudQuantity;
         private Panel pnInvoiceInfo;
@@ -815,7 +816,7 @@
         private Label lbDate;
         private Label lbEmployee;
         private TextBox txtId;
-        private Panel panel1;
+        private Panel pnCustomer;
         private TextBox txtCustomerName;
         private Label lbCustomerName;
         private Label lbAddress;
