@@ -68,11 +68,10 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(136, 85);
+            textBox1.Location = new Point(0, 0);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(154, 23);
-            textBox1.TabIndex = 7;
-            textBox1.TextChanged += textBox1_TextChanged;
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 0;
             // 
             // chart
             // 
@@ -127,6 +126,7 @@
             dtpTimeReport.Checked = true;
             dtpTimeReport.CustomFormat = "dd/MM/yyyy";
             dtpTimeReport.CustomizableEdges = customizableEdges1;
+            dtpTimeReport.Enabled = false;
             dtpTimeReport.Font = new Font("Segoe UI", 9F);
             dtpTimeReport.Format = DateTimePickerFormat.Custom;
             dtpTimeReport.Location = new Point(138, 65);

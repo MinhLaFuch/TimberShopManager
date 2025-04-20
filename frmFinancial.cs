@@ -29,11 +29,6 @@ namespace timber_shop_manager
             this.acc = acc;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void frmFinancialReport_Load(object sender, EventArgs e)
         {
             LoadFinancialData();
@@ -361,6 +356,7 @@ namespace timber_shop_manager
         private void dtpTimeView_ValueChanged(object sender, EventArgs e)
         {
             LoadFinancialDataForDisplay();
+            LoadFinancialData();
         }
     }
 }
