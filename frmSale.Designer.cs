@@ -295,11 +295,13 @@
             // 
             txtTotal.BackColor = SystemColors.GradientInactiveCaption;
             txtTotal.BorderStyle = BorderStyle.None;
+            txtTotal.Enabled = false;
             txtTotal.ForeColor = Color.FromArgb(59, 93, 79);
             txtTotal.Location = new Point(101, 61);
             txtTotal.Name = "txtTotal";
             txtTotal.Size = new Size(153, 16);
             txtTotal.TabIndex = 23;
+            txtTotal.TextChanged += txtTotal_TextChanged;
             // 
             // lbTotal
             // 
@@ -316,11 +318,13 @@
             // 
             txtProductQuantity.BackColor = SystemColors.GradientInactiveCaption;
             txtProductQuantity.BorderStyle = BorderStyle.None;
+            txtProductQuantity.Enabled = false;
             txtProductQuantity.ForeColor = Color.FromArgb(59, 93, 79);
             txtProductQuantity.Location = new Point(101, 4);
             txtProductQuantity.Name = "txtProductQuantity";
             txtProductQuantity.Size = new Size(153, 16);
             txtProductQuantity.TabIndex = 19;
+            txtProductQuantity.TextChanged += txtProductQuantity_TextChanged;
             // 
             // lbProductQuantity
             // 

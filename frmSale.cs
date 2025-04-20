@@ -140,6 +140,12 @@ namespace timber_shop_manager
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            if (dgvSale.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có sản phẩm nào trong giỏ hàng.\nVui lòng thêm sản phẩm trước khi in hóa đơn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             PrintInvoice(txtId.Text, "", txtEmployeeName.Text, txtPhoneNumber.Text, txtCustomerName.Text, txtAddress.Text, dgvSale);
         }
         private void btnAddProduct_Click(object sender, EventArgs e)
@@ -394,6 +400,23 @@ namespace timber_shop_manager
             else
             {
                 MessageBox.Show("Không có dữ liệu để in hóa đơn", "Thông báo");
+            }
+        }
+
+        private void txtTotal_TextChanged(object sender, EventArgs e)
+        {
+            txtProductQuantity.Text = dgvSale.Rows.Count.ToString();
+        }
+
+        private void txtProductQuantity_TextChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(txtProductQuantity.Text) > 0)
+            {
+                btnConfirm.Enabled = true;
+            }
+            else
+            {
+                btnConfirm.Enabled = false;
             }
         }
     }
