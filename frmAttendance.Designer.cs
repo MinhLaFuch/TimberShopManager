@@ -32,6 +32,8 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -40,11 +42,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             realTimeClock = new System.Windows.Forms.Timer(components);
             panel1 = new Panel();
+            btnSearch = new Guna.UI2.WinForms.Guna2Button();
             lbRealTime = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnAttend = new Guna.UI2.WinForms.Guna2Button();
             pnFromTo = new FlowLayoutPanel();
@@ -53,7 +54,6 @@
             lbTo = new Label();
             dtpTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
             btnRefresh = new Guna.UI2.WinForms.Guna2Button();
-            btnSearch = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             panel1.SuspendLayout();
             pnFromTo.SuspendLayout();
@@ -130,6 +130,24 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(200, 537);
             panel1.TabIndex = 8;
+            // 
+            // btnSearch
+            // 
+            btnSearch.CustomizableEdges = customizableEdges1;
+            btnSearch.DisabledState.BorderColor = Color.DarkGray;
+            btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSearch.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSearch.FillColor = Color.FromArgb(59, 93, 79);
+            btnSearch.Font = new Font("Segoe UI", 9F);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Location = new Point(9, 160);
+            btnSearch.Margin = new Padding(3, 2, 3, 2);
+            btnSearch.Name = "btnSearch";
+            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnSearch.Size = new Size(176, 42);
+            btnSearch.TabIndex = 22;
+            btnSearch.Text = "Tìm kiếm";
             // 
             // lbRealTime
             // 
@@ -247,24 +265,6 @@
             btnRefresh.Size = new Size(176, 42);
             btnRefresh.TabIndex = 19;
             btnRefresh.Text = "Làm mới";
-            // 
-            // btnSearch
-            // 
-            btnSearch.CustomizableEdges = customizableEdges1;
-            btnSearch.DisabledState.BorderColor = Color.DarkGray;
-            btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnSearch.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSearch.FillColor = Color.FromArgb(59, 93, 79);
-            btnSearch.Font = new Font("Segoe UI", 9F);
-            btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(10, 173);
-            btnSearch.Margin = new Padding(3, 2, 3, 2);
-            btnSearch.Name = "btnSearch";
-            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnSearch.Size = new Size(176, 42);
-            btnSearch.TabIndex = 22;
-            btnSearch.Text = "Tìm kiếm";
             // 
             // frmAttendance
             // 
