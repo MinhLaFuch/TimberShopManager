@@ -36,12 +36,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             realTimeClock = new System.Windows.Forms.Timer(components);
             panel1 = new Panel();
@@ -54,7 +52,6 @@
             dtpFrom = new Guna.UI2.WinForms.Guna2DateTimePicker();
             lbTo = new Label();
             dtpTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            btnRefresh = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             panel1.SuspendLayout();
             pnFromTo.SuspendLayout();
@@ -124,7 +121,6 @@
             panel1.Controls.Add(btnSearch);
             panel1.Controls.Add(lbRealTime);
             panel1.Controls.Add(btnAttend);
-            panel1.Controls.Add(btnRefresh);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -150,7 +146,7 @@
             btnSearch.FillColor = Color.FromArgb(59, 93, 79);
             btnSearch.Font = new Font("Segoe UI", 9F);
             btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(9, 160);
+            btnSearch.Location = new Point(10, 114);
             btnSearch.Margin = new Padding(3, 2, 3, 2);
             btnSearch.Name = "btnSearch";
             btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges2;
@@ -217,7 +213,7 @@
             // 
             dtpFrom.Checked = true;
             dtpFrom.CustomFormat = "dd/MM/yyyy";
-            dtpFrom.CustomizableEdges = customizableEdges7;
+            dtpFrom.CustomizableEdges = customizableEdges5;
             dtpFrom.FillColor = Color.FromArgb(59, 93, 79);
             dtpFrom.Font = new Font("Segoe UI", 9F);
             dtpFrom.ForeColor = Color.White;
@@ -227,7 +223,7 @@
             dtpFrom.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dtpFrom.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dtpFrom.Name = "dtpFrom";
-            dtpFrom.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            dtpFrom.ShadowDecoration.CustomizableEdges = customizableEdges6;
             dtpFrom.Size = new Size(170, 34);
             dtpFrom.TabIndex = 9;
             dtpFrom.Value = new DateTime(2025, 4, 14, 10, 42, 36, 85);
@@ -247,7 +243,7 @@
             // 
             dtpTo.Checked = true;
             dtpTo.CustomFormat = "dd/MM/yyyy";
-            dtpTo.CustomizableEdges = customizableEdges9;
+            dtpTo.CustomizableEdges = customizableEdges7;
             dtpTo.FillColor = Color.FromArgb(59, 93, 79);
             dtpTo.Font = new Font("Segoe UI", 9F);
             dtpTo.ForeColor = Color.White;
@@ -257,29 +253,11 @@
             dtpTo.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dtpTo.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dtpTo.Name = "dtpTo";
-            dtpTo.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            dtpTo.ShadowDecoration.CustomizableEdges = customizableEdges8;
             dtpTo.Size = new Size(170, 34);
             dtpTo.TabIndex = 10;
             dtpTo.Value = new DateTime(2025, 4, 14, 10, 42, 5, 478);
             dtpTo.ValueChanged += dtpValueChanged;
-            // 
-            // btnRefresh
-            // 
-            btnRefresh.CustomizableEdges = customizableEdges5;
-            btnRefresh.DisabledState.BorderColor = Color.DarkGray;
-            btnRefresh.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnRefresh.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnRefresh.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnRefresh.FillColor = Color.FromArgb(59, 93, 79);
-            btnRefresh.Font = new Font("Segoe UI", 9F);
-            btnRefresh.ForeColor = Color.White;
-            btnRefresh.Location = new Point(10, 114);
-            btnRefresh.Margin = new Padding(3, 2, 3, 2);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnRefresh.Size = new Size(176, 42);
-            btnRefresh.TabIndex = 19;
-            btnRefresh.Text = "Làm mới";
             // 
             // frmAttendance
             // 
@@ -312,7 +290,6 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpFrom;
         private Label lbTo;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpTo;
-        private Guna.UI2.WinForms.Guna2Button btnRefresh;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbRealTime;
         private Guna.UI2.WinForms.Guna2Button btnSearch;
         private Label lbEmployeeId;

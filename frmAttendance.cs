@@ -58,11 +58,6 @@ namespace timber_shop_manager
             dgv.Columns["Time"].DefaultCellStyle.Format = "";
         }
 
-
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-        }
         private void btnAttend_Click(object sender, EventArgs e)
         {
             DateTime currentDateTime = DateTime.Now;
