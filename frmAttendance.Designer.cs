@@ -32,8 +32,6 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -42,9 +40,12 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             realTimeClock = new System.Windows.Forms.Timer(components);
             panel1 = new Panel();
+            lbRealTime = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnAttend = new Guna.UI2.WinForms.Guna2Button();
             pnFromTo = new FlowLayoutPanel();
             lbFrom = new Label();
@@ -52,8 +53,7 @@
             lbTo = new Label();
             dtpTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
             btnRefresh = new Guna.UI2.WinForms.Guna2Button();
-            cbTimeStamp = new Guna.UI2.WinForms.Guna2ComboBox();
-            lbTimeStamp = new Label();
+            btnSearch = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             panel1.SuspendLayout();
             pnFromTo.SuspendLayout();
@@ -114,22 +114,38 @@
             dgv.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgv.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
+            // realTimeClock
+            // 
+            realTimeClock.Tick += realTimeClock_Tick;
+            // 
             // panel1
             // 
+            panel1.Controls.Add(btnSearch);
+            panel1.Controls.Add(lbRealTime);
             panel1.Controls.Add(btnAttend);
             panel1.Controls.Add(pnFromTo);
             panel1.Controls.Add(btnRefresh);
-            panel1.Controls.Add(cbTimeStamp);
-            panel1.Controls.Add(lbTimeStamp);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(200, 537);
             panel1.TabIndex = 8;
             // 
+            // lbRealTime
+            // 
+            lbRealTime.AutoSize = false;
+            lbRealTime.BackColor = Color.Transparent;
+            lbRealTime.BorderStyle = BorderStyle.Fixed3D;
+            lbRealTime.Location = new Point(12, 12);
+            lbRealTime.Name = "lbRealTime";
+            lbRealTime.Size = new Size(175, 51);
+            lbRealTime.TabIndex = 21;
+            lbRealTime.Text = "guna2HtmlLabel1";
+            lbRealTime.TextAlignment = ContentAlignment.MiddleCenter;
+            // 
             // btnAttend
             // 
-            btnAttend.CustomizableEdges = customizableEdges1;
+            btnAttend.CustomizableEdges = customizableEdges3;
             btnAttend.DisabledState.BorderColor = Color.DarkGray;
             btnAttend.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAttend.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -137,10 +153,10 @@
             btnAttend.FillColor = Color.FromArgb(59, 93, 79);
             btnAttend.Font = new Font("Segoe UI", 9F);
             btnAttend.ForeColor = Color.White;
-            btnAttend.Location = new Point(10, 281);
+            btnAttend.Location = new Point(10, 68);
             btnAttend.Margin = new Padding(3, 2, 3, 2);
             btnAttend.Name = "btnAttend";
-            btnAttend.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnAttend.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnAttend.Size = new Size(175, 42);
             btnAttend.TabIndex = 12;
             btnAttend.Text = "Chấm công";
@@ -151,7 +167,7 @@
             pnFromTo.Controls.Add(dtpFrom);
             pnFromTo.Controls.Add(lbTo);
             pnFromTo.Controls.Add(dtpTo);
-            pnFromTo.Location = new Point(9, 105);
+            pnFromTo.Location = new Point(12, 229);
             pnFromTo.Margin = new Padding(3, 2, 3, 2);
             pnFromTo.Name = "pnFromTo";
             pnFromTo.Size = new Size(178, 116);
@@ -170,17 +186,18 @@
             // dtpFrom
             // 
             dtpFrom.Checked = true;
-            dtpFrom.CustomizableEdges = customizableEdges3;
+            dtpFrom.CustomFormat = "dd/MM/yyyy";
+            dtpFrom.CustomizableEdges = customizableEdges5;
             dtpFrom.FillColor = Color.FromArgb(59, 93, 79);
             dtpFrom.Font = new Font("Segoe UI", 9F);
             dtpFrom.ForeColor = Color.White;
-            dtpFrom.Format = DateTimePickerFormat.Short;
+            dtpFrom.Format = DateTimePickerFormat.Custom;
             dtpFrom.Location = new Point(3, 17);
             dtpFrom.Margin = new Padding(3, 2, 3, 2);
             dtpFrom.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dtpFrom.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dtpFrom.Name = "dtpFrom";
-            dtpFrom.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            dtpFrom.ShadowDecoration.CustomizableEdges = customizableEdges6;
             dtpFrom.Size = new Size(170, 34);
             dtpFrom.TabIndex = 9;
             dtpFrom.Value = new DateTime(2025, 4, 14, 10, 42, 36, 85);
@@ -197,24 +214,25 @@
             // dtpTo
             // 
             dtpTo.Checked = true;
-            dtpTo.CustomizableEdges = customizableEdges5;
+            dtpTo.CustomFormat = "dd/MM/yyyy";
+            dtpTo.CustomizableEdges = customizableEdges7;
             dtpTo.FillColor = Color.FromArgb(59, 93, 79);
             dtpTo.Font = new Font("Segoe UI", 9F);
             dtpTo.ForeColor = Color.White;
-            dtpTo.Format = DateTimePickerFormat.Short;
+            dtpTo.Format = DateTimePickerFormat.Custom;
             dtpTo.Location = new Point(3, 70);
             dtpTo.Margin = new Padding(3, 2, 3, 2);
             dtpTo.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dtpTo.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dtpTo.Name = "dtpTo";
-            dtpTo.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            dtpTo.ShadowDecoration.CustomizableEdges = customizableEdges8;
             dtpTo.Size = new Size(170, 34);
             dtpTo.TabIndex = 10;
             dtpTo.Value = new DateTime(2025, 4, 14, 10, 42, 5, 478);
             // 
             // btnRefresh
             // 
-            btnRefresh.CustomizableEdges = customizableEdges7;
+            btnRefresh.CustomizableEdges = customizableEdges9;
             btnRefresh.DisabledState.BorderColor = Color.DarkGray;
             btnRefresh.DisabledState.CustomBorderColor = Color.DarkGray;
             btnRefresh.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -222,41 +240,31 @@
             btnRefresh.FillColor = Color.FromArgb(59, 93, 79);
             btnRefresh.Font = new Font("Segoe UI", 9F);
             btnRefresh.ForeColor = Color.White;
-            btnRefresh.Location = new Point(9, 225);
+            btnRefresh.Location = new Point(10, 114);
             btnRefresh.Margin = new Padding(3, 2, 3, 2);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnRefresh.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnRefresh.Size = new Size(176, 42);
             btnRefresh.TabIndex = 19;
             btnRefresh.Text = "Làm mới";
             // 
-            // cbTimeStamp
+            // btnSearch
             // 
-            cbTimeStamp.BackColor = Color.Transparent;
-            cbTimeStamp.CustomizableEdges = customizableEdges9;
-            cbTimeStamp.DrawMode = DrawMode.OwnerDrawFixed;
-            cbTimeStamp.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbTimeStamp.FocusedColor = Color.FromArgb(94, 148, 255);
-            cbTimeStamp.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cbTimeStamp.Font = new Font("Segoe UI", 10F);
-            cbTimeStamp.ForeColor = Color.FromArgb(59, 93, 79);
-            cbTimeStamp.ItemHeight = 30;
-            cbTimeStamp.Location = new Point(14, 43);
-            cbTimeStamp.Margin = new Padding(3, 2, 3, 2);
-            cbTimeStamp.Name = "cbTimeStamp";
-            cbTimeStamp.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            cbTimeStamp.Size = new Size(168, 36);
-            cbTimeStamp.TabIndex = 18;
-            // 
-            // lbTimeStamp
-            // 
-            lbTimeStamp.AutoSize = true;
-            lbTimeStamp.ForeColor = Color.FromArgb(59, 93, 79);
-            lbTimeStamp.Location = new Point(14, 20);
-            lbTimeStamp.Name = "lbTimeStamp";
-            lbTimeStamp.Size = new Size(81, 15);
-            lbTimeStamp.TabIndex = 17;
-            lbTimeStamp.Text = "Mốc thời gian";
+            btnSearch.CustomizableEdges = customizableEdges1;
+            btnSearch.DisabledState.BorderColor = Color.DarkGray;
+            btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSearch.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSearch.FillColor = Color.FromArgb(59, 93, 79);
+            btnSearch.Font = new Font("Segoe UI", 9F);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Location = new Point(10, 173);
+            btnSearch.Margin = new Padding(3, 2, 3, 2);
+            btnSearch.Name = "btnSearch";
+            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnSearch.Size = new Size(176, 42);
+            btnSearch.TabIndex = 22;
+            btnSearch.Text = "Tìm kiếm";
             // 
             // frmAttendance
             // 
@@ -272,7 +280,6 @@
             Load += frmAttendance_Load;
             ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             pnFromTo.ResumeLayout(false);
             pnFromTo.PerformLayout();
             ResumeLayout(false);
@@ -290,7 +297,7 @@
         private Label lbTo;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpTo;
         private Guna.UI2.WinForms.Guna2Button btnRefresh;
-        private Guna.UI2.WinForms.Guna2ComboBox cbTimeStamp;
-        private Label lbTimeStamp;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lbRealTime;
+        private Guna.UI2.WinForms.Guna2Button btnSearch;
     }
 }

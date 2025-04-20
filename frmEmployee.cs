@@ -168,9 +168,7 @@ namespace timber_shop_manager
         }
         private void btnViewAttendance_Click(object sender, EventArgs e)
         {
-            frmAttendance frmAttendance = new frmAttendance();
-            frmAttendance.EmployeeId = txtId.Text;
-            frmAttendance.EmployeeName = txtName.Text;
+            frmAttendance frmAttendance = new frmAttendance(account);
             frmAttendance.ShowDialog();
         }
         private void btnSave_Click(object sender, EventArgs e)
