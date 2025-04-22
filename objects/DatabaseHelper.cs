@@ -191,5 +191,24 @@ namespace timber_shop_manager
             }
             return dataList;
         }
+
+        public SqlDataReader ExecuteReader(string query, params SqlParameter[] parameters)
+        {
+            using (SqlConnection conn = GetConnection())  
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn)) 
+                {
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);  
+                    }
+
+                    conn.Open();  
+
+                    return cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                }
+            }
+        }
+
     }
 }
