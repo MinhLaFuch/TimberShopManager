@@ -14,18 +14,18 @@ namespace timber_shop_manager.objects
         public static readonly string PREFIX = "V";
         public static readonly int CODE_LENGTH = 4;
 
-        private string id, name, description;
+        private string id, name, discription;  
         private DateTime startDate, endDate;
         private float percentant;
         private int price;
 
-        public Voucher(string id, string name, DateTime startDate, DateTime endDate, string description, string percentant, string price)
+        public Voucher(string id, string name, DateTime startDate, DateTime endDate, string discription, string percentant, string price)
         {
             this.id = id.Trim();
             this.name = name.Trim();
             this.startDate = startDate;
             this.endDate = endDate;
-            this.description = description.Trim();
+            this.discription = discription.Trim(); 
             this.percentant = float.Parse(percentant.Trim());
             this.price = int.Parse(price.Trim());
         }
@@ -41,22 +41,21 @@ namespace timber_shop_manager.objects
             }
             else
             {
-                query = "INSERT INTO Voucher (Id, Name, StartDate, EndDate, Description, Percentant, Price) VALUES " +
-                        "(@id, @name, @startDate, @endDate, @description, @percentant, @price)";
+                query = "INSERT INTO Voucher (Id, Name, StartDate, EndDate, Discription, Percentant, Price) VALUES " +  
+                        "(@id, @name, @startDate, @endDate, @discription, @percentant, @price)"; 
 
                 dbHelper.ExecuteNonQuery(query,
                     new SqlParameter("@id", v.id),
                     new SqlParameter("@name", v.name),
                     new SqlParameter("@startDate", v.startDate),
                     new SqlParameter("@endDate", v.endDate),
-                    new SqlParameter("@description", v.description),
+                    new SqlParameter("@discription", v.discription), 
                     new SqlParameter("@percentant", v.percentant),
                     new SqlParameter("@price", v.price));
 
                 MessageBox.Show("Voucher với ID " + v.id + " đã được thêm thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
 
         public static Voucher getVoucherById(string voucherId)
         {
@@ -70,7 +69,7 @@ namespace timber_shop_manager.objects
                     reader["Name"].ToString(),
                     Convert.ToDateTime(reader["StartDate"]),
                     Convert.ToDateTime(reader["EndDate"]),
-                    reader["Description"].ToString(),
+                    reader["Discription"].ToString(),  
                     reader["Percentant"].ToString(),
                     reader["Price"].ToString()
                 );
