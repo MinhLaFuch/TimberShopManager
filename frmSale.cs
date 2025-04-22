@@ -40,21 +40,20 @@ namespace timber_shop_manager
 
         private void FormLoad()
         {
+            // Làm sạch các giá trị trong các textbox
             txtId.Clear();
+            txtEmployeeName.Clear();
+            txtPhoneNumber.Clear();
+            txtCustomerName.Clear();
+            txtAddress.Clear();
+            txtProductName.Clear();
+            txtTotal.Text = "0";
+            txtProductQuantity.Text = "0";
 
-            DisableAllControls(true);
-            txtEmployeeName.Text = name;
+            // Làm sạch dgvSale (xóa các sản phẩm đã thêm vào)
+            dgvSale.Rows.Clear();
 
-            txtPhoneNumber.AutoCompleteCustomSource = LoadAutoCompleteDataForCustomer();
-            txtPhoneNumber.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtPhoneNumber.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-            dgvProduct.DataSource = LoadProduct();
-
-            txtProductName.AutoCompleteCustomSource = LoadAutoCompleteDataForProduct();
-            txtProductName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            txtProductName.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
+            // Kiểm tra và tạo lại các cột nếu chưa có
             if (dgvSale.Columns.Count == 0)
             {
                 dgvSale.Columns.Add("ProductId", "Mã Sản Phẩm");
@@ -65,6 +64,29 @@ namespace timber_shop_manager
                 dgvSale.Columns.Add("Total", "Tổng Tiền");
                 dgvSale.Columns.Add("WarrantyEnd", "Thời Gian Bảo Hành");
             }
+
+            btnRemoveAll.Enabled = dgvSale.Rows.Count > 0;
+
+            // Reset các điều khiển khác
+            nudQuantity.Value = 0; // Đặt lại số lượng về 0
+
+            // Disable các điều khiển (người dùng không thể thay đổi khi chưa tạo phiếu)
+            DisableAllControls(true);
+
+            // Thiết lập thông tin mặc định
+            txtEmployeeName.Text = name;
+
+            // Tải lại danh sách sản phẩm
+            dgvProduct.DataSource = LoadProduct();
+
+            // Cập nhật Autocomplete cho các textbox
+            txtPhoneNumber.AutoCompleteCustomSource = LoadAutoCompleteDataForCustomer();
+            txtPhoneNumber.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtPhoneNumber.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            txtProductName.AutoCompleteCustomSource = LoadAutoCompleteDataForProduct();
+            txtProductName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtProductName.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
         private AutoCompleteStringCollection LoadAutoCompleteDataForProduct()
@@ -140,12 +162,17 @@ namespace timber_shop_manager
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            // Gọi lại FormLoad để khởi tạo lại form khi tạo phiếu mới
             FormLoad();
 
+            // Enable các điều khiển để người dùng có thể thêm thông tin
             DisableAllControls(false);
+            btnConfirm.Enabled = false;
+            btnDelete.Enabled = dgvSale.Rows.Count > 0;
+            btnRemoveAll.Enabled = dgvSale.Rows.Count > 0;
 
+            // Lấy mã hóa đơn mới
             string query = "SELECT MAX(Id) FROM SaleInvoice";
-
             string currentInvoiceId = Convert.ToString(dbHelper.ExecuteScalar(query));
             string invoiceId = Program.GenerateNextCode(currentInvoiceId, SaleInvoice.PREFIX, SaleInvoice.CODE_LENGTH);
             txtId.Text = invoiceId;
@@ -184,21 +211,82 @@ namespace timber_shop_manager
                 return;
             }
 
-            // Lấy giá trị từ các ô
+            // Kiểm tra xem các cột trong dgvSale đã được tạo chưa, nếu chưa thì tạo mới
+            if (dgvSale.Columns.Count == 0)
+            {
+                dgvSale.Columns.Add("ProductId", "Mã Sản Phẩm");
+                dgvSale.Columns.Add("ProductName", "Tên Sản Phẩm");
+                dgvSale.Columns.Add("Quantity", "Số Lượng");
+                dgvSale.Columns.Add("PriceQuotation", "Giá Niêm Yết");
+                dgvSale.Columns.Add("Tax", "Thuế");
+                dgvSale.Columns.Add("Total", "Tổng Tiền");
+                dgvSale.Columns.Add("WarrantyEnd", "Thời Gian Bảo Hành");
+            }
+
+            // Khai báo và gán giá trị cho productId
             string productId = selectedProduct.Id;
             string productName = selectedProduct.Name;
-            string unit = selectedProduct.CalculationUnit;
             decimal priceQuotation = Convert.ToDecimal(selectedProduct.PriceQuotation);
             decimal quantity = nudQuantity.Value;
             decimal tax = Convert.ToDecimal(SaleInvoice.VAT_TAX); // Ví dụ: thuế 10%
             decimal total = priceQuotation * quantity * (1 + tax); // Tính tổng tiền (bao gồm thuế)
-            DateTime warrantyEnd = DateTime.Now.AddMonths((int)selectedProduct.CustomerWarranty); // Thời gian bảo hành
+            DateTime warrantyEnd = DateTime.Now.AddMonths(Convert.ToInt32(selectedProduct.CustomerWarranty)); // Thời gian bảo hành
 
-            // Thêm vào dgvSale
-            dgvSale.Rows.Add(productId, productName, quantity, priceQuotation, tax, total, warrantyEnd.ToString("dd/MM/yyyy"));
+            // Kiểm tra xem sản phẩm đã có trong dgvSale chưa
+            bool productExists = false;
+            foreach (DataGridViewRow row in dgvSale.Rows)
+            {
+                if (row.Cells["ProductId"].Value.ToString() == productId)
+                {
+                    // Sản phẩm đã tồn tại, cộng thêm số lượng
+                    decimal existingQuantity = Convert.ToDecimal(row.Cells["Quantity"].Value);
+                    row.Cells["Quantity"].Value = existingQuantity + quantity;
+
+                    // Cập nhật lại tổng tiền của sản phẩm này
+                    decimal newTotal = priceQuotation * (existingQuantity + quantity) * (1 + tax); // Tổng tiền mới
+                    row.Cells["Total"].Value = newTotal;
+
+                    // Cập nhật tổng tiền của hóa đơn
+                    UpdateTotalAmount();
+
+                    productExists = true;
+                    break;
+                }
+            }
+
+            // Nếu sản phẩm chưa có trong dgvSale, thêm mới sản phẩm
+            if (!productExists)
+            {
+                // Thêm vào dgvSale
+                dgvSale.Rows.Add(productId, productName, quantity, priceQuotation, tax, total, warrantyEnd.ToString("dd/MM/yyyy"));
+            }
 
             // Cập nhật tổng tiền trong hóa đơn
             UpdateTotalAmount();
+
+            // Enable btnRemoveAll và btnDelete nếu có sản phẩm trong dgvSale
+            btnRemoveAll.Enabled = dgvSale.Rows.Count > 0;
+            btnDelete.Enabled = dgvSale.Rows.Count > 0;
+
+            // Cập nhật số lượng trong dgvProduct
+            foreach (DataGridViewRow row in dgvProduct.Rows)
+            {
+                if (row.Cells["Mã Sản Phẩm"].Value.ToString() == productId)
+                {
+                    // Cập nhật số lượng còn lại trong kho
+                    decimal remainingQuantity = Convert.ToDecimal(row.Cells["Số Lượng"].Value) - quantity;
+                    row.Cells["Số Lượng"].Value = remainingQuantity.ToString(); // Cập nhật số lượng
+                    break;
+                }
+            }
+
+            // Cập nhật số lượng tối đa của nudQuantity cho sản phẩm này
+            decimal currentRemainingQuantity = Convert.ToDecimal(dgvProduct.Rows
+                .Cast<DataGridViewRow>()
+                .FirstOrDefault(row => row.Cells["Mã Sản Phẩm"].Value.ToString() == productId)?
+                .Cells["Số Lượng"].Value);
+
+            nudQuantity.Maximum = currentRemainingQuantity;
         }
 
         private void UpdateTotalAmount()
@@ -302,6 +390,8 @@ namespace timber_shop_manager
             {
                 MessageBox.Show("Vui lòng chọn một sản phẩm để xóa.");
             }
+            btnRemoveAll.Enabled = dgvSale.Rows.Count > 0;
+            btnDelete.Enabled = dgvSale.Rows.Count > 0;
         }
 
         private void PrintInvoice(string invoiceId, string saleId, string saleName, string customerPhone, string customerName, string customerAddress, DataGridView dgvSale)
@@ -439,6 +529,21 @@ namespace timber_shop_manager
             {
                 btnConfirm.Enabled = false;
             }
+        }
+
+        private void btnRemoveAll_Click(object sender, EventArgs e)
+        {
+            dgvSale.Rows.Clear();
+            UpdateTotalAmount();
+
+            FormLoad();
+
+            DisableAllControls(false);
+            btnConfirm.Enabled = false;
+            btnDelete.Enabled = dgvSale.Rows.Count > 0;
+            btnRemoveAll.Enabled = dgvSale.Rows.Count > 0;
+            btnRemoveAll.Enabled = dgvSale.Rows.Count > 0;
+            btnDelete.Enabled = dgvSale.Rows.Count > 0;
         }
     }
 }

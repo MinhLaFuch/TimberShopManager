@@ -53,6 +53,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
@@ -92,6 +94,7 @@
             dgvProduct = new Guna.UI2.WinForms.Guna2DataGridView();
             pnInfo = new FlowLayoutPanel();
             pnFindProduct = new Panel();
+            btnRemoveAll = new Guna.UI2.WinForms.Guna2Button();
             btnDelete = new Guna.UI2.WinForms.Guna2Button();
             lbUnit = new Label();
             lbAmount = new Label();
@@ -310,7 +313,7 @@
             lbTotal.ForeColor = Color.FromArgb(59, 93, 79);
             lbTotal.Location = new Point(10, 61);
             lbTotal.Name = "lbTotal";
-            lbTotal.Size = new Size(63, 15);
+            lbTotal.Size = new Size(64, 15);
             lbTotal.TabIndex = 22;
             lbTotal.Text = "Thành tiền";
             // 
@@ -489,7 +492,7 @@
             lbCustomerName.ForeColor = Color.FromArgb(59, 93, 79);
             lbCustomerName.Location = new Point(3, 34);
             lbCustomerName.Name = "lbCustomerName";
-            lbCustomerName.Size = new Size(25, 15);
+            lbCustomerName.Size = new Size(26, 15);
             lbCustomerName.TabIndex = 14;
             lbCustomerName.Text = "Tên";
             // 
@@ -500,7 +503,7 @@
             lbPhoneNumber.ForeColor = Color.FromArgb(59, 93, 79);
             lbPhoneNumber.Location = new Point(3, 8);
             lbPhoneNumber.Name = "lbPhoneNumber";
-            lbPhoneNumber.Size = new Size(27, 15);
+            lbPhoneNumber.Size = new Size(28, 15);
             lbPhoneNumber.TabIndex = 12;
             lbPhoneNumber.Text = "SĐT";
             // 
@@ -627,6 +630,7 @@
             // 
             // pnFindProduct
             // 
+            pnFindProduct.Controls.Add(btnRemoveAll);
             pnFindProduct.Controls.Add(btnDelete);
             pnFindProduct.Controls.Add(lbUnit);
             pnFindProduct.Controls.Add(lbAmount);
@@ -640,9 +644,28 @@
             pnFindProduct.Size = new Size(1050, 45);
             pnFindProduct.TabIndex = 20;
             // 
+            // btnRemoveAll
+            // 
+            btnRemoveAll.CustomizableEdges = customizableEdges19;
+            btnRemoveAll.DisabledState.BorderColor = Color.DarkGray;
+            btnRemoveAll.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnRemoveAll.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnRemoveAll.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnRemoveAll.FillColor = Color.FromArgb(59, 93, 79);
+            btnRemoveAll.Font = new Font("Segoe UI", 9F);
+            btnRemoveAll.ForeColor = Color.White;
+            btnRemoveAll.Location = new Point(844, 2);
+            btnRemoveAll.Margin = new Padding(3, 2, 3, 2);
+            btnRemoveAll.Name = "btnRemoveAll";
+            btnRemoveAll.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            btnRemoveAll.Size = new Size(141, 40);
+            btnRemoveAll.TabIndex = 27;
+            btnRemoveAll.Text = "Xoá tất cả";
+            btnRemoveAll.Click += btnRemoveAll_Click;
+            // 
             // btnDelete
             // 
-            btnDelete.CustomizableEdges = customizableEdges19;
+            btnDelete.CustomizableEdges = customizableEdges21;
             btnDelete.DisabledState.BorderColor = Color.DarkGray;
             btnDelete.DisabledState.CustomBorderColor = Color.DarkGray;
             btnDelete.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -653,7 +676,7 @@
             btnDelete.Location = new Point(697, 3);
             btnDelete.Margin = new Padding(3, 2, 3, 2);
             btnDelete.Name = "btnDelete";
-            btnDelete.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            btnDelete.ShadowDecoration.CustomizableEdges = customizableEdges22;
             btnDelete.Size = new Size(141, 40);
             btnDelete.TabIndex = 26;
             btnDelete.Text = "Xoá";
@@ -664,7 +687,7 @@
             lbUnit.AutoSize = true;
             lbUnit.Location = new Point(448, 19);
             lbUnit.Name = "lbUnit";
-            lbUnit.Size = new Size(28, 15);
+            lbUnit.Size = new Size(29, 15);
             lbUnit.TabIndex = 25;
             lbUnit.Text = "ĐVT";
             // 
@@ -688,12 +711,12 @@
             // nudQuantity
             // 
             nudQuantity.BackColor = Color.Transparent;
-            nudQuantity.CustomizableEdges = customizableEdges21;
+            nudQuantity.CustomizableEdges = customizableEdges23;
             nudQuantity.Font = new Font("Segoe UI", 9F);
             nudQuantity.ForeColor = Color.FromArgb(59, 93, 79);
             nudQuantity.Location = new Point(374, 11);
             nudQuantity.Name = "nudQuantity";
-            nudQuantity.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            nudQuantity.ShadowDecoration.CustomizableEdges = customizableEdges24;
             nudQuantity.Size = new Size(68, 27);
             nudQuantity.TabIndex = 22;
             nudQuantity.UpDownButtonFillColor = Color.FromArgb(59, 93, 79);
@@ -837,5 +860,6 @@
         private Guna.UI2.WinForms.Guna2Button btnDelete;
         private Label lbUnit;
         private Label lbAmount;
+        private Guna.UI2.WinForms.Guna2Button btnRemoveAll;
     }
 }
