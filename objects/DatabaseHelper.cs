@@ -23,7 +23,8 @@ namespace timber_shop_manager
 
         public DatabaseHelper()
         {
-            connectionString = "Data Source=DESKTOP-M3PPH9A\\SQLEXPRESS;Initial Catalog=TimberShop;Integrated Security=True;Trust Server Certificate=True";
+            //connectionString = "Data Source=DESKTOP-M3PPH9A\\SQLEXPRESS;Initial Catalog=TimberShop;Integrated Security=True;Trust Server Certificate=True";
+            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=TimberShop;Integrated Security=True;Trust Server Certificate=True";
             if (isWindowAuthentication)
             {
                 //connectionString = $"Data Source={server};Initial Catalog={name};Integrated Security=True;Trust Server Certificate=True";
