@@ -38,10 +38,9 @@ namespace timber_shop_manager.objects
             nudDiscount.Value = 0;
 
             DateTime currentDate = DateTime.Now;
-            dtpFrom.Value = currentDate;
-            dtpTo.Value = currentDate;
+            dtpFrom.MinDate = dtpFrom.Value = currentDate.AddDays(1);
+            dtpTo.Value = dtpTo.MinDate = dtpFrom.Value;
 
-            dtpFrom.MinDate = currentDate;
 
             dgv.DataSource = LoadVoucherData();
         }
@@ -69,6 +68,17 @@ namespace timber_shop_manager.objects
                 if (e.Value != null && e.Value is DateTime)
                 {
                     e.Value = ((DateTime)e.Value).ToString("dd/MM/yyyy"); // Định dạng ngày tháng
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (dgv.Columns[e.ColumnIndex].Name == "Phần Trăm" || dgv.Columns[e.ColumnIndex].Name == "Giá")
+            {
+                // Nếu giá trị không phải null và là kiểu số
+                if (e.Value != null && e.Value is decimal)
+                {
+                    // Làm tròn và hiển thị đến 2 chữ số thập phân
+                    e.Value = Math.Round((decimal)e.Value, 2).ToString("0.00");
                     e.FormattingApplied = true;
                 }
             }
@@ -125,8 +135,8 @@ namespace timber_shop_manager.objects
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
-            dtpTo.MinDate = dtpFrom.Value;
 
+            dtpTo.MinDate = dtpFrom.Value;
             if (dtpTo.Value < dtpFrom.Value)
             {
                 dtpTo.Value = dtpFrom.Value;  
@@ -205,7 +215,7 @@ namespace timber_shop_manager.objects
 
             if (rdPercentant.Checked)
             {
-                percentant = (nudDiscount.Value / 100).ToString();  
+                percentant = (Math.Round(nudDiscount.Value / 100, 2)).ToString();
             }
             else if (rdAmount.Checked)
             {
