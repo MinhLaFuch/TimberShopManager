@@ -78,6 +78,7 @@ namespace timber_shop_manager
 
             // Tải lại danh sách sản phẩm
             dgvProduct.DataSource = LoadProduct();
+            LoadVoucherComboBox();
 
             // Cập nhật Autocomplete cho các textbox
             txtPhoneNumber.AutoCompleteCustomSource = LoadAutoCompleteDataForCustomer();
@@ -141,6 +142,13 @@ namespace timber_shop_manager
         private void frmSale_Load(object sender, EventArgs e)
         {
             FormLoad();
+        }
+
+        private void LoadVoucherComboBox()
+        {
+            string query = "SELECT Id FROM Voucher";
+            cbVoucher.DataSource = dbHelper.GetDataForComboBox(query, "Id");
+            cbVoucher.SelectedIndex = -1;
         }
 
         private void DisableAllControls(bool enable)
