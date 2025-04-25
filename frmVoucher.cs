@@ -215,7 +215,8 @@ namespace timber_shop_manager.objects
 
             if (rdPercentant.Checked)
             {
-                percentant = (Math.Round(nudDiscount.Value / 100, 2)).ToString();
+                decimal percentValue = Math.Round(nudDiscount.Value / 100, 2);
+                percentant = percentValue.ToString("0.00");
             }
             else if (rdAmount.Checked)
             {
