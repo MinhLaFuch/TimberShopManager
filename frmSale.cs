@@ -23,6 +23,7 @@ namespace timber_shop_manager
         private Product selectedProduct = null;
         private DynamicSearch dynamicSearch = null;
         private int selectedRowIndex = -1;
+        private decimal originalTotal = 0;
 
         private string
             name = "Bui Ngoc Quy",
@@ -38,6 +39,18 @@ namespace timber_shop_manager
             this.acc = acc;
         }
 
+        private void InitializeOriginalTotal()
+        {
+            if (decimal.TryParse(txtTotal.Text, out decimal total))
+            {
+                originalTotal = total;
+            }
+            else
+            {
+                originalTotal = 0;
+            }
+        }
+
         private void FormLoad()
         {
             // Làm sạch các giá trị trong các textbox
@@ -49,6 +62,8 @@ namespace timber_shop_manager
             txtProductName.Clear();
             txtTotal.Text = "0";
             txtProductQuantity.Text = "0";
+
+            InitializeOriginalTotal();
 
             // Làm sạch dgvSale (xóa các sản phẩm đã thêm vào)
             dgvSale.Rows.Clear();
@@ -63,6 +78,7 @@ namespace timber_shop_manager
                 dgvSale.Columns.Add("Tax", "Thuế");
                 dgvSale.Columns.Add("Total", "Tổng Tiền");
                 dgvSale.Columns.Add("WarrantyEnd", "Thời Gian Bảo Hành");
+                FormatCurrencyColumns(dgvSale, new List<string> { "Giá Niêm Yết", "Thuế", "Tổng Tiền" });
             }
 
             btnRemoveAll.Enabled = dgvSale.Rows.Count > 0;
@@ -78,6 +94,7 @@ namespace timber_shop_manager
 
             // Tải lại danh sách sản phẩm
             dgvProduct.DataSource = LoadProduct();
+            FormatCurrencyColumns(dgvProduct, new List<string> { "Giá Niêm Yết" });
             LoadVoucherComboBox();
 
             // Cập nhật Autocomplete cho các textbox
@@ -146,9 +163,16 @@ namespace timber_shop_manager
 
         private void LoadVoucherComboBox()
         {
-            string query = "SELECT Id FROM Voucher";
-            cbVoucher.DataSource = dbHelper.GetDataForComboBox(query, "Id");
-            cbVoucher.SelectedIndex = -1;
+            string query = @"
+        SELECT Id 
+        FROM Voucher 
+        WHERE StartDate <= GETDATE() 
+          AND EndDate >= GETDATE()";
+
+            List<string> voucherList = dbHelper.GetDataForComboBox(query, "Id");
+
+            cbVoucher.DataSource = voucherList;
+            cbVoucher.SelectedIndex = -1; // Không chọn mặc định
         }
 
         private void DisableAllControls(bool enable)
@@ -231,70 +255,77 @@ namespace timber_shop_manager
                 dgvSale.Columns.Add("WarrantyEnd", "Thời Gian Bảo Hành");
             }
 
-            // Khai báo và gán giá trị cho productId
+            // Lấy thông tin sản phẩm
             string productId = selectedProduct.Id;
             string productName = selectedProduct.Name;
             decimal priceQuotation = Convert.ToDecimal(selectedProduct.PriceQuotation);
             decimal quantity = nudQuantity.Value;
-            decimal tax = Convert.ToDecimal(SaleInvoice.VAT_TAX); // Ví dụ: thuế 10%
-            decimal total = priceQuotation * quantity * (1 + tax); // Tính tổng tiền (bao gồm thuế)
-            DateTime warrantyEnd = DateTime.Now.AddMonths(Convert.ToInt32(selectedProduct.CustomerWarranty)); // Thời gian bảo hành
+            decimal tax = Convert.ToDecimal(SaleInvoice.VAT_TAX); // Thuế VAT 10%
+            decimal total = Math.Round(priceQuotation * quantity * (1 + tax), 0, MidpointRounding.AwayFromZero); // Tính tổng tiền đã làm tròn
+            DateTime warrantyEnd = DateTime.Now.AddMonths(Convert.ToInt32(selectedProduct.CustomerWarranty)); // Bảo hành
 
-            // Kiểm tra xem sản phẩm đã có trong dgvSale chưa
+            // Kiểm tra sản phẩm đã có trong dgvSale chưa
             bool productExists = false;
             foreach (DataGridViewRow row in dgvSale.Rows)
             {
                 if (row.Cells["ProductId"].Value.ToString() == productId)
                 {
-                    // Sản phẩm đã tồn tại, cộng thêm số lượng
+                    // Sản phẩm đã tồn tại, cập nhật số lượng và tổng tiền
                     decimal existingQuantity = Convert.ToDecimal(row.Cells["Quantity"].Value);
-                    row.Cells["Quantity"].Value = existingQuantity + quantity;
+                    decimal newQuantity = existingQuantity + quantity;
+                    decimal newTotal = Math.Round(priceQuotation * newQuantity * (1 + tax), 0, MidpointRounding.AwayFromZero);
 
-                    // Cập nhật lại tổng tiền của sản phẩm này
-                    decimal newTotal = priceQuotation * (existingQuantity + quantity) * (1 + tax); // Tổng tiền mới
+                    row.Cells["Quantity"].Value = newQuantity;
                     row.Cells["Total"].Value = newTotal;
 
-                    // Cập nhật tổng tiền của hóa đơn
                     UpdateTotalAmount();
-
                     productExists = true;
                     break;
                 }
             }
 
-            // Nếu sản phẩm chưa có trong dgvSale, thêm mới sản phẩm
+            // Nếu sản phẩm chưa có, thêm mới vào dgvSale
             if (!productExists)
             {
-                // Thêm vào dgvSale
-                dgvSale.Rows.Add(productId, productName, quantity, priceQuotation, tax, total, warrantyEnd.ToString("dd/MM/yyyy"));
+                dgvSale.Rows.Add(
+                    productId,
+                    productName,
+                    quantity,
+                    priceQuotation,
+                    tax,
+                    total,
+                    warrantyEnd.ToString("dd/MM/yyyy")
+                );
             }
 
             // Cập nhật tổng tiền trong hóa đơn
             UpdateTotalAmount();
 
-            // Enable btnRemoveAll và btnDelete nếu có sản phẩm trong dgvSale
+            // Enable nút xoá, xoá tất cả
             btnRemoveAll.Enabled = dgvSale.Rows.Count > 0;
             btnDelete.Enabled = dgvSale.Rows.Count > 0;
 
-            // Cập nhật số lượng trong dgvProduct
+            // Cập nhật số lượng tồn kho trong dgvProduct
             foreach (DataGridViewRow row in dgvProduct.Rows)
             {
                 if (row.Cells["Mã Sản Phẩm"].Value.ToString() == productId)
                 {
-                    // Cập nhật số lượng còn lại trong kho
                     decimal remainingQuantity = Convert.ToDecimal(row.Cells["Số Lượng"].Value) - quantity;
-                    row.Cells["Số Lượng"].Value = remainingQuantity.ToString(); // Cập nhật số lượng
+                    row.Cells["Số Lượng"].Value = remainingQuantity.ToString();
                     break;
                 }
             }
 
-            // Cập nhật số lượng tối đa của nudQuantity cho sản phẩm này
+            // Cập nhật giới hạn tối đa cho nudQuantity
             decimal currentRemainingQuantity = Convert.ToDecimal(dgvProduct.Rows
                 .Cast<DataGridViewRow>()
-                .FirstOrDefault(row => row.Cells["Mã Sản Phẩm"].Value.ToString() == productId)?
-                .Cells["Số Lượng"].Value);
+                .FirstOrDefault(r => r.Cells["Mã Sản Phẩm"].Value.ToString() == productId)?
+                .Cells["Số Lượng"].Value ?? 0);
 
             nudQuantity.Maximum = currentRemainingQuantity;
+
+            // Định dạng lại các cột tiền trong dgvSale
+            FormatCurrencyColumns(dgvSale, new List<string> { "Giá Niêm Yết", "Thuế", "Tổng Tiền" });
         }
 
         private void UpdateTotalAmount()
@@ -306,7 +337,8 @@ namespace timber_shop_manager
                 totalAmount += Convert.ToDecimal(row.Cells["Total"].Value); // Cộng tổng tiền từ tất cả các dòng
             }
 
-            txtTotal.Text = totalAmount.ToString("N0"); // Hiển thị tổng tiền vào TextBox
+            txtTotal.Text = Math.Round(totalAmount, 0).ToString("#,##0");
+            InitializeOriginalTotal();
         }
 
         private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
@@ -330,7 +362,7 @@ namespace timber_shop_manager
 
             if (isValid)
             {
-                Customer newCustomer = new Customer("0987654321", "Nguyen Thi B", "456 Another St");
+                Customer newCustomer = new Customer(txtPhoneNumber.Text, txtCustomerName.Text, txtAddress.Text);
                 Customer.add(newCustomer);
             }
         }
@@ -552,6 +584,86 @@ namespace timber_shop_manager
             btnRemoveAll.Enabled = dgvSale.Rows.Count > 0;
             btnRemoveAll.Enabled = dgvSale.Rows.Count > 0;
             btnDelete.Enabled = dgvSale.Rows.Count > 0;
+        }
+
+        private void cbVoucher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Kiểm tra có lựa chọn không
+            if (cbVoucher.SelectedItem == null)
+                return;
+
+            string selectedVoucherId = cbVoucher.SelectedItem.ToString();
+
+            string query = @"
+        SELECT Percentant, Price, StartDate, EndDate 
+        FROM Voucher 
+        WHERE Id = @VoucherId";
+
+            try
+            {
+                DataTable voucherTable = dbHelper.ExecuteQuery(query, new SqlParameter("@VoucherId", selectedVoucherId));
+
+                if (voucherTable.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy mã giảm giá.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DataRow voucher = voucherTable.Rows[0];
+
+                decimal discountPercent = voucher["Percentant"] != DBNull.Value ? Convert.ToDecimal(voucher["Percentant"]) : 0m;
+                int discountAmount = voucher["Price"] != DBNull.Value ? Convert.ToInt32(voucher["Price"]) : 0;
+                DateTime startDate = Convert.ToDateTime(voucher["StartDate"]);
+                DateTime endDate = Convert.ToDateTime(voucher["EndDate"]);
+                DateTime currentDate = DateTime.Now;
+
+                // Kiểm tra hiệu lực voucher
+                if (currentDate < startDate || currentDate > endDate)
+                {
+                    MessageBox.Show("Mã giảm giá này đã hết hạn hoặc chưa bắt đầu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // BẮT ĐẦU tính lại từ originalTotal, không dùng txtTotal.Text
+                decimal finalTotal = originalTotal;
+
+                if (discountPercent > 0)
+                {
+                    // Giảm theo phần trăm
+                    finalTotal = finalTotal * (1 - discountPercent);
+                }
+                else if (discountAmount > 0)
+                {
+                    // Giảm theo số tiền
+                    finalTotal = finalTotal - discountAmount;
+                }
+
+                // Đảm bảo không âm
+                if (finalTotal < 0)
+                {
+                    finalTotal = 0;
+                }
+
+                // Cập nhật giao diện
+                txtTotal.Text = Math.Round(finalTotal, 0).ToString("#,##0");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi khi áp dụng mã giảm giá.\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FormatCurrencyColumns(DataGridView dgv, List<string> columnNames)
+        {
+            foreach (string columnName in columnNames)
+            {
+                if (dgv.Columns.Contains(columnName))
+                {
+                    dgv.Columns[columnName].DefaultCellStyle.Format = "#,##0"; // Chỉ hiển thị số nguyên, dấu phẩy hàng nghìn
+                    dgv.Columns[columnName].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight; // Căn phải
+                }
+            }
         }
     }
 }
