@@ -67,6 +67,10 @@
             pnButton = new FlowLayoutPanel();
             gbInvoice = new Guna.UI2.WinForms.Guna2GroupBox();
             pnPurchase = new Panel();
+            lbPaymentMethod = new Label();
+            pnPaymentMethod = new Panel();
+            rdTransfer = new Guna.UI2.WinForms.Guna2RadioButton();
+            rdCash = new Guna.UI2.WinForms.Guna2RadioButton();
             lbVoucherId = new Label();
             cbVoucher = new ComboBox();
             lbCurrency = new Label();
@@ -104,6 +108,7 @@
             pnButton.SuspendLayout();
             gbInvoice.SuspendLayout();
             pnPurchase.SuspendLayout();
+            pnPaymentMethod.SuspendLayout();
             pnInvoiceInfo.SuspendLayout();
             gbCustomer.SuspendLayout();
             pnCustomer.SuspendLayout();
@@ -252,6 +257,8 @@
             // 
             // pnPurchase
             // 
+            pnPurchase.Controls.Add(lbPaymentMethod);
+            pnPurchase.Controls.Add(pnPaymentMethod);
             pnPurchase.Controls.Add(lbVoucherId);
             pnPurchase.Controls.Add(cbVoucher);
             pnPurchase.Controls.Add(lbCurrency);
@@ -262,8 +269,68 @@
             pnPurchase.Location = new Point(372, 32);
             pnPurchase.Margin = new Padding(3, 2, 3, 2);
             pnPurchase.Name = "pnPurchase";
-            pnPurchase.Size = new Size(332, 116);
+            pnPurchase.Size = new Size(325, 116);
             pnPurchase.TabIndex = 30;
+            // 
+            // lbPaymentMethod
+            // 
+            lbPaymentMethod.AutoSize = true;
+            lbPaymentMethod.BackColor = Color.Transparent;
+            lbPaymentMethod.ForeColor = Color.FromArgb(59, 93, 79);
+            lbPaymentMethod.Location = new Point(10, 61);
+            lbPaymentMethod.Name = "lbPaymentMethod";
+            lbPaymentMethod.Size = new Size(67, 15);
+            lbPaymentMethod.TabIndex = 33;
+            lbPaymentMethod.Text = "Thanh toán";
+            // 
+            // pnPaymentMethod
+            // 
+            pnPaymentMethod.Controls.Add(rdTransfer);
+            pnPaymentMethod.Controls.Add(rdCash);
+            pnPaymentMethod.Location = new Point(99, 52);
+            pnPaymentMethod.Name = "pnPaymentMethod";
+            pnPaymentMethod.Size = new Size(189, 31);
+            pnPaymentMethod.TabIndex = 32;
+            // 
+            // rdTransfer
+            // 
+            rdTransfer.AutoSize = true;
+            rdTransfer.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            rdTransfer.CheckedState.BorderThickness = 0;
+            rdTransfer.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            rdTransfer.CheckedState.InnerColor = Color.White;
+            rdTransfer.CheckedState.InnerOffset = -4;
+            rdTransfer.ForeColor = Color.Black;
+            rdTransfer.Location = new Point(82, 5);
+            rdTransfer.Name = "rdTransfer";
+            rdTransfer.Size = new Size(102, 19);
+            rdTransfer.TabIndex = 1;
+            rdTransfer.Text = "Chuyển khoản";
+            rdTransfer.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            rdTransfer.UncheckedState.BorderThickness = 2;
+            rdTransfer.UncheckedState.FillColor = Color.Transparent;
+            rdTransfer.UncheckedState.InnerColor = Color.Transparent;
+            // 
+            // rdCash
+            // 
+            rdCash.AutoSize = true;
+            rdCash.Checked = true;
+            rdCash.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            rdCash.CheckedState.BorderThickness = 0;
+            rdCash.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            rdCash.CheckedState.InnerColor = Color.White;
+            rdCash.CheckedState.InnerOffset = -4;
+            rdCash.ForeColor = Color.Black;
+            rdCash.Location = new Point(3, 5);
+            rdCash.Name = "rdCash";
+            rdCash.Size = new Size(71, 19);
+            rdCash.TabIndex = 0;
+            rdCash.TabStop = true;
+            rdCash.Text = "Tiền mặt";
+            rdCash.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            rdCash.UncheckedState.BorderThickness = 2;
+            rdCash.UncheckedState.FillColor = Color.Transparent;
+            rdCash.UncheckedState.InnerColor = Color.Transparent;
             // 
             // lbVoucherId
             // 
@@ -289,7 +356,7 @@
             lbCurrency.AutoSize = true;
             lbCurrency.BackColor = Color.Transparent;
             lbCurrency.ForeColor = Color.FromArgb(59, 93, 79);
-            lbCurrency.Location = new Point(259, 61);
+            lbCurrency.Location = new Point(259, 89);
             lbCurrency.Name = "lbCurrency";
             lbCurrency.Size = new Size(31, 15);
             lbCurrency.TabIndex = 25;
@@ -301,7 +368,7 @@
             txtTotal.BorderStyle = BorderStyle.None;
             txtTotal.Enabled = false;
             txtTotal.ForeColor = Color.FromArgb(59, 93, 79);
-            txtTotal.Location = new Point(101, 61);
+            txtTotal.Location = new Point(101, 89);
             txtTotal.Name = "txtTotal";
             txtTotal.Size = new Size(153, 16);
             txtTotal.TabIndex = 23;
@@ -312,7 +379,7 @@
             lbTotal.AutoSize = true;
             lbTotal.BackColor = Color.Transparent;
             lbTotal.ForeColor = Color.FromArgb(59, 93, 79);
-            lbTotal.Location = new Point(10, 61);
+            lbTotal.Location = new Point(10, 89);
             lbTotal.Name = "lbTotal";
             lbTotal.Size = new Size(63, 15);
             lbTotal.TabIndex = 22;
@@ -798,6 +865,8 @@
             gbInvoice.ResumeLayout(false);
             pnPurchase.ResumeLayout(false);
             pnPurchase.PerformLayout();
+            pnPaymentMethod.ResumeLayout(false);
+            pnPaymentMethod.PerformLayout();
             pnInvoiceInfo.ResumeLayout(false);
             pnInvoiceInfo.PerformLayout();
             gbCustomer.ResumeLayout(false);
@@ -862,5 +931,9 @@
         private Label lbUnit;
         private Label lbAmount;
         private Guna.UI2.WinForms.Guna2Button btnRemoveAll;
+        private Label lbPaymentMethod;
+        private Panel pnPaymentMethod;
+        private Guna.UI2.WinForms.Guna2RadioButton rdTransfer;
+        private Guna.UI2.WinForms.Guna2RadioButton rdCash;
     }
 }

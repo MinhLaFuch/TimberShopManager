@@ -24,6 +24,7 @@ namespace timber_shop_manager
         private DynamicSearch dynamicSearch = null;
         private int selectedRowIndex = -1;
         private decimal originalTotal = 0;
+        private decimal displayedTotal = 0;
 
         private string
             name = "Bui Ngoc Quy",
@@ -49,6 +50,12 @@ namespace timber_shop_manager
             {
                 originalTotal = 0;
             }
+        }
+
+        private void ClearCustomerFields()
+        {
+            txtCustomerName.Clear();
+            txtAddress.Clear();
         }
 
         private void FormLoad()
@@ -220,13 +227,37 @@ namespace timber_shop_manager
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            // Kiểm tra giỏ hàng có ít nhất một sản phẩm
             if (dgvSale.Rows.Count == 0)
             {
-                MessageBox.Show("Không có sản phẩm nào trong giỏ hàng.\nVui lòng thêm sản phẩm trước khi in hóa đơn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Không có sản phẩm nào trong giỏ hàng.\nVui lòng thêm sản phẩm trước khi lập hóa đơn.",
+                                "Thông báo",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
                 return;
             }
 
-            PrintInvoice(txtId.Text, "", txtEmployeeName.Text, txtPhoneNumber.Text, txtCustomerName.Text, txtAddress.Text, dgvSale);
+            // Kiểm tra thông tin khách hàng bằng InputValidator
+            bool isCustomerInfoValid = InputValidator.ValidateNotEmpty(new Dictionary<Control, Label>
+            {
+                { txtPhoneNumber, lbPhoneNumber },
+                { txtCustomerName, lbCustomerName },
+                { txtAddress, lbAddress }
+            });
+
+            if (!isCustomerInfoValid)
+            {
+                // Nếu thiếu thông tin, đã có MessageBox trong InputValidator rồi
+                return;
+            }
+
+            //if (dgvSale.Rows.Count == 0)
+            //{
+            //    MessageBox.Show("Không có sản phẩm nào trong giỏ hàng.\nVui lòng thêm sản phẩm trước khi in hóa đơn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+
+            //PrintInvoice(txtId.Text, "", txtEmployeeName.Text, txtPhoneNumber.Text, txtCustomerName.Text, txtAddress.Text, dgvSale);
         }
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
@@ -276,7 +307,7 @@ namespace timber_shop_manager
                     decimal newTotal = Math.Round(priceQuotation * newQuantity * (1 + tax), 0, MidpointRounding.AwayFromZero);
 
                     row.Cells["Quantity"].Value = newQuantity;
-                    row.Cells["Total"].Value = newTotal;
+                    row.Cells["Total"].Value = newTotal.ToString("#,##0");
 
                     UpdateTotalAmount();
                     productExists = true;
@@ -287,19 +318,25 @@ namespace timber_shop_manager
             // Nếu sản phẩm chưa có, thêm mới vào dgvSale
             if (!productExists)
             {
-                dgvSale.Rows.Add(
+                int rowIndex = dgvSale.Rows.Add(
                     productId,
                     productName,
                     quantity,
                     priceQuotation,
-                    tax,
+                    tax.ToString("P0"),
                     total,
                     warrantyEnd.ToString("dd/MM/yyyy")
                 );
+
+                // Định dạng các cột tiền ngay khi thêm sản phẩm
+                dgvSale.Rows[rowIndex].Cells["PriceQuotation"].Value = priceQuotation.ToString("#,##0");
+                dgvSale.Rows[rowIndex].Cells["Tax"].Value = tax.ToString("P0");
+                dgvSale.Rows[rowIndex].Cells["Total"].Value = total.ToString("#,##0");
             }
 
             // Cập nhật tổng tiền trong hóa đơn
             UpdateTotalAmount();
+            UpdateTotalDisplay();
 
             // Enable nút xoá, xoá tất cả
             btnRemoveAll.Enabled = dgvSale.Rows.Count > 0;
@@ -325,8 +362,15 @@ namespace timber_shop_manager
             nudQuantity.Maximum = currentRemainingQuantity;
 
             // Định dạng lại các cột tiền trong dgvSale
-            FormatCurrencyColumns(dgvSale, new List<string> { "Giá Niêm Yết", "Thuế", "Tổng Tiền" });
+            FormatCurrencyColumns(dgvSale, new List<string> { "Giá Niêm Yết", "Tổng Tiền" });
         }
+
+        private void UpdateTotalDisplay()
+        {
+            txtTotal.Text = Math.Round(originalTotal, 0).ToString("#,##0");
+            txtProductQuantity.Text = dgvSale.Rows.Count.ToString();
+        }
+
 
         private void UpdateTotalAmount()
         {
@@ -334,20 +378,32 @@ namespace timber_shop_manager
 
             foreach (DataGridViewRow row in dgvSale.Rows)
             {
-                totalAmount += Convert.ToDecimal(row.Cells["Total"].Value); // Cộng tổng tiền từ tất cả các dòng
+                totalAmount += Convert.ToDecimal(row.Cells["Total"].Value);
             }
 
-            txtTotal.Text = Math.Round(totalAmount, 0).ToString("#,##0");
-            InitializeOriginalTotal();
+            originalTotal = totalAmount; 
         }
 
         private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
         {
-            Customer cus = null;
-            if ((cus = Customer.GetCustomer(txtPhoneNumber.Text)) != null)
+            // Nếu ô Số điện thoại bị xóa trống, thì xóa luôn các thông tin khách hàng khác
+            if (string.IsNullOrWhiteSpace(txtPhoneNumber.Text))
+            {
+                ClearCustomerFields();
+                return;
+            }
+
+            // Nếu ô Số điện thoại có dữ liệu, tìm thông tin khách hàng
+            Customer cus = Customer.GetCustomer(txtPhoneNumber.Text);
+            if (cus != null)
             {
                 txtCustomerName.Text = cus.Name;
                 txtAddress.Text = cus.Address;
+            }
+            else
+            {
+                // Nếu không tìm thấy khách hàng -> xóa các ô còn lại
+                ClearCustomerFields();
             }
         }
 
@@ -665,5 +721,7 @@ namespace timber_shop_manager
                 }
             }
         }
+
+
     }
 }
