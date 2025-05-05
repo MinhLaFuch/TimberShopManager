@@ -152,7 +152,7 @@
             controlBox.EnableMaximizeColor = Color.FromArgb(160, 160, 160);
             controlBox.EnableMinimizeButton = true;
             controlBox.EnableMinimizeColor = Color.FromArgb(160, 160, 160);
-            controlBox.Location = new Point(652, 0);
+            controlBox.Location = new Point(632, 0);
             controlBox.MaximizeHoverColor = Color.FromArgb(15, 255, 255, 255);
             controlBox.MaximizeHoverForeColor = Color.White;
             controlBox.MinimizeHoverColor = Color.FromArgb(15, 255, 255, 255);
@@ -312,6 +312,7 @@
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng nhập";
+            FormClosing += frmLogin_FormClosing;
             Load += frmLogin_Load;
             pnLogin.ResumeLayout(false);
             panel1.ResumeLayout(false);

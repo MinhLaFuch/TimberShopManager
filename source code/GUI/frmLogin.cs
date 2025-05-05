@@ -119,5 +119,11 @@ namespace timber_shop_manager
             pbInvisible.Visible = false; // Hide the "invisible" button
         }
         #endregion
+        #region Form closing event
+        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+        #endregion
     }
 }
