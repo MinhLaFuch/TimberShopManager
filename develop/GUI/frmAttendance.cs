@@ -105,7 +105,7 @@ namespace timber_shop_manager
                 dtpFrom.Value = dtpTo.Value.AddDays(-1);
             }
 
-            LoadAttendanceWithDateRange(dtpFrom.Value, dtpTo.Value);
+            LoadAttendanceWithDateRange(dtpFrom.Value.AddDays(-1), dtpTo.Value);
         }
         #endregion
     }
