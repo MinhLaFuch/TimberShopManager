@@ -216,10 +216,6 @@ namespace timber_shop_manager
             {
                 lbNewPasswordWarning.Text = "Mật khẩu ít nhất phải có 1 kí tự in hoa";
             }
-            else if (true)
-            {
-                lbNewPasswordWarning.Text = "Mật khẩu ít nhất phải có 1 kí tự đặc biệt";
-            }
             else
             {
                 lbNewPasswordWarning.Text = String.Empty;
