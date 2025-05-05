@@ -26,7 +26,7 @@
 4. **Khởi Chạy Ứng Dụng**
     - Sau khi cài đặt, mở ứng dụng từ menu Start hoặc biểu tượng trên Desktop.
     - Đăng nhập bằng tài khoản mặc định:
-      - **Username**: `an.nguyen@timbershop.vn`
+      - **Username**: `admin@timbershop.vn`
       - **Password**: `123`
 
 5. **Hoàn Tất**
