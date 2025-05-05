@@ -295,18 +295,13 @@ namespace timber_shop_manager
             openChildForm(new frmAttendance(emp));
             HighlightButton((Button)sender);
         }
-        private void btnConfig_Click(object sender, EventArgs e)
-        {
-            openChildForm(new frmConfig());
-            HighlightButton((Button)sender);
-        }
         private void btnLogout_Click(object sender, EventArgs e)
         {
             DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirmation == DialogResult.Yes)
             {
                 this.Close();
-                Application.Exit();
+                (new frmLogin()).Show();
             }
         }
         private void btnVoucher_Click(object sender, EventArgs e)
