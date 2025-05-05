@@ -20,6 +20,7 @@ namespace timber_shop_manager
         #region Properties
         private EmployeeDTO emp;
         private AttendanceBUS bus = new();
+        private bool isViewing;
 
         private string id;
 
@@ -33,6 +34,12 @@ namespace timber_shop_manager
         {
             this.emp = emp;
             id = emp.Id;
+        }
+        public frmAttendance(EmployeeDTO emp, bool isViewing): this()
+        {
+            this.emp = emp;
+            id = emp.Id;
+            this.isViewing = isViewing;
         }
         #endregion
         #region Support methods
@@ -64,6 +71,15 @@ namespace timber_shop_manager
             dtpTo.MaxDate = now;                      // luôn nhỏ hơn hiện tại
 
             LoadAttendance();
+
+            if(isViewing)
+            {
+                pnTop.Visible = true;
+            } else
+            {
+                pnTop.Visible = false;
+                dgv.Height = dgv.Height + pnTop.Height;
+            }
         }
         #endregion
         #region Button click event

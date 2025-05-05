@@ -109,7 +109,7 @@
             nCB.EnableMaximizeColor = Color.FromArgb(160, 160, 160);
             nCB.EnableMinimizeButton = true;
             nCB.EnableMinimizeColor = Color.FromArgb(160, 160, 160);
-            nCB.Location = new Point(775, 0);
+            nCB.Location = new Point(772, 0);
             nCB.MaximizeHoverColor = Color.FromArgb(15, 255, 255, 255);
             nCB.MaximizeHoverForeColor = Color.White;
             nCB.MinimizeHoverColor = Color.FromArgb(15, 255, 255, 255);

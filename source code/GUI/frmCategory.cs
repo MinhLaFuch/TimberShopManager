@@ -185,7 +185,7 @@ namespace timber_shop_manager
         }
         private void btnViewProducts_Click(object sender, EventArgs e)
         {
-            new frmInvoiceDetail(this, txtId.Text).ShowDialog();
+            new frmProduct(this, txtId.Text).ShowDialog();
         }
         private void btnCancel_Click(object sender, EventArgs e) => LoadForm();
         #endregion

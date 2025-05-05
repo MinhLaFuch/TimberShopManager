@@ -80,6 +80,7 @@
             lbName = new Label();
             nudPriceQuotation = new Guna.UI2.WinForms.Guna2NumericUpDown();
             pnButton = new FlowLayoutPanel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             gbInfo.SuspendLayout();
             pnInfo.SuspendLayout();
@@ -87,6 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)nudWarranty).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudPriceQuotation).BeginInit();
             pnButton.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnAdd
@@ -187,12 +189,12 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgv.DefaultCellStyle = dataGridViewCellStyle3;
             dgv.GridColor = Color.FromArgb(59, 93, 79);
-            dgv.Location = new Point(15, 404);
+            dgv.Location = new Point(3, 396);
             dgv.Name = "dgv";
             dgv.ReadOnly = true;
             dgv.RowHeadersVisible = false;
             dgv.RowHeadersWidth = 51;
-            dgv.Size = new Size(1190, 444);
+            dgv.Size = new Size(1231, 467);
             dgv.TabIndex = 1;
             dgv.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgv.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -262,10 +264,10 @@
             gbInfo.FillColor = SystemColors.Control;
             gbInfo.Font = new Font("Segoe UI", 9F);
             gbInfo.ForeColor = Color.White;
-            gbInfo.Location = new Point(15, 12);
+            gbInfo.Location = new Point(3, 3);
             gbInfo.Name = "gbInfo";
             gbInfo.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            gbInfo.Size = new Size(1190, 387);
+            gbInfo.Size = new Size(1231, 387);
             gbInfo.TabIndex = 0;
             gbInfo.Text = "Thông tin";
             // 
@@ -290,7 +292,7 @@
             pnInfo.Controls.Add(nudPriceQuotation);
             pnInfo.Location = new Point(3, 43);
             pnInfo.Name = "pnInfo";
-            pnInfo.Size = new Size(1184, 261);
+            pnInfo.Size = new Size(1225, 261);
             pnInfo.TabIndex = 0;
             // 
             // cbCalUnit
@@ -306,7 +308,7 @@
             // 
             txtDescription.BackColor = Color.White;
             txtDescription.BorderStyle = BorderStyle.None;
-            txtDescription.Location = new Point(515, 29);
+            txtDescription.Location = new Point(558, 30);
             txtDescription.Name = "txtDescription";
             txtDescription.ScrollBars = RichTextBoxScrollBars.ForcedHorizontal;
             txtDescription.Size = new Size(654, 217);
@@ -317,7 +319,7 @@
             // 
             lbDescription.AutoSize = true;
             lbDescription.ForeColor = Color.FromArgb(59, 93, 79);
-            lbDescription.Location = new Point(515, 7);
+            lbDescription.Location = new Point(558, 7);
             lbDescription.Name = "lbDescription";
             lbDescription.Size = new Size(48, 20);
             lbDescription.TabIndex = 15;
@@ -493,18 +495,26 @@
             pnButton.Controls.Add(btnMod);
             pnButton.Controls.Add(btnAdd);
             pnButton.FlowDirection = FlowDirection.RightToLeft;
-            pnButton.Location = new Point(440, 321);
+            pnButton.Location = new Point(485, 323);
             pnButton.Name = "pnButton";
             pnButton.Size = new Size(733, 48);
             pnButton.TabIndex = 1;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Controls.Add(gbInfo);
+            flowLayoutPanel1.Controls.Add(dgv);
+            flowLayoutPanel1.Location = new Point(-1, -4);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(1234, 863);
+            flowLayoutPanel1.TabIndex = 2;
             // 
             // frmProduct
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1232, 865);
-            Controls.Add(gbInfo);
-            Controls.Add(dgv);
+            Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmProduct";
             StartPosition = FormStartPosition.CenterParent;
@@ -518,6 +528,7 @@
             ((System.ComponentModel.ISupportInitialize)nudWarranty).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudPriceQuotation).EndInit();
             pnButton.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -549,5 +560,6 @@
         private Label lbName;
         private Guna.UI2.WinForms.Guna2NumericUpDown nudPriceQuotation;
         private ComboBox cbCalUnit;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }
