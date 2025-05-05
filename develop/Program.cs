@@ -28,7 +28,7 @@ namespace timber_shop_manager
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new frmLogin());
-            //Application.Run(new frmSupplier());
+            //Application.Run(new frmImport());
 
         }
     }
