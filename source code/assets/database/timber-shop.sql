@@ -463,3 +463,8 @@ alter table SaleInvoice
       references SaleAgent (Id)
 go
 
+insert into Employee(Id, Birthday) values ('E000', GETDATE());
+go
+insert into Administrator(Id) values ('E000');
+go
+insert into Account(Email, Id, Password) values ('admin@timbershop.vn','E000', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
