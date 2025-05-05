@@ -40,6 +40,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFinancial));
             textBox1 = new TextBox();
             chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             grInfor = new GroupBox();
@@ -395,6 +396,7 @@
             Controls.Add(grInfor);
             Controls.Add(chart);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmFinancial";
             Text = "Báo cáo tài chính";
             Load += frmFinancialReport_Load;

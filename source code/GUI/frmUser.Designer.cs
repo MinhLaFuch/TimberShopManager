@@ -32,14 +32,15 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUser));
             gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
             panel1 = new Panel();
             txtAdmission = new TextBox();
@@ -60,10 +61,10 @@
             lbEmployeeDOB = new Label();
             lbEmployeeAddress = new Label();
             pnButton = new FlowLayoutPanel();
-            btnChangeInfo = new Guna.UI2.WinForms.Guna2Button();
-            btnChangePW = new Guna.UI2.WinForms.Guna2Button();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             btnSave = new Guna.UI2.WinForms.Guna2Button();
+            btnChangeInfo = new Guna.UI2.WinForms.Guna2Button();
+            btnChangePW = new Guna.UI2.WinForms.Guna2Button();
             gbInfo.SuspendLayout();
             panel1.SuspendLayout();
             pnButton.SuspendLayout();
@@ -300,6 +301,43 @@
             pnButton.Size = new Size(742, 70);
             pnButton.TabIndex = 1;
             // 
+            // guna2Button1
+            // 
+            guna2Button1.BackColor = Color.FromArgb(59, 93, 79);
+            guna2Button1.CustomizableEdges = customizableEdges5;
+            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button1.FillColor = Color.FromArgb(59, 93, 79);
+            guna2Button1.Font = new Font("Segoe UI", 9F);
+            guna2Button1.ForeColor = Color.White;
+            guna2Button1.Location = new Point(576, 3);
+            guna2Button1.Name = "guna2Button1";
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2Button1.Size = new Size(163, 50);
+            guna2Button1.TabIndex = 0;
+            guna2Button1.Text = "Hủy";
+            // 
+            // btnSave
+            // 
+            btnSave.BackColor = Color.FromArgb(59, 93, 79);
+            btnSave.CustomizableEdges = customizableEdges7;
+            btnSave.DisabledState.BorderColor = Color.DarkGray;
+            btnSave.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSave.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSave.FillColor = Color.FromArgb(59, 93, 79);
+            btnSave.Font = new Font("Segoe UI", 9F);
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(407, 3);
+            btnSave.Name = "btnSave";
+            btnSave.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnSave.Size = new Size(163, 50);
+            btnSave.TabIndex = 1;
+            btnSave.Text = "Lưu";
+            btnSave.Click += btnSave_Click;
+            // 
             // btnChangeInfo
             // 
             btnChangeInfo.BackColor = Color.FromArgb(59, 93, 79);
@@ -338,43 +376,6 @@
             btnChangePW.Text = "Đổi mật khẩu";
             btnChangePW.Click += btnChangePW_Click;
             // 
-            // guna2Button1
-            // 
-            guna2Button1.BackColor = Color.FromArgb(59, 93, 79);
-            guna2Button1.CustomizableEdges = customizableEdges5;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.FillColor = Color.FromArgb(59, 93, 79);
-            guna2Button1.Font = new Font("Segoe UI", 9F);
-            guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(576, 3);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            guna2Button1.Size = new Size(163, 50);
-            guna2Button1.TabIndex = 0;
-            guna2Button1.Text = "Hủy";
-            // 
-            // btnSave
-            // 
-            btnSave.BackColor = Color.FromArgb(59, 93, 79);
-            btnSave.CustomizableEdges = customizableEdges7;
-            btnSave.DisabledState.BorderColor = Color.DarkGray;
-            btnSave.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnSave.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSave.FillColor = Color.FromArgb(59, 93, 79);
-            btnSave.Font = new Font("Segoe UI", 9F);
-            btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(407, 3);
-            btnSave.Name = "btnSave";
-            btnSave.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnSave.Size = new Size(163, 50);
-            btnSave.TabIndex = 1;
-            btnSave.Text = "Lưu";
-            btnSave.Click += btnSave_Click;
-            // 
             // frmUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -383,6 +384,7 @@
             Controls.Add(gbInfo);
             Controls.Add(pnButton);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmUser";
             Text = "frmUser";
             Load += frmUser_Load;

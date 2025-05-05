@@ -652,6 +652,7 @@
             Controls.Add(dgvSupplier);
             Controls.Add(dgvPurchase);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmSupplier";
             Text = "frmSupplier";
             Load += frmSupplier_Load;

@@ -33,30 +33,31 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCategory));
             dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
             pnButton = new FlowLayoutPanel();
-            btnSearch = new Guna.UI2.WinForms.Guna2Button();
-            btnMod = new Guna.UI2.WinForms.Guna2Button();
-            btnDel = new Guna.UI2.WinForms.Guna2Button();
-            btnAdd = new Guna.UI2.WinForms.Guna2Button();
-            btnViewProducts = new Guna.UI2.WinForms.Guna2Button();
             btnCancel = new Guna.UI2.WinForms.Guna2Button();
             btnSave = new Guna.UI2.WinForms.Guna2Button();
+            btnSearch = new Guna.UI2.WinForms.Guna2Button();
+            btnViewProducts = new Guna.UI2.WinForms.Guna2Button();
+            btnDel = new Guna.UI2.WinForms.Guna2Button();
+            btnMod = new Guna.UI2.WinForms.Guna2Button();
+            btnAdd = new Guna.UI2.WinForms.Guna2Button();
             pnInfo = new Panel();
             txtDescription = new RichTextBox();
             txtName = new TextBox();
@@ -157,101 +158,6 @@
             pnButton.Size = new Size(1009, 56);
             pnButton.TabIndex = 1;
             // 
-            // btnSearch
-            // 
-            btnSearch.BorderColor = Color.Transparent;
-            btnSearch.CustomizableEdges = customizableEdges5;
-            btnSearch.DisabledState.BorderColor = Color.DarkGray;
-            btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnSearch.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSearch.FillColor = Color.FromArgb(59, 93, 79);
-            btnSearch.Font = new Font("Segoe UI", 9F);
-            btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(595, 3);
-            btnSearch.Name = "btnSearch";
-            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnSearch.Size = new Size(133, 43);
-            btnSearch.TabIndex = 4;
-            btnSearch.Text = "Tìm kiếm";
-            btnSearch.Click += btnSearch_Click;
-            // 
-            // btnMod
-            // 
-            btnMod.BorderColor = Color.Transparent;
-            btnMod.CustomizableEdges = customizableEdges11;
-            btnMod.DisabledState.BorderColor = Color.DarkGray;
-            btnMod.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnMod.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnMod.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnMod.FillColor = Color.FromArgb(59, 93, 79);
-            btnMod.Font = new Font("Segoe UI", 9F);
-            btnMod.ForeColor = Color.White;
-            btnMod.Location = new Point(178, 3);
-            btnMod.Name = "btnMod";
-            btnMod.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnMod.Size = new Size(133, 43);
-            btnMod.TabIndex = 3;
-            btnMod.Text = "Sửa";
-            btnMod.Click += btnMod_Click;
-            // 
-            // btnDel
-            // 
-            btnDel.BorderColor = Color.Transparent;
-            btnDel.CustomizableEdges = customizableEdges9;
-            btnDel.DisabledState.BorderColor = Color.DarkGray;
-            btnDel.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnDel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnDel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnDel.FillColor = Color.FromArgb(59, 93, 79);
-            btnDel.Font = new Font("Segoe UI", 9F);
-            btnDel.ForeColor = Color.White;
-            btnDel.Location = new Point(317, 3);
-            btnDel.Name = "btnDel";
-            btnDel.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btnDel.Size = new Size(133, 43);
-            btnDel.TabIndex = 2;
-            btnDel.Text = "Xóa";
-            btnDel.Click += btnDel_Click;
-            // 
-            // btnAdd
-            // 
-            btnAdd.BorderColor = Color.Transparent;
-            btnAdd.CustomizableEdges = customizableEdges13;
-            btnAdd.DisabledState.BorderColor = Color.DarkGray;
-            btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnAdd.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAdd.FillColor = Color.FromArgb(59, 93, 79);
-            btnAdd.Font = new Font("Segoe UI", 9F);
-            btnAdd.ForeColor = Color.White;
-            btnAdd.Location = new Point(39, 3);
-            btnAdd.Name = "btnAdd";
-            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            btnAdd.Size = new Size(133, 43);
-            btnAdd.TabIndex = 1;
-            btnAdd.Text = "Thêm";
-            btnAdd.Click += btnAdd_Click;
-            // 
-            // btnViewProducts
-            // 
-            btnViewProducts.BorderColor = Color.Transparent;
-            btnViewProducts.CustomizableEdges = customizableEdges7;
-            btnViewProducts.DisabledState.BorderColor = Color.DarkGray;
-            btnViewProducts.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnViewProducts.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnViewProducts.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnViewProducts.FillColor = Color.FromArgb(59, 93, 79);
-            btnViewProducts.Font = new Font("Segoe UI", 9F);
-            btnViewProducts.ForeColor = Color.White;
-            btnViewProducts.Location = new Point(456, 3);
-            btnViewProducts.Name = "btnViewProducts";
-            btnViewProducts.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnViewProducts.Size = new Size(133, 43);
-            btnViewProducts.TabIndex = 0;
-            btnViewProducts.Text = "Xem sản phẩm";
-            btnViewProducts.Click += btnViewProducts_Click;
-            // 
             // btnCancel
             // 
             btnCancel.CustomizableEdges = customizableEdges1;
@@ -287,6 +193,101 @@
             btnSave.TabIndex = 0;
             btnSave.Text = "Lưu";
             btnSave.Click += btnSave_Click;
+            // 
+            // btnSearch
+            // 
+            btnSearch.BorderColor = Color.Transparent;
+            btnSearch.CustomizableEdges = customizableEdges5;
+            btnSearch.DisabledState.BorderColor = Color.DarkGray;
+            btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSearch.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSearch.FillColor = Color.FromArgb(59, 93, 79);
+            btnSearch.Font = new Font("Segoe UI", 9F);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Location = new Point(595, 3);
+            btnSearch.Name = "btnSearch";
+            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnSearch.Size = new Size(133, 43);
+            btnSearch.TabIndex = 4;
+            btnSearch.Text = "Tìm kiếm";
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // btnViewProducts
+            // 
+            btnViewProducts.BorderColor = Color.Transparent;
+            btnViewProducts.CustomizableEdges = customizableEdges7;
+            btnViewProducts.DisabledState.BorderColor = Color.DarkGray;
+            btnViewProducts.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnViewProducts.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnViewProducts.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnViewProducts.FillColor = Color.FromArgb(59, 93, 79);
+            btnViewProducts.Font = new Font("Segoe UI", 9F);
+            btnViewProducts.ForeColor = Color.White;
+            btnViewProducts.Location = new Point(456, 3);
+            btnViewProducts.Name = "btnViewProducts";
+            btnViewProducts.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnViewProducts.Size = new Size(133, 43);
+            btnViewProducts.TabIndex = 0;
+            btnViewProducts.Text = "Xem sản phẩm";
+            btnViewProducts.Click += btnViewProducts_Click;
+            // 
+            // btnDel
+            // 
+            btnDel.BorderColor = Color.Transparent;
+            btnDel.CustomizableEdges = customizableEdges9;
+            btnDel.DisabledState.BorderColor = Color.DarkGray;
+            btnDel.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnDel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnDel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnDel.FillColor = Color.FromArgb(59, 93, 79);
+            btnDel.Font = new Font("Segoe UI", 9F);
+            btnDel.ForeColor = Color.White;
+            btnDel.Location = new Point(317, 3);
+            btnDel.Name = "btnDel";
+            btnDel.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnDel.Size = new Size(133, 43);
+            btnDel.TabIndex = 2;
+            btnDel.Text = "Xóa";
+            btnDel.Click += btnDel_Click;
+            // 
+            // btnMod
+            // 
+            btnMod.BorderColor = Color.Transparent;
+            btnMod.CustomizableEdges = customizableEdges11;
+            btnMod.DisabledState.BorderColor = Color.DarkGray;
+            btnMod.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnMod.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnMod.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnMod.FillColor = Color.FromArgb(59, 93, 79);
+            btnMod.Font = new Font("Segoe UI", 9F);
+            btnMod.ForeColor = Color.White;
+            btnMod.Location = new Point(178, 3);
+            btnMod.Name = "btnMod";
+            btnMod.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnMod.Size = new Size(133, 43);
+            btnMod.TabIndex = 3;
+            btnMod.Text = "Sửa";
+            btnMod.Click += btnMod_Click;
+            // 
+            // btnAdd
+            // 
+            btnAdd.BorderColor = Color.Transparent;
+            btnAdd.CustomizableEdges = customizableEdges13;
+            btnAdd.DisabledState.BorderColor = Color.DarkGray;
+            btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAdd.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAdd.FillColor = Color.FromArgb(59, 93, 79);
+            btnAdd.Font = new Font("Segoe UI", 9F);
+            btnAdd.ForeColor = Color.White;
+            btnAdd.Location = new Point(39, 3);
+            btnAdd.Name = "btnAdd";
+            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btnAdd.Size = new Size(133, 43);
+            btnAdd.TabIndex = 1;
+            btnAdd.Text = "Thêm";
+            btnAdd.Click += btnAdd_Click;
             // 
             // pnInfo
             // 
@@ -368,6 +369,7 @@
             Controls.Add(gbInfo);
             Controls.Add(dgv);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmCategory";
             Text = "frmCategory";
             Load += frmCategory_Load;

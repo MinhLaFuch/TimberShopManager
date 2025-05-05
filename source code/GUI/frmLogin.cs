@@ -96,7 +96,6 @@ namespace timber_shop_manager
             var frmMain = new frmMain(employee);
             this.Hide();
             frmMain.ShowDialog();
-            this.Show();
         }
 
         private void btnForgotPassword_Click(object sender, EventArgs e)

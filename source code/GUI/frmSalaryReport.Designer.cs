@@ -43,6 +43,7 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSalaryReport));
             pnButton = new FlowLayoutPanel();
             btnCreate = new Guna.UI2.WinForms.Guna2Button();
             dtpDateReport = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -514,6 +515,7 @@
             Controls.Add(dgv);
             Controls.Add(pnInfo);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmSalaryReport";
             Text = "frmSalaryReport";
             Load += frmSalaryReport_Load;

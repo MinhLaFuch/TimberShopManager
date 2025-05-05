@@ -57,6 +57,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmImport));
             gbInvoiceInfor = new Guna.UI2.WinForms.Guna2GroupBox();
             txtEmployeeId = new TextBox();
             txtInvoiceId = new TextBox();
@@ -794,6 +795,7 @@
             Controls.Add(guna2GroupBox2);
             Controls.Add(gbInvoiceInfor);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "frmImport";
             Text = "frmImport";

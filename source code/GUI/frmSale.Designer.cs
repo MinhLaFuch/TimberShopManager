@@ -58,6 +58,7 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSale));
             btnClear = new Guna.UI2.WinForms.Guna2Button();
             btnAddProduct = new Guna.UI2.WinForms.Guna2Button();
             lbSelectProduct = new Label();
@@ -853,6 +854,7 @@
             Controls.Add(pnInfo);
             Controls.Add(dgvProduct);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "frmSale";
             StartPosition = FormStartPosition.CenterParent;

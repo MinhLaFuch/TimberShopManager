@@ -53,6 +53,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProduct));
             btnAdd = new Guna.UI2.WinForms.Guna2Button();
             btnDel = new Guna.UI2.WinForms.Guna2Button();
             btnMod = new Guna.UI2.WinForms.Guna2Button();
@@ -516,6 +517,7 @@
             ClientSize = new Size(1232, 865);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmProduct";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Sản phẩm";

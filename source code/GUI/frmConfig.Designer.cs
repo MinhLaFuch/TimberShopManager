@@ -30,6 +30,7 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConfig));
             chkWindowAuthetication = new Guna.UI2.WinForms.Guna2CheckBox();
             gbServer = new Guna.UI2.WinForms.Guna2GroupBox();
             txtDatbaseName = new TextBox();
@@ -261,6 +262,7 @@
             ClientSize = new Size(560, 421);
             Controls.Add(gbServer);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmConfig";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmConfig";

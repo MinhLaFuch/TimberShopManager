@@ -35,6 +35,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccount));
             cbRole = new Guna.UI2.WinForms.Guna2ComboBox();
             txtID = new TextBox();
             txtEmail = new TextBox();
@@ -321,6 +322,7 @@
             Controls.Add(gbInfo);
             ForeColor = Color.FromArgb(59, 93, 79);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmAccount";
             Text = "frmAccount";
             Load += frmAccount_Load;

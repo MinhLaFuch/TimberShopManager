@@ -33,14 +33,14 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -63,10 +63,10 @@
             gbInfo = new Guna.UI2.WinForms.Guna2GroupBox();
             pnInfo = new Panel();
             pnButton = new FlowLayoutPanel();
-            btnSearch = new Guna.UI2.WinForms.Guna2Button();
-            btnMod = new Guna.UI2.WinForms.Guna2Button();
             btnSave = new Guna.UI2.WinForms.Guna2Button();
             btnCancel = new Guna.UI2.WinForms.Guna2Button();
+            btnSearch = new Guna.UI2.WinForms.Guna2Button();
+            btnMod = new Guna.UI2.WinForms.Guna2Button();
             gbPurchaseHistory = new Guna.UI2.WinForms.Guna2GroupBox();
             pnPurchase = new Panel();
             panel1 = new Panel();
@@ -247,42 +247,6 @@
             pnButton.Size = new Size(709, 65);
             pnButton.TabIndex = 2;
             // 
-            // btnSearch
-            // 
-            btnSearch.CustomizableEdges = customizableEdges7;
-            btnSearch.DisabledState.BorderColor = Color.DarkGray;
-            btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnSearch.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSearch.FillColor = Color.FromArgb(59, 93, 79);
-            btnSearch.Font = new Font("Segoe UI", 9F);
-            btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(280, 3);
-            btnSearch.Name = "btnSearch";
-            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnSearch.Size = new Size(138, 37);
-            btnSearch.TabIndex = 1;
-            btnSearch.Text = "Tìm kiếm";
-            btnSearch.Click += btnSearch_Click;
-            // 
-            // btnMod
-            // 
-            btnMod.CustomizableEdges = customizableEdges9;
-            btnMod.DisabledState.BorderColor = Color.DarkGray;
-            btnMod.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnMod.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnMod.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnMod.FillColor = Color.FromArgb(59, 93, 79);
-            btnMod.Font = new Font("Segoe UI", 9F);
-            btnMod.ForeColor = Color.White;
-            btnMod.Location = new Point(136, 3);
-            btnMod.Name = "btnMod";
-            btnMod.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btnMod.Size = new Size(138, 37);
-            btnMod.TabIndex = 0;
-            btnMod.Text = "Sửa";
-            btnMod.Click += btnMod_Click;
-            // 
             // btnSave
             // 
             btnSave.CustomizableEdges = customizableEdges3;
@@ -318,6 +282,42 @@
             btnCancel.TabIndex = 0;
             btnCancel.Text = "Hủy";
             btnCancel.Click += btnCancel_Click;
+            // 
+            // btnSearch
+            // 
+            btnSearch.CustomizableEdges = customizableEdges7;
+            btnSearch.DisabledState.BorderColor = Color.DarkGray;
+            btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSearch.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSearch.FillColor = Color.FromArgb(59, 93, 79);
+            btnSearch.Font = new Font("Segoe UI", 9F);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Location = new Point(280, 3);
+            btnSearch.Name = "btnSearch";
+            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnSearch.Size = new Size(138, 37);
+            btnSearch.TabIndex = 1;
+            btnSearch.Text = "Tìm kiếm";
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // btnMod
+            // 
+            btnMod.CustomizableEdges = customizableEdges9;
+            btnMod.DisabledState.BorderColor = Color.DarkGray;
+            btnMod.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnMod.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnMod.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnMod.FillColor = Color.FromArgb(59, 93, 79);
+            btnMod.Font = new Font("Segoe UI", 9F);
+            btnMod.ForeColor = Color.White;
+            btnMod.Location = new Point(136, 3);
+            btnMod.Name = "btnMod";
+            btnMod.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnMod.Size = new Size(138, 37);
+            btnMod.TabIndex = 0;
+            btnMod.Text = "Sửa";
+            btnMod.Click += btnMod_Click;
             // 
             // gbPurchaseHistory
             // 
@@ -513,6 +513,7 @@
             Controls.Add(gbInfo);
             Controls.Add(dgvCustomer);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "frmCustomer";
             StartPosition = FormStartPosition.CenterParent;

@@ -358,6 +358,7 @@
             Controls.Add(pnCode);
             Controls.Add(pnNewPassword);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmChangePW";
             StartPosition = FormStartPosition.CenterParent;
             Text = "frmChangePW";

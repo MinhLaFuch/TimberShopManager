@@ -31,6 +31,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvoiceDetail));
             dgv = new Guna.UI2.WinForms.Guna2DataGridView();
             nCB = new ReaLTaiizor.Controls.NightControlBox();
             pnTop = new Panel();
@@ -109,7 +110,7 @@
             nCB.EnableMaximizeColor = Color.FromArgb(160, 160, 160);
             nCB.EnableMinimizeButton = true;
             nCB.EnableMinimizeColor = Color.FromArgb(160, 160, 160);
-            nCB.Location = new Point(772, 0);
+            nCB.Location = new Point(775, 0);
             nCB.MaximizeHoverColor = Color.FromArgb(15, 255, 255, 255);
             nCB.MaximizeHoverForeColor = Color.White;
             nCB.MinimizeHoverColor = Color.FromArgb(15, 255, 255, 255);
@@ -136,6 +137,7 @@
             Controls.Add(pnTop);
             Controls.Add(dgv);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "frmInvoiceDetail";
             Text = "Chi tiết hoá đơn";
