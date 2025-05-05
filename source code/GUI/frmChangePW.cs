@@ -72,8 +72,8 @@ namespace timber_shop_manager
             Random random = new Random();
             verificationCode = random.Next(100000, 999999);
 
-            string subject = "Your Verification Code";
-            string body = $"Hello {txtGmail.Text},\n\nYour verification code is: {verificationCode}\n\nPlease use this code to proceed with changing your password.\n\nThank you.";
+            string subject = "Mã email xác thực";
+            string body = $"Xin chào {txtGmail.Text},\n\nMã xác thực của bạn là: {verificationCode}\n\nVui lòng sử dụng mã xác thực trên để đăng nhập trong một phút nhận được email này \n\nCảm ơn.";
 
             try
             {
@@ -93,21 +93,22 @@ namespace timber_shop_manager
                     smtpClient.Send(mailMessage);
                 }
 
-                MessageBox.Show("Verification code sent successfully. Please check your email.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Mã xác thực đã được gửi thành công. Vui lòng kiểm tra email của bạn.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 pnCode.Visible = true;
             }
             catch (SmtpException smtpEx)
             {
-                // Handle specific SMTP-related errors (e.g., server timeout, authentication issues)
-                MessageBox.Show($"SMTP error: {smtpEx.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Xử lý các lỗi liên quan đến SMTP cụ thể (ví dụ: hết thời gian chờ máy chủ, vấn đề xác thực)
+                MessageBox.Show($"Lỗi SMTP: {smtpEx.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                // Handle other errors (e.g., network issues)
-                MessageBox.Show($"Failed to send verification code. Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Xử lý các lỗi khác (ví dụ: vấn đề mạng)
+                MessageBox.Show($"Không thể gửi mã xác thực. Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
+                MessageBox.Show("Verification code sent successfully. Please check your email.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                pnCode.Visible = true;
+            }
         #endregion
         #region Load
         private void frmChangePW_Load(object sender, EventArgs e)
