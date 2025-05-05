@@ -53,7 +53,7 @@ namespace timber_shop_manager
 
         private void btnViewAttend_Click(object sender, EventArgs e)
         {
-            frmAttendance frmAttendance = new frmAttendance(empBUS.GetEmployeeById(dto.EmployeeId));
+            frmAttendance frmAttendance = new frmAttendance(empBUS.GetEmployeeById(dto.EmployeeId), true);
             frmAttendance.ShowDialog();
         }
 

@@ -75,6 +75,7 @@ namespace timber_shop_manager
             if(isViewing)
             {
                 pnTop.Visible = true;
+                btnAttend.Visible = false;
             } else
             {
                 pnTop.Visible = false;

@@ -32,10 +32,10 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAttendance));
@@ -56,12 +56,14 @@
             flowLayoutPanel2 = new FlowLayoutPanel();
             pnTop = new Panel();
             nCB = new ReaLTaiizor.Controls.NightControlBox();
+            flowLayoutPanel3 = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             panel1.SuspendLayout();
             pnFromTo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             flowLayoutPanel2.SuspendLayout();
             pnTop.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
             SuspendLayout();
             // 
             // dgv
@@ -122,10 +124,9 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(flowLayoutPanel3);
             panel1.Controls.Add(lbEmployeeId);
-            panel1.Controls.Add(btnSearch);
             panel1.Controls.Add(lbRealTime);
-            panel1.Controls.Add(btnAttend);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
@@ -145,7 +146,7 @@
             // 
             // btnSearch
             // 
-            btnSearch.CustomizableEdges = customizableEdges1;
+            btnSearch.CustomizableEdges = customizableEdges3;
             btnSearch.DisabledState.BorderColor = Color.DarkGray;
             btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -153,9 +154,9 @@
             btnSearch.FillColor = Color.FromArgb(59, 93, 79);
             btnSearch.Font = new Font("Segoe UI", 9F);
             btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(11, 152);
+            btnSearch.Location = new Point(3, 65);
             btnSearch.Name = "btnSearch";
-            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnSearch.Size = new Size(201, 56);
             btnSearch.TabIndex = 2;
             btnSearch.Text = "Tìm kiếm";
@@ -176,7 +177,7 @@
             // 
             // btnAttend
             // 
-            btnAttend.CustomizableEdges = customizableEdges3;
+            btnAttend.CustomizableEdges = customizableEdges1;
             btnAttend.DisabledState.BorderColor = Color.DarkGray;
             btnAttend.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAttend.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -184,9 +185,9 @@
             btnAttend.FillColor = Color.FromArgb(59, 93, 79);
             btnAttend.Font = new Font("Segoe UI", 9F);
             btnAttend.ForeColor = Color.White;
-            btnAttend.Location = new Point(11, 91);
+            btnAttend.Location = new Point(3, 3);
             btnAttend.Name = "btnAttend";
-            btnAttend.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnAttend.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnAttend.Size = new Size(200, 56);
             btnAttend.TabIndex = 1;
             btnAttend.Text = "Chấm công";
@@ -300,6 +301,15 @@
             nCB.Size = new Size(139, 31);
             nCB.TabIndex = 0;
             // 
+            // flowLayoutPanel3
+            // 
+            flowLayoutPanel3.Controls.Add(btnAttend);
+            flowLayoutPanel3.Controls.Add(btnSearch);
+            flowLayoutPanel3.Location = new Point(14, 90);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new Size(207, 125);
+            flowLayoutPanel3.TabIndex = 4;
+            // 
             // frmAttendance
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -318,6 +328,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             flowLayoutPanel2.ResumeLayout(false);
             pnTop.ResumeLayout(false);
+            flowLayoutPanel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -338,5 +349,6 @@
         private FlowLayoutPanel flowLayoutPanel2;
         private Panel pnTop;
         private ReaLTaiizor.Controls.NightControlBox nCB;
+        private FlowLayoutPanel flowLayoutPanel3;
     }
 }
