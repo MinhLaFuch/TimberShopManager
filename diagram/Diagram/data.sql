@@ -4,12 +4,12 @@ GO
 -- EMPLOYEE + ACCOUNT + VAI TRÒ TƯƠNG ỨNG
 
 -- 1. Manager
-insert into Employee values ('E001', N'Nguyễn Văn An', '123456789', N'123 Đường Láng, Hà Nội', '1980-05-10', 25000000, '0901234567', N'Quản lý', 0);
+insert into Employee values ('E001', N'Nguyễn Văn An', '123456789', N'123 Đường Láng, Hà Nội', '1980-05-10', 25000000, '0901234567', N'Manager', 0);
 insert into Manager values ('E001');
 insert into Account values ('an.nguyen@timbershop.vn', 'E001', 'hashedpassword1', 1);
 
 -- 2. Administrator
-insert into Employee values ('E002', N'Lê Thị Mai', '987654321', N'45 Trần Phú, Đà Nẵng', '1985-07-22', 22000000, '0912345678', N'Quản trị viên', 0);
+insert into Employee values ('E002', N'Lê Thị Mai', '987654321', N'45 Trần Phú, Đà Nẵng', '1985-07-22', 22000000, '0912345678', N'Administrator', 0);
 insert into Administrator values ('E002');
 insert into Account values ('mai.le@timbershop.vn', 'E002', 'hashedpassword2', 1);
 
@@ -435,3 +435,19 @@ GO
 
 UPDATE Account
 SET Password = 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3'
+
+update Employee
+set Role = N'Bán hàng'
+where Role = 'Sale Agent'
+
+update Employee
+set Role = N'Quản trị viên'
+where Role = 'Administrator'
+
+update Employee
+set Role = N'Kế toán'
+where Role = 'Accountant'
+
+update Employee
+set Role = N'Quản lý'
+where Role = 'Manager'
