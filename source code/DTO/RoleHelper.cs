@@ -22,9 +22,9 @@ namespace timber_shop_manager.DTO
             return role switch
             {
                 "Quản trị viên" => RoleEnum.ADMINISTRATOR,
-                "Nhân viên kế toán" => RoleEnum.ACCOUNTANT,
-                "Quản lý cửa hàng" => RoleEnum.MANAGER,
-                "Nhân viên bán hàng" => RoleEnum.SALE_AGENT,
+                "Kế toán" => RoleEnum.ACCOUNTANT,
+                "Quản lý" => RoleEnum.MANAGER,
+                "Bán hàng" => RoleEnum.SALE_AGENT,
                 _ => RoleEnum.UNKNOWN
             };
         }
@@ -34,9 +34,9 @@ namespace timber_shop_manager.DTO
             return role switch
             {
                 RoleEnum.ADMINISTRATOR => "Quản trị viên",
-                RoleEnum.ACCOUNTANT => "Nhân viên kế toán",
-                RoleEnum.MANAGER => "Quản lý cửa hàng",
-                RoleEnum.SALE_AGENT => "Nhân viên bán hàng",
+                RoleEnum.ACCOUNTANT => "Kế toán",
+                RoleEnum.MANAGER => "Quản lý",
+                RoleEnum.SALE_AGENT => "Bán hàng",
                 _ => "Unknown"
             };
         }
