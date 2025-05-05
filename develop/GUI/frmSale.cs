@@ -84,6 +84,25 @@ namespace timber_shop_manager
                 FormatCurrencyColumns(dgvSale, new List<string> { "Đơn giá", "Thuế", "Tổng Tiền" });
             }
 
+            private void UpdateTotalAndQty()
+            {
+                decimal totalAmount = 0;
+                int totalQty = 0;
+            
+                foreach (DataGridViewRow row in dgvSale.Rows)
+                {
+                    if (row.Cells["colTotal"].Value != null && row.Cells["colQty"].Value != null)
+                    {
+                        totalAmount += Convert.ToDecimal(row.Cells["colTotal"].Value);
+                        totalQty += Convert.ToInt32(row.Cells["colQty"].Value);
+                    }
+                }
+            
+                lblTotalAmount.Text = totalAmount.ToString("N0");
+                lblTotalQty.Text = totalQty.ToString();
+            }
+
+
             btnRemoveAll.Visible = dgvSale.Rows.Count > 0;
 
             // Reset các điều khiển khác
@@ -444,20 +463,32 @@ namespace timber_shop_manager
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (selectedRowIndex >= 0)
+        if (dgvSale.CurrentRow != null)
             {
-                dgvSale.Rows.RemoveAt(selectedRowIndex);
-
-                selectedRowIndex = -1;
-
-                UpdateTotalAmount();
+                int rowIndex = dgvSale.CurrentRow.Index;
+                if (rowIndex >= 0 && rowIndex < dgvSale.Rows.Count)
+                {
+                    // Trừ tổng tiền và số lượng sản phẩm
+                    try
+                    {
+                        decimal price = Convert.ToDecimal(dgvSale.Rows[rowIndex].Cells["colTotal"].Value);
+                        int quantity = Convert.ToInt32(dgvSale.Rows[rowIndex].Cells["colQty"].Value);
+        
+                        // Xóa hàng
+                        dgvSale.Rows.RemoveAt(rowIndex);
+        
+                        // Cập nhật lại tổng tiền và số lượng
+                        UpdateTotalAndQty();
+        
+                        // Cập nhật trạng thái nút
+                        UpdateDeleteButtonsVisibility();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi khi xóa sản phẩm: " + ex.Message);
+                    }
+                }
             }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn một sản phẩm để xóa.");
-            }
-            btnRemoveAll.Visible = dgvSale.Rows.Count > 0;
-            btnDelete.Visible = dgvSale.Rows.Count > 0;
         }
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
