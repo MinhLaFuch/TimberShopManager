@@ -400,7 +400,7 @@ namespace timber_shop_manager
         }
         private void btnVoucher_MouseHover(object sender, EventArgs e)
         {
-            toolTip.SetToolTip(btnSalary, "Khuyến mãi");
+            toolTip.SetToolTip(btnVoucher, "Khuyến mãi");
         }
         #endregion
         #endregion
