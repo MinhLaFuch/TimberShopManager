@@ -2,6 +2,7 @@
 using timber_shop_manager.objects;
 using timber_shop_manager.DTO;
 using timber_shop_manager.BUS;
+using timber_shop_manager.DAL;
 
 namespace timber_shop_manager
 {
@@ -206,11 +207,21 @@ namespace timber_shop_manager
 
             foreach (DataGridViewRow row in dgvSale.Rows)
             {
-                totalAmount += Convert.ToDecimal(row.Cells["Total"].Value);
+                if (row.IsNewRow) continue;
+
+                int quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                decimal unitPrice = Convert.ToDecimal(row.Cells["PriceQuotation"].Value);
+
+                decimal lineTotal = quantity * unitPrice;
+                row.Cells["Total"].Value = lineTotal;
+
+                totalAmount += lineTotal;
             }
 
             originalTotal = totalAmount;
+            UpdateTotalDisplay();
         }
+
         private void FormatCurrencyColumns(DataGridView dgv, List<string> columnNames)
         {
             foreach (string columnName in columnNames)
@@ -446,8 +457,23 @@ namespace timber_shop_manager
         {
             if (selectedRowIndex >= 0)
             {
-                dgvSale.Rows.RemoveAt(selectedRowIndex);
+                // Lấy ID và số lượng từ dgvSale
+                string productId = dgvSale.Rows[selectedRowIndex].Cells["ProductId"].Value.ToString();
+                int quantityToReturn = Convert.ToInt32(dgvSale.Rows[selectedRowIndex].Cells["Quantity"].Value);
 
+                // Trả lại số lượng cho dgvProduct
+                foreach (DataGridViewRow row in dgvProduct.Rows)
+                {
+                    if (row.Cells["Mã sản phẩm"].Value.ToString() == productId)
+                    {
+                        int currentQuantity = Convert.ToInt32(row.Cells["Số lượng"].Value);
+                        row.Cells["Số lượng"].Value = currentQuantity + quantityToReturn;
+                        break;
+                    }
+                }
+
+                // Xóa khỏi dgvSale
+                dgvSale.Rows.RemoveAt(selectedRowIndex);
                 selectedRowIndex = -1;
 
                 UpdateTotalAmount();
@@ -456,6 +482,7 @@ namespace timber_shop_manager
             {
                 MessageBox.Show("Vui lòng chọn một sản phẩm để xóa.");
             }
+
             btnRemoveAll.Visible = dgvSale.Rows.Count > 0;
             btnDelete.Visible = dgvSale.Rows.Count > 0;
         }
@@ -482,8 +509,34 @@ namespace timber_shop_manager
         }
         private void btnRemoveAll_Click(object sender, EventArgs e)
         {
+            // Duyệt từng dòng trong dgvSale để hoàn trả số lượng
+            foreach (DataGridViewRow saleRow in dgvSale.Rows)
+            {
+                if (saleRow.IsNewRow) continue; // Bỏ qua dòng trống cuối cùng (nếu có)
+
+                string productId = saleRow.Cells["ProductId"].Value.ToString();
+                int quantityToReturn = Convert.ToInt32(saleRow.Cells["Quantity"].Value);
+
+                // Tìm dòng tương ứng trong dgvProduct và cộng lại số lượng
+                foreach (DataGridViewRow productRow in dgvProduct.Rows)
+                {
+                    if (productRow.Cells["Mã sản phẩm"].Value.ToString() == productId)
+                    {
+                        int currentQuantity = Convert.ToInt32(productRow.Cells["Số lượng"].Value);
+                        productRow.Cells["Số lượng"].Value = currentQuantity + quantityToReturn;
+                        break;
+                    }
+                }
+            }
+
+            // Xóa tất cả các dòng khỏi dgvSale
             dgvSale.Rows.Clear();
+            selectedRowIndex = -1;
             UpdateTotalAmount();
+            UpdateTotalAmount();
+
+            btnRemoveAll.Visible = false;
+            btnDelete.Visible = false;
         }
         #endregion
         #region Value changed event

@@ -25,13 +25,14 @@ namespace timber_shop_manager
         {
             //connectionString = "Data Source=DESKTOP-M3PPH9A\\SQLEXPRESS;Initial Catalog=TimberShop;Integrated Security=True;Trust Server Certificate=True";
             //connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=TimberShop;Integrated Security=True;Trust Server Certificate=True";
+            connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=TimberShop;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             if (isWindowAuthentication)
             {
-                connectionString = $"Data Source={server};Initial Catalog={name};Integrated Security=True;Trust Server Certificate=True";
+                //connectionString = $"Data Source={server};Initial Catalog={name};Integrated Security=True;Trust Server Certificate=True";
             } 
             else
             {
-                connectionString = $"Data Source={server};Initial Catalog={name};User ID={username};Password={password};Encrypt=True;Trust Server Certificate=True";
+                //connectionString = $"Data Source={server};Initial Catalog={name};User ID={username};Password={password};Encrypt=True;Trust Server Certificate=True";
             }
         }
 
