@@ -396,11 +396,13 @@ namespace timber_shop_manager
 
         private void btnSalary_MouseHover(object sender, EventArgs e)
         {
-            toolTip.SetToolTip(btnSalary, "Lương");
+            toolTip.SetToolTip(btnSalary, "Tiền lương");
+        }
+        private void btnVoucher_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(btnSalary, "Khuyến mãi");
         }
         #endregion
         #endregion
-
-
     }
 }

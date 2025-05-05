@@ -298,6 +298,7 @@
             btnVoucher.TabIndex = 7;
             btnVoucher.UseVisualStyleBackColor = false;
             btnVoucher.Click += btnVoucher_Click;
+            btnVoucher.MouseHover += btnVoucher_MouseHover;
             // 
             // pnReport
             // 
