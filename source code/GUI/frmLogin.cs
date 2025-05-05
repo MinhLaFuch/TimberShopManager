@@ -31,6 +31,7 @@ namespace timber_shop_manager
         {
             Properties.Settings.Default.Username = username;
             Properties.Settings.Default.Save();
+            txtPassword.Clear();
         }
         #endregion
         #region Load event
