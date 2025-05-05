@@ -66,8 +66,8 @@ namespace timber_shop_manager
             dtpBirthday.Value = emp.Birthday;
             txtAdmission.Text = emp.Role;
             txtSalary.Text = emp.Salary.ToString();
-            btnSave.Enabled = false;
-
+            btnSave.Visible = false;
+            btnCancel.Visible = false;
             DisableAllTextBox();
         }
 
@@ -75,7 +75,10 @@ namespace timber_shop_manager
         {
             txtAddress.Enabled = true;
             txtPhoneNumber.Enabled = true;
-            btnSave.Enabled = true;
+            btnChangeInfo.Visible = false;
+            btnChangePW.Visible = false;
+            btnSave.Visible = true;
+            btnCancel.Visible = true;
         }
 
         private void btnChangePW_Click(object sender, EventArgs e)
@@ -92,5 +95,10 @@ namespace timber_shop_manager
             LoadInformation();
         }
         #endregion
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            LoadInformation();
+        }
     }
 }

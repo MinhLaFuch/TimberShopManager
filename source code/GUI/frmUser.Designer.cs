@@ -61,7 +61,7 @@
             lbEmployeeDOB = new Label();
             lbEmployeeAddress = new Label();
             pnButton = new FlowLayoutPanel();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            btnCancel = new Guna.UI2.WinForms.Guna2Button();
             btnSave = new Guna.UI2.WinForms.Guna2Button();
             btnChangeInfo = new Guna.UI2.WinForms.Guna2Button();
             btnChangePW = new Guna.UI2.WinForms.Guna2Button();
@@ -291,7 +291,7 @@
             // 
             // pnButton
             // 
-            pnButton.Controls.Add(guna2Button1);
+            pnButton.Controls.Add(btnCancel);
             pnButton.Controls.Add(btnSave);
             pnButton.Controls.Add(btnChangeInfo);
             pnButton.Controls.Add(btnChangePW);
@@ -301,23 +301,24 @@
             pnButton.Size = new Size(742, 70);
             pnButton.TabIndex = 1;
             // 
-            // guna2Button1
+            // btnCancel
             // 
-            guna2Button1.BackColor = Color.FromArgb(59, 93, 79);
-            guna2Button1.CustomizableEdges = customizableEdges5;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.FillColor = Color.FromArgb(59, 93, 79);
-            guna2Button1.Font = new Font("Segoe UI", 9F);
-            guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(576, 3);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            guna2Button1.Size = new Size(163, 50);
-            guna2Button1.TabIndex = 0;
-            guna2Button1.Text = "Hủy";
+            btnCancel.BackColor = Color.FromArgb(59, 93, 79);
+            btnCancel.CustomizableEdges = customizableEdges5;
+            btnCancel.DisabledState.BorderColor = Color.DarkGray;
+            btnCancel.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnCancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnCancel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnCancel.FillColor = Color.FromArgb(59, 93, 79);
+            btnCancel.Font = new Font("Segoe UI", 9F);
+            btnCancel.ForeColor = Color.White;
+            btnCancel.Location = new Point(576, 3);
+            btnCancel.Name = "btnCancel";
+            btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnCancel.Size = new Size(163, 50);
+            btnCancel.TabIndex = 0;
+            btnCancel.Text = "Hủy";
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnSave
             // 
@@ -418,7 +419,7 @@
         private Label lbEmployeeDOB;
         private Label lbEmployeeAddress;
         private TextBox txtAdmission;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnCancel;
         private Guna.UI2.WinForms.Guna2Button btnSave;
     }
 }

@@ -42,7 +42,7 @@ namespace timber_shop_manager
             ClearCustomerFields();
             ClearPurchaseHistory();
 
-            ButtonVisibility(true, false, false, false);
+            ButtonVisibility(true, true, false, false);
         }
 
         private void DisableAllInputsExceptSearch()
@@ -230,8 +230,6 @@ namespace timber_shop_manager
             InitializeUI();
             LoadCustomerData();
             LoadInitialPurchaseData();
-
-            ButtonVisibility(true, false, false, false);
         }
         #endregion
         #region Button click event
