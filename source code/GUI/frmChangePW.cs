@@ -54,7 +54,7 @@ namespace timber_shop_manager
                 pnNewPassword.Visible = true;
                 pnCode.Visible = false;
                 btnSave.Visible = true;
-                lbCodeCountdown.Text = String.Empty;
+                lbCodeCountdown.Visible = false;
             }
             else
             {
@@ -106,7 +106,6 @@ namespace timber_shop_manager
                 // Xử lý các lỗi khác (ví dụ: vấn đề mạng)
                 MessageBox.Show($"Không thể gửi mã xác thực. Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-                MessageBox.Show("Verification code sent successfully. Please check your email.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 pnCode.Visible = true;
             }
         #endregion
