@@ -435,3 +435,19 @@ GO
 
 UPDATE Account
 SET Password = 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3'
+
+update Employee
+set Role = N'Bán hàng'
+where Role = 'Sale Agent'
+
+update Employee
+set Role = N'Quản trị viên'
+where Role = 'Administrator'
+
+update Employee
+set Role = N'Kế toán'
+where Role = 'Accountant'
+
+update Employee
+set Role = N'Quản lý'
+where Role = 'Manager'
