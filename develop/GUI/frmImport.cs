@@ -246,6 +246,16 @@ namespace timber_shop_manager.GUI
                 nudTax.Value,
                 txtDescription.Text
             );
+
+            txtProductId.Enabled = true;
+            txtProductName.Clear();
+            nudPriceQuotation.Value = 0;
+            nudTax.Value = 0;
+            cbCategory.SelectedIndex = -1;
+            nudWarranty.Value = 0;
+            nudQuantity.Value = 0;
+            cbCalUnit.SelectedIndex = -1;
+            txtDescription.Clear();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
