@@ -1,4 +1,4 @@
-/*==============================================================*/
+﻿/*==============================================================*/
 /* Database name:  TimberShop                                   */
 /* DBMS name:      Microsoft SQL Server 2017                    */
 /* Created on:     5/4/2025 2:44:52 PM                          */
@@ -463,7 +463,7 @@ alter table SaleInvoice
       references SaleAgent (Id)
 go
 
-insert into Employee(Id, Birthday) values ('E000', GETDATE());
+insert into Employee(Id, Birthday, Role) values ('E000', GETDATE(), N'Quản trị viên');
 go
 insert into Administrator(Id) values ('E000');
 go
