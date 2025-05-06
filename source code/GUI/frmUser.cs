@@ -67,6 +67,8 @@ namespace timber_shop_manager
             txtSalary.Text = emp.Salary.ToString();
             btnSave.Visible = false;
             btnCancel.Visible = false;
+            btnChangeInfo.Visible = true;
+            btnChangePW.Visible = true;
             DisableAllTextBox();
         }
 
