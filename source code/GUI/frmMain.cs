@@ -34,7 +34,7 @@ namespace timber_shop_manager
                 ctrl.Dispose(); // Free memory/resources
             }
             pnMDI.Controls.Clear(); // Remove all references
-
+            form.MdiParent = this; // Set the parent form
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;

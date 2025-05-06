@@ -18,7 +18,6 @@ namespace timber_shop_manager
         #region Properties
         private EmployeeBUS empBUS = new();
         private EmployeeDTO emp;
-
         public frmUser()
         {
             InitializeComponent();
@@ -83,7 +82,16 @@ namespace timber_shop_manager
 
         private void btnChangePW_Click(object sender, EventArgs e)
         {
-            new frmChangePW(this, txtEmail.Text).ShowDialog();
+            if(this.MdiParent != null)
+            {
+                this.MdiParent.Hide();
+                new frmChangePW(this.MdiParent, txtEmail.Text).ShowDialog();
+            }
+            else
+            {
+                this.Hide();
+                new frmChangePW(this, txtEmail.Text).ShowDialog();
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)

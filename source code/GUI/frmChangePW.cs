@@ -163,6 +163,7 @@ namespace timber_shop_manager
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+            form.Show();
         }
         private void pbVisible_newPW_Click(object sender, EventArgs e)
         {

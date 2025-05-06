@@ -94,12 +94,13 @@ namespace timber_shop_manager
             }
 
             var frmMain = new frmMain(employee);
-            this.Hide();
+            this.Hide();    
             frmMain.ShowDialog();
         }
 
         private void btnForgotPassword_Click(object sender, EventArgs e)
         {
+            this.Hide();
             new frmChangePW(this).ShowDialog();
         }
         private void btnConfig_Click(object sender, EventArgs e)
