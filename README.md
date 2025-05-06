@@ -9,7 +9,7 @@
 ## Các Bước Cài Đặt
 
 1. **Tải Phần Mềm**
-    - Truy cập [Trang GitHub của dự án](https://github.com/username/TimberShopManager).
+    - Truy cập [Trang GitHub của dự án](https://github.com/MinhLaFuch/TimberShopManager.git).
     - Tải xuống phiên bản mới nhất từ mục **Releases**.
 
 2. **Cài Đặt Phần Mềm**
